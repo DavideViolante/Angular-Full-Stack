@@ -14,6 +14,7 @@ You need MongoDB and Node.js installed to run this project.
 1. `mongod`
 2. `npm install`
 3. `npm start`
+4. Go to localhost:3000
 
 ### Contributing
 Any contribute is appreciated.
