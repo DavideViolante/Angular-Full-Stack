@@ -1,11 +1,11 @@
 {
   "name": "angular2-express-mongoose",
   "version": "1.0.0",
-  "description": "Angular 2, Express.js, Mongoose.js",
+  "description": "Angular 2, Express.js, Mongoose.js, Node.js",
   "author": "Davide Violante",
   "repository": {
     "type": "git",
-    "url": "https://github.com/angular/quickstart.git"
+    "url": "https://github.com/DavideViolante/Angular2-Express-Mongoose.git"
   },
   "scripts": {
     "postinstall": "typings install",
