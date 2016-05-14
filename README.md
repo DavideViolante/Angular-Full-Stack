@@ -5,6 +5,9 @@ Basic project using [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bu
 * [**A**ngular 2](https://angular.io) (TypeScript)
 * [**N**ode.js](https://nodejs.org)
 
+## Preview
+![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/show.gif "Preview")
+
 ## Run
 You need MongoDB and Node.js installed to run this project.
 
