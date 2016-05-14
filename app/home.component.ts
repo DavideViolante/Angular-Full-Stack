@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
 
 	private workaround = true;
 
+	private infoMsg = { body: "", type: "info"};
+
 	constructor(private http: Http) { }
 
 	ngOnInit() {
@@ -25,6 +27,12 @@ export class HomeComponent implements OnInit {
 			data => this.cats = data,
 			error => console.log(error)
 		);
+	}
+
+	sendInfoMsg(body, type) {
+		this.infoMsg.body = body;
+		this.infoMsg.type = type;
+		window.setTimeout(() => this.infoMsg.body = "", 3000);
 	}
 
 	toggleEdit(cat) {
@@ -37,6 +45,7 @@ export class HomeComponent implements OnInit {
 				data => this.cats = data,
 				error => console.log(error)
 			);
+			this.sendInfoMsg("item editing cancelled.", "warning");
 		}
 		this.isEditing = !this.isEditing;
 	}
@@ -45,6 +54,7 @@ export class HomeComponent implements OnInit {
 		this.http.put("/cat/"+cat._id, JSON.stringify(cat), this.options).subscribe();
 		this.isEditing = false;
 		this.cat = cat;
+		this.sendInfoMsg("item edited successfully.", "success");
 	}
 
 	submitRemove(cat) {
@@ -52,6 +62,7 @@ export class HomeComponent implements OnInit {
 			this.http.delete("/cat/"+cat._id, this.options).subscribe();
 			var pos = this.cats.map((e) => { return e._id }).indexOf(cat._id);
 			this.cats.splice(pos, 1);
+			this.sendInfoMsg("item deleted successfully.", "success");
 		}
 	}
 
@@ -60,6 +71,7 @@ export class HomeComponent implements OnInit {
 			data => this.cats.push(data.json()),
 			error => console.log(error)
 		);
+		this.sendInfoMsg("item created successfully.", "success");
 		// workaround to reset the form values
 		this.workaround = false;
 		setTimeout(() => this.workaround = true, 0);
