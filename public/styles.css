@@ -1,0 +1,17 @@
+body {
+	font-family: Verdana, sans-serif;
+	margin-top: 15px;
+}
+
+.card {
+	margin-top: .75rem;
+}
+
+a:hover .fa-heart {
+	color: #cc0000;
+}
+
+table th, table tr td {
+	text-align: center;
+	width: 25%;
+}
