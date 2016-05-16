@@ -42,7 +42,6 @@
   "devDependencies": {
     "concurrently": "^2.0.0",
     "nodemon": "^1.9.2",
-    "systemjs-builder": "^0.15.16",
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
     "typings": "^0.8.1",
