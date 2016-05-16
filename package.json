@@ -9,8 +9,8 @@
   },
   "scripts": {
     "postinstall": "typings install",
-    "prestart": "tsc",
-    "start": "concurrently \"tsc -w\" \"nodemon server.js\" ",
+    "prestart": "webpack",
+    "start": "concurrently \"webpack --watch\" \"nodemon server.js\" ",
     "typings": "typings"
   },
   "license": "MIT",
@@ -43,7 +43,9 @@
     "concurrently": "^2.0.0",
     "nodemon": "^1.9.2",
     "systemjs-builder": "^0.15.16",
+    "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
-    "typings": "^0.8.1"
+    "typings": "^0.8.1",
+    "webpack": "^1.13.0"
   }
 }

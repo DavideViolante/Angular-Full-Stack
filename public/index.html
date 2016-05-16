@@ -6,19 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" type="image/png">
 
-    <!-- 1. Load libraries -->
-    <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-
-    <!-- 2. Configure SystemJS -->
-    <script src="public/systemjs.config.js"></script>
 
     <!-- My libraries -->
-    <!-- jQuery and Tether are requisites of Bootstrap -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/tether/dist/js/tether.min.js"></script>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -26,12 +18,12 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="public/styles.css">
 
-    <script>
-      System.import('app').catch(function(err){ console.error(err); });
-    </script>
+    <!-- Webpack bundle -->
+    <script src="public/bundle.js"></script>
+
   </head>
 
-  <!-- 3. Display the application -->
+  <!-- Display the application -->
   <body>
     <app>Loading...</app>
   </body>
