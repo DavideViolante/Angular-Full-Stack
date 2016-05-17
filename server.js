@@ -8,13 +8,11 @@ var app = express();
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use('/app', express.static(__dirname + '/app'));
-app.use('/apptsc', express.static(__dirname + '/apptsc'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
-
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/test');
@@ -66,8 +64,7 @@ db.once('open', function() {
 
     // update by id
     app.put('/cat/:id', function(req, res) {
-        var obj = new Cat(req.body);
-        Cat.findOneAndUpdate({_id: req.params.id}, obj, function (err) {
+        Cat.findOneAndUpdate({_id: req.params.id}, req.body, function (err) {
             if(err) return console.error(err);
             res.sendStatus(200);
         })

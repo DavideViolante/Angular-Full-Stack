@@ -15,3 +15,13 @@ table th, table tr td {
 	text-align: center;
 	width: 25%;
 }
+
+.alert {
+	z-index: 999;
+	position: fixed;
+	bottom: 15px;
+	left: 25%;
+	width: 50%;
+	opacity: 0.9;
+}
+

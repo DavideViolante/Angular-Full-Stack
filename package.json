@@ -35,7 +35,6 @@
     "morgan": "^1.7.0",
     "reflect-metadata": "^0.1.3",
     "rxjs": "5.0.0-beta.6",
-    "systemjs": "0.19.27",
     "tether": "^1.3.2",
     "zone.js": "^0.6.12"
   },
