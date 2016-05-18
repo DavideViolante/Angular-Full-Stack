@@ -1,7 +1,6 @@
 # Angular 2 + Express.js + Mongoose.js + Node.js
 
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-[![Dependency Status](https://david-dm.org/DavideViolante/Angular2-Express-Mongoose.svg)](https://david-dm.org/DavideViolante/Angular2-Express-Mongoose)
+[![Dependency Status](https://david-dm.org/DavideViolante/Angular2-Express-Mongoose.svg)](https://david-dm.org/DavideViolante/Angular2-Express-Mongoose) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M3EYKSBP7755A) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 Basic project using [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com))
