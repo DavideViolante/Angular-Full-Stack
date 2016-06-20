@@ -13,7 +13,7 @@ Other technologies used:
 * [Font Awesome](http://fontawesome.io)
 
 ## Preview
-![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/show.gif "Preview")
+![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/demo.gif "Preview")
 
 ## Run
 You need MongoDB and Node.js installed to run this project.
