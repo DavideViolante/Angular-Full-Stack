@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {Http, Headers, RequestOptions} from '@angular/http';
 
 @Component({
 	selector: 'home',
 	templateUrl: 'app/home.component.html',
-	directives: [ROUTER_DIRECTIVES]
 })
 
 export class HomeComponent implements OnInit {
