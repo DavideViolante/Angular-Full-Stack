@@ -1,4 +1,4 @@
 node_modules/
 typings/
 public/main.js
-public/vendor.ts
+public/vendor.js
