@@ -7,12 +7,14 @@ module.exports = {
         filename: './public/[name].js'
     },
     resolve: {
-        // Add .ts and .tsx as a resolvable extension.
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+        extensions: ['', '.ts', '.js']
     },
     module: {
         loaders: [
-            { test: /\.ts$/, loader: 'ts' }
+            {
+                test: /\.ts$/,
+                loader: 'ts'
+            }
         ]
     }
 }
