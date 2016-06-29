@@ -25,3 +25,6 @@ You need MongoDB and Node.js installed to run this project.
 4. Go to [localhost:3000](http://localhost:3000).
 
 The server will auto restart on changes.
+
+### Author
+* [Davide Violante](https://github.com/DavideViolante)
