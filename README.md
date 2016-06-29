@@ -1,4 +1,4 @@
-# Angular 2 + Express.js + Mongoose.js + Node.js
+# Angular 2 + Express + Mongoose + Node
 
 [![Dependency Status](https://david-dm.org/DavideViolante/Angular2-Express-Mongoose.svg)](https://david-dm.org/DavideViolante/Angular2-Express-Mongoose) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=M3EYKSBP7755A) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
@@ -14,6 +14,7 @@ Other technologies used:
 
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/demo.gif "Preview")
+The `cats` are retrieved from a MongoDB collection. CRUD operations shown above are all reflected to MongoDB.
 
 ## Run
 You need MongoDB and Node.js installed to run this project.
