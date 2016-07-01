@@ -27,10 +27,10 @@ export class HomeComponent implements OnInit {
 		);
 	}
 
-	sendInfoMsg(body, type) {
+	sendInfoMsg(body, type, time = 3000) {
 		this.infoMsg.body = body;
 		this.infoMsg.type = type;
-		window.setTimeout(() => this.infoMsg.body = "", 3000);
+		window.setTimeout(() => this.infoMsg.body = "", time);
 	}
 
 	toggleEdit(cat) {
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 			// edit button pressed
 			this.cat = cat;
 		} else {
-			// cancel button pressed
+			// cancel button pressed (reload the cats list)
 			this.http.get("/cats").map(res => res.json()).subscribe(
 				data => this.cats = data,
 				error => console.log(error)
@@ -49,29 +49,39 @@ export class HomeComponent implements OnInit {
 	}
 
 	submitEdit(cat) {
-		this.http.put("/cat/"+cat._id, JSON.stringify(cat), this.options).subscribe();
-		this.isEditing = false;
-		this.cat = cat;
-		this.sendInfoMsg("item edited successfully.", "success");
+		this.http.put("/cat/"+cat._id, JSON.stringify(cat), this.options).subscribe(
+			res => {
+				this.isEditing = false;
+				this.cat = cat;
+				this.sendInfoMsg("item edited successfully.", "success");
+			},
+			error => console.log(error)
+		);
 	}
 
 	submitRemove(cat) {
 		if(window.confirm("Are you sure you want to permanently delete this item?")) {
-			this.http.delete("/cat/"+cat._id, this.options).subscribe();
-			var pos = this.cats.map((e) => { return e._id }).indexOf(cat._id);
-			this.cats.splice(pos, 1);
-			this.sendInfoMsg("item deleted successfully.", "success");
+			this.http.delete("/cat/"+cat._id, this.options).subscribe(
+				res => {
+					var pos = this.cats.map((e) => { return e._id }).indexOf(cat._id);
+					this.cats.splice(pos, 1);
+					this.sendInfoMsg("item deleted successfully.", "success");
+				},
+				error => console.log(error)
+			);
 		}
 	}
 
 	submitCreate(cat) {
 		this.http.post("/cat", JSON.stringify(cat), this.options).subscribe(
-			data => this.cats.push(data.json()),
+			res => {
+				this.cats.push(res.json()); // the response contains the new item
+				this.sendInfoMsg("item added successfully.", "success");
+				// workaround to reset the form values
+				this.workaround = false;
+				setTimeout(() => this.workaround = true, 0);
+			},
 			error => console.log(error)
 		);
-		this.sendInfoMsg("item created successfully.", "success");
-		// workaround to reset the form values
-		this.workaround = false;
-		setTimeout(() => this.workaround = true, 0);
 	}
 }

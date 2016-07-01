@@ -50,7 +50,7 @@ db.once('open', function() {
         var obj = new Cat(req.body);
         obj.save(function(err, obj) {
             if(err) return console.error(err);
-            res.json(obj);
+            res.status(200).json(obj);
         });
     });
 
