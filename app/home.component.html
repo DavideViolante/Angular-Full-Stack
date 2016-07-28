@@ -1,4 +1,4 @@
- <div class="card">
+<div class="card">
 	<h5 class="card-header">Current cats ({{cats?.length}})</h5>
 	<div class="card-block">
 		<table class="table table-bordered table-striped">
@@ -26,22 +26,19 @@
 			<tbody *ngIf="isEditing">
 				<tr>
 					<td colspan="4">
-						<div class="form-inline">
+						<form class="form-inline" #form="ngForm" (ngSubmit)="submitEdit(cat)" style="display:inline">
 							<div class="form-group">
-							    <input type="hidden" class="form-control" [(ngModel)]="cat._id" placeholder="ID">
+							    <input class="form-control" type="text" name="name" [(ngModel)]="cat.name" placeholder="Name" required>
 							</div>
 							<div class="form-group">
-							    <input type="text" class="form-control" [(ngModel)]="cat.name" placeholder="Name" required>
+								<input class="form-control" type="number" name="age" [(ngModel)]="cat.age" placeholder="Age" min="0" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" type="number" [(ngModel)]="cat.age" placeholder="Age" min="0" required>
+								<input class="form-control" type="number" name="weight" [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
 							</div>
-							<div class="form-group">
-								<input class="form-control" type="number" [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
-							</div>
-							<button class="btn btn-sm btn-primary" (click)="submitEdit(cat)" [disabled]="!cat.name || !cat.age || !cat.weight"><i class="fa fa-floppy-o"></i> Edit</button>
-							<button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
-						</div>
+							<button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
+						</form>
+						<button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
 					</td>
 				</tr>
 			</tbody>
@@ -54,10 +51,10 @@
 		</div>
 	</div>
 </div>
-<div class="card">
+<div class="card" *ngIf="!isEditing">
 	<h5 class="card-header">Add new cat</h5>
 	<div class="card-block">
-		<form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="submitAdd()">
+		<form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="submitAdd()" style="text-align:center">
 			<div class="form-group">
 			    <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
 			</div>
