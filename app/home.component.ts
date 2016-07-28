@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
+import {FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 
 @Component({
 	selector: 'home',
 	templateUrl: 'app/home.component.html',
+	directives: [REACTIVE_FORM_DIRECTIVES]
 })
 
 export class HomeComponent implements OnInit {
@@ -14,13 +16,26 @@ export class HomeComponent implements OnInit {
 	private isEditing = false;
 	private cat = {};
 
-	private workaround = true;
-
 	private infoMsg = { body: "", type: "info"};
 
-	constructor(private http: Http) { }
+	private addCatForm: FormGroup;
+	private name = new FormControl("", Validators.required);
+	private age = new FormControl("", Validators.required);
+	private weight = new FormControl("", Validators.required);
+
+	constructor(private http: Http, private formBuilder: FormBuilder) {	}
 
 	ngOnInit() {
+		this.addCatForm = this.formBuilder.group({
+			name: this.name,
+			age: this.age,
+			weight: this.weight
+		});
+
+		this.loadCats();
+	}
+
+	loadCats() {
 		this.http.get("/cats").map(res => res.json()).subscribe(
 			data => this.cats = data,
 			error => console.log(error)
@@ -33,19 +48,27 @@ export class HomeComponent implements OnInit {
 		window.setTimeout(() => this.infoMsg.body = "", time);
 	}
 
-	toggleEdit(cat) {
-		if(!this.isEditing) {
-			// edit button pressed
-			this.cat = cat;
-		} else {
-			// cancel button pressed (reload the cats list)
-			this.http.get("/cats").map(res => res.json()).subscribe(
-				data => this.cats = data,
-				error => console.log(error)
-			);
-			this.sendInfoMsg("item editing cancelled.", "warning");
-		}
-		this.isEditing = !this.isEditing;
+	submitAdd() {
+		this.http.post("/cat", JSON.stringify(this.addCatForm.value), this.options).subscribe(
+			res => {
+				this.cats.push(res.json()); // the response contains the new item
+				this.sendInfoMsg("item added successfully.", "success");
+				// TODO: reset the form here
+			},
+			error => console.log(error)
+		);
+	}
+
+	enableEditing(cat) {
+		this.isEditing = true;
+		this.cat = cat;
+	}
+
+	cancelEditing() {
+		this.isEditing = false;
+		this.cat = {};
+		this.sendInfoMsg("item editing cancelled.", "warning");
+		this.loadCats();
 	}
 
 	submitEdit(cat) {
@@ -72,16 +95,4 @@ export class HomeComponent implements OnInit {
 		}
 	}
 
-	submitCreate(cat) {
-		this.http.post("/cat", JSON.stringify(cat), this.options).subscribe(
-			res => {
-				this.cats.push(res.json()); // the response contains the new item
-				this.sendInfoMsg("item added successfully.", "success");
-				// workaround to reset the form values
-				this.workaround = false;
-				setTimeout(() => this.workaround = true, 0);
-			},
-			error => console.log(error)
-		);
-	}
 }

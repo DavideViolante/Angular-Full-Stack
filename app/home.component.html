@@ -1,5 +1,5 @@
-<div class="card">
-	<h5 class="card-header">Current cats ({{cats.length ? cats.length : 0}})</h5>
+ <div class="card">
+	<h5 class="card-header">Current cats ({{cats?.length}})</h5>
 	<div class="card-block">
 		<table class="table table-bordered table-striped">
 			<thead class="thead-default">
@@ -19,29 +19,27 @@
 					<td>{{cat.age}}</td>
 					<td>{{cat.weight}}</td>
 					<td>
-						<button class="btn btn-sm btn-warning" (click)="toggleEdit(cat)"><i class="fa fa-pencil"></i> Edit</button> <button class="btn btn-sm btn-danger" (click)="submitRemove(cat)"><i class="fa fa-trash"></i> Delete</button>
+						<button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> <button class="btn btn-sm btn-danger" (click)="submitRemove(cat)"><i class="fa fa-trash"></i> Delete</button>
 					</td>
 				</tr>	
 			</tbody>
 			<tbody *ngIf="isEditing">
 				<tr>
 					<td colspan="4">
-						<form name="editForm" class="form-inline" style="display:inline" (ngSubmit)="submitEdit(editForm.form.value)" #editForm="ngForm">
-							<div class="form-group">
-							    <input type="hidden" class="form-control" [(ngModel)]="cat._id" ngControl="_id" #_id="ngForm" placeholder="ID">
-							</div>
-							<div class="form-group">
-							    <input type="text" class="form-control" [(ngModel)]="cat.name" ngControl="name" #name="ngForm" placeholder="Name" required>
-							</div>
-							<div class="form-group">
-								<input class="form-control" type="number" [(ngModel)]="cat.age" ngControl="age" #age="ngForm" placeholder="Age" min="0" required>
-							</div>
-							<div class="form-group">
-								<input class="form-control" type="number" [(ngModel)]="cat.weight" ngControl="weight" #weight="ngForm" placeholder="Weight" step="any" min="0" required>
-							</div>
-							<button class="btn btn-sm btn-primary" type="submit" [disabled]="!editForm.form.valid"><i class="fa fa-floppy-o"></i> Submit</button>
-						</form>
-						<button class="btn btn-sm btn-warning" (click)="toggleEdit(editForm.form.value)"><i class="fa fa-times"></i> Cancel</button>
+						<div class="form-group">
+						    <input type="hidden" class="form-control" [(ngModel)]="cat._id" placeholder="ID">
+						</div>
+						<div class="form-group">
+						    <input type="text" class="form-control" [(ngModel)]="cat.name" placeholder="Name" required>
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="number" [(ngModel)]="cat.age" placeholder="Age" min="0" required>
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="number" [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
+						</div>
+						<button class="btn btn-sm btn-primary" (click)="submitEdit(cat)" [disabled]="!cat.name || !cat.age || !cat.weight"><i class="fa fa-floppy-o"></i> Edit</button>
+						<button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
 					</td>
 				</tr>
 			</tbody>
@@ -57,17 +55,17 @@
 <div class="card">
 	<h5 class="card-header">Add new cat</h5>
 	<div class="card-block">
-		<form name="addForm" class="form-inline" *ngIf="workaround" (ngSubmit)="submitCreate(addForm.form.value)" #addForm="ngForm">
+		<form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="submitAdd()">
 			<div class="form-group">
-			    <input type="text" class="form-control" name="name" ngControl="name" #name="ngForm" placeholder="Name" required>
+			    <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
 			</div>
 			<div class="form-group">
-				<input class="form-control" type="number" name="age" ngControl="age" #age="ngForm" placeholder="Age" min="0" required>
+				<input class="form-control" type="number" name="age" formControlName="age" placeholder="Age" min="0">
 			</div>
 			<div class="form-group">
-				<input class="form-control" type="number" name="weight" ngControl="weight" #weight="ngForm" placeholder="Weight" step="any" min="0" required>
+				<input class="form-control" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">
 			</div>
-			<button class="btn btn-primary" type="submit" [disabled]="!addForm.form.valid"><i class="fa fa-floppy-o"></i> Submit</button>
+			<button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
 		</form>
 	</div>
 
