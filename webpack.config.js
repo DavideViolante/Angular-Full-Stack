@@ -14,6 +14,15 @@ module.exports = {
             {
                 test: /\.ts$/,
                 loader: 'ts'
+            },
+            {
+                test: /\.js$/,
+                loader: 'source-map-loader',
+                exclude: [
+                    // these packages have problems with their sourcemaps
+                    './public/scripts/rxjs',
+                    './public/scripts/@angular'
+                ]
             }
         ]
     }
