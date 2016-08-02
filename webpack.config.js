@@ -20,8 +20,8 @@ module.exports = {
                 loader: 'source-map-loader',
                 exclude: [
                     // these packages have problems with their sourcemaps
-                    './public/scripts/rxjs',
-                    './public/scripts/@angular'
+                    './node_modules/rxjs',
+                    './node_modules/@angular'
                 ]
             }
         ]
