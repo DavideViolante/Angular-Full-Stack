@@ -17,6 +17,7 @@ app.use(morgan('dev'));
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/test');
 var db = mongoose.connection;
+mongoose.Promise = global.Promise;
 
 var catSchema = mongoose.Schema({
     name: String,
