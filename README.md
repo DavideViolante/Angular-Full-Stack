@@ -16,7 +16,7 @@ Other technologies used:
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/demo.gif "Preview")
 
 ## Run
-You need MongoDB and Node.js installed to run this project.
+You need MongoDB and Node.js installed to run this project. I tested it on MongoDB v3.2.8 and Node.js v4.4.7.
 
 1. `mongod` (in a separate command window)
 2. `npm install`
