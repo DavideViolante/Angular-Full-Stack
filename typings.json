@@ -2,8 +2,8 @@
   "name": "angular2-express-mongoose",
   "dependencies": {},
   "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160602141332",
+    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
     "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-    "node": "registry:dt/node#6.0.0+20160805072842"
+    "node": "registry:dt/node#6.0.0+20160807145350"
   }
 }

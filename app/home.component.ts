@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
-import {FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
 	selector: 'home',
-	templateUrl: 'app/home.component.html',
-	directives: [REACTIVE_FORM_DIRECTIVES]
+	templateUrl: 'app/home.component.html'
 })
 
 export class HomeComponent implements OnInit {
@@ -42,18 +41,12 @@ export class HomeComponent implements OnInit {
 		);
 	}
 
-	sendInfoMsg(body, type, time = 3000) {
-		this.infoMsg.body = body;
-		this.infoMsg.type = type;
-		window.setTimeout(() => this.infoMsg.body = "", time);
-	}
-
 	submitAdd() {
 		this.http.post("/cat", JSON.stringify(this.addCatForm.value), this.options).subscribe(
 			res => {
 				this.cats.push(res.json()); // the response contains the new item
 				this.sendInfoMsg("item added successfully.", "success");
-				// TODO: reset the form here
+				this.addCatForm.reset();
 			},
 			error => console.log(error)
 		);
@@ -83,8 +76,12 @@ export class HomeComponent implements OnInit {
 	}
 
 	submitRemove(cat) {
+		var delOptions = new RequestOptions({
+			body: '', // bug of RC5
+			headers: new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' })}
+		);
 		if(window.confirm("Are you sure you want to permanently delete this item?")) {
-			this.http.delete("/cat/"+cat._id, this.options).subscribe(
+			this.http.delete("/cat/"+cat._id, delOptions).subscribe(
 				res => {
 					var pos = this.cats.map((e) => { return e._id }).indexOf(cat._id);
 					this.cats.splice(pos, 1);
@@ -93,6 +90,12 @@ export class HomeComponent implements OnInit {
 				error => console.log(error)
 			);
 		}
+	}
+
+	sendInfoMsg(body, type, time = 3000) {
+		this.infoMsg.body = body;
+		this.infoMsg.type = type;
+		window.setTimeout(() => this.infoMsg.body = "", time);
 	}
 
 }
