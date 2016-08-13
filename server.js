@@ -1,9 +1,9 @@
 var express = require('express');
 var morgan = require('morgan'); // logger
-var assert = require('assert');
 var bodyParser = require('body-parser');
 
 var app = express();
+app.set('port', (process.env.PORT || 3000));
 
 app.use('/public', express.static(__dirname + '/public'));
 app.use('/public/scripts', express.static(__dirname + '/node_modules'));
@@ -85,8 +85,8 @@ db.once('open', function() {
         res.sendFile(__dirname + '/public/index.html');
     });
 
-    app.listen(3000, function() {
-        console.log('Angular app listening on port 3000');
+    app.listen(app.get('port'), function() {
+        console.log('MEAN app listening on port '+app.get('port'));
     });
 });
 

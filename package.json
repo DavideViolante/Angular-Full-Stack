@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "typings install",
     "prestart": "webpack",
-    "start": "concurrently \"webpack --watch\" \"nodemon server.js\" ",
+    "start": "concurrently \"webpack --watch --colors\" \"nodemon server.js\" ",
     "typings": "typings"
   },
   "license": "MIT",
