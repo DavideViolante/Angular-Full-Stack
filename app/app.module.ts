@@ -1,8 +1,7 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
+import {ROUTING} from './app.routes';
 import {HttpModule} from '@angular/http';
-import {RouterModule} from '@angular/router';
-import {ROUTES} from './app.routes';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AppComponent} from './app.component';
@@ -11,13 +10,14 @@ import {HomeComponent} from './home.component';
 
 @NgModule({
     imports: [BrowserModule,
-    		  RouterModule.forRoot(ROUTES),
+    		  ROUTING,
     		  HttpModule,
     		  FormsModule,
     		  ReactiveFormsModule],
     declarations: [AppComponent,
     			   AboutComponent,
     			   HomeComponent],
+    providers: [],
     bootstrap: [AppComponent]
 })
 
