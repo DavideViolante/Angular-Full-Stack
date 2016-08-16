@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
+import {ActivatedRoute} from '@angular/router';
+
 @Component({
 	selector: 'home',
 	templateUrl: 'app/home.component.html'
@@ -22,23 +24,24 @@ export class HomeComponent implements OnInit {
 	private age = new FormControl("", Validators.required);
 	private weight = new FormControl("", Validators.required);
 
-	constructor(private http: Http, private formBuilder: FormBuilder) {	}
+	constructor(private http: Http,
+				private formBuilder: FormBuilder,
+				private route: ActivatedRoute) {	}
 
 	ngOnInit() {
+		this.loadCats();
+
 		this.addCatForm = this.formBuilder.group({
 			name: this.name,
 			age: this.age,
 			weight: this.weight
 		});
-
-		this.loadCats();
 	}
 
 	loadCats() {
-		this.http.get("/cats").map(res => res.json()).subscribe(
-			data => this.cats = data,
-			error => console.log(error)
-		);
+		this.route.data.subscribe(data => {
+			this.cats = data["catsData"];
+		});
 	}
 
 	submitAdd() {

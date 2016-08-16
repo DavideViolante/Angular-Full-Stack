@@ -11,7 +11,9 @@
 				</tr>
 			</thead>
 			<tbody *ngIf="cats.length === 0">
-				<tr><td colspan="4">There are no cats in the DB. Add a new cat below.</td></tr>	
+				<tr>
+					<td colspan="4">There are no cats in the DB. Add a new cat below.</td>
+				</tr>	
 			</tbody>
 			<tbody *ngIf="!isEditing">
 				<tr *ngFor="let cat of cats">
