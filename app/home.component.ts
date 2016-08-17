@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 
-import {ActivatedRoute} from '@angular/router';
-
 @Component({
 	selector: 'home',
 	templateUrl: 'app/home.component.html'
@@ -25,8 +23,7 @@ export class HomeComponent implements OnInit {
 	private weight = new FormControl("", Validators.required);
 
 	constructor(private http: Http,
-				private formBuilder: FormBuilder,
-				private route: ActivatedRoute) {	}
+				private formBuilder: FormBuilder) {	}
 
 	ngOnInit() {
 		this.loadCats();
@@ -39,9 +36,10 @@ export class HomeComponent implements OnInit {
 	}
 
 	loadCats() {
-		this.route.data.subscribe(data => {
-			this.cats = data["catsData"];
-		});
+		this.http.get("/cats").map(res => res.json()).subscribe(
+			data => this.cats = data,
+			error => console.log(error)
+		);
 	}
 
 	submitAdd() {
@@ -64,6 +62,7 @@ export class HomeComponent implements OnInit {
 		this.isEditing = false;
 		this.cat = {};
 		this.sendInfoMsg("item editing cancelled.", "warning");
+		// reload the cats to reset the editing
 		this.loadCats();
 	}
 
