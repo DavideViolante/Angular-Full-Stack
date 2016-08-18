@@ -83,7 +83,7 @@ db.once('open', function() {
 
     // all other routes are handled by Angular
     app.get('/*', function(req, res) {
-        res.sendFile(__dirname + '/index.html');
+        res.sendFile(__dirname + '/public/index.html');
     });
 
     app.listen(app.get('port'), function() {

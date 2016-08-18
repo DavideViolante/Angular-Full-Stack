@@ -10,6 +10,7 @@ import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 export class HomeComponent implements OnInit {
 
 	private cats = [];
+	private isLoading = true;
 	private options = new RequestOptions({ headers: new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' }) });
 
 	private isEditing = false;
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit {
 	loadCats() {
 		this.http.get("/cats").map(res => res.json()).subscribe(
 			data => this.cats = data,
-			error => console.log(error)
+			error => console.log(error),
+			() => this.isLoading = false
 		);
 	}
 
