@@ -5,8 +5,9 @@ var bodyParser = require('body-parser');
 var app = express();
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/', express.static(__dirname + '/../src'));
+app.use('/', express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/../node_modules'));
+app.use('/bundle', express.static(__dirname + '/bundle'));
 app.use('/app', express.static(__dirname + '/app'));
 
 app.use(bodyParser.json());
