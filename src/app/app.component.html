@@ -3,10 +3,10 @@
 	<nav class="navbar navbar-dark bg-primary">
 	    <a class="navbar-brand" href="#"></a>
 	    <ul class="nav navbar-nav">
-	        <li class="nav-item active">
+	        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
 	            <a class="nav-link" [routerLink]="['/']"><i class="fa fa-home"></i> Home</a>
 	        </li>
-	        <li class="nav-item">
+	        <li class="nav-item" routerLinkActive="active">
 	            <a class="nav-link" [routerLink]="['/about']"><i class="fa fa-info-circle"></i> About</a>
 	        </li>
 	    </ul>
