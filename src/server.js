@@ -5,8 +5,8 @@ var bodyParser = require('body-parser');
 var app = express();
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/public', express.static(__dirname + '/public'));
-app.use('/public/scripts', express.static(__dirname + '/node_modules'));
+app.use('/', express.static(__dirname + '/../src'));
+app.use('/scripts', express.static(__dirname + '/../node_modules'));
 app.use('/app', express.static(__dirname + '/app'));
 
 app.use(bodyParser.json());
@@ -82,7 +82,7 @@ db.once('open', function() {
 
     // all other routes are handled by Angular
     app.get('/*', function(req, res) {
-        res.sendFile(__dirname + '/public/index.html');
+        res.sendFile(__dirname + '/index.html');
     });
 
     app.listen(app.get('port'), function() {

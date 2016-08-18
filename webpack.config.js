@@ -1,10 +1,10 @@
 module.exports = {
     entry: {
-        'vendor': './app/vendor.ts',
-        'main': './app/main.ts'
+        'vendor': './src/app/vendor.ts',
+        'main': './src/app/main.ts'
     },
     output: {
-        filename: './public/[name].js'
+        filename: './src/bundle/[name].js'
     },
     resolve: {
         extensions: ['', '.ts', '.js']
