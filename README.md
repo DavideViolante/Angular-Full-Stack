@@ -13,19 +13,21 @@ Other technologies used:
 * [Font Awesome](http://fontawesome.io)
 
 ## Run
-You need MongoDB and Node.js installed to run this project. I tested it on MongoDB v3.2.8 and Node.js v4.4.7.
+You need **MongoDB** and **Node.js** installed to run this project. Tested on MongoDB v3.2.8 and Node.js v4.4.7.
 
 1. `mongod` (in a separate command window)
 2. `npm install`
 3. `npm start`
 4. Go to [localhost:3000](http://localhost:3000).
 
-
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/demo.gif "Preview")
 
-
 The server will auto restart on changes.
+
+## Please open an issue if
+* you have any suggestion or advice to improve this project.
+* you noticed any problem or error.
 
 ### Author
 * [Davide Violante](https://github.com/DavideViolante)
