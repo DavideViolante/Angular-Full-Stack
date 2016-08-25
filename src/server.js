@@ -20,12 +20,8 @@ mongoose.connect('mongodb://localhost:27017/test');
 var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
-var catSchema = mongoose.Schema({
-    name: String,
-    weight: Number,
-    age: Number
-});
-var Cat = mongoose.model('Cat', catSchema);
+// Models
+var Cat = require('./cat.model.js');
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
