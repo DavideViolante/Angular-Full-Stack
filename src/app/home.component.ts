@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {Http} from '@angular/http';
 import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+
+import {CatService} from './cat.service';
 
 @Component({
 	selector: 'home',
@@ -11,7 +13,6 @@ export class HomeComponent implements OnInit {
 
 	private cats = [];
 	private isLoading = true;
-	private options = new RequestOptions({ headers: new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' }) });
 
 	private isEditing = false;
 	private cat = {};
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
 	private weight = new FormControl("", Validators.required);
 
 	constructor(private http: Http,
+				private catService: CatService,
 				private formBuilder: FormBuilder) {	}
 
 	ngOnInit() {
@@ -37,7 +39,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	loadCats() {
-		this.http.get("/cats").map(res => res.json()).subscribe(
+		this.catService.getCats().subscribe(
 			data => this.cats = data,
 			error => console.log(error),
 			() => this.isLoading = false
@@ -45,11 +47,12 @@ export class HomeComponent implements OnInit {
 	}
 
 	submitAdd() {
-		this.http.post("/cat", JSON.stringify(this.addCatForm.value), this.options).subscribe(
+		this.catService.addCat(this.addCatForm.value).subscribe(
 			res => {
-				this.cats.push(res.json()); // the response contains the new item
-				this.sendInfoMsg("item added successfully.", "success");
+				var newCat = res.json();
+				this.cats.push(newCat);
 				this.addCatForm.reset();
+				this.sendInfoMsg("item added successfully.", "success");
 			},
 			error => console.log(error)
 		);
@@ -69,7 +72,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	submitEdit(cat) {
-		this.http.put("/cat/"+cat._id, JSON.stringify(cat), this.options).subscribe(
+		this.catService.editCat(cat).subscribe(
 			res => {
 				this.isEditing = false;
 				this.cat = cat;
@@ -80,14 +83,10 @@ export class HomeComponent implements OnInit {
 	}
 
 	submitRemove(cat) {
-		var delOptions = new RequestOptions({
-			body: '', // bug of RC5
-			headers: new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' })}
-		);
 		if(window.confirm("Are you sure you want to permanently delete this item?")) {
-			this.http.delete("/cat/"+cat._id, delOptions).subscribe(
+			this.catService.deleteCat(cat).subscribe(
 				res => {
-					var pos = this.cats.map((e) => { return e._id }).indexOf(cat._id);
+					var pos = this.cats.map(cat => { return cat._id }).indexOf(cat._id);
 					this.cats.splice(pos, 1);
 					this.sendInfoMsg("item deleted successfully.", "success");
 				},
