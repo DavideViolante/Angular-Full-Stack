@@ -22,7 +22,7 @@ export class CatService {
   }
 
   deleteCat(cat) {
-    return this.http.delete(`/cat/${cat._id}`, JSON.stringify(cat), options);
+    return this.http.delete(`/cat/${cat._id}`, JSON.stringify(cat), this.options);
   }
 
 }
