@@ -14,22 +14,22 @@ export class HomeComponent implements OnInit {
 	private cats = [];
 	private isLoading = true;
 
-	private isEditing = false;
 	private cat = {};
-
-	private infoMsg = { body: "", type: "info"};
+	private isEditing = false;
 
 	private addCatForm: FormGroup;
 	private name = new FormControl("", Validators.required);
 	private age = new FormControl("", Validators.required);
 	private weight = new FormControl("", Validators.required);
 
+	private infoMsg = { body: "", type: "info"};
+
 	constructor(private http: Http,
 				private catService: CatService,
 				private formBuilder: FormBuilder) {	}
 
 	ngOnInit() {
-		this.loadCats();
+		this.getCats();
 
 		this.addCatForm = this.formBuilder.group({
 			name: this.name,
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	loadCats() {
+	getCats() {
 		this.catService.getCats().subscribe(
 			data => this.cats = data,
 			error => console.log(error),
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
 		);
 	}
 
-	submitAdd() {
+	addCat() {
 		this.catService.addCat(this.addCatForm.value).subscribe(
 			res => {
 				var newCat = res.json();
@@ -68,10 +68,10 @@ export class HomeComponent implements OnInit {
 		this.cat = {};
 		this.sendInfoMsg("item editing cancelled.", "warning");
 		// reload the cats to reset the editing
-		this.loadCats();
+		this.getCats();
 	}
 
-	submitEdit(cat) {
+	editCat(cat) {
 		this.catService.editCat(cat).subscribe(
 			res => {
 				this.isEditing = false;
@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit {
 		);
 	}
 
-	submitRemove(cat) {
+	deleteCat(cat) {
 		if(window.confirm("Are you sure you want to permanently delete this item?")) {
 			this.catService.deleteCat(cat).subscribe(
 				res => {

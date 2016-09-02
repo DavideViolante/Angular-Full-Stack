@@ -28,14 +28,14 @@
 					<td>{{cat.age}}</td>
 					<td>{{cat.weight}}</td>
 					<td>
-						<button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> <button class="btn btn-sm btn-danger" (click)="submitRemove(cat)"><i class="fa fa-trash"></i> Delete</button>
+						<button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
 					</td>
 				</tr>	
 			</tbody>
 			<tbody *ngIf="isEditing">
 				<tr>
 					<td colspan="4">
-						<form class="form-inline" #form="ngForm" (ngSubmit)="submitEdit(cat)" style="display:inline">
+						<form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)" style="display:inline">
 							<div class="form-group">
 							    <input class="form-control" type="text" name="name" [(ngModel)]="cat.name" placeholder="Name" required>
 							</div>
@@ -63,7 +63,7 @@
 <div class="card" *ngIf="!isEditing">
 	<h5 class="card-header">Add new cat</h5>
 	<div class="card-block">
-		<form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="submitAdd()" style="text-align:center">
+		<form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="addCat()" style="text-align:center">
 			<div class="form-group">
 			    <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
 			</div>

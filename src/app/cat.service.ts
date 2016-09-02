@@ -22,9 +22,8 @@ export class CatService {
         return this.http.put("/cat/"+cat._id, JSON.stringify(cat), this.options);
     }
 
-    deleteCat(cat) {                     // rc5 bug
-        var options = new RequestOptions({ body: '', headers: this.headers});
-        return this.http.delete("/cat/"+cat._id, options);
+    deleteCat(cat) {
+        return this.http.delete("/cat/"+cat._id, this.options);
     }
 
 }
