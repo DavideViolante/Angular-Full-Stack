@@ -13,7 +13,7 @@ Other technologies used:
 * [Font Awesome](http://fontawesome.io)
 
 ## Run
-You need **MongoDB** and **Node.js** installed to run this project. Tested on MongoDB v3.2.8 and Node.js v4.4.7.
+You need **MongoDB** and **Node.js** installed to run this project. Tested on MongoDB v3.2.8 and Node.js v4.5.0.
 
 1. `mongod` (in a separate command window)
 2. `npm install`

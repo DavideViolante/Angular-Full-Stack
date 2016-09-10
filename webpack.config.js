@@ -1,6 +1,9 @@
+const webpack = require('webpack');
+
 module.exports = {
     devtool: 'source-map',
     entry: {
+        'vendor': './src/app/vendor.ts',
         'main': './src/app/main.ts'
     },
     output: {
@@ -16,5 +19,10 @@ module.exports = {
                 loader: 'ts'
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor']
+        })
+    ]
 }
