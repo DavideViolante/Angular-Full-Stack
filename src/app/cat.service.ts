@@ -1,5 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import { Injectable }       from '@angular/core';
+import { Http, Headers,
+         RequestOptions }   from '@angular/http';
 
 @Injectable()
 
@@ -19,11 +20,11 @@ export class CatService {
     }
 
     editCat(cat) {
-        return this.http.put("/cat/"+cat._id, JSON.stringify(cat), this.options);
+        return this.http.put(`/cat/${cat._id}`, JSON.stringify(cat), this.options);
     }
 
     deleteCat(cat) {
-        return this.http.delete("/cat/"+cat._id, this.options);
+        return this.http.delete(`/cat/${cat._id}`, this.options);
     }
 
 }

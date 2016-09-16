@@ -24,53 +24,53 @@ mongoose.Promise = global.Promise;
 var Cat = require('./cat.model.js');
 
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', () => {
     console.log('Connected to MongoDB');
 
     // select all
-    app.get('/cats', function(req, res) {
-        Cat.find({}, function(err, docs) {
+    app.get('/cats', (req, res) => {
+        Cat.find({}, (err, docs) => {
             if(err) return console.error(err);
             res.json(docs);
         });
     });
 
     // count all
-    app.get('/cats/count', function(req, res) {
-        Cat.count(function(err, count) {
+    app.get('/cats/count', (req, res) => {
+        Cat.count((err, count) => {
             if(err) return console.error(err);
             res.json(count);
         });
     });
 
     // create
-    app.post('/cat', function(req, res) {
+    app.post('/cat', (req, res) => {
         var obj = new Cat(req.body);
-        obj.save(function(err, obj) {
+        obj.save((err, obj) => {
             if(err) return console.error(err);
             res.status(200).json(obj);
         });
     });
 
     // find by id
-    app.get('/cat/:id', function(req, res) {
-        Cat.findOne({_id: req.params.id}, function (err, obj) {
+    app.get('/cat/:id', (req, res) => {
+        Cat.findOne({_id: req.params.id},  (err, obj) => {
             if(err) return console.error(err);
             res.json(obj);
         })
     });
 
     // update by id
-    app.put('/cat/:id', function(req, res) {
-        Cat.findOneAndUpdate({_id: req.params.id}, req.body, function (err) {
+    app.put('/cat/:id', (req, res) => {
+        Cat.findOneAndUpdate({_id: req.params.id}, req.body, (err) => {
             if(err) return console.error(err);
             res.sendStatus(200);
         })
     });
 
     // delete by id
-    app.delete('/cat/:id', function(req, res) {
-        Cat.findOneAndRemove({_id: req.params.id}, function(err) {
+    app.delete('/cat/:id', (req, res) => {
+        Cat.findOneAndRemove({_id: req.params.id}, (err) => {
             if(err) return console.error(err);
             res.sendStatus(200);
         });
@@ -78,11 +78,11 @@ db.once('open', function() {
 
 
     // all other routes are handled by Angular
-    app.get('/*', function(req, res) {
+    app.get('/*', (req, res) => {
         res.sendFile(__dirname + '/public/index.html');
     });
 
-    app.listen(app.get('port'), function() {
+    app.listen(app.get('port'), () => {
         console.log('MEAN app listening on port '+app.get('port'));
     });
 });

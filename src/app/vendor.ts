@@ -7,6 +7,7 @@ import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
 import '@angular/router';
 
+// RxJS
 import 'rxjs/add/operator/map';
 
 // polyfills
