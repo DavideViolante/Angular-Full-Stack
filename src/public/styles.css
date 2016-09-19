@@ -1,19 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
 body {
-	font-family: Verdana, sans-serif;
-	margin-top: 15px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
-.card {
-	margin-top: .75rem;
-}
-
-a:hover .fa-heart {
-	color: #cc0000;
-}
-
-table th, table tr td {
-	text-align: center;
-	width: 25%;
+.navbar-brand>img {
+    display: inline;
 }
 
 .alert {
@@ -24,4 +17,3 @@ table th, table tr td {
 	width: 50%;
 	opacity: 0.9;
 }
-

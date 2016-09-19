@@ -1,31 +1,19 @@
 <div class="container">
 
-	<nav class="navbar navbar-dark bg-primary">
-	    <a class="navbar-brand" href="#"></a>
-	    <ul class="nav navbar-nav">
-	        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-	            <a class="nav-link" [routerLink]="['/']"><i class="fa fa-home"></i> Home</a>
-	        </li>
-	        <li class="nav-item" routerLinkActive="active">
-	            <a class="nav-link" [routerLink]="['/about']"><i class="fa fa-info-circle"></i> About</a>
-	        </li>
-	    </ul>
-	</nav>
+  <nav class="navbar navbar-dark bg-primary">
+    <div class="nav navbar-nav">
+      <a class="navbar-brand pull-right" [routerLink]="['/']">
+        <img class="angular2icon" src="/assets/favicon.ico"> Angular 2 Full Stack
+      </a>
+      <a [routerLink]="['/']" class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <i class="fa fa-home"></i> Home
+      </a>
+      <a [routerLink]="['/about']" class="nav-item nav-link" routerLinkActive="active">
+        <i class="fa fa-info-circle"></i> About
+      </a>
+    </div>
+  </nav>
 
-	<router-outlet></router-outlet>
-
-	<nav class="navbar navbar-light bg-faded">
-	    <ul class="nav navbar-nav">
-	        <li class="nav-item">
-	            <small><a class="nav-link" target="_blank" href="https://github.com/DavideViolante">Made with <i class="fa fa-heart"></i> by Davide Violante</a></small>
-	        </li>
-	        <li class="nav-item">
-	            <small><a class="nav-link"> | </a></small>
-	        </li>
-	        <li class="nav-item">
-	            <small><a class="nav-link" target="_blank" href="https://github.com/DavideViolante/Angular2-Express-Mongoose"><i class="fa fa-github"></i> GitHub</a></small>
-	        </li>
-	    </ul>
-	</nav>
+  <router-outlet></router-outlet>
 
 </div>

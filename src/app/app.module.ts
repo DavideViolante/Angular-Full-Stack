@@ -1,18 +1,13 @@
-import { NgModule }             from '@angular/core';
-import { BrowserModule }        from '@angular/platform-browser';
-import { RouterModule }         from '@angular/router';
-import { HttpModule }           from '@angular/http';
-import { FormsModule,
-         ReactiveFormsModule }  from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
-import { AppComponent }         from './app.component';
-import { HomeComponent }        from './home.component';
-import { AboutComponent }       from './about.component';
-import { CatService }           from './cat.service';
-
-import { enableProdMode }       from '@angular/core';
-
-enableProdMode();
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { DataService } from './services/data.service';
 
 const routing = RouterModule.forRoot([
     { path: '',      component: HomeComponent },
@@ -20,16 +15,23 @@ const routing = RouterModule.forRoot([
 ]);
 
 @NgModule({
-    imports: [ BrowserModule,
-    		   routing,
-    		   HttpModule,
-    		   FormsModule,
-    		   ReactiveFormsModule ],
-    declarations: [ AppComponent,
-    			    AboutComponent,
-    			    HomeComponent ],
-    providers: [ CatService ],
-    bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    routing
+  ],
+  providers: [
+    DataService
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent]
 })
 
-export class AppModule {}
+export class AppModule { }
