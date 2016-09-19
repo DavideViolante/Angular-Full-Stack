@@ -1,4 +1,4 @@
-# Angular 2 Full Stack project
+# Angular 2 Full Stack project [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.14.
 
@@ -16,6 +16,7 @@ Other technologies used:
 You need **MongoDB** and **Node.js** installed to run this project.
 
 1. Command window 1: `mongod` (run MongoDB)
+2. Command window 2: `npm i -g angular-cli` (install Angular CLI)
 2. Command window 2: `npm i` (install all the dependencies, it will take a while)
 3. Command window 2: `ng build -w` (build the project and keep watching the files for changes)
 4. Command window 3: `npm start` (run Express server for backend)
