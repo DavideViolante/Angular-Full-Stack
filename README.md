@@ -27,7 +27,7 @@ You need **MongoDB** and **Node.js** installed to run this project.
 Run `ng build --prod` to create a production ready bundle.
 
 ## Preview
-![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/demo.gif "Preview")
+![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
 
 ## Please open an issue if
 * you have any suggestion or advice to improve this project.
