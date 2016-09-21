@@ -3,14 +3,13 @@
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.14.
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
-* [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com))
-* [**E**xpress.js](http://expressjs.com)
-* [**A**ngular 2](https://angular.io) (TypeScript)
+* [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com)): database
+* [**E**xpress.js](http://expressjs.com): backend server
+* [**A**ngular 2](https://angular.io): frontend
 * [**N**ode.js](https://nodejs.org)
-
-Other technologies used:
-* [Bootstrap](http://www.getbootstrap.com)
-* [Font Awesome](http://fontawesome.io)
+* [Angular CLI](https://cli.angular.io): to generate the project
+* [Bootstrap](http://www.getbootstrap.com): layout and styles
+* [Font Awesome](http://fontawesome.io): icons
 
 ## Run
 You need **MongoDB**, **Node.js** and **Angular CLI** installed to run this project.
@@ -26,7 +25,7 @@ You need **MongoDB**, **Node.js** and **Angular CLI** installed to run this proj
 Run `ng build --prod` to create a production ready bundle.
 
 ## Preview
-![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Express-Mongoose/master/demo.gif "Preview")
+![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
 
 ## Please open an issue if
 * you have any suggestion or advice to improve this project.
