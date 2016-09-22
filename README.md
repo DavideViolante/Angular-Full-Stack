@@ -4,9 +4,9 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com)): database
-* [**E**xpress.js](http://expressjs.com): backend server
-* [**A**ngular 2](https://angular.io): frontend
-* [**N**ode.js](https://nodejs.org)
+* [**E**xpress.js](http://expressjs.com): backend framework
+* [**A**ngular 2](https://angular.io): frontend framework
+* [**N**ode.js](https://nodejs.org): runtime environment
 * [Angular CLI](https://cli.angular.io): to generate the project
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
 * [Font Awesome](http://fontawesome.io): icons
@@ -17,7 +17,7 @@ You need **MongoDB**, **Node.js** and **Angular CLI** installed to run this proj
 1. Command window 1: `mongod`: run MongoDB
 2. Command window 2: `npm i`: install all the dependencies (it will take a while)
 3. Command window 2: `ng build -w`: build the project and keep watching the files for changes
-4. Command window 3: `npm start`: run Express backend server
+4. Command window 3: `npm start`: run Express server
 5. Go to [localhost:3000](http://localhost:3000)
 
 ## Production

@@ -6,7 +6,7 @@
   "description": "Angular 2 full stack project.",
   "angular-cli": {},
   "scripts": {
-    "start": "node src/server/app.js",
+    "start": "nodemon src/server/app.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
