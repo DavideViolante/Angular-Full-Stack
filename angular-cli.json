@@ -7,7 +7,9 @@
     {
       "root": "src",
       "outDir": "dist",
-      "assets": "public/assets",
+      "assets": [
+        "public/assets"
+      ],
       "index": "public/index.html",
       "main": "main.ts",
       "test": "test.ts",
