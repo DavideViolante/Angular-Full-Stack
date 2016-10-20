@@ -1,6 +1,6 @@
 # Angular 2 Full Stack project [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.14.
+The front-end of this project was generated with [angular-cli](https://github.com/angular/angular-cli).
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com)): database
