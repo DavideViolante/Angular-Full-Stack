@@ -15,6 +15,7 @@ describe('Component: About', () => {
     .compileComponents();
     fixture = TestBed.createComponent(AboutComponent);
     comp = fixture.componentInstance;
+    fixture.detectChanges();
   }));
 
   it('should create an instance', () => {
@@ -23,9 +24,8 @@ describe('Component: About', () => {
   });
 
   it('should display the string "About" in h4', () => {
-    let de = fixture.debugElement.query(By.css('h4'));
-    let el = de.nativeElement;
-    expect(el.textContent).toContain('About');
+    let de = fixture.debugElement.query(By.css('h4')).nativeElement;
+    expect(de.textContent).toContain('About');
   });
 
 });
