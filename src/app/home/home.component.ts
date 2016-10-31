@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
+import { ToastComponent } from '../shared/toast/toast.component';
+
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -22,10 +24,9 @@ export class HomeComponent implements OnInit {
   private age = new FormControl("", Validators.required);
   private weight = new FormControl("", Validators.required);
 
-  private infoMsg = { body: "", type: "info"};
-
   constructor(private http: Http,
               private dataService: DataService,
+              private toast: ToastComponent,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit {
         var newCat = res.json();
         this.cats.push(newCat);
         this.addCatForm.reset();
-        this.sendInfoMsg("item added successfully.", "success");
+        this.toast.setMessage("item added successfully.", "success");
       },
       error => console.log(error)
     );
@@ -66,7 +67,7 @@ export class HomeComponent implements OnInit {
   cancelEditing() {
     this.isEditing = false;
     this.cat = {};
-    this.sendInfoMsg("item editing cancelled.", "warning");
+    this.toast.setMessage("item editing cancelled.", "warning");
     // reload the cats to reset the editing
     this.getCats();
   }
@@ -76,7 +77,7 @@ export class HomeComponent implements OnInit {
       res => {
         this.isEditing = false;
         this.cat = cat;
-        this.sendInfoMsg("item edited successfully.", "success");
+        this.toast.setMessage("item edited successfully.", "success");
       },
       error => console.log(error)
     );
@@ -88,17 +89,11 @@ export class HomeComponent implements OnInit {
         res => {
           var pos = this.cats.map(cat => { return cat._id }).indexOf(cat._id);
           this.cats.splice(pos, 1);
-          this.sendInfoMsg("item deleted successfully.", "success");
+          this.toast.setMessage("item deleted successfully.", "success");
         },
         error => console.log(error)
       );
     }
-  }
-
-  sendInfoMsg(body, type, time = 3000) {
-    this.infoMsg.body = body;
-    this.infoMsg.type = type;
-    window.setTimeout(() => this.infoMsg.body = "", time);
   }
 
 }

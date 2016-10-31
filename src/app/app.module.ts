@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { DataService } from './services/data.service';
 
+import { ToastComponent } from './shared/toast/toast.component';
+
 const routing = RouterModule.forRoot([
     { path: '',      component: HomeComponent },
     { path: 'about', component: AboutComponent }
@@ -18,7 +20,8 @@ const routing = RouterModule.forRoot([
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ const routing = RouterModule.forRoot([
     routing
   ],
   providers: [
-    DataService
+    DataService,
+    ToastComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

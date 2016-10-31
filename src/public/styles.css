@@ -4,16 +4,3 @@ body {
     margin-top: 15px;
     margin-bottom: 10px;
 }
-
-.navbar-brand>img {
-    display: inline;
-}
-
-.alert {
-	z-index: 999;
-	position: fixed;
-	bottom: 15px;
-	left: 25%;
-	width: 50%;
-	opacity: 0.9;
-}

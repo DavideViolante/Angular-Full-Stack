@@ -5,6 +5,8 @@
   </div>
 </div>
 
+<app-toast [message]="toast.message"></app-toast>
+
 <div class="card" *ngIf="!isLoading">
   <h4 class="card-header">Current cats ({{cats.length}})</h4>
   <div class="card-block">
@@ -52,12 +54,6 @@
         </tr>
       </tbody>
     </table>
-    <div [hidden]="!infoMsg.body" class="alert alert-{{infoMsg.type}} alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <strong>Message:</strong> {{infoMsg.body}}
-    </div>
   </div>
 </div>
 
