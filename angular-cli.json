@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.16",
+    "version": "1.0.0-beta.18",
     "name": "angular2-full-stack"
   },
   "apps": [
@@ -8,7 +8,8 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "public/assets"
+        "public/assets",
+        "public/assets/favicon.ico"
       ],
       "index": "public/index.html",
       "main": "main.ts",
@@ -47,6 +48,18 @@
   },
   "defaults": {
     "styleExt": "css",
-    "prefixInterfaces": false
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
   }
 }

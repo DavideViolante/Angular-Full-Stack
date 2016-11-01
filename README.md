@@ -1,18 +1,18 @@
 # Angular 2 Full Stack project [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-The front-end of this project was generated with [angular-cli](https://github.com/angular/angular-cli).
+The front-end of this project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com)): database
 * [**E**xpress.js](http://expressjs.com): backend framework
 * [**A**ngular 2](https://angular.io): frontend framework
 * [**N**ode.js](https://nodejs.org): runtime environment
-* [Angular CLI](https://cli.angular.io): to generate the project
+* [Angular CLI](https://cli.angular.io): project scaffolding
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
 * [Font Awesome](http://fontawesome.io): icons
 
 ## Prerequisites
-1. Install [**N**ode.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
+1. Install [Node.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
 2. Install Angular CLI: `npm i angular-cli -g`
 3. From project root folder install all the dependencies: `npm i`
 
@@ -23,7 +23,7 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 4. Go to [localhost:3000](http://localhost:3000)
 
 ## Production
-Run `ng build --prod` to create a production ready bundle.
+Run `ng build -prod` to create a production ready bundle.
 
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")

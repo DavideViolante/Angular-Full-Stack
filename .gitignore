@@ -15,6 +15,7 @@
 *.launch
 .settings/
 .vscode
+.editorconfig
 
 # misc
 /.sass-cache
