@@ -4,7 +4,7 @@
 The front-end of this project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
-* [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](http://www.mongodb.com)): database
+* [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](https://www.mongodb.com)): database
 * [**E**xpress.js](http://expressjs.com): backend framework
 * [**A**ngular 2](https://angular.io): frontend framework
 * [**N**ode.js](https://nodejs.org): runtime environment
@@ -13,7 +13,7 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 * [Font Awesome](http://fontawesome.io): icons
 
 ## Prerequisites
-1. Install [Node.js](https://nodejs.org) and [MongoDB](http://www.mongodb.com)
+1. Install [Node.js](https://nodejs.org) and [MongoDB](https://www.mongodb.com)
 2. Install Angular CLI: `npm i angular-cli -g`
 3. From project root folder install all the dependencies: `npm i`
 
