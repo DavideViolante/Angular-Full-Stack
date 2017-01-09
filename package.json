@@ -7,6 +7,7 @@
   "angular-cli": {},
   "scripts": {
     "start": "nodemon src/server/app.js & ng build -w",
+    "dev": "nodemon src/server/app.js & ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
