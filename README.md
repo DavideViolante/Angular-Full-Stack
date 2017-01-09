@@ -19,12 +19,12 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 
 ## Run
 1. Command window 1: `mongod`: run MongoDB
-2. Command window 2: `ng build -w`: build the project and keep watching the files for changes
-3. Command window 3: `npm start`: run Express server
-4. Go to [localhost:3000](http://localhost:3000)
+2. Command window 2: `npm run be`: run Express backend server (with autoreload)
+3. Command window 3: `npm start`: run Angular frontend (with autobuild and autoreload)
+4. Browser will automatically open to: [localhost:4200](http://localhost:4200)
 
 ## Production
-Run `ng build -prod` to create a production ready bundle.
+Run `npm run prod` to run frontend with a production ready bundle.
 
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
@@ -34,13 +34,12 @@ Run `ng build -prod` to create a production ready bundle.
 * you noticed any problem or error.
 
 ## To do
-* tests
-* browser autoreload on file changes
+* Tests
 
-## Running unit tests (to do yet)
+## Running unit tests
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests (to do yet)
+## Running end-to-end tests
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
 Before running the tests make sure you are serving the app via `ng serve`.
 
