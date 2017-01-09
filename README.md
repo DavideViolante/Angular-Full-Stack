@@ -19,9 +19,8 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 
 ## Run
 1. Command window 1: `mongod`: run MongoDB
-2. Command window 2: `ng build -w`: build the project and keep watching the files for changes
-3. Command window 3: `npm start`: run Express server
-4. Go to [localhost:3000](http://localhost:3000)
+2. Command window 2: `npm start`: run Express server
+3. Go to [localhost:3000](http://localhost:3000)
 
 ## Production
 Run `ng build -prod` to create a production ready bundle.
