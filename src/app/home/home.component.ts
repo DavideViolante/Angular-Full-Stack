@@ -13,20 +13,20 @@ import { DataService } from '../services/data.service';
 })
 export class HomeComponent implements OnInit {
 
-  private cats = [];
-  private isLoading = true;
+  cats = [];
+  isLoading = true;
 
-  private cat = {};
-  private isEditing = false;
+  cat = {};
+  isEditing = false;
 
-  private addCatForm: FormGroup;
-  private name = new FormControl("", Validators.required);
-  private age = new FormControl("", Validators.required);
-  private weight = new FormControl("", Validators.required);
+  addCatForm: FormGroup;
+  name = new FormControl('', Validators.required);
+  age = new FormControl('', Validators.required);
+  weight = new FormControl('', Validators.required);
 
   constructor(private http: Http,
               private dataService: DataService,
-              private toast: ToastComponent,
+              public toast: ToastComponent,
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -50,10 +50,10 @@ export class HomeComponent implements OnInit {
   addCat() {
     this.dataService.addCat(this.addCatForm.value).subscribe(
       res => {
-        var newCat = res.json();
+        let newCat = res.json();
         this.cats.push(newCat);
         this.addCatForm.reset();
-        this.toast.setMessage("item added successfully.", "success");
+        this.toast.setMessage('item added successfully.', 'success');
       },
       error => console.log(error)
     );
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
   cancelEditing() {
     this.isEditing = false;
     this.cat = {};
-    this.toast.setMessage("item editing cancelled.", "warning");
+    this.toast.setMessage('item editing cancelled.', 'warning');
     // reload the cats to reset the editing
     this.getCats();
   }
@@ -77,19 +77,19 @@ export class HomeComponent implements OnInit {
       res => {
         this.isEditing = false;
         this.cat = cat;
-        this.toast.setMessage("item edited successfully.", "success");
+        this.toast.setMessage('item edited successfully.', 'success');
       },
       error => console.log(error)
     );
   }
 
   deleteCat(cat) {
-    if(window.confirm("Are you sure you want to permanently delete this item?")) {
+    if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.dataService.deleteCat(cat).subscribe(
         res => {
-          var pos = this.cats.map(cat => { return cat._id }).indexOf(cat._id);
+          let pos = this.cats.map(elem => { return elem._id; }).indexOf(cat._id);
           this.cats.splice(pos, 1);
-          this.toast.setMessage("item deleted successfully.", "success");
+          this.toast.setMessage('item deleted successfully.', 'success');
         },
         error => console.log(error)
       );

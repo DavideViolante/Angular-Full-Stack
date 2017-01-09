@@ -17,7 +17,7 @@ export class DataService {
   }
 
   addCat(cat): Observable<any> {
-    return this.http.post("/cat", JSON.stringify(cat), this.options);
+    return this.http.post('/cat', JSON.stringify(cat), this.options);
   }
 
   editCat(cat): Observable<any> {
@@ -27,5 +27,5 @@ export class DataService {
   deleteCat(cat): Observable<any> {
     return this.http.delete(`/cat/${cat._id}`, this.options);
   }
-  
+
 }
