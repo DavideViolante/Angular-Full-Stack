@@ -1,6 +1,6 @@
 import { Angular2FullStackPage } from './app.po';
 
-describe('angular2-full-stack App', function() {
+describe('angular2-full-stack App', () => {
   let page: Angular2FullStackPage;
 
   beforeEach(() => {
