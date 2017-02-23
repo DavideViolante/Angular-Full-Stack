@@ -18,10 +18,12 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
-* `npm start`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build and Express server
-* Go to [localhost:3000](http://localhost:3000)
-* Angular and Express files are being watched. Any changes creates a new bundle and restart Express server
-* `npm run prod`: use this command to run the project with a production bundle
+1. `npm start`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build and Express server
+2. Go to [localhost:3000](http://localhost:3000)
+
+Angular and Express files are being watched. Any changes creates a new bundle and restart Express server.
+
+Use `npm run prod` to run the project with a production bundle.
 
 ## Deploy (Heroku)
 1. Go to Heroku and create a new app
