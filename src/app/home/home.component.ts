@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
   addCat() {
     this.dataService.addCat(this.addCatForm.value).subscribe(
       res => {
-        let newCat = res.json();
+        const newCat = res.json();
         this.cats.push(newCat);
         this.addCatForm.reset();
         this.toast.setMessage('item added successfully.', 'success');
@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.dataService.deleteCat(cat).subscribe(
         res => {
-          let pos = this.cats.map(elem => { return elem._id; }).indexOf(cat._id);
+          const pos = this.cats.map(elem => { return elem._id; }).indexOf(cat._id);
           this.cats.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },

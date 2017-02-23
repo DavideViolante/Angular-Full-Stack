@@ -26,7 +26,7 @@ describe('Component: About', () => {
   });
 
   it('should display the string "About" in h4', () => {
-    let el = fixture.debugElement.query(By.css('h4')).nativeElement;
+    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
     expect(el.textContent).toContain('About');
   });
 

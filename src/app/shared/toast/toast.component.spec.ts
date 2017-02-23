@@ -28,12 +28,12 @@ describe('ToastComponent', () => {
   it('should not have message set nor DOM element', () => {
     expect(component.message.body).toBeFalsy();
     expect(component.message.type).toBeFalsy();
-    let de = fixture.debugElement.query(By.css('div'));
+    const de = fixture.debugElement.query(By.css('div'));
     expect(de).toBeNull();
   });
 
   it('should set the message and create the DOM element', () => {
-    let mockMessage = {
+    const mockMessage = {
       body: 'test message',
       type: 'warning'
     };
@@ -41,8 +41,8 @@ describe('ToastComponent', () => {
     expect(component.message.body).toBe(mockMessage.body);
     expect(component.message.type).toBe(mockMessage.type);
     fixture.detectChanges();
-    let de = fixture.debugElement.query(By.css('div'));
-    let el = de.nativeElement;
+    const de = fixture.debugElement.query(By.css('div'));
+    const el = de.nativeElement;
     expect(de).toBeDefined();
     expect(el.textContent).toContain(mockMessage.body);
     expect(el.className).toContain(mockMessage.type);

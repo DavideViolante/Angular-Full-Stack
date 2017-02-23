@@ -26,7 +26,7 @@ describe('Component: App', () => {
   }));
 
   it('should display the navigation bar correctly', () => {
-    let de = fixture.debugElement.queryAll(By.css('a'));
+    const de = fixture.debugElement.queryAll(By.css('a'));
     expect(de.length).toBe(2);
     expect(de[0].nativeElement.textContent).toContain('Home');
     expect(de[1].nativeElement.textContent).toContain('About');
