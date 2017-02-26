@@ -12,7 +12,6 @@
     "prod": "concurrently \"mongod\" \"ng build -prod\" \"node src/server/app.js\"",
     "test": "ng test",
     "lint": "ng lint",
-    "pree2e": "node src/server/app.js",
     "e2e": "ng e2e"
   },
   "private": true,
