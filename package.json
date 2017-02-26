@@ -1,16 +1,18 @@
 {
   "name": "angular2-full-stack",
-  "version": "3.4.0-beta.32",
+  "version": "3.4.0-rc.0",
   "license": "MIT",
   "author": "Davide Violante",
   "description": "Angular 2 full stack project.",
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
+    "build": "ng build",
     "start": "concurrently \"mongod\" \"ng build -w\" \"nodemon src/server/app.js\"",
     "prod": "concurrently \"mongod\" \"ng build -prod\" \"node src/server/app.js\"",
     "test": "ng test",
     "lint": "ng lint",
+    "pree2e": "node src/server/app.js",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -36,11 +38,11 @@
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-beta.32.3",
+    "@angular/cli": "^1.0.0-rc.0",
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "codelyzer": "~2.0.0-beta.4",
+    "codelyzer": "~2.0.0",
     "concurrently": "^3.3.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
