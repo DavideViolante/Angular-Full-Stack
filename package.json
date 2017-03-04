@@ -1,6 +1,6 @@
 {
   "name": "angular2-full-stack",
-  "version": "3.4.0-rc.0",
+  "version": "3.4.0-rc.1",
   "license": "MIT",
   "author": "Davide Violante",
   "description": "Angular 2 full stack project.",
@@ -37,7 +37,7 @@
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
-    "@angular/cli": "^1.0.0-rc.0",
+    "@angular/cli": "^1.0.0-rc.1",
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
