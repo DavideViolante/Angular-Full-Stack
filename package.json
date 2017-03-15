@@ -9,7 +9,7 @@
     "ng": "ng",
     "build": "ng build",
     "start": "concurrently \"mongod\" \"ng build -w\" \"nodemon src/server/app.js\"",
-    "prod": "concurrently \"mongod\" \"ng build -prod\" \"node src/server/app.js\"",
+    "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node src/server/app.js\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -30,7 +30,7 @@
     "express": "4.14.1",
     "font-awesome": "4.7.0",
     "jquery": "3.1.1",
-    "mongoose": "4.8.5",
+    "mongoose": "4.9.0",
     "morgan": "1.8.1",
     "rxjs": "^5.1.0",
     "tether": "1.4.0",

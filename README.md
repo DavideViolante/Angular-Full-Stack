@@ -21,9 +21,9 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 1. `npm start`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build and Express server
 2. Go to [localhost:3000](http://localhost:3000)
 
-Angular and Express files are being watched. Any changes creates a new bundle and restart Express server.
+Angular and Express files are being watched. Any change creates a new bundle and restart Express server.
 
-Use `npm run prod` to run the project with a production bundle.
+Use `npm run prod` to run the project with a production bundle and AOT compilation.
 
 ## Deploy (Heroku)
 1. Go to Heroku and create a new app
@@ -35,9 +35,9 @@ Use `npm run prod` to run the project with a production bundle.
 7. Download this repo and copy all files into `my-project` folder
 8. Edit `.gitignore` and remove line with `/dist`
 9. Edit in `package.json` the start script to: `"start": "node src/server/app.js"`
-10. Edit in `app.js` the url of MongoDB server to a real server. You can create a MongoDB server with Heroku.
+10. Edit in `app.js` the url of MongoDB server to a real server. You can create a MongoDB server with Heroku or mLab.
 11. `npm i`
-12. `ng build` or `ng build --prod`
+12. `ng build -prod` or `ng build -aot -prod`
 13. `git add .`
 14. `git commit -m "Going to Heroku"`
 15. `git push heroku master`
@@ -48,11 +48,13 @@ Use `npm run prod` to run the project with a production bundle.
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
 
 ## Please open an issue if
-* you have any suggestion or advice to improve this project.
-* you noticed any problem or error.
+* you have any suggestion to improve this project
+* you noticed any problem or error
+* you have a question
 
 ## To do
-* Tests
+* Browser auto-reload on changes
+* Some tests
 
 ## Running unit tests
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
