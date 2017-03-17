@@ -8,6 +8,7 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
+    "prestart": "tsc -p src/server",
     "start": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"nodemon src/server/app.js\"",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node src/server/app.js\"",
     "test": "ng test",
