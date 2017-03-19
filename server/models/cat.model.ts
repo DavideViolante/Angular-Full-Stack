@@ -5,7 +5,8 @@ const catSchema = new mongoose.Schema({
     weight: Number,
     age: Number
 });
-
-const Cat = mongoose.model('Cat', catSchema);
+var Cat = mongoose.model('Cat', catSchema);
 
 export default Cat;
+
+

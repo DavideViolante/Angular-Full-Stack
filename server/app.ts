@@ -4,6 +4,8 @@ import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 
+import Cat from './models/cat.model'
+
 const app = express();
 app.set('port', (process.env.PORT || 3000));
 
@@ -16,14 +18,6 @@ app.use(morgan('dev'));
 
 mongoose.connect('mongodb://localhost:27017/test');
 const db = mongoose.connection;
-
-// Models
-const catSchema = new mongoose.Schema({
-    name: String,
-    weight: Number,
-    age: Number
-});
-const Cat = mongoose.model('Cat', catSchema);
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
@@ -78,8 +72,6 @@ db.once('open', () => {
       res.sendStatus(200);
     });
   });
-
-
 
   app.listen(app.get('port'), () => {
     console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
