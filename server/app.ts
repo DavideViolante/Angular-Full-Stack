@@ -80,10 +80,8 @@ db.once('open', () => {
   });
 
 
-  // all other routes are handled by Angular
-  app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/../../dist/index.html'));
-  });
+  // Serve the static Angular Files from the dist folder 
+  app.use(express.static(path.join(__dirname, '/../dist')));
 
   app.listen(app.get('port'), () => {
     console.log('Angular 2 Full Stack listening on port ' + app.get('port'));

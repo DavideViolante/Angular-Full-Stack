@@ -6,6 +6,8 @@
 /out-tsc
 /src/server/*.js
 /src/server/*.js.map
+/server/*.js
+/server/*.js.map
 
 # dependencies
 /node_modules
