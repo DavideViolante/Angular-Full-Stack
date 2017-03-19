@@ -4,6 +4,7 @@ import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
 
+import config from './config/db'
 import Cat from './models/cat.model'
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(morgan('dev'));
 
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect(config.url);
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
