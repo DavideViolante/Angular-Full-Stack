@@ -7,7 +7,7 @@ import * as mongoose from 'mongoose';
 const app = express();
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/', express.static(__dirname + '/../../dist'));
+app.use('/', express.static(__dirname + '/../../dist/public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -79,8 +79,6 @@ db.once('open', () => {
     });
   });
 
-  // Serve the static Angular Files from the dist folder 
-  app.use(express.static(path.join(__dirname, '/../dist')));
 
 
   app.listen(app.get('port'), () => {
