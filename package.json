@@ -8,9 +8,10 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "prestart": "tsc -p src/server",
-    "start": "concurrently \"mongod\" \"ng build -w\" \"nodemon src/server/app.js\"",
+    "prestart": "tsc -p server",
+    "start": "concurrently \"mongod\" \"ng build -w\" \"npm run _server:run\" \"tsc -w -p server\" ",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node src/server/app.js\"",
+    "_server:run": "nodemon server/app.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
