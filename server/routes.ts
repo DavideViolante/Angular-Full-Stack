@@ -1,57 +1,27 @@
+import * as express from 'express';
+
+import CatsCtrl from './controllers/cats';
 import Cat from './models/cat.model';
 
-export default function setRoutes(app){
-  // APIs
-  // select all
-  app.get('/cats', (req, res) => {
-    Cat.find({}, (err, docs) => {
-      if (err) { return console.error(err); }
-      res.json(docs);
-    });
-  });
+export default function setRoutes(app) {
 
-  // count all
-  app.get('/cats/count', (req, res) => {
-    Cat.count((err, count) => {
-      if (err) { return console.error(err); }
-      res.json(count);
-    });
-  });
+    var cats = new CatsCtrl();
+    // APIs
+    app.route('/api/cats')
+        .get(cats.list);
 
-  // create
-  app.post('/cat', (req, res) => {
-    const obj = new Cat(req.body);
-    obj.save((err, cat) => {
-      if (err) { return console.error(err); }
-      res.status(200).json(cat);
-    });
-  });
+    app.route('/api/cats/count')
+        .get(cats.getCount);
 
-  // find by id
-  app.get('/cat/:id', (req, res) => {
-    Cat.findOne({_id: req.params.id}, (err, obj) => {
-      if (err) { return console.error(err); }
-      res.json(obj);
-    });
-  });
+    app.route('/api/cat')
+        .post(cats.create);
 
-  // update by id
-  app.put('/cat/:id', (req, res) => {
-    Cat.findOneAndUpdate({_id: req.params.id}, req.body, (err) => {
-      if (err) { return console.error(err); }
-      res.sendStatus(200);
-    });
-  });
+    app.route('/api/cat/:id')
+        .get(cats.findOne)
+        .put(cats.findOneAndUpdate)
+        .delete(cats.deleteOne);
 
-  // delete by id
-  app.delete('/cat/:id', (req, res) => {
-    Cat.findOneAndRemove({_id: req.params.id}, (err) => {
-      if (err) { return console.error(err); }
-      res.sendStatus(200);
+    app.listen(app.get('port'), () => {
+        console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
     });
-  });
-
-  app.listen(app.get('port'), () => {
-    console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
-  });
 }
