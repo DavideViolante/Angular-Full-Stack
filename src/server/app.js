@@ -26,24 +26,24 @@ db.once('open', function() {
   console.log('Connected to MongoDB');
 
   // APIs
-  // select all
-  app.get('/cats', function(req, res) {
+  // Get all
+  app.get('/api/cats', function(req, res) {
     Cat.find({}, function(err, docs) {
       if(err) return console.error(err);
       res.json(docs);
     });
   });
 
-  // count all
-  app.get('/cats/count', function(req, res) {
+  // Count all
+  app.get('/api/cats/count', function(req, res) {
     Cat.count(function(err, count) {
       if(err) return console.error(err);
       res.json(count);
     });
   });
 
-  // create
-  app.post('/cat', function(req, res) {
+  // Insert
+  app.post('/api/cat', function(req, res) {
     var obj = new Cat(req.body);
     obj.save(function(err, obj) {
       if(err) return console.error(err);
@@ -51,24 +51,24 @@ db.once('open', function() {
     });
   });
 
-  // find by id
-  app.get('/cat/:id', function(req, res) {
+  // Get by id
+  app.get('/api/cat/:id', function(req, res) {
     Cat.findOne({_id: req.params.id}, function(err, obj) {
       if(err) return console.error(err);
       res.json(obj);
     })
   });
 
-  // update by id
-  app.put('/cat/:id', function(req, res) {
+  // Update by id
+  app.put('/api/cat/:id', function(req, res) {
     Cat.findOneAndUpdate({_id: req.params.id}, req.body, function(err) {
       if(err) return console.error(err);
       res.sendStatus(200);
     })
   });
 
-  // delete by id
-  app.delete('/cat/:id', function(req, res) {
+  // Delete by id
+  app.delete('/api/cat/:id', function(req, res) {
     Cat.findOneAndRemove({_id: req.params.id}, function(err) {
       if(err) return console.error(err);
       res.sendStatus(200);
@@ -76,7 +76,7 @@ db.once('open', function() {
   });
 
 
-  // all other routes are handled by Angular
+  // All other routes are handled by Angular
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname,'/../../dist/index.html'));
   });
