@@ -21,7 +21,4 @@ export default function setRoutes(app) {
         .put(cats.findOneAndUpdate)
         .delete(cats.deleteOne);
 
-    app.listen(app.get('port'), () => {
-        console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
-    });
 }

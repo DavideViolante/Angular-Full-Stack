@@ -1,3 +1,4 @@
+import * as http from 'http';
 import * as express from 'express';
 import * as path from 'path';
 import * as morgan from 'morgan';
@@ -25,6 +26,16 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Connected to MongoDB');
   setRoutes(app);
+
+  var server = http.createServer(app);
+
+  // app.listen(app.get('port'), () => {
+	 //    console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
+  // });
+
+  server.listen(app.get('port'), function(){
+	  console.log("Angular 2 Full Stack listening on port " + app.get('port'));
+  });
 });
 
 export { app };
