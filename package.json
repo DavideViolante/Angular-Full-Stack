@@ -65,6 +65,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "nodemon": "1.11.0",
     "opn": "^4.0.2",
+    "opn-cli": "^3.1.0",
     "protractor": "~5.1.0",
     "reload": "^1.1.1",
     "ts-node": "~2.0.0",
