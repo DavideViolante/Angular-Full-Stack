@@ -53,8 +53,8 @@ Use `npm run prod` to run the project with a production bundle and AOT compilati
 * you have a question
 
 ## To do
-* Browser auto-reload on changes
-* Some tests
+* TS backend?
+* More tests
 
 ## Running unit tests
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
