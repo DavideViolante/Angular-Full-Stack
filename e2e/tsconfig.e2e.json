@@ -1,13 +1,6 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": [
-      "es2016"
-    ],
     "outDir": "../out-tsc/e2e",
     "module": "commonjs",
     "target": "es5",
