@@ -34,7 +34,7 @@ Use `npm run prod` to run the project with a production bundle and AOT compilati
 6. `heroku git:remote -a your-app-name`
 7. Download this repo and copy all files into `my-project` folder
 8. Edit `.gitignore` and remove line with `/dist`
-9. Edit in `package.json` the start script to: `"start": "node src/server/app.js"`
+9. Edit in `package.json` the start script to: `"start": "node ./dist/server/app.js"`
 10. Edit in `app.js` the url of MongoDB server to a real server. You can create a MongoDB server with Heroku or mLab.
 11. `npm i`
 12. `ng build -prod` or `ng build -aot -prod`
