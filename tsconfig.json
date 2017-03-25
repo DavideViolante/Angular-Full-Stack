@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "baseUrl": "client",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -14,9 +15,6 @@
     "lib": [
       "es2016",
       "dom"
-    ],
-    "exclude": [
-      "node_modules"
     ]
   }
 }
