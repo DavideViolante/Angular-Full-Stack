@@ -1,0 +1,5 @@
+{ 
+	"watch": ["dist/**/*.js"], 
+	"ignore": ["dist/**/*.spec.ts"], 
+	"exec": "node ./dist/server/app.js" 
+}
