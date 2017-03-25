@@ -12,7 +12,7 @@ import { DataService } from './services/data.service';
 
 import { ToastComponent } from './shared/toast/toast.component';
 
-const routing = RouterModule.forRoot(routes,  { useHash: true });
+const routing = RouterModule.forRoot(routes);
 
 @NgModule({
   declarations: [

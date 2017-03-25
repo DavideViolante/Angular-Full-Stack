@@ -9,14 +9,8 @@
     "ng": "ng",
     "build": "ng build",
     "prestart": "tsc -p server",
-    "start": "concurrently \"mongod\" \"npm run _client:run:w\" \"npm run _server:build:w\" \"npm run _server:run\" ",
+    "start": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon\"",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node server/app.js\"",
-    "_client:run:w": "ng serve --proxy-config proxy.conf.json && opn http://localhost:4200",
-    "_client:build": "ng build",
-    "_client:build:w": "ng build -w",
-    "_server:build": "tsc -p server",
-    "_server:build:w": "tsc -w -p server",
-    "_server:run": "nodemon",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -45,7 +39,6 @@
     "morgan": "1.8.1",
     "rxjs": "^5.1.0",
     "tether": "1.4.0",
-    "watch": "^1.0.2",
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
@@ -64,10 +57,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "nodemon": "1.11.0",
-    "opn": "^4.0.2",
-    "opn-cli": "^3.1.0",
     "protractor": "~5.1.0",
-    "reload": "^1.1.1",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "~2.0.0"

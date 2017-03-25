@@ -5,20 +5,14 @@ import Cat from './models/cat.model';
 
 export default function setRoutes(app) {
 
-    var cats = new CatsCtrl();
-    // APIs
-    app.route('/api/cats')
-        .get(cats.list);
+  const cats = new CatsCtrl();
 
-    app.route('/api/cats/count')
-        .get(cats.getCount);
-
-    app.route('/api/cat')
-        .post(cats.create);
-
-    app.route('/api/cat/:id')
-        .get(cats.findOne)
-        .put(cats.findOneAndUpdate)
-        .delete(cats.deleteOne);
+  // APIs
+  app.route('/api/cats').get(cats.getAll);
+  app.route('/api/cats/count').get(cats.count);
+  app.route('/api/cat').post(cats.insert);
+  app.route('/api/cat/:id').get(cats.get);
+  app.route('/api/cat/:id').put(cats.update);
+  app.route('/api/cat/:id').delete(cats.delete);
 
 }
