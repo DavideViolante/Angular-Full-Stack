@@ -17,14 +17,14 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 2. Install Angular CLI: `npm i -g @angular/cli`
 3. From project root folder install all the dependencies: `npm i`
 
-## Run (development mode)
-1. `npm run dev`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build, TypeScript compiler and Express server
-2. A window will automatically open at [localhost:4200](http://localhost:4200)
+## Run
+### Development mode
+`npm run dev`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build, TypeScript compiler and Express server.
 
-Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
+A window will automatically open at [localhost:4200](http://localhost:4200). Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
 
-## Run (production mode)
-1. `npm run prod`: run the project with a production bundle and AOT compilation
+### Production mode
+`npm run prod`: run the project with a production bundle and AOT compilation
 
 ## Deploy (Heroku)
 1. Go to Heroku and create a new app
