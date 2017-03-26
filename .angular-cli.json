@@ -5,8 +5,8 @@
   },
   "apps": [
     {
-      "root": "src",
-      "outDir": "dist",
+      "root": "client",
+      "outDir": "dist/public",
       "assets": [
         "assets",
         "assets/favicon.ico"
@@ -42,10 +42,10 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json"
+      "project": "client/tsconfig.app.json"
     },
     {
-      "project": "src/tsconfig.spec.json"
+      "project": "client/tsconfig.spec.json"
     },
     {
       "project": "e2e/tsconfig.e2e.json"

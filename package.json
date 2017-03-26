@@ -8,8 +8,9 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "start": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"nodemon src/server/app.js\"",
-    "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node src/server/app.js\"",
+    "prestart": "tsc -p server",
+    "start": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon\"",
+    "prod": "concurrently \"mongod\" \"ng build -aot -prod\" \"node server/app.js\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
