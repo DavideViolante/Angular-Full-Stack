@@ -17,13 +17,14 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 2. Install Angular CLI: `npm i -g @angular/cli`
 3. From project root folder install all the dependencies: `npm i`
 
-## Run
-1. `npm start`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build and Express server
+## Run (development mode)
+1. `npm run dev`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build, TypeScript compiler and Express server
 2. A window will automatically open at [localhost:4200](http://localhost:4200)
 
 Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
 
-Use `npm run prod` to run the project with a production bundle and AOT compilation.
+## Run (production mode)
+1. `npm run prod`: run the project with a production bundle and AOT compilation
 
 ## Deploy (Heroku)
 1. Go to Heroku and create a new app
@@ -34,10 +35,10 @@ Use `npm run prod` to run the project with a production bundle and AOT compilati
 6. `heroku git:remote -a your-app-name`
 7. Download this repo and copy all files into `my-project` folder
 8. Edit `.gitignore` and remove line with `/dist`
-9. Edit in `package.json` the start script to: `"start": "node ./dist/server/app.js"`
-10. Edit in `app.js` the url of MongoDB server to a real server. You can create a MongoDB server with Heroku or mLab.
-11. `npm i`
-12. `ng build -prod` or `ng build -aot -prod`
+9. Edit in `db.ts` the url of MongoDB server to a real server. You can create a MongoDB server with Heroku or mLab.
+10. `npm i`
+11. `ng build -prod` or `ng build -aot -prod`
+12. `tsc -p server`
 13. `git add .`
 14. `git commit -m "Going to Heroku"`
 15. `git push heroku master`
@@ -53,7 +54,6 @@ Use `npm run prod` to run the project with a production bundle and AOT compilati
 * you have a question
 
 ## To do
-* TS backend?
 * More tests
 
 ## Running unit tests
