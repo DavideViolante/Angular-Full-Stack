@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ResourceModule } from 'ngx-resource';
 
 import { ToastComponent } from './toast/toast.component';
 
@@ -10,7 +11,8 @@ import { ToastComponent } from './toast/toast.component';
        BrowserModule,
        FormsModule,
        ReactiveFormsModule,
-       HttpModule
+       HttpModule,
+       ResourceModule.forRoot()
    ],
    exports: [
        // Shared Modules
