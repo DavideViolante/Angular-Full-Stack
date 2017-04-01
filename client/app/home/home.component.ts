@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { ToastComponent } from '../shared/toast/toast.component';
-
 import { DataService } from '../services/data.service';
+import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-home',
