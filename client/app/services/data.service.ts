@@ -1,8 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-
+import { ResourceResult } from 'ngx-resource';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+
+import {CatResource} from '../shared/resources/cat.resource';
+import {CatsResource} from '../shared/resources/cats.resource';
 
 @Injectable()
 export class DataService {
@@ -10,10 +13,14 @@ export class DataService {
   private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
   private options = new RequestOptions({ headers: this.headers });
 
-  constructor(private http: Http, @Inject('API_ENDPOINT') private apiEndPoint: string) { }
+  constructor(@Inject('API_ENDPOINT')
+              private apiEndPoint: string,
+              private http: Http,
+              private catResource: CatResource,
+              private catsResource: CatsResource) { }
 
   getCats(): Observable<any> {
-    return this.http.get(this.apiEndPoint + '/cats').map(res => res.json());
+    return this.catsResource.query().$observable;
   }
 
   countCats(): Observable<any> {

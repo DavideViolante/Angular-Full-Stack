@@ -1,68 +1,37 @@
 import {Injectable} from '@angular/core';
-import {Resource, ResourceParams, ResourceAction, ResourceMethod, ResourceMethodStrict} from 'ngx-resource';
+import {Resource, ResourceParams, ResourceAction, ResourceMethodStrict} from 'ngx-resource';
+import {ResourceMethod} from 'ngx-resource/src/Interfaces';
 import {RequestMethod} from '@angular/http';
 
-interface IQueryInput {
-  page?: number;
-  perPage?: number;
-  dateFrom?: string;
-  dateTo?: string;
-  isRead?: string;
-}
-
-interface INewsShort {
-  id: number;
-  date: string;
-  title: string;
-  text: string;
-}
-
-interface INews extends INewsShort {
-  image?: string;
-  fullText: string;
-}
+import {AppConfig} from '../../config/app.config';
+import {ICat} from '../models/cat.model';
 
 @Injectable()
 @ResourceParams({
-  url: 'https://domain.net/api/users'
+  url: AppConfig.API_ENDPOINT + '/cat'
 })
-export class NewsRes extends Resource {
-
-  @ResourceAction({
-    isArray: true
-  })
-  query: ResourceMethod<IQueryInput, INewsShort[]>;
-
-  @ResourceAction({
-    path: '/{!id}'
-  })
-  get: ResourceMethod<{id: any}, INews>;
-
-  @ResourceAction({
-    path: '/{!id}'
-  })
-  get2: ResourceMethodStrict<INews, {id: any}, INews>;
+export class CatResource extends Resource {
 
   @ResourceAction({
     method: RequestMethod.Post
   })
-  save: ResourceMethod<INews, INews>;
+  save: ResourceMethod<ICat, ICat>;
+
+  @ResourceAction({
+    path: '/{!id}'
+  })
+  get: ResourceMethod<{id: any}, ICat>;
 
   @ResourceAction({
     method: RequestMethod.Put,
     path: '/{!id}'
   })
-  update: ResourceMethod<INews, INews>;
+  update: ResourceMethod<ICat, ICat>;
 
   @ResourceAction({
     method: RequestMethod.Delete,
     path: '/{!id}'
   })
   remove: ResourceMethod<{id: any}, any>;
-
-  // Alias to save
-  create(data: INews, callback?: (res: INews) => any): INews {
-    return this.save(data, callback);
-  }
 
 }
