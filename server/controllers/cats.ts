@@ -14,7 +14,7 @@ export default class CatsCtrl {
   count(req, res) {
     Cat.count((err, count) => {
       if (err) { return console.error(err); }
-      res.json(count);
+      res.json({'count': count});
     });
   }
 
