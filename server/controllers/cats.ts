@@ -14,12 +14,13 @@ export default class CatsCtrl {
   count(req, res) {
     Cat.count((err, count) => {
       if (err) { return console.error(err); }
-      res.json(count);
+      res.json({'count': count});
     });
   }
 
   // Insert
   insert(req, res) {
+    console.log(req.body);
     const obj = new Cat(req.body);
     obj.save((err, cat) => {
       if (err) { return console.error(err); }
@@ -39,7 +40,7 @@ export default class CatsCtrl {
   update(req, res) {
     Cat.findOneAndUpdate({ _id: req.params.id }, req.body, (err) => {
       if (err) { return console.error(err); }
-      res.sendStatus(200);
+      res.status(200).json({ 'message': 'Updated Successfully' });
     });
   }
 
@@ -47,7 +48,7 @@ export default class CatsCtrl {
   delete(req, res) {
     Cat.findOneAndRemove({ _id: req.params.id }, (err) => {
       if (err) { return console.error(err); }
-      res.sendStatus(200);
+      res.status(200).json({ 'message': 'Deleted Successfully' });
     });
   }
 }

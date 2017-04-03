@@ -34,6 +34,7 @@
     "jquery": "^3.2.1",
     "mongoose": "^4.9.1",
     "morgan": "^1.8.1",
+    "ngx-resource": "^2.0.5",
     "rxjs": "^5.1.0",
     "tether": "1.4.0",
     "zone.js": "^0.8.4"

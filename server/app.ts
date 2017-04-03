@@ -5,6 +5,7 @@ import * as mongoose from 'mongoose';
 import * as path from 'path';
 
 import config from './config/db';
+import enableCors from './config/enableCors';
 import Cat from './models/cat.model';
 import setRoutes from './routes';
 
@@ -15,12 +16,12 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(morgan('dev'));
+app.use(enableCors);
 
 mongoose.connect(config.url);
 const db = mongoose.connection;
-mongoose.Promise = global.Promise;
+(<any>mongoose).Promise = global.Promise;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
