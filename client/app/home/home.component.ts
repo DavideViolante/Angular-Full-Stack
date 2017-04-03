@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
   addCat() {
     this.dataService.addCat(this.addCatForm.value).subscribe(
       res => {
-        const newCat = res.json();
+        const newCat = res;
         this.cats.push(newCat);
         this.addCatForm.reset();
         this.toast.setMessage('item added successfully.', 'success');

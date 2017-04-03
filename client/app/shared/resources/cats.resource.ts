@@ -23,4 +23,9 @@ export class CatsResource extends Resource {
   })
   query: ResourceMethod<{}, ICat[]>;
 
+  @ResourceAction({
+    path: '/count'
+  })
+  get: ResourceMethod<any, any>;
+
 }

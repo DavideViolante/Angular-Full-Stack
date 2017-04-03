@@ -26,7 +26,7 @@ export class CatResource extends Resource {
     method: RequestMethod.Put,
     path: '/{!id}'
   })
-  update: ResourceMethod<ICat, ICat>;
+  update: ResourceMethod<{id: any}, any>;
 
   @ResourceAction({
     method: RequestMethod.Delete,
