@@ -20,7 +20,7 @@ app.use(morgan('dev'));
 
 mongoose.connect(config.url);
 const db = mongoose.connection;
-mongoose.Promise = global.Promise;
+(<any>mongoose).Promise = global.Promise;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
