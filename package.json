@@ -32,14 +32,14 @@
     "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "mongoose": "^4.9.1",
+    "mongoose": "^4.9.6",
     "morgan": "^1.8.1",
     "rxjs": "^5.1.0",
     "tether": "1.4.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0",
+    "@angular/cli": "1.0.1",
     "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
