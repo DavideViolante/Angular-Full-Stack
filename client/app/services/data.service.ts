@@ -12,6 +12,10 @@ export class DataService {
 
   constructor(private http: Http) { }
 
+  register(user): Observable<any> {
+    return this.http.post('/api/user', JSON.stringify(user), this.options);
+  }
+
   getCats(): Observable<any> {
     return this.http.get('/api/cats').map(res => res.json());
   }
