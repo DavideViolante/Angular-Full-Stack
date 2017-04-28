@@ -16,6 +16,10 @@ export class DataService {
     return this.http.post('/api/user', JSON.stringify(user), this.options);
   }
 
+  login(credentials): Observable<any> {
+    return this.http.post('/api/login', JSON.stringify(credentials), this.options);
+  }
+
   getCats(): Observable<any> {
     return this.http.get('/api/cats').map(res => res.json());
   }

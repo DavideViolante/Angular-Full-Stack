@@ -19,7 +19,7 @@ export default function setRoutes(app) {
   app.route('/api/cat/:id').delete(catCtrl.delete);
 
   // Users
-  app.route('/api/login').get(userCtrl.login);
+  app.route('/api/login').post(userCtrl.login);
   app.route('/api/users').get(userCtrl.getAll);
   app.route('/api/users/count').get(userCtrl.count);
   app.route('/api/user').post(userCtrl.insert);

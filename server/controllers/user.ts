@@ -7,7 +7,6 @@ import BaseCtrl from './base';
 export default class UserCtrl extends BaseCtrl {
   model = User;
 
-  // Login
   login = (req, res) => {
     this.model.findOne({ email: req.body.email }, (err, user) => {
       if (!user) { return res.sendStatus(403); }

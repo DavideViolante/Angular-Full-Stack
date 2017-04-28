@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -23,7 +24,8 @@ export class RegisterComponent {
 
   constructor(private dataService: DataService,
               public toast: ToastComponent,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private router: Router) {
     this.registerForm = this.formBuilder.group({
       username: this.username,
       email: this.email,
@@ -45,6 +47,7 @@ export class RegisterComponent {
     this.dataService.register(this.registerForm.value).subscribe(
       res => {
         this.toast.setMessage('you successfully registered!', 'success');
+        this.router.navigate(['/login']);
       },
       error => console.log(error)
     );

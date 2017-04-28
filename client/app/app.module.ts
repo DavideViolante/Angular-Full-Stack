@@ -3,19 +3,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { DataService } from './services/data.service';
+import { AuthService } from './services/auth.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { DataService } from './services/data.service';
 import { RegisterComponent } from './register/register.component';
-
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     AppRoutingModule,
@@ -24,6 +28,7 @@ import { RegisterComponent } from './register/register.component';
     SharedModule
   ],
   providers: [
+    AuthService,
     DataService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
