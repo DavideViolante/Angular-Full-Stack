@@ -1,11 +1,10 @@
 import * as bodyParser from 'body-parser';
+import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
 
-import config from './config/db';
-import Cat from './models/cat.model';
 import setRoutes from './routes';
 
 const app = express();
@@ -18,7 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(morgan('dev'));
 
-mongoose.connect(config.url);
+dotenv.load({ path: '.env' });
+mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
 (<any>mongoose).Promise = global.Promise;
 
