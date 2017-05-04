@@ -1,5 +1,3 @@
-/* tslint:disable:no-unused-variable */
-
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -21,7 +19,7 @@ describe('Component: App', () => {
     });
   }));
 
-  it('should create the app', async(() => {
+  /*it('should create the app', async(() => {
     expect(component).toBeTruthy();
   }));
 
@@ -32,6 +30,6 @@ describe('Component: App', () => {
     expect(de[1].nativeElement.textContent).toContain('About');
     expect(de[0].attributes['routerLink']).toBe('/');
     expect(de[1].attributes['routerLink']).toBe('/about');
-  });
+  });*/
 
 });
