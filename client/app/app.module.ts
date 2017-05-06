@@ -1,5 +1,6 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 
+import AppErrorHandler from './app.error-handler';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
@@ -19,7 +20,9 @@ import { DataService } from './services/data.service';
     SharedModule
   ],
   providers: [
-    DataService
+    DataService, {
+      provide: ErrorHandler, useClass: AppErrorHandler
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
