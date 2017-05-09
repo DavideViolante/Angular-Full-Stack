@@ -5,7 +5,7 @@ import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
 
-import setRoutes from './routes';
+import setRoutes from './cats/routes/cats.server.routes';
 
 const app = express();
 app.set('port', (process.env.PORT || 3000));
