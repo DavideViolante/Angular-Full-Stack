@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { ToastComponent } from './toast/toast.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
    imports: [

@@ -2,16 +2,16 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { DataService } from './services/data.service';
+import { AppComponent } from './core/components/main/app.component';
+import { CatsComponent } from './cats/components/cats.component';
+import { AboutComponent } from './about/components/about.component';
+import { CatsDataService } from './cats/services/cats.data.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    CatsComponent,
     AboutComponent
   ],
   imports: [
@@ -19,7 +19,7 @@ import { DataService } from './services/data.service';
     SharedModule
   ],
   providers: [
-    DataService
+    CatsDataService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
