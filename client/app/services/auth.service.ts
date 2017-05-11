@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {JwtHelper} from 'angular2-jwt';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
 
-import {UserService} from '../services/user.service';
+import { UserService } from '../services/user.service';
 
 @Injectable()
 export class AuthService {
