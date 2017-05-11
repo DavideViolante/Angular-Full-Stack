@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { AboutComponent } from './about.component';
+import { RegisterComponent } from './register.component';
 
-describe('Component: About', () => {
-  let component: AboutComponent;
-  let fixture: ComponentFixture<AboutComponent>;
+describe('RegisterComponent', () => {
+  let component: RegisterComponent;
+  let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutComponent ]
+      declarations: [ RegisterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AboutComponent);
+    fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -24,9 +24,8 @@ describe('Component: About', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the string "About" in h4', () => {
+  it('should display the string "Register" in h4', () => {
     const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('About');
+    expect(el.textContent).toContain('Register');
   });*/
-
 });

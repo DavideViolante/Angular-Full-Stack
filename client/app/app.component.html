@@ -8,6 +8,15 @@
       <a routerLink="/about" class="nav-item nav-link" routerLinkActive="active">
         <i class="fa fa-info-circle"></i> About
       </a>
+      <a routerLink="/login" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
+        <i class="fa fa-sign-in"></i> Login
+      </a>
+      <a routerLink="/register" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
+        <i class="fa fa-user-plus"></i> Register
+      </a>
+      <a routerLink="/logout" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
+        <i class="fa fa-sign-out"></i> Logout ({{auth.currentUser.username}})
+      </a>
     </div>
   </nav>
 
