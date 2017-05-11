@@ -1,0 +1,19 @@
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card">
+  <h4 class="card-header">Register</h4>
+  <div class="card-block">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="form-group" [ngClass]="setClassUsername()">
+        <input class="form-control" type="text" name="username" formControlName="username" placeholder="Username" autofocus>
+      </div>
+      <div class="form-group" [ngClass]="setClassEmail()">
+        <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email">
+      </div>
+      <div class="form-group" [ngClass]="setClassPassword()">
+        <input class="form-control" type="password" name="password" formControlName="password" placeholder="Password">
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid"><i class="fa fa-user-plus"></i> Register</button>
+    </form>
+  </div>
+</div>
