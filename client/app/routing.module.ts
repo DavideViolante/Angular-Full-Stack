@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { CatsComponent } from './cats/cats.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent },
+  { path: '', component: AboutComponent },
+  { path: 'cats', component: CatsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent }
