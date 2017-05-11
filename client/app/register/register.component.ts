@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { DataService } from '../services/data.service';
+import { UserService } from '../services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
@@ -22,7 +22,7 @@ export class RegisterComponent {
   password = new FormControl('', [Validators.required,
                                   Validators.minLength(6)]);
 
-  constructor(private dataService: DataService,
+  constructor(private userService: UserService,
               public toast: ToastComponent,
               private formBuilder: FormBuilder,
               private router: Router) {
@@ -44,7 +44,7 @@ export class RegisterComponent {
   }
 
   register() {
-    this.dataService.register(this.registerForm.value).subscribe(
+    this.userService.register(this.registerForm.value).subscribe(
       res => {
         this.toast.setMessage('you successfully registered!', 'success');
         this.router.navigate(['/login']);

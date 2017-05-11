@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {JwtHelper} from 'angular2-jwt';
 
-import {DataService} from '../services/data.service';
+import {UserService} from '../services/user.service';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +12,7 @@ export class AuthService {
 
   currentUser = { username: 'Guest' };
 
-  constructor(private dataService: DataService,
+  constructor(private userService: UserService,
               private router: Router) {
     const token = localStorage.getItem('token');
     if (token) {
@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login(emailAndPassword) {
-    return this.dataService.login(emailAndPassword).map(res => res.json()).map(
+    return this.userService.login(emailAndPassword).map(res => res.json()).map(
       res => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);

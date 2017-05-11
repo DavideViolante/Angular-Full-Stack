@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { DataService } from './services/data.service';
+import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -29,7 +30,8 @@ import { LogoutComponent } from './logout/logout.component';
   ],
   providers: [
     AuthService,
-    DataService
+    DataService,
+    UserService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
