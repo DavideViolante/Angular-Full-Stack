@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
+import { RoutingModule } from './routes.module';
 import { SharedModule } from './shared/shared.module';
 import { DataService } from './services/data.service';
 import { UserService } from './services/user.service';
@@ -23,7 +23,7 @@ import { LogoutComponent } from './logout/logout.component';
     LogoutComponent
   ],
   imports: [
-    AppRoutingModule,
+    RoutingModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule
