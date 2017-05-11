@@ -35,7 +35,7 @@ import { LogoutComponent } from './logout/logout.component';
     },
     UserService, {
       provide: ErrorHandler, useClass: AppErrorHandler
-    }
+    },
     AuthService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
