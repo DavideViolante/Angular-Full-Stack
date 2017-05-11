@@ -15,7 +15,7 @@
         <i class="fa fa-user-plus"></i> Register
       </a>
       <a routerLink="/logout" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-        <i class="fa fa-sign-out"></i> Logout ({{auth.currentUser.username}})
+        <i class="fa fa-sign-out"></i> Logout {{auth.currentUser.username}} ({{auth.currentUser.role}})
       </a>
     </div>
   </nav>

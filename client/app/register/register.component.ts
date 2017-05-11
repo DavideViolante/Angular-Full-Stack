@@ -22,6 +22,8 @@ export class RegisterComponent {
   password = new FormControl('', [Validators.required,
                                   Validators.minLength(6)]);
 
+  role = new FormControl('', [Validators.required]);
+
   constructor(private userService: UserService,
               public toast: ToastComponent,
               private formBuilder: FormBuilder,
@@ -29,7 +31,8 @@ export class RegisterComponent {
     this.registerForm = this.formBuilder.group({
       username: this.username,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role: this.role
     });
   }
 

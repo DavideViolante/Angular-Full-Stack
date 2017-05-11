@@ -7,10 +7,11 @@ import { UserService } from '../services/user.service';
 @Injectable()
 export class AuthService {
   loggedIn = false;
+  isAdmin = false;
 
   jwtHelper: JwtHelper = new JwtHelper();
 
-  currentUser = { username: 'Guest' };
+  currentUser = { username: 'Guest', role: 'user' };
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -35,7 +36,8 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.loggedIn = false;
-    this.currentUser = { username: 'Guest' };
+    this.isAdmin = false;
+    this.currentUser = { username: 'Guest', role: 'user' };
     this.router.navigate(['/']);
   }
 
@@ -46,6 +48,9 @@ export class AuthService {
   setCurrentUser(decodedUser) {
     this.loggedIn = true;
     this.currentUser.username = decodedUser.username;
+    this.currentUser.role = decodedUser.role;
+    decodedUser.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+    delete decodedUser.role;
   }
 
 }
