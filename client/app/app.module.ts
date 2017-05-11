@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { RoutingModule } from './routes.module';
+import { RoutingModule } from './routing.module';
 import { SharedModule } from './shared/shared.module';
 import { DataService } from './services/data.service';
 import { UserService } from './services/user.service';
