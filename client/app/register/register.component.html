@@ -13,6 +13,9 @@
       <div class="form-group" [ngClass]="setClassPassword()">
         <input class="form-control" type="password" name="password" formControlName="password" placeholder="Password">
       </div>
+      <div class="form-group" [ngClass]="setClassPasswordConfirm()">
+        <input class="form-control" type="password" name="passwordConfirm" formControlName="passwordConfirm" placeholder="Password Confirm">
+      </div>
       <div class="form-group">
         <select class="form-control" name="role" name="role" formControlName="role">
           <option value="" selected disabled>Role</option>
