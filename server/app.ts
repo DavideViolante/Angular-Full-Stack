@@ -28,12 +28,12 @@ db.once('open', () => {
 
   setRoutes(app);
 
-  app.get('/*', function(req, res) {
+  app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 
   app.listen(app.get('port'), () => {
-    console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
+    console.log('Angular 4 Full Stack listening on port ' + app.get('port'));
   });
 
 });
