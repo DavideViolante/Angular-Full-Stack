@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-register',
@@ -10,30 +12,32 @@ import { ToastComponent } from '../shared/toast/toast.component';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-
+  titlePage = 'Register';
   registerForm: FormGroup;
   username = new FormControl('', [Validators.required,
-                                  Validators.minLength(2),
-                                  Validators.maxLength(30),
-                                  Validators.pattern('[a-zA-Z0-9_-\\s]*')]);
+  Validators.minLength(2),
+  Validators.maxLength(30),
+  Validators.pattern('[a-zA-Z0-9_-\\s]*')]);
   email = new FormControl('', [Validators.required,
-                               Validators.minLength(3),
-                               Validators.maxLength(100)]);
+  Validators.minLength(3),
+  Validators.maxLength(100)]);
   password = new FormControl('', [Validators.required,
-                                  Validators.minLength(6)]);
+  Validators.minLength(6)]);
 
   role = new FormControl('', [Validators.required]);
 
   constructor(private userService: UserService,
-              public toast: ToastComponent,
-              private formBuilder: FormBuilder,
-              private router: Router) {
+    public toast: ToastComponent,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private titleService: Title) {
     this.registerForm = this.formBuilder.group({
       username: this.username,
       email: this.email,
       password: this.password,
       role: this.role
     });
+    this.setTitle(this.titlePage);
   }
 
   setClassUsername() {
@@ -54,5 +58,9 @@ export class RegisterComponent {
       },
       error => console.log(error)
     );
+  }
+
+  setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 }

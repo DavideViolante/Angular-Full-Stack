@@ -12,6 +12,8 @@ import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CatDetailsComponent } from './cat-details/cat-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LogoutComponent } from './logout/logout.component';
     AboutComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    CatDetailsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     RoutingModule,

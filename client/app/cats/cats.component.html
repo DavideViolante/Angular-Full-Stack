@@ -27,10 +27,12 @@
       </tbody>
       <tbody>
         <tr *ngFor="let cat of cats">
-          <td>{{cat.name}}</td>
+          <td><a [routerLink]="[ '/cat/', cat._id]">{{cat.name}}</a></td>
           <td>{{cat.age}}</td>
           <td>{{cat.weight}}</td>
           <td>
+            <a [routerLink]="[ '/cat/', cat._id]" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> view</a>
+
             <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button>            <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
           </td>
         </tr>
