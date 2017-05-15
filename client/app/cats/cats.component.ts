@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { DataService } from '../services/data.service';
+import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
@@ -24,7 +24,7 @@ export class CatsComponent implements OnInit {
   weight = new FormControl('', Validators.required);
 
   constructor(private http: Http,
-              private dataService: DataService,
+              private catService: CatService,
               public toast: ToastComponent,
               private formBuilder: FormBuilder) { }
 
@@ -39,7 +39,7 @@ export class CatsComponent implements OnInit {
   }
 
   getCats() {
-    this.dataService.getCats().subscribe(
+    this.catService.getCats().subscribe(
       data => this.cats = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -47,7 +47,7 @@ export class CatsComponent implements OnInit {
   }
 
   addCat() {
-    this.dataService.addCat(this.addCatForm.value).subscribe(
+    this.catService.addCat(this.addCatForm.value).subscribe(
       res => {
         const newCat = res.json();
         this.cats.push(newCat);
@@ -72,7 +72,7 @@ export class CatsComponent implements OnInit {
   }
 
   editCat(cat) {
-    this.dataService.editCat(cat).subscribe(
+    this.catService.editCat(cat).subscribe(
       res => {
         this.isEditing = false;
         this.cat = cat;
@@ -84,7 +84,7 @@ export class CatsComponent implements OnInit {
 
   deleteCat(cat) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.dataService.deleteCat(cat).subscribe(
+      this.catService.deleteCat(cat).subscribe(
         res => {
           const pos = this.cats.map(elem => { return elem._id; }).indexOf(cat._id);
           this.cats.splice(pos, 1);
