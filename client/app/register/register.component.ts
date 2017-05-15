@@ -21,6 +21,8 @@ export class RegisterComponent {
                                Validators.maxLength(100)]);
   password = new FormControl('', [Validators.required,
                                   Validators.minLength(6)]);
+  passwordConfirm = new FormControl('', [Validators.required,
+                                  Validators.minLength(6)]);
 
   role = new FormControl('', [Validators.required]);
 
@@ -32,10 +34,19 @@ export class RegisterComponent {
       username: this.username,
       email: this.email,
       password: this.password,
+      passwordConfirm: this.passwordConfirm,
       role: this.role
-    });
+    },
+      {
+        validator: this.passwordMatchValidator
+      }
+    );
   }
 
+  passwordMatchValidator(g: FormGroup) {
+   return g.get('password').value === g.get('passwordConfirm').value
+      ? null : { 'mismatch': true };
+  }
   setClassUsername() {
     return { 'has-danger': !this.username.pristine && !this.username.valid };
   }
@@ -44,6 +55,10 @@ export class RegisterComponent {
   }
   setClassPassword() {
     return { 'has-danger': !this.password.pristine && !this.password.valid };
+  }
+  setClassPasswordConfirm() {
+    return { 'has-danger': !this.passwordConfirm.pristine && !this.passwordConfirm.valid ||
+     !this.passwordConfirm.pristine && this.registerForm.errors && this.registerForm.errors.mismatch};
   }
 
   register() {
