@@ -11,11 +11,11 @@ import { UserService } from '../services/user.service';
 export class AccountComponent {
 
   user = {};
-  loadingUser = true;
+  isLoading = true;
 
   constructor(private auth: AuthService,
               private userService: UserService,
-              private toast: ToastComponent) {
+              public toast: ToastComponent) {
     this.getUser();
   }
 
@@ -23,7 +23,7 @@ export class AccountComponent {
     this.userService.getUser(this.auth.currentUser).subscribe(
       data => this.user = data,
       error => console.log(error),
-      () => this.loadingUser = false
+      () => this.isLoading = false
     );
   }
 
