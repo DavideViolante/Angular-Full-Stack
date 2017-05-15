@@ -25,7 +25,7 @@ export class DataService {
   }
 
   getCat(cat): Observable<any> {
-    return this.http.get(`/api/cat/${cat._id}`, this.options);
+    return this.http.get(`/api/cat/${cat._id}`).map(res => res.json());
   }
 
   editCat(cat): Observable<any> {
