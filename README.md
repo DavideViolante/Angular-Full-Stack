@@ -8,9 +8,14 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 * [**E**xpress.js](http://expressjs.com): backend framework
 * [**A**ngular 4](https://angular.io): frontend framework
 * [**N**ode.js](https://nodejs.org): runtime environment
-* [Angular CLI](https://cli.angular.io): project scaffolding
+
+Other tools and technologies used:
+* [Angular CLI](https://cli.angular.io): frontend scaffolding
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
 * [Font Awesome](http://fontawesome.io): icons
+* [JSON Web Token](https://jwt.io): user authentication
+* [Angular 2 JWT](https://github.com/auth0/angular2-jwt): JWT helper for Angular
+* [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js): password encryption
 
 ## Prerequisites
 1. Install [Node.js](https://nodejs.org) and [MongoDB](https://www.mongodb.com)
