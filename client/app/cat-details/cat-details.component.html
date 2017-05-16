@@ -1,0 +1,21 @@
+<main *ngIf="!isLoading">
+  <article *ngIf="cat;else nocat" class="text-center my-4">
+    <h1>
+      {{cat.name}}
+    </h1>
+    <p>
+      Age: {{cat.age}} - weight: {{cat.weight}}
+    </p>
+    <button (click)="goBack()" class="nav-link" class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back</button>
+
+  </article>
+  <ng-template #nocat>
+    <div class="container text-center my-4">
+      <h1>Cat not found</h1>
+      <p>
+        The Cat or the page you are looking for is not found!!!
+      </p>
+      <a routerLink="/cats" class="nav-link" class="btn btn-primary">Please check cats list here</a>
+    </div>
+  </ng-template>
+</main>

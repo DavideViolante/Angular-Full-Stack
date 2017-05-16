@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-
-  constructor() { }
+  titlePage = 'MEAN project with Angular 4';
+  constructor(private titleService: Title) {
+    this.setTitle(this.titlePage);
+  }
+  setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
+  }
 
 }

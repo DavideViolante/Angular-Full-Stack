@@ -24,8 +24,9 @@ export class CatService {
     return this.http.post('/api/cat', JSON.stringify(cat), this.options);
   }
 
-  getCat(cat): Observable<any> {
-    return this.http.get(`/api/cat/${cat._id}`).map(res => res.json());
+  getCat(id): Observable<any> {
+    return this.http.get(`/api/cat/${id}`, this.options);
+    //return this.http.get(`/api/cat/${cat._id}`).map(res => res.json());
   }
 
   editCat(cat): Observable<any> {

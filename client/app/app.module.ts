@@ -13,6 +13,8 @@ import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { CatDetailsComponent } from './cat-details/cat-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AccountComponent } from './account/account.component';
 
 @NgModule({
@@ -23,6 +25,8 @@ import { AccountComponent } from './account/account.component';
     RegisterComponent,
     LoginComponent,
     LogoutComponent,
+    CatDetailsComponent,
+    PageNotFoundComponent,
     AccountComponent
   ],
   imports: [

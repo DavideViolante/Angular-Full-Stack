@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -11,6 +12,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
   styleUrls: ['./cats.component.scss']
 })
 export class CatsComponent implements OnInit {
+  titlePage = 'List of Cats';
 
   cats = [];
   isLoading = true;
@@ -24,10 +26,12 @@ export class CatsComponent implements OnInit {
   weight = new FormControl('', Validators.required);
 
   constructor(private http: Http,
-              private catService: CatService,
-              public toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
-
+    private catService: CatService,
+    public toast: ToastComponent,
+    private formBuilder: FormBuilder,
+    private titleService: Title) {
+    this.setTitle(this.titlePage);
+  }
   ngOnInit() {
     this.getCats();
 
@@ -93,6 +97,10 @@ export class CatsComponent implements OnInit {
         error => console.log(error)
       );
     }
+  }
+
+  setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 
 }
