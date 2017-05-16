@@ -8,7 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CatDetailsComponent } from './cat-details/cat-details.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AccountComponent } from './account/account.component';
 
+import { AuthGuardLogin } from './services/auth-guard-login.service';
 
 const routes: Routes = [
   { path: '', component: AboutComponent },
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
   { path: '**', component: PageNotFoundComponent }
 ];
 

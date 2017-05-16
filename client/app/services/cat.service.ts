@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class DataService {
+export class CatService {
 
   private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
   private options = new RequestOptions({ headers: this.headers });
@@ -26,6 +26,7 @@ export class DataService {
 
   getCat(id): Observable<any> {
     return this.http.get(`/api/cat/${id}`, this.options);
+    //return this.http.get(`/api/cat/${cat._id}`).map(res => res.json());
   }
 
   editCat(cat): Observable<any> {
