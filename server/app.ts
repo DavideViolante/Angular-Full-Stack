@@ -48,7 +48,6 @@ db.on('reconnected', function () {
 
 db.on('disconnected', function() {
     console.log('MongoDB disconnected');
-    mongoose.connect(process.env.MONGODB_URI, {server:{auto_reconnect:true}});
 });
 
 export { app };
