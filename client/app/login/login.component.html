@@ -6,7 +6,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="input-group" [ngClass]="setClassEmail()">
         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-        <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email">
+        <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email" autofocus>
       </div>
       <div class="input-group" [ngClass]="setClassPassword()">
         <span class="input-group-addon"><i class="fa fa-key"></i></span>
