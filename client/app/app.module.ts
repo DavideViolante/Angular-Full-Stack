@@ -1,18 +1,20 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import AppErrorHandler from './app.error-handler';
+import { AppErrorHandler } from './app.error-handler';
 import { RoutingModule } from './routing.module';
 import { SharedModule } from './shared/shared.module';
-import { DataService } from './services/data.service';
+import { CatService } from './services/cat.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AppComponent } from './app.component';
 import { CatsComponent } from './cats/cats.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { LogoutComponent } from './logout/logout.component';
     AboutComponent,
     RegisterComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    AccountComponent
   ],
   imports: [
     RoutingModule,
@@ -30,13 +33,14 @@ import { LogoutComponent } from './logout/logout.component';
     SharedModule
   ],
   providers: [
-    DataService, {
+    AuthService,
+    AuthGuardLogin,
+    CatService, {
       provide: ErrorHandler, useClass: AppErrorHandler
     },
     UserService, {
       provide: ErrorHandler, useClass: AppErrorHandler
-    },
-    AuthService
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
