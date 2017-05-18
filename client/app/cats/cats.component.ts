@@ -12,10 +12,9 @@ import { ToastComponent } from '../shared/toast/toast.component';
 })
 export class CatsComponent implements OnInit {
 
+  cat = {};
   cats = [];
   isLoading = true;
-
-  cat = {};
   isEditing = false;
 
   addCatForm: FormGroup;
@@ -23,14 +22,13 @@ export class CatsComponent implements OnInit {
   age = new FormControl('', Validators.required);
   weight = new FormControl('', Validators.required);
 
-  constructor(private http: Http,
-              private catService: CatService,
-              public toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
+  constructor(private catService: CatService,
+              private formBuilder: FormBuilder,
+              private http: Http,
+              public toast: ToastComponent) { }
 
   ngOnInit() {
     this.getCats();
-
     this.addCatForm = this.formBuilder.group({
       name: this.name,
       age: this.age,

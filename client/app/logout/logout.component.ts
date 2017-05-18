@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -6,9 +6,11 @@ import { AuthService } from '../services/auth.service';
   template: '',
   styles: ['']
 })
-export class LogoutComponent {
+export class LogoutComponent implements OnInit {
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService) { }
+
+  ngOnInit() {
     this.auth.logout();
   }
 

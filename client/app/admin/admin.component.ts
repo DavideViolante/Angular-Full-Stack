@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
@@ -9,14 +9,16 @@ import { UserService } from '../services/user.service';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
 
   users = [];
   isLoading = true;
 
   constructor(public auth: AuthService,
               public toast: ToastComponent,
-              private userService: UserService) {
+              private userService: UserService) { }
+
+  ngOnInit() {
     this.getUsers();
   }
 

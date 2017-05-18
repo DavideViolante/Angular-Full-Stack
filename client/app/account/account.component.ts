@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
@@ -8,14 +8,16 @@ import { UserService } from '../services/user.service';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit {
 
   user = {};
   isLoading = true;
 
   constructor(private auth: AuthService,
-              private userService: UserService,
-              public toast: ToastComponent) {
+              public toast: ToastComponent,
+              private userService: UserService) { }
+
+  ngOnInit() {
     this.getUser();
   }
 

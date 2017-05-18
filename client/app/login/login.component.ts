@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   email = new FormControl('', [Validators.required,
@@ -19,14 +19,15 @@ export class LoginComponent {
   password = new FormControl('', [Validators.required,
                                           Validators.minLength(6)]);
 
-  constructor(private formBuilder: FormBuilder,
-              private auth: AuthService,
+  constructor(private auth: AuthService,
+              private formBuilder: FormBuilder,
               private router: Router,
-              public toast: ToastComponent) {
+              public toast: ToastComponent) { }
+
+  ngOnInit() {
     if (this.auth.loggedIn) {
       this.router.navigate(['/']);
     }
-
     this.loginForm = this.formBuilder.group({
       email: this.email,
       password: this.password
