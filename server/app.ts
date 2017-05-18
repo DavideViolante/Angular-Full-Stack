@@ -22,7 +22,11 @@ mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
 (<any>mongoose).Promise = global.Promise;
 
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', function(error) {
+    console.error.bind(console, 'connection error:');
+    mongoose.disconnect();
+});
+
 db.once('open', () => {
   console.log('Connected to MongoDB');
 
@@ -36,6 +40,15 @@ db.once('open', () => {
     console.log('Angular Full Stack listening on port ' + app.get('port'));
   });
 
+});
+
+db.on('reconnected', function () {
+    console.log('MongoDB reconnected');
+});
+
+db.on('disconnected', function() {
+    console.log('MongoDB disconnected');
+    mongoose.connect(process.env.MONGODB_URI, {server:{auto_reconnect:true}});
 });
 
 export { app };
