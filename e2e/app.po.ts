@@ -5,11 +5,8 @@ export class Angular2FullStackPage {
     return browser.get('/');
   }
 
-  getNavbarHome() {
-    return $$('app-root a').get(0).getText();
+  getNavbarElement(n) {
+    return $$('app-root a').get(n).getText();
   }
 
-  getNavbarAbout() {
-    return $$('app-root a').get(1).getText();
-  }
 }

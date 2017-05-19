@@ -7,9 +7,11 @@ describe('angular2-full-stack App', () => {
     page = new Angular2FullStackPage();
   });
 
-  it('should display navbar with Home and About', () => {
+  it('should display the navbar correctly', () => {
     page.navigateTo();
-    expect(page.getNavbarHome()).toEqual('Home');
-    expect(page.getNavbarAbout()).toEqual('About');
+    expect(page.getNavbarElement(0)).toEqual('Home');
+    expect(page.getNavbarElement(1)).toEqual('Cats');
+    expect(page.getNavbarElement(2)).toEqual('Login');
+    expect(page.getNavbarElement(3)).toEqual('Register');
   });
 });
