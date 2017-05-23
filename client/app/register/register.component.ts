@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
                                   Validators.pattern('[a-zA-Z0-9_-\\s]*')]);
   email = new FormControl('', [Validators.required,
                                Validators.minLength(3),
-                               Validators.maxLength(100)]);
+                               Validators.maxLength(100),
+                               Validators.pattern(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/)]]);
   password = new FormControl('', [Validators.required,
                                   Validators.minLength(6)]);
 
