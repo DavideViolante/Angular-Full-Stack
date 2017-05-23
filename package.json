@@ -14,6 +14,7 @@
     "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\"",
     "test": "ng test",
     "lint": "ng lint",
+    "lintbe": "tslint server/**/**.ts{,x}",
     "e2e": "ng e2e"
   },
   "private": true,
