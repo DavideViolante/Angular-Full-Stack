@@ -84,7 +84,7 @@ export class CatsComponent implements OnInit {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.catService.deleteCat(cat).subscribe(
         res => {
-          const pos = this.cats.map(elem => { return elem._id; }).indexOf(cat._id);
+          const pos = this.cats.map(elem => elem._id).indexOf(cat._id);
           this.cats.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },
