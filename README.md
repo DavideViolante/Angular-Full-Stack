@@ -40,7 +40,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 6. `heroku git:remote -a your-app-name`
 7. Download this repo and copy all files into `my-project` folder
 8. Edit `.gitignore` and remove line with `/dist`
-9. Edit in `db.ts` the url of MongoDB server to a real server. You can create a MongoDB server with Heroku or mLab.
+9. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
 10. `npm i`
 11. `ng build -prod` or `ng build -aot -prod`
 12. `tsc -p server`
