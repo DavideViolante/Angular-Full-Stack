@@ -7,30 +7,29 @@ import User from './models/user';
 
 export default function setRoutes(app) {
 
-  // get an instance of the router for api routes
-  const apiRoutes = express.Router();
+  const router = express.Router();
 
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();
 
   // Cats
-  apiRoutes.route('/cats').get(catCtrl.getAll);
-  apiRoutes.route('/cats/count').get(catCtrl.count);
-  apiRoutes.route('/cat').post(catCtrl.insert);
-  apiRoutes.route('/cat/:id').get(catCtrl.get);
-  apiRoutes.route('/cat/:id').put(catCtrl.update);
-  apiRoutes.route('/cat/:id').delete(catCtrl.delete);
+  router.route('/cats').get(catCtrl.getAll);
+  router.route('/cats/count').get(catCtrl.count);
+  router.route('/cat').post(catCtrl.insert);
+  router.route('/cat/:id').get(catCtrl.get);
+  router.route('/cat/:id').put(catCtrl.update);
+  router.route('/cat/:id').delete(catCtrl.delete);
 
   // Users
-  apiRoutes.route('/login').post(userCtrl.login);
-  apiRoutes.route('/users').get(userCtrl.getAll);
-  apiRoutes.route('/users/count').get(userCtrl.count);
-  apiRoutes.route('/user').post(userCtrl.insert);
-  apiRoutes.route('/user/:id').get(userCtrl.get);
-  apiRoutes.route('/user/:id').put(userCtrl.update);
-  apiRoutes.route('/user/:id').delete(userCtrl.delete);
+  router.route('/login').post(userCtrl.login);
+  router.route('/users').get(userCtrl.getAll);
+  router.route('/users/count').get(userCtrl.count);
+  router.route('/user').post(userCtrl.insert);
+  router.route('/user/:id').get(userCtrl.get);
+  router.route('/user/:id').put(userCtrl.update);
+  router.route('/user/:id').delete(userCtrl.delete);
 
-  // apply the routes to our application with the prefix /api
-  app.use('/api', apiRoutes);
+  // Apply the routes to our application with the prefix /api
+  app.use('/api', router);
 
 }
