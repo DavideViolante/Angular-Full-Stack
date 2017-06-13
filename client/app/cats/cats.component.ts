@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { CatService } from '../services/cat.service';
+import { DataService } from '../services/data.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
-  selector: 'app-cats',
   templateUrl: './cats.component.html',
   styleUrls: ['./cats.component.scss']
 })
@@ -22,7 +21,7 @@ export class CatsComponent implements OnInit {
   age = new FormControl('', Validators.required);
   weight = new FormControl('', Validators.required);
 
-  constructor(private catService: CatService,
+  constructor(private dataService: DataService,
               private formBuilder: FormBuilder,
               private http: Http,
               public toast: ToastComponent) { }
@@ -37,7 +36,7 @@ export class CatsComponent implements OnInit {
   }
 
   getCats() {
-    this.catService.getCats().subscribe(
+    this.dataService.list('/api/cats').subscribe(
       data => this.cats = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -45,12 +44,12 @@ export class CatsComponent implements OnInit {
   }
 
   addCat() {
-    this.catService.addCat(this.addCatForm.value).subscribe(
+    this.dataService.post('/api/cat', this.addCatForm.value).subscribe(
       res => {
         const newCat = res.json();
         this.cats.push(newCat);
         this.addCatForm.reset();
-        this.toast.setMessage('item added successfully.', 'success');
+        this.toast.setMessage('Item added successfully.', 'success');
       },
       error => console.log(error)
     );
@@ -64,17 +63,17 @@ export class CatsComponent implements OnInit {
   cancelEditing() {
     this.isEditing = false;
     this.cat = {};
-    this.toast.setMessage('item editing cancelled.', 'warning');
+    this.toast.setMessage('Item editing cancelled.', 'warning');
     // reload the cats to reset the editing
     this.getCats();
   }
 
   editCat(cat) {
-    this.catService.editCat(cat).subscribe(
+    this.dataService.put('/api/cat', cat).subscribe(
       res => {
         this.isEditing = false;
         this.cat = cat;
-        this.toast.setMessage('item edited successfully.', 'success');
+        this.toast.setMessage('Item edited successfully.', 'success');
       },
       error => console.log(error)
     );
@@ -82,11 +81,11 @@ export class CatsComponent implements OnInit {
 
   deleteCat(cat) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.catService.deleteCat(cat).subscribe(
+      this.dataService.delete('/api/cat', cat).subscribe(
         res => {
           const pos = this.cats.map(elem => elem._id).indexOf(cat._id);
           this.cats.splice(pos, 1);
-          this.toast.setMessage('item deleted successfully.', 'success');
+          this.toast.setMessage('Item deleted successfully.', 'success');
         },
         error => console.log(error)
       );

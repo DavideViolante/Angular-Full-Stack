@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { DataService } from '../services/data.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               public toast: ToastComponent,
-              private userService: UserService) { }
+              private dataService: DataService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -49,12 +49,12 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.userService.register(this.registerForm.value).subscribe(
+    this.dataService.post('/api/user', this.registerForm.value).subscribe(
       res => {
-        this.toast.setMessage('you successfully registered!', 'success');
+        this.toast.setMessage('You have registered successfully.', 'success');
         this.router.navigate(['/login']);
       },
-      error => this.toast.setMessage('email already exists', 'danger')
+      error => this.toast.setMessage('E-mmail already exists.', 'danger')
     );
   }
 }
