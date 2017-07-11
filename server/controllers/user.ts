@@ -7,6 +7,21 @@ import BaseCtrl from './base';
 export default class UserCtrl extends BaseCtrl {
   model = User;
 
+  // Insert
+  register = (req, res) => {
+    const obj = new this.model(req.body);
+    obj.save((err, item) => {
+      // 11000 is the code for duplicate key error
+      if (err && err.code === 11000) {
+        res.sendStatus(400);
+      }
+      if (err) {
+        return console.error(err);
+      }
+      res.status(200).json(item);
+    });
+  };
+
   login = (req, res) => {
     this.model.findOne({ email: req.body.email }, (err, user) => {
       if (!user) { return res.sendStatus(403); }
