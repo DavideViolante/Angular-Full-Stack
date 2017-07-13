@@ -8,11 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CatService {
 
-  private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
-  private options = new RequestOptions({ headers: this.headers });
-
-  constructor(private http: Http,
-              public authHttp: AuthHttp) { }
+  constructor(public authHttp: AuthHttp) { }
 
   getCats(): Observable<any> {
     return this.authHttp.get('/api/cats').map(res => res.json());
@@ -23,7 +19,7 @@ export class CatService {
   }
 
   addCat(cat): Observable<any> {
-    return this.authHttp.post('/api/cat', JSON.stringify(cat), this.options);
+    return this.authHttp.post('/api/cat', JSON.stringify(cat));
   }
 
   getCat(cat): Observable<any> {
@@ -31,11 +27,11 @@ export class CatService {
   }
 
   editCat(cat): Observable<any> {
-    return this.authHttp.put(`/api/cat/${cat._id}`, JSON.stringify(cat), this.options);
+    return this.authHttp.put(`/api/cat/${cat._id}`, JSON.stringify(cat));
   }
 
   deleteCat(cat): Observable<any> {
-    return this.authHttp.delete(`/api/cat/${cat._id}`, this.options);
+    return this.authHttp.delete(`/api/cat/${cat._id}`);
   }
 
 }

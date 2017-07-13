@@ -31,7 +31,7 @@ export class UserService {
   }
 
   addUser(user): Observable<any> {
-    return this.authHttp.post('/api/user', JSON.stringify(user), this.options);
+    return this.authHttp.post('/api/user', JSON.stringify(user));
   }
 
   getUser(user): Observable<any> {
@@ -39,11 +39,11 @@ export class UserService {
   }
 
   editUser(user): Observable<any> {
-    return this.authHttp.put(`/api/user/${user._id}`, JSON.stringify(user), this.options);
+    return this.authHttp.put(`/api/user/${user._id}`, JSON.stringify(user));
   }
 
   deleteUser(user): Observable<any> {
-    return this.authHttp.delete(`/api/user/${user._id}`, this.options);
+    return this.authHttp.delete(`/api/user/${user._id}`);
   }
 
 }
