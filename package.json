@@ -3,7 +3,7 @@
   "version": "4.0.0",
   "license": "MIT",
   "author": "Davide Violante",
-  "description": "Angular Full Stack project built using Angular 4, Express, Mongoose and Node.",
+  "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
@@ -39,15 +39,16 @@
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.10.4",
     "morgan": "^1.8.2",
-    "rxjs": "^5.1.0",
+    "rxjs": "^5.4.1",
     "tether": "1.4.0",
-    "zone.js": "^0.8.4"
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.1.0",
+    "@angular/cli": "1.2.6",
     "@angular/compiler-cli": "^4.0.0",
     "@angular/language-service": "^4.0.0",
-    "@types/jasmine": "2.5.45",
+    "@types/jasmine": "~2.5.53",
+    "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.0.1",
     "concurrently": "^3.3.0",
