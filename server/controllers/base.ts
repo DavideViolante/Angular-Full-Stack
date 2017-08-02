@@ -8,7 +8,7 @@ abstract class BaseCtrl {
       if (err) { return console.error(err); }
       res.json(docs);
     });
-  };
+  }
 
   // Count all
   count = (req, res) => {
@@ -16,7 +16,7 @@ abstract class BaseCtrl {
       if (err) { return console.error(err); }
       res.json(count);
     });
-  };
+  }
 
   // Insert
   insert = (req, res) => {
@@ -31,7 +31,7 @@ abstract class BaseCtrl {
       }
       res.status(200).json(item);
     });
-  };
+  }
 
   // Get by id
   get = (req, res) => {
@@ -39,7 +39,7 @@ abstract class BaseCtrl {
       if (err) { return console.error(err); }
       res.json(obj);
     });
-  };
+  }
 
   // Update by id
   update = (req, res) => {
@@ -47,7 +47,7 @@ abstract class BaseCtrl {
       if (err) { return console.error(err); }
       res.sendStatus(200);
     });
-  };
+  }
 
   // Delete by id
   delete = (req, res) => {
@@ -55,7 +55,7 @@ abstract class BaseCtrl {
       if (err) { return console.error(err); }
       res.sendStatus(200);
     });
-  };
+  }
 }
 
 export default BaseCtrl;
