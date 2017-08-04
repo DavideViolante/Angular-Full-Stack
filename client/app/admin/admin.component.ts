@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-admin',
@@ -16,14 +16,14 @@ export class AdminComponent implements OnInit {
 
   constructor(public auth: AuthService,
               public toast: ToastComponent,
-              private userService: UserService) { }
+              private dataService: DataService) { }
 
   ngOnInit() {
     this.getUsers();
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(
+    this.dataService.list('/api/users').subscribe(
       data => this.users = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -31,8 +31,8 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(user) {
-    this.userService.deleteUser(user).subscribe(
-      data => this.toast.setMessage('user deleted successfully.', 'success'),
+    this.dataService.delete('/api/user', user).subscribe(
+      data => this.toast.setMessage('User deleted successfully.', 'success'),
       error => console.log(error),
       () => this.getUsers()
     );
