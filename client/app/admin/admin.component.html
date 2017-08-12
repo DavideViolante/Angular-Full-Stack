@@ -5,10 +5,11 @@
 <div class="card" *ngIf="!isLoading">
   <h4 class="card-header">Registered users ({{users.length}})</h4>
   <div class="card-block">
-    <table class="table table-bordered table-striped">
+    
+    <table class="table table-bordered table-striped table-condensed">
       <thead class="thead-default">
         <tr>
-          <th>Username</th>
+          <th >Username</th>
           <th>Email</th>
           <th>Role</th>
           <th>Actions</th>
@@ -21,10 +22,10 @@
       </tbody>
       <tbody>
         <tr *ngFor="let user of users">
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.role}}</td>
-          <td>
+          <td data-label="Username">{{user.username}}</td>
+          <td data-label="Email">{{user.email}}</td>
+          <td data-label="Role">{{user.role}}</td>
+          <td data-label="Actions">
             <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-trash"></i>
             </button>

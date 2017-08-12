@@ -15,8 +15,8 @@ export class AdminComponent implements OnInit {
   isLoading = true;
 
   constructor(public auth: AuthService,
-              public toast: ToastComponent,
-              private userService: UserService) { }
+    public toast: ToastComponent,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.getUsers();
@@ -31,11 +31,13 @@ export class AdminComponent implements OnInit {
   }
 
   deleteUser(user) {
-    this.userService.deleteUser(user).subscribe(
-      data => this.toast.setMessage('user deleted successfully.', 'success'),
-      error => console.log(error),
-      () => this.getUsers()
-    );
+    if (window.confirm('Are you sure you want to permanently delete this user ?')) {
+      this.userService.deleteUser(user).subscribe(
+        data => this.toast.setMessage('user deleted successfully.', 'success'),
+        error => console.log(error),
+        () => this.getUsers()
+      );
+    }
   }
 
 }
