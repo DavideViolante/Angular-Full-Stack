@@ -8,3 +8,32 @@ body {
 .input-group {
   margin-bottom: 15px;
 }
+
+@media screen and (max-width: 768px) {
+  
+  .table-striped>tbody>tr:nth-of-type(odd){ background-color: #fff;}
+  table {  border: 0;}
+  table caption {  font-size: 1.3em;}
+  table thead {border: none; clip: rect(0 0 0 0);height: 1px;margin: -1px;
+    overflow: hidden;padding: 0;position: absolute;width: 1px;}
+  table tr {  border-bottom: 3px solid #ddd;  display: block;  margin-bottom: .625em;}
+  table td {  display: block;  font-size: .8em;  text-align: left;  text-overflow: ellipsis;  word-wrap: nowrap;white-space: nowrap;}
+  table td:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    width: 50%;
+    text-overflow: ellipsis;
+    word-wrap: nowrap;
+    white-space: nowrap;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  table td:last-child {  border-bottom: 0;}
+  table .btn {  padding: 5px 10px;  font-size: 12px;  line-height: 1.5; border-radius: 3px;}
+
+}
