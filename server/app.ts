@@ -5,11 +5,10 @@ import * as mongoose from 'mongoose';
 import * as path from 'path';
 
 import config from './config/db';
-import Cat from './models/cat.model';
 import setRoutes from './routes';
 
 const app = express();
-app.set('port', (process.env.PORT || 3000));
+app.set('port', 3000);
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 
@@ -18,7 +17,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(morgan('dev'));
 
-mongoose.connect(config.url);
+if (process.env.NODE_ENV === 'test') {
+  mongoose.connect(config.testUrl);
+} else {
+  mongoose.connect(config.url);
+}
+
 const db = mongoose.connection;
 (<any>mongoose).Promise = global.Promise;
 
@@ -32,9 +36,11 @@ db.once('open', () => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 
-  app.listen(app.get('port'), () => {
-    console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
-  });
+  if (!module.parent) {
+    app.listen(app.get('port'), () => {
+      console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
+    });
+  }
 
 });
 
