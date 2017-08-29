@@ -12,7 +12,6 @@
     "predev": "tsc -p server",
     "dev": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon\"",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\"",
-    "test": "",
     "test:client": "ng test",
     "test:server": "tsc -p server && ./node_modules/.bin/mocha --ui bdd --reporter spec --colors dist/server/test",
     "lint": "ng lint",
