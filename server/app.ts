@@ -16,7 +16,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(morgan('dev'));
-mongoose.connect(process.env.MONGODB_URI);
+
+if (process.env.NODE_ENV === 'test') {
+  mongoose.connect(process.env.MONGODB_TEST_URI);
+} else {
+  mongoose.connect(process.env.MONGODB_URI);
+}
+
 const db = mongoose.connection;
 (<any>mongoose).Promise = global.Promise;
 
@@ -30,9 +36,11 @@ db.once('open', () => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
   });
 
-  app.listen(app.get('port'), () => {
-    console.log('Angular Full Stack listening on port ' + app.get('port'));
-  });
+  if (!module.parent) {
+    app.listen(app.get('port'), () => {
+      console.log('Angular Full Stack listening on port ' + app.get('port'));
+    });
+  }
 
 });
 
