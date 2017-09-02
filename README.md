@@ -1,4 +1,4 @@
-# Angular Full Stack [![Dependencies](https://david-dm.org/DavideViolante/Angular2-Full-Stack.svg)](https://david-dm.org/DavideViolante/Angular2-Full-Stack) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
+# Angular Full Stack [![Dependencies](https://david-dm.org/DavideViolante/Angular-Full-Stack.svg)](https://david-dm.org/DavideViolante/Angular2-Full-Stack) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
 
 
 The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). The backend is made from scratch. Whole stack in [TypeScript](https://www.typescriptlang.org).
@@ -6,7 +6,7 @@ The frontend is generated with [Angular CLI](https://github.com/angular/angular-
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](https://www.mongodb.com)): database
 * [**E**xpress.js](http://expressjs.com): backend framework
-* [**A**ngular 4](https://angular.io): frontend framework
+* [**A**ngular 2+](https://angular.io): frontend framework
 * [**N**ode.js](https://nodejs.org): runtime environment
 
 Other tools and technologies used:
@@ -40,7 +40,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 6. `heroku git:remote -a your-app-name`
 7. Download this repo and copy all files into `my-project` folder
 8. Edit `.gitignore` and remove line with `/dist`
-9. Edit in `db.ts` the url of MongoDB server to a real server. You can create a MongoDB server with Heroku or mLab.
+9. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
 10. `npm i`
 11. `ng build -prod` or `ng build -aot -prod`
 12. `tsc -p server`
@@ -56,7 +56,6 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 ## Please open an issue if
 * you have any suggestion to improve this project
 * you noticed any problem or error
-* you have a question
 
 ## To do
 * More tests
@@ -69,7 +68,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 Before running the tests make sure you are serving the app via `npm start`.
 
 ## Running TSLint
-Run `ng lint` to execute the linter via [TSLint](https://palantir.github.io/tslint/).
+Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter via [TSLint](https://palantir.github.io/tslint/).
 
 ## Further help
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
