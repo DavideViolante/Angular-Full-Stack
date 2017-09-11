@@ -1,13 +1,22 @@
 import * as dotenv from 'dotenv';
 import * as jwt from 'jsonwebtoken';
-
+import * as ex from 'express';
 import User from '../models/user';
 import BaseCtrl from './base';
 
 export default class UserCtrl extends BaseCtrl {
-  model = User;
+  //model = User;
+  constructor() {
+    super(User, 'user');
+  }
+
+  public setRoutes(router: ex.Router) {
+     router.route('/login').post(this.login);
+     super.setRoutes(router);
+  }
 
   login = (req, res) => {
+
     this.model.findOne({ email: req.body.email }, (err, user) => {
       if (!user) { return res.sendStatus(403); }
       user.comparePassword(req.body.password, (error, isMatch) => {
