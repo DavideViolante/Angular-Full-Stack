@@ -2,20 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { DataService } from '../services/data.service';
+import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-cats',
+  templateUrl: './cats.component.html',
+  styleUrls: ['./cats.component.scss']
 })
-export class HomeComponent implements OnInit {
-
-  cats = [];
-  isLoading = true;
+export class CatsComponent implements OnInit {
 
   cat = {};
+  cats = [];
+  isLoading = true;
   isEditing = false;
 
   addCatForm: FormGroup;
@@ -23,14 +22,13 @@ export class HomeComponent implements OnInit {
   age = new FormControl('', Validators.required);
   weight = new FormControl('', Validators.required);
 
-  constructor(private http: Http,
-              private dataService: DataService,
-              public toast: ToastComponent,
-              private formBuilder: FormBuilder) { }
+  constructor(private catService: CatService,
+              private formBuilder: FormBuilder,
+              private http: Http,
+              public toast: ToastComponent) { }
 
   ngOnInit() {
     this.getCats();
-
     this.addCatForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
@@ -39,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCats() {
-    this.dataService.getCats().subscribe(
+    this.catService.getCats().subscribe(
       data => this.cats = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -47,7 +45,7 @@ export class HomeComponent implements OnInit {
   }
 
   addCat() {
-    this.dataService.addCat(this.addCatForm.value).subscribe(
+    this.catService.addCat(this.addCatForm.value).subscribe(
       res => {
         const newCat = res.json();
         this.cats.push(newCat);
@@ -72,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
 
   editCat(cat) {
-    this.dataService.editCat(cat).subscribe(
+    this.catService.editCat(cat).subscribe(
       res => {
         this.isEditing = false;
         this.cat = cat;
@@ -84,9 +82,9 @@ export class HomeComponent implements OnInit {
 
   deleteCat(cat) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.dataService.deleteCat(cat).subscribe(
+      this.catService.deleteCat(cat).subscribe(
         res => {
-          const pos = this.cats.map(elem => { return elem._id; }).indexOf(cat._id);
+          const pos = this.cats.map(elem => elem._id).indexOf(cat._id);
           this.cats.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },

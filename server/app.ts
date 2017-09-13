@@ -1,26 +1,26 @@
 import * as bodyParser from 'body-parser';
+import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
 
-import config from './config/db';
 import setRoutes from './routes';
 
 const app = express();
+dotenv.load({ path: '.env' });
 app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(morgan('dev'));
 
 if (process.env.NODE_ENV === 'test') {
-  mongoose.connect(config.testUrl);
+  mongoose.connect(process.env.MONGODB_TEST_URI);
 } else {
-  mongoose.connect(config.url);
+  mongoose.connect(process.env.MONGODB_URI);
 }
 
 const db = mongoose.connection;
@@ -38,7 +38,7 @@ db.once('open', () => {
 
   if (!module.parent) {
     app.listen(app.get('port'), () => {
-      console.log('Angular 2 Full Stack listening on port ' + app.get('port'));
+      console.log('Angular Full Stack listening on port ' + app.get('port'));
     });
   }
 
