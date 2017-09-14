@@ -68,7 +68,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 Before running the tests make sure you are serving the app via `npm start`.
 
 ## Running backend tests
-Run `mongod` to run an instance of MongoDB daemon and then run `npm run testber` to execute the backend tests via [Mocha](https://mochajs.org/).
+Run `mongod` to run an instance of MongoDB daemon and then run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/).
 
 ## Running TSLint
 Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter via [TSLint](https://palantir.github.io/tslint/).
