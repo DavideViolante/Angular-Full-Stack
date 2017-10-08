@@ -43,7 +43,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 9. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
 10. `npm i`
 11. `ng build -prod` or `ng build -aot -prod`
-12. `tsc -p server`
+12. `npm run predev`
 13. `git add .`
 14. `git commit -m "Going to Heroku"`
 15. `git push heroku master`
