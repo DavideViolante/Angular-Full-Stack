@@ -9,9 +9,9 @@ abstract class BaseCtrl {
         'message' : 'UnauthorizedError: private'
       });
     } else {
-      this.model.find({}, (err, docs) => {
+      this.model.find({}, (err, items) => {
         if (err) { return console.error(err); }
-        res.json(docs);
+        res.json(items);
       });
     }
   };
@@ -92,6 +92,7 @@ abstract class BaseCtrl {
       });
     }
   };
+
 }
 
 export default BaseCtrl;
