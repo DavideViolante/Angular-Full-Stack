@@ -32,10 +32,10 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 `npm run prod`: run the project with a production bundle and AOT compilation listening at [localhost:3000](http://localhost:3000) 
 
 ## Deploy (Heroku)
-1. Go to Heroku and create a new app (eg: your-app-name)
+1. Go to Heroku and create a new app (eg: `your-app-name`)
 2. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
 3. `heroku login`
-4. `mkdir your-app-name` && `cd your-app-name`
+4. `mkdir your-app-name && cd your-app-name`
 5. `git init`
 6. `heroku git:remote -a your-app-name`
 7. Download this repo and copy all files into `your-app-name` folder
