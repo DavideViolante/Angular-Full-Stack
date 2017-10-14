@@ -17,7 +17,7 @@
     "dev": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\"",
     "test": "ng test",
-    "testbe": "tsc -p server && node_modules/.bin/mocha dist/server/test",
+    "testbe": "tsc -p server && mocha dist/server/test",
     "lint": "ng lint",
     "lintbe": "tslint server/**/**.ts{,x}",
     "e2e": "ng e2e"
