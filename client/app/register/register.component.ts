@@ -6,23 +6,29 @@ import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  username = new FormControl('', [Validators.required,
-                                  Validators.minLength(2),
-                                  Validators.maxLength(30),
-                                  Validators.pattern('[a-zA-Z0-9_-\\s]*')]);
-  email = new FormControl('', [Validators.required,
-                               Validators.minLength(3),
-                               Validators.maxLength(100)]);
-  password = new FormControl('', [Validators.required,
-                                  Validators.minLength(6)]);
-
-  role = new FormControl('', [Validators.required]);
+  username = new FormControl('', [
+    Validators.required,
+    Validators.minLength(2),
+    Validators.maxLength(30),
+    Validators.pattern('[a-zA-Z0-9_-\\s]*')
+  ]);
+  email = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(100)
+  ]);
+  password = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6)
+  ]);
+  role = new FormControl('', [
+    Validators.required
+  ]);
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,

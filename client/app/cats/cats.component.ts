@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
@@ -24,7 +23,6 @@ export class CatsComponent implements OnInit {
 
   constructor(private catService: CatService,
               private formBuilder: FormBuilder,
-              private http: Http,
               public toast: ToastComponent) { }
 
   ngOnInit() {

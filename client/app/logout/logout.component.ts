@@ -3,8 +3,7 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-logout',
-  template: '',
-  styles: ['']
+  template: ''
 })
 export class LogoutComponent implements OnInit {
 

@@ -7,17 +7,20 @@ import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  email = new FormControl('', [Validators.required,
-                                       Validators.minLength(3),
-                                       Validators.maxLength(100)]);
-  password = new FormControl('', [Validators.required,
-                                          Validators.minLength(6)]);
+  email = new FormControl('', [
+    Validators.required,
+    Validators.minLength(3),
+    Validators.maxLength(100)
+  ]);
+  password = new FormControl('', [
+    Validators.required,
+    Validators.minLength(6)
+  ]);
 
   constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
