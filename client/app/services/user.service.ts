@@ -1,47 +1,42 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class UserService {
 
-  private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
-  private options = new RequestOptions({ headers: this.headers });
-
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   register(user): Observable<any> {
-    return this.http.post('/api/user', JSON.stringify(user), this.options);
+    return this.http.post('/api/user', JSON.stringify(user));
   }
 
   login(credentials): Observable<any> {
-    return this.http.post('/api/login', JSON.stringify(credentials), this.options);
+    return this.http.post('/api/login', JSON.stringify(credentials));
   }
 
   getUsers(): Observable<any> {
-    return this.http.get('/api/users').map(res => res.json());
+    return this.http.get('/api/users');
   }
 
   countUsers(): Observable<any> {
-    return this.http.get('/api/users/count').map(res => res.json());
+    return this.http.get('/api/users/count');
   }
 
   addUser(user): Observable<any> {
-    return this.http.post('/api/user', JSON.stringify(user), this.options);
+    return this.http.post('/api/user', JSON.stringify(user));
   }
 
   getUser(user): Observable<any> {
-    return this.http.get(`/api/user/${user._id}`).map(res => res.json());
+    return this.http.get(`/api/user/${user._id}`);
   }
 
   editUser(user): Observable<any> {
-    return this.http.put(`/api/user/${user._id}`, JSON.stringify(user), this.options);
+    return this.http.put(`/api/user/${user._id}`, JSON.stringify(user));
   }
 
   deleteUser(user): Observable<any> {
-    return this.http.delete(`/api/user/${user._id}`, this.options);
+    return this.http.delete(`/api/user/${user._id}`);
   }
 
 }
