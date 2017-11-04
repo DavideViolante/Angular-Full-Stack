@@ -42,13 +42,16 @@
   },
   "lint": [
     {
-      "project": "client/tsconfig.app.json"
+      "project": "client/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "client/tsconfig.spec.json"
+      "project": "client/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "e2e/tsconfig.e2e.json"
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {
