@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelper } from 'angular2-jwt';
-
+ import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 import { UserService } from '../services/user.service';
 
 @Injectable()
@@ -14,7 +15,7 @@ export class AuthService {
   currentUser = { _id: '', username: '', role: '' };
 
   constructor(private userService: UserService,
-              private router: Router) {
+    private router: Router) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
@@ -23,7 +24,7 @@ export class AuthService {
   }
 
   login(emailAndPassword) {
-    return this.userService.login(emailAndPassword).map(res => res.json()).map(
+    return this.userService.login(emailAndPassword).map (res => res.json()).map(
       res => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
