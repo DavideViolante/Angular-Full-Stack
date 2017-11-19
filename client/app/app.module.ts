@@ -16,6 +16,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     RoutingModule,
-    SharedModule
+    SharedModule,
+    AuthModule
   ],
   providers: [
     AuthService,
