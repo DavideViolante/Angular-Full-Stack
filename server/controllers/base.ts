@@ -6,7 +6,7 @@ abstract class BaseCtrl {
   getAll = (req, res) => {
     this.model.find({}, (err, docs) => {
       if (err) { return console.error(err); }
-      res.json(docs);
+      res.status(200).json(docs);
     });
   }
 
@@ -14,7 +14,7 @@ abstract class BaseCtrl {
   count = (req, res) => {
     this.model.count((err, count) => {
       if (err) { return console.error(err); }
-      res.json(count);
+      res.status(200).json(count);
     });
   }
 
@@ -35,25 +35,25 @@ abstract class BaseCtrl {
 
   // Get by id
   get = (req, res) => {
-    this.model.findOne({ _id: req.params.id }, (err, obj) => {
+    this.model.findOne({ _id: req.params.id }, (err, item) => {
       if (err) { return console.error(err); }
-      res.json(obj);
+      res.status(200).json(item);
     });
   }
 
   // Update by id
   update = (req, res) => {
-    this.model.findOneAndUpdate({ _id: req.params.id }, req.body, (err) => {
+    this.model.findOneAndUpdate({ _id: req.params.id }, req.body, (err, item) => {
       if (err) { return console.error(err); }
-      res.sendStatus(200);
+      res.status(200).json(item);
     });
   }
 
   // Delete by id
   delete = (req, res) => {
-    this.model.findOneAndRemove({ _id: req.params.id }, (err) => {
+    this.model.findOneAndRemove({ _id: req.params.id }, (err, item) => {
       if (err) { return console.error(err); }
-      res.sendStatus(200);
+      res.status(200).json(item);
     });
   }
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
-import { AuthService } from '../services/auth.service';
-import { ToastComponent } from '../shared/toast/toast.component';
+import {AuthService} from '../services/auth.service';
+import {ToastComponent} from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
               private router: Router,
-              public toast: ToastComponent) { }
+              public toast: ToastComponent) {
+  }
 
   ngOnInit() {
     if (this.auth.loggedIn) {
@@ -38,17 +39,20 @@ export class LoginComponent implements OnInit {
   }
 
   setClassEmail() {
-    return { 'has-danger': !this.email.pristine && !this.email.valid };
+    return {'has-danger': !this.email.pristine && !this.email.valid};
   }
+
   setClassPassword() {
-    return { 'has-danger': !this.password.pristine && !this.password.valid };
+    return {'has-danger': !this.password.pristine && !this.password.valid};
   }
 
   login() {
-    this.auth.login(this.loginForm.value).subscribe(
-      res => this.router.navigate(['/']),
-      error => this.toast.setMessage('invalid email or password!', 'danger')
-    );
+    const loggedIn = this.auth.login(this.loginForm.value);
+    if (loggedIn) {
+      this.router.navigate(['/']);
+    } else {
+      this.toast.setMessage('invalid email or password!', 'danger');
+    }
   }
 
 }

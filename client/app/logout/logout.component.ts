@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-logout',
-  template: ''
+  template: '<h1>logging out...</h1>'
 })
 export class LogoutComponent implements OnInit {
 
