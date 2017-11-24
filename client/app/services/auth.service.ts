@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { JwtHelper } from 'angular2-jwt';
 
 import { UserService } from '../services/user.service';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
