@@ -5,6 +5,8 @@ import { JwtHelper } from 'angular2-jwt';
 import { UserService } from './user.service';
 import { User } from './models/user';
 
+import 'rxjs/add/operator/map';
+
 @Injectable()
 export class AuthService {
   loggedIn = false;
@@ -24,14 +26,13 @@ export class AuthService {
   }
 
   login(emailAndPassword) {
-    return this.userService.login(emailAndPassword).subscribe(
+    return this.userService.login(emailAndPassword).map(
       res => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
         return this.loggedIn;
-      },
-      err => false,
+      }
     );
   }
 
