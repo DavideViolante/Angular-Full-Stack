@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  register(user): Observable<User> {
+  register(user: User): Observable<User> {
     return this.http.post<User>('/api/user', user);
   }
 
@@ -21,8 +21,8 @@ export class UserService {
     return this.http.get<User[]>('/api/users');
   }
 
-  countUsers(): Observable<any> {
-    return this.http.get('/api/users/count');
+  countUsers(): Observable<string> {
+    return this.http.get<string>('/api/users/count');
   }
 
   addUser(user: User): Observable<User> {
