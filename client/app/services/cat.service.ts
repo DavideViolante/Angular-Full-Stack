@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import {Cat} from './models/cat';
+import { Cat } from './models/cat';
 
 @Injectable()
 export class CatService {

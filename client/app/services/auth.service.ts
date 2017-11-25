@@ -1,10 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {JwtHelper} from 'angular2-jwt';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
 
-import {UserService} from './user.service';
-import 'rxjs/add/operator/map';
-import {User} from './models/user';
+import { UserService } from './user.service';
+import { User } from './models/user';
 
 @Injectable()
 export class AuthService {

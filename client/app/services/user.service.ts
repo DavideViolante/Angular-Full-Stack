@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import {User} from './models/user';
-import {Token} from './models/token';
+import { User } from './models/user';
+import { Token } from './models/token';
 
 @Injectable()
 export class UserService {
