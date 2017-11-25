@@ -54,7 +54,7 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  enableEditing(cat) {
+  enableEditing(cat: Cat) {
     this.isEditing = true;
     this.cat = cat;
   }
@@ -78,7 +78,7 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  deleteCat(cat) {
+  deleteCat(cat: Cat) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.catService.deleteCat(cat).subscribe(
         () => {
