@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import {User} from '../services/models/user';
 
 @Component({
   selector: 'app-admin',
@@ -10,7 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class AdminComponent implements OnInit {
 
-  users = [];
+  users: User[] = [];
   isLoading = true;
 
   constructor(public auth: AuthService,
