@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
-import {Cat} from '../services/models/cat';
+import { Cat } from '../services/models/cat';
 
 @Component({
   selector: 'app-cats',
@@ -26,7 +26,7 @@ export class CatsComponent implements OnInit {
               private formBuilder: FormBuilder,
               public toast: ToastComponent) { }
 
-  ngOnInit(): void  {
+  ngOnInit() {
     this.getCats();
     this.addCatForm = this.formBuilder.group({
       name: this.name,
@@ -35,7 +35,7 @@ export class CatsComponent implements OnInit {
     });
   }
 
-  getCats(): void  {
+  getCats() {
     this.catService.getCats().subscribe(
       data => this.cats = data,
       error => console.log(error),
@@ -43,7 +43,7 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  addCat(): void  {
+  addCat() {
     this.catService.addCat(this.addCatForm.value).subscribe(
       res => {
         this.cats.push(res);
@@ -54,12 +54,12 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  enableEditing(cat): void  {
+  enableEditing(cat) {
     this.isEditing = true;
     this.cat = cat;
   }
 
-  cancelEditing(): void  {
+  cancelEditing() {
     this.isEditing = false;
     this.cat = new Cat();
     this.toast.setMessage('item editing cancelled.', 'warning');
@@ -67,7 +67,7 @@ export class CatsComponent implements OnInit {
     this.getCats();
   }
 
-  editCat(cat: Cat): void {
+  editCat(cat: Cat) {
     this.catService.editCat(cat).subscribe(
       () => {
         this.isEditing = false;
@@ -78,7 +78,7 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  deleteCat(cat): void  {
+  deleteCat(cat) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.catService.deleteCat(cat).subscribe(
         () => {

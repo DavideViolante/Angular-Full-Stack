@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
               private router: Router,
-              public toast: ToastComponent) {
-  }
+              public toast: ToastComponent) { }
 
   ngOnInit() {
     if (this.auth.loggedIn) {
