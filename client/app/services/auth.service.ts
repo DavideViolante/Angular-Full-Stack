@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { JwtHelper } from 'angular2-jwt';
 
 import { UserService } from './user.service';
-import { User } from './models/user';
+import { User } from '../shared/models/user.model';
 
 import 'rxjs/add/operator/map';
 

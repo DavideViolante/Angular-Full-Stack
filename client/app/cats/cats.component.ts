@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
-import { Cat } from '../services/models/cat';
+import { Cat } from '../shared/models/cat.model';
 
 @Component({
   selector: 'app-cats',
