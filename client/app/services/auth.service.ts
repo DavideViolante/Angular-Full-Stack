@@ -12,7 +12,7 @@ export class AuthService {
 
   jwtHelper: JwtHelper = new JwtHelper();
 
-  currentUser = new User;
+  currentUser: User = new User();
 
   constructor(private userService: UserService,
               private router: Router) {
@@ -30,9 +30,8 @@ export class AuthService {
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
         return this.loggedIn;
-      }, () => {
-        return false;
-      }
+      },
+      err => false,
     );
   }
 
@@ -40,7 +39,7 @@ export class AuthService {
     localStorage.removeItem('token');
     this.loggedIn = false;
     this.isAdmin = false;
-    this.currentUser = new User;
+    this.currentUser = new User();
     this.router.navigate(['/']);
   }
 
