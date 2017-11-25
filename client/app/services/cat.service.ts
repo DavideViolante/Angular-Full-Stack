@@ -13,8 +13,8 @@ export class CatService {
     return this.http.get<Cat[]>('/api/cats');
   }
 
-  countCats(): Observable<string> {
-    return this.http.get<string>('/api/cats/count');
+  countCats(): Observable<number> {
+    return this.http.get<number>('/api/cats/count');
   }
 
   addCat(cat: Cat): Observable<Cat> {
