@@ -40,7 +40,7 @@ describe('Cats', () => {
     });
 
     it('should create new cat', done => {
-      const cat = { name: 'Fluffy', weight: 4, age: 2 };
+      const cat = new Cat({ name: 'Fluffy', weight: 4, age: 2 });
       chai.request(app)
         .post('/api/cat')
         .send(cat)
