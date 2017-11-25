@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from './models/user';
-import { Token } from './models/token';
 
 @Injectable()
 export class UserService {
@@ -13,8 +12,8 @@ export class UserService {
     return this.http.post<User>('/api/user', user);
   }
 
-  login(credentials): Observable<Token> {
-    return this.http.post<Token>('/api/login', credentials);
+  login(credentials): Observable<any> {
+    return this.http.post<any>('/api/login', credentials);
   }
 
   getUsers(): Observable<User[]> {
