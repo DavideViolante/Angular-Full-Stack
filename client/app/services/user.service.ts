@@ -33,12 +33,12 @@ export class UserService {
     return this.http.get<User>(`/api/user/${user._id}`);
   }
 
-  editUser(user: User): Observable<User> {
-    return this.http.put<User>(`/api/user/${user._id}`, user);
+  editUser(user: User): Observable<string> {
+    return this.http.put(`/api/user/${user._id}`, user, { responseType: 'text' });
   }
 
-  deleteUser(user: User): Observable<User> {
-    return this.http.delete<User>(`/api/user/${user._id}`);
+  deleteUser(user: User): Observable<string> {
+    return this.http.delete(`/api/user/${user._id}`, { responseType: 'text' });
   }
 
 }

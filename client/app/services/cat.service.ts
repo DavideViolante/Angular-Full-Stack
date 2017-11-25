@@ -25,12 +25,12 @@ export class CatService {
     return this.http.get<Cat>(`/api/cat/${cat._id}`);
   }
 
-  editCat(cat: Cat): Observable<Cat> {
-    return this.http.put<Cat>(`/api/cat/${cat._id}`, cat);
+  editCat(cat: Cat): Observable<string> {
+    return this.http.put(`/api/cat/${cat._id}`, cat, { responseType: 'text' });
   }
 
-  deleteCat(cat: Cat): Observable<Cat> {
-    return this.http.delete<Cat>(`/api/cat/${cat._id}`);
+  deleteCat(cat: Cat): Observable<string> {
+    return this.http.delete(`/api/cat/${cat._id}`, { responseType: 'text' });
   }
 
 }
