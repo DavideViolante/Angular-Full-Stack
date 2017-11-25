@@ -45,7 +45,7 @@ abstract class BaseCtrl {
   update = (req, res) => {
     this.model.findOneAndUpdate({ _id: req.params.id }, req.body, (err, item) => {
       if (err) { return console.error(err); }
-      res.status(200).json(item);
+      res.sendStatus(200);
     });
   }
 
@@ -53,7 +53,7 @@ abstract class BaseCtrl {
   delete = (req, res) => {
     this.model.findOneAndRemove({ _id: req.params.id }, (err, item) => {
       if (err) { return console.error(err); }
-      res.status(200).json(item);
+      res.sendStatus(200);
     });
   }
 }
