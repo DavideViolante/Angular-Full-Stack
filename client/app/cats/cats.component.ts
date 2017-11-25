@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { Cat } from '../shared/models/cat.model';
 
 @Component({
   selector: 'app-cats',
@@ -11,8 +12,8 @@ import { ToastComponent } from '../shared/toast/toast.component';
 })
 export class CatsComponent implements OnInit {
 
-  cat = {};
-  cats = [];
+  cat = new Cat();
+  cats: Cat[] = [];
   isLoading = true;
   isEditing = false;
 
@@ -45,8 +46,7 @@ export class CatsComponent implements OnInit {
   addCat() {
     this.catService.addCat(this.addCatForm.value).subscribe(
       res => {
-        const newCat = res.json();
-        this.cats.push(newCat);
+        this.cats.push(res);
         this.addCatForm.reset();
         this.toast.setMessage('item added successfully.', 'success');
       },
@@ -54,22 +54,22 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  enableEditing(cat) {
+  enableEditing(cat: Cat) {
     this.isEditing = true;
     this.cat = cat;
   }
 
   cancelEditing() {
     this.isEditing = false;
-    this.cat = {};
+    this.cat = new Cat();
     this.toast.setMessage('item editing cancelled.', 'warning');
     // reload the cats to reset the editing
     this.getCats();
   }
 
-  editCat(cat) {
+  editCat(cat: Cat) {
     this.catService.editCat(cat).subscribe(
-      res => {
+      () => {
         this.isEditing = false;
         this.cat = cat;
         this.toast.setMessage('item edited successfully.', 'success');
@@ -78,10 +78,10 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  deleteCat(cat) {
+  deleteCat(cat: Cat) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.catService.deleteCat(cat).subscribe(
-        res => {
+        () => {
           const pos = this.cats.map(elem => elem._id).indexOf(cat._id);
           this.cats.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { UserService } from '../services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
@@ -47,9 +48,11 @@ export class RegisterComponent implements OnInit {
   setClassUsername() {
     return { 'has-danger': !this.username.pristine && !this.username.valid };
   }
+
   setClassEmail() {
     return { 'has-danger': !this.email.pristine && !this.email.valid };
   }
+
   setClassPassword() {
     return { 'has-danger': !this.password.pristine && !this.password.valid };
   }
