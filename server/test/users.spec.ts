@@ -40,7 +40,7 @@ describe('Users', () => {
     });
 
     it('should create new user', done => {
-      const user = { username: 'Dave', email: 'dave@example.com', role: 'user' };
+      const user = new User({ username: 'Dave', email: 'dave@example.com', role: 'user' });
       chai.request(app)
         .post('/api/user')
         .send(user)

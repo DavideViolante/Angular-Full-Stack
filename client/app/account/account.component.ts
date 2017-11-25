@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-account',
@@ -9,7 +10,7 @@ import { UserService } from '../services/user.service';
 })
 export class AccountComponent implements OnInit {
 
-  user = {};
+  user: User;
   isLoading = true;
 
   constructor(private auth: AuthService,
@@ -28,7 +29,7 @@ export class AccountComponent implements OnInit {
     );
   }
 
-  save(user) {
+  save(user: User) {
     this.userService.editUser(user).subscribe(
       res => this.toast.setMessage('account settings saved!', 'success'),
       error => console.log(error)
