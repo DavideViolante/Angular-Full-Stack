@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(
+    this.userService.getAll().subscribe(
       data => this.users = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
 
   deleteUser(user: User) {
     if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
-      this.userService.deleteUser(user).subscribe(
+      this.userService.delete(user).subscribe(
         data => this.toast.setMessage('user deleted successfully.', 'success'),
         error => console.log(error),
         () => this.getUsers()
