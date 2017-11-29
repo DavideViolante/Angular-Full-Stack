@@ -2,7 +2,7 @@ import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as morgan from 'morgan';
-import * as mongoose from 'mongoose';
+import mongoose = require('mongoose');
 import * as path from 'path';
 
 import setRoutes from './routes';
@@ -26,25 +26,26 @@ if (process.env.NODE_ENV === 'test') {
 mongoose.Promise = global.Promise;
 const mongodb = mongoose.connect(mongodbURI, { useMongoClient: true });
 
-mongodb
-  .then((db) => {
-    console.log('Connected to MongoDB on', db.host + ':' + db.port);
 
-    setRoutes(app);
+mongodb.then(() => {
+  const db: any = mongoose.connection;
+  console.log('Connected to MongoDB on', db.host + ':' + db.port);
 
-    app.get('/*', function(req, res) {
-      res.sendFile(path.join(__dirname, '../public/index.html'));
+  setRoutes(app);
+
+  app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+  });
+
+  if (!module.parent) {
+    app.listen(app.get('port'), () => {
+      console.log('Angular Full Stack listening on port ' + app.get('port'));
     });
+  }
 
-    if (!module.parent) {
-      app.listen(app.get('port'), () => {
-        console.log('Angular Full Stack listening on port ' + app.get('port'));
-      });
-    }
-
-  })
+})
   .catch((err) => {
     console.error(err);
-});
+  });
 
 export { app };

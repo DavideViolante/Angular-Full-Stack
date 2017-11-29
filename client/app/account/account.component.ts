@@ -14,15 +14,15 @@ export class AccountComponent implements OnInit {
   isLoading = true;
 
   constructor(private auth: AuthService,
-              public toast: ToastComponent,
-              private userService: UserService) { }
+    public toast: ToastComponent,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.getUser();
   }
 
   getUser() {
-    this.userService.getUser(this.auth.currentUser).subscribe(
+    this.userService.get(this.auth.currentUser).subscribe(
       data => this.user = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -30,7 +30,7 @@ export class AccountComponent implements OnInit {
   }
 
   save(user: User) {
-    this.userService.editUser(user).subscribe(
+    this.userService.edit(user).subscribe(
       res => this.toast.setMessage('account settings saved!', 'success'),
       error => console.log(error)
     );

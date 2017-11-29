@@ -1,6 +1,24 @@
-abstract class BaseCtrl {
+import * as M from 'mongoose';
+import * as Ex from 'express';
 
-  abstract model: any;
+abstract class BaseCtrl {
+  protected model: M.Model<any>;
+  protected baseRouterURI: string;
+  protected baseRouterURIPlural: string;
+  constructor(schemaModel: M.Model<M.Document>, baseuri: string) {
+    this.model = schemaModel;
+    this.baseRouterURI = baseuri;
+    this.baseRouterURIPlural = baseuri + 's';
+  }
+
+  public setRoutes(router: Ex.Router) {
+    router.route(`/${this.baseRouterURIPlural}`).get(this.getAll);
+    router.route(`/${this.baseRouterURIPlural}/count`).get(this.count);
+    router.route(`/${this.baseRouterURI}`).post(this.insert);
+    router.route(`/${this.baseRouterURI}/:id`).get(this.get);
+    router.route(`/${this.baseRouterURI}/:id`).put(this.update);
+    router.route(`/${this.baseRouterURI}/:id`).delete(this.delete);
+  }
 
   // Get all
   getAll = (req, res) => {

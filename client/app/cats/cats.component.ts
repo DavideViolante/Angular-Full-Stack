@@ -36,7 +36,7 @@ export class CatsComponent implements OnInit {
   }
 
   getCats() {
-    this.catService.getCats().subscribe(
+    this.catService.getAll().subscribe(
       data => this.cats = data,
       error => console.log(error),
       () => this.isLoading = false
@@ -44,7 +44,7 @@ export class CatsComponent implements OnInit {
   }
 
   addCat() {
-    this.catService.addCat(this.addCatForm.value).subscribe(
+    this.catService.add(this.addCatForm.value).subscribe(
       res => {
         this.cats.push(res);
         this.addCatForm.reset();
@@ -68,7 +68,7 @@ export class CatsComponent implements OnInit {
   }
 
   editCat(cat: Cat) {
-    this.catService.editCat(cat).subscribe(
+    this.catService.edit(cat).subscribe(
       () => {
         this.isEditing = false;
         this.cat = cat;
@@ -80,7 +80,7 @@ export class CatsComponent implements OnInit {
 
   deleteCat(cat: Cat) {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.catService.deleteCat(cat).subscribe(
+      this.catService.delete(cat).subscribe(
         () => {
           const pos = this.cats.map(elem => elem._id).indexOf(cat._id);
           this.cats.splice(pos, 1);
