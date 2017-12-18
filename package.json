@@ -7,7 +7,7 @@
   "angular-cli": {},
   "engines": {
     "node": "8.9.3",
-    "npm": "5.5.1"
+    "npm": "5.6.0"
   },
   "scripts": {
     "ng": "ng",
