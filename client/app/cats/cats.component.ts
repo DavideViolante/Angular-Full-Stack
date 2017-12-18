@@ -8,7 +8,7 @@ import { Cat } from '../shared/models/cat.model';
 @Component({
   selector: 'app-cats',
   templateUrl: './cats.component.html',
-  styleUrls: ['./cats.component.css']
+  styleUrls: ['./cats.component.scss']
 })
 export class CatsComponent implements OnInit {
 
