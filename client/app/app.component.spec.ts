@@ -10,14 +10,14 @@ describe('Component: App', () => {
   let fixture: ComponentFixture<AppComponent>;
   let authService: AuthService;
   let authServiceStub: {
-    loggedIn: boolean,
+    // loggedIn: boolean,
     isAdmin: boolean,
     currentUser: any
   };
 
   beforeEach(async(() => {
     authServiceStub = {
-      loggedIn: false,
+      // loggedIn: false,
       isAdmin: false,
       currentUser: { username: 'Tester' }
     };
@@ -52,7 +52,7 @@ describe('Component: App', () => {
   });
 
   it('should display the navigation bar correctly for logged users', () => {
-    authService.loggedIn = true;
+    // authService.loggedIn = true;
     fixture.detectChanges();
     const de = fixture.debugElement.queryAll(By.css('a'));
     expect(de.length).toBe(4);
@@ -67,7 +67,7 @@ describe('Component: App', () => {
   });
 
   it('should display the navigation bar correctly for admin users', () => {
-    authService.loggedIn = true;
+    // authService.loggedIn = true;
     authService.isAdmin = true;
     fixture.detectChanges();
     const de = fixture.debugElement.queryAll(By.css('a'));

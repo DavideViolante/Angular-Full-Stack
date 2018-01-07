@@ -5,6 +5,7 @@ import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
 
+import setAuth from './auth';
 import setRoutes from './routes';
 
 const app = express();
@@ -30,6 +31,7 @@ mongodb
   .then((db) => {
     console.log('Connected to MongoDB on', db.host + ':' + db.port);
 
+    setAuth(app);
     setRoutes(app);
 
     app.get('/*', function(req, res) {

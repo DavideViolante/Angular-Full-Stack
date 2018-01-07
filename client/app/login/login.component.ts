@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
               public toast: ToastComponent) { }
 
   ngOnInit() {
-    if (this.auth.loggedIn) {
+    if (this.auth.isAuthenticated()) {
       this.router.navigate(['/']);
     }
     this.loginForm = this.formBuilder.group({

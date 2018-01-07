@@ -11,12 +11,12 @@
           <th>Name</th>
           <th>Age</th>
           <th>Weight</th>
-          <th>Actions</th>
+          <th *ngIf="auth.isAuthenticated()">Actions</th>
         </tr>
       </thead>
       <tbody *ngIf="cats.length === 0">
         <tr>
-          <td colspan="4">There are no cats in the DB. Add a new cat below.</td>
+          <td colspan="4">There are no cats in the DB. <span *ngIf="auth.isAuthenticated()">Add a new cat below.</span></td>
         </tr>  
       </tbody>
       <tbody *ngIf="!isEditing">
@@ -24,7 +24,7 @@
           <td>{{cat.name}}</td>
           <td>{{cat.age}}</td>
           <td>{{cat.weight}}</td>
-          <td>
+          <td *ngIf="auth.isAuthenticated()">
             <button class="btn btn-sm btn-warning" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
             <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
           </td>
@@ -53,7 +53,7 @@
   </div>
 </div>
 
-<div class="card" *ngIf="!isEditing">
+<div class="card" *ngIf="!isEditing && auth.isAuthenticated()">
   <h4 class="card-header">Add new cat</h4>
   <div class="card-block">
     <form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="addCat()" style="text-align:center">
