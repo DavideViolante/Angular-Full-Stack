@@ -1,0 +1,56 @@
+
+
+  <app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">No of Cat Breeds: ({{catBreeds.length}})</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+      </thead>
+      <tbody *ngIf="catBreeds.length === 0">
+        <tr>
+          <td colspan="4">There are no cat breeds in the DB. Add a new cat brred below.</td>
+        </tr>  
+      </tbody>
+      <tbody *ngIf="!isEditing">
+        <tr *ngFor="let catBreed of catBreeds">
+          <td>{{catBreed.name}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="enableEditing(catBreed)"><i class="fa fa-pencil"></i> Edit</button> 
+            <button class="btn btn-sm btn-danger" (click)="deleteCatBreed(catBreed)"><i class="fa fa-trash"></i> Delete</button>
+          </td> 
+        </tr>  
+      </tbody>
+      <tbody *ngIf="isEditing">
+        <tr>
+          <td colspan="4">
+            <form class="form-inline" #form="ngForm" (ngSubmit)="editCatBreed(catBreed)" style="display:inline">
+              <div class="form-group">
+                <input class="form-control" type="text" name="name" [(ngModel)]="catBreed.name" placeholder="Name" required>
+              </div>
+              
+              <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
+            </form>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+          </td>
+        </tr>
+      </tbody> 
+    </table>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isEditing">
+  <h4 class="card-header">Add new cat</h4>
+  <div class="card-block">
+    <form class="form-inline" [formGroup]="addCatBreedForm" (ngSubmit)="addCatBreed()" style="text-align:center">
+      <div class="form-group">
+        <input class="form-control" type="text" name="name" formControlName="name" placeholder="Name">
+      </div>
+     
+      <button class="btn btn-primary" type="submit" [disabled]="!addCatBreedForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+    </form>
+  </div>
+</div>

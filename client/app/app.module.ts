@@ -16,7 +16,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import { CatsBreedComponent } from './catsbreed/catsBreed.component';
+import { CatBreedService } from './services/catBreed.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LogoutComponent,
     AccountComponent,
     AdminComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CatsBreedComponent
   ],
   imports: [
     RoutingModule,
@@ -38,7 +40,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AuthGuardLogin,
     AuthGuardAdmin,
     CatService,
-    UserService
+    UserService,
+    CatBreedService
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
