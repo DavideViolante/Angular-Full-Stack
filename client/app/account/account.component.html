@@ -4,19 +4,25 @@
 
 <div class="card" *ngIf="!isLoading">
   <h4 class="card-header">Account settings</h4>
-  <div class="card-block">
+  <div class="card-body">
     <form #accountForm="ngForm" (ngSubmit)="save(user)">
       <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+        </div>
         <input class="form-control" type="text" name="username" [(ngModel)]="user.username" placeholder="Username" required>
       </div>
       <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+        </div>
         <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email" required>
       </div>
       <div class="input-group">
-        <span class="input-group-addon"><i class="fa fa-black-tie"></i></span>
-        <select class="form-control" name="role" [(ngModel)]="user.role">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fa fa-black-tie"></i></span>
+        </div>
+        <select class="custom-select" name="role" [(ngModel)]="user.role">
           <option value="" disabled>Role</option>
           <option value="user">User</option>
           <option value="admin">Admin</option>

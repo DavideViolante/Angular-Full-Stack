@@ -36,7 +36,7 @@
     "angular2-jwt": "^0.2.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
-    "bootstrap": "4.0.0-alpha.5",
+    "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
