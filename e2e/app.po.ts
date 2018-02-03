@@ -9,4 +9,8 @@ export class Angular2FullStackPage {
     return $$('app-root a').get(n).getText();
   }
 
+  getNavbarButton() {
+    return $$('app-root button').get(0).getText();
+  }
+
 }
