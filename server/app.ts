@@ -28,7 +28,7 @@ const mongodb = mongoose.connect(mongodbURI);
 
 mongodb
   .then((db) => {
-    console.log('Connected to MongoDB on', db.host + ':' + db.port);
+    console.log('Connected to MongoDB');
 
     setRoutes(app);
 
