@@ -16,7 +16,6 @@ export class AuthService {
   currentUser: User = new User();
 
   constructor(private userService: UserService,
-              private http: HttpClient,
               private router: Router,
               private jwtHelper: JwtHelperService) {
     const token = localStorage.getItem('token');
