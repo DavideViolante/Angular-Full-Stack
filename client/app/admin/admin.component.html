@@ -4,14 +4,14 @@
 
 <div class="card" *ngIf="!isLoading">
   <h4 class="card-header">Registered users ({{users.length}})</h4>
-  <div class="card-block">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-default">
+  <div class="card-body">
+    <table class="table table-bordered">
+      <thead class="thead-light">
         <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Actions</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody *ngIf="users.length === 0">

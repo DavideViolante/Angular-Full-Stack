@@ -1,4 +1,5 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { RoutingModule } from './routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -17,6 +18,10 @@ import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +36,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     RoutingModule,
-    SharedModule
+    SharedModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        // whitelistedDomains: ['localhost:3000', 'localhost:4200']
+      }
+    })
   ],
   providers: [
     AuthService,

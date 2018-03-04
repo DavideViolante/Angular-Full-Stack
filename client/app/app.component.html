@@ -1,28 +1,47 @@
 <div class="container">
 
-  <nav class="navbar navbar-dark bg-primary">
-    <div class="nav navbar-nav">
-      <a routerLink="/" class="nav-item nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-        <i class="fa fa-home"></i> Home
-      </a>
-      <a routerLink="/cats" class="nav-item nav-link" routerLinkActive="active">
-        <i class="fa fa-list"></i> Cats
-      </a>
-      <a routerLink="/login" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-        <i class="fa fa-sign-in"></i> Login
-      </a>
-      <a routerLink="/register" class="nav-item nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-        <i class="fa fa-user-plus"></i> Register
-      </a>
-      <a routerLink="/account" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-        <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
-      </a>
-      <a routerLink="/admin" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin">
-        <i class="fa fa-lock"></i> Admin
-      </a>
-      <a routerLink="/logout" class="nav-item nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-        <i class="fa fa-sign-out"></i> Logout
-      </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+            <i class="fa fa-home"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/cats" class="nav-link" routerLinkActive="active">
+            <i class="fa fa-list"></i> Cats
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/login" class="nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
+            <i class="fa fa-sign-in"></i> Login
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/register" class="nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
+            <i class="fa fa-user-plus"></i> Register
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/account" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
+            <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/admin" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin">
+            <i class="fa fa-lock"></i> Admin
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/logout" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
+            <i class="fa fa-sign-out"></i> Logout
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
 

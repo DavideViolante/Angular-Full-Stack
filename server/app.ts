@@ -29,7 +29,7 @@ const mongodb = mongoose.connect(mongodbURI, { useMongoClient: true });
 
 mongodb.then(() => {
   const db: any = mongoose.connection;
-  console.log('Connected to MongoDB on', db.host + ':' + db.port);
+  console.log('Connected to MongoDB');
 
   setRoutes(app);
 
