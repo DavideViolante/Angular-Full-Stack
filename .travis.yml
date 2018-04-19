@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "9"
+
+script:
+  - npm run lint:front
+  - npm run lint:back
+  - npm run lint:html
+  - npm run lint:style
