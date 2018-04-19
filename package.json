@@ -16,7 +16,7 @@
     "predev": "tsc -p server",
     "dev": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
     "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\"",
-    "test:front": "ng test",
+    "test:front": "ng test --watch=false",
     "test:back": "tsc -p server && mocha dist/server/test --exit",
     "lint": "npm run lint:style && npm run lint:front && npm run lint:html && npm run lint:back",
     "lint:style": "stylelint 'client/**/*{.css,.scss}'",
