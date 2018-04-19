@@ -3,21 +3,21 @@ import * as chaiHttp from 'chai-http';
 
 process.env.NODE_ENV = 'test';
 import { app } from '../app';
-import Cat from '../models/cat';
+import cat from '../models/cat';
 
 const should = chai.use(chaiHttp).should();
 
-describe('Cats', () => {
+describe('cats', () => {
 
-  beforeEach(done => {
-    Cat.remove({}, err => {
+  beforeEach((done) => {
+    cat.remove({}, (err) => {
       done();
     });
   });
 
   describe('Backend tests for cats', () => {
 
-    it('should get all the cats', done => {
+    it('should get all the cats', (done) => {
       chai.request(app)
         .get('/api/cats')
         .end((err, res) => {
@@ -28,7 +28,7 @@ describe('Cats', () => {
         });
     });
 
-    it('should get cats count', done => {
+    it('should get cats count', (done) => {
       chai.request(app)
         .get('/api/cats/count')
         .end((err, res) => {
@@ -39,11 +39,11 @@ describe('Cats', () => {
         });
     });
 
-    it('should create new cat', done => {
-      const cat = new Cat({ name: 'Fluffy', weight: 4, age: 2 });
+    it('should create new cat', (done) => {
+      const newCat = new cat({ name: 'Fluffy', weight: 4, age: 2 });
       chai.request(app)
         .post('/api/cat')
-        .send(cat)
+        .send(newCat)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
@@ -54,28 +54,28 @@ describe('Cats', () => {
         });
     });
 
-    it('should get a cat by its id', done => {
-      const cat = new Cat({ name: 'Cat', weight: 2, age: 4 });
-      cat.save((error, newCat) => {
+    it('should get a cat by its id', (done) => {
+      const newCat = new cat({ name: 'cat', weight: 2, age: 4 });
+      newCat.save((error, newcat) => {
         chai.request(app)
-          .get(`/api/cat/${newCat.id}`)
+          .get(`/api/cat/${newcat.id}`)
           .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
             res.body.should.have.property('name');
             res.body.should.have.property('weight');
             res.body.should.have.property('age');
-            res.body.should.have.property('_id').eql(newCat.id);
+            res.body.should.have.property('id').eql(newcat.id);
             done();
           });
       });
     });
 
-    it('should update a cat by its id', done => {
-      const cat = new Cat({ name: 'Cat', weight: 2, age: 4 });
-      cat.save((error, newCat) => {
+    it('should update a cat by its id', (done) => {
+      const newCat = new cat({ name: 'cat', weight: 2, age: 4 });
+      newCat.save((error, newcat) => {
         chai.request(app)
-          .put(`/api/cat/${newCat.id}`)
+          .put(`/api/cat/${newcat.id}`)
           .send({ weight: 5 })
           .end((err, res) => {
             res.should.have.status(200);
@@ -84,11 +84,11 @@ describe('Cats', () => {
       });
     });
 
-    it('should delete a cat by its id', done => {
-      const cat = new Cat({ name: 'Cat', weight: 2, age: 4 });
-      cat.save((error, newCat) => {
+    it('should delete a cat by its id', (done) => {
+      const newCat = new cat({ name: 'cat', weight: 2, age: 4 });
+      newCat.save((error, newcat) => {
         chai.request(app)
-          .delete(`/api/cat/${newCat.id}`)
+          .delete(`/api/cat/${newcat.id}`)
           .end((err, res) => {
             res.should.have.status(200);
             done();

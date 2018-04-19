@@ -6,8 +6,8 @@
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "angular-cli": {},
   "engines": {
-    "node": "8.9.4",
-    "npm": "5.6.0"
+    "node": "9.8.0",
+    "npm": "5.8.0"
   },
   "scripts": {
     "ng": "ng",
@@ -18,10 +18,10 @@
     "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\"",
     "test": "ng test",
     "testbe": "tsc -p server && mocha dist/server/test --exit",
-    "lint:style": "stylelint 'src/app/**/*{.css,.scss}'",
+    "lint:style": "stylelint 'client/**/*{.css,.scss}'",
     "lint:front": "ng lint",
-    "lint:html": "htmllint src/**/*.html",
-    "lint:autofix": "ng lint --fix && stylelint 'src/app/**/*{.css,.scss}' --fix",
+    "lint:html": "htmllint client/**/*.html",
+    "lint:autofix": "ng lint --fix && tslint server/**/**.ts{,x} && stylelint 'client/**/*{.css,.scss}' --fix",
     "lint:back": "tslint server/**/**.ts{,x}",
     "e2e": "ng e2e"
   },
@@ -48,6 +48,7 @@
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.0.13",
     "morgan": "^1.9.0",
+    "npm": "^5.8.0",
     "popper.js": "^1.14.3",
     "rxjs": "^5.5.6",
     "tether": "1.4.4",
@@ -66,7 +67,6 @@
     "codelyzer": "~4.2.1",
     "concurrently": "^3.5.1",
     "htmllint-cli": "^0.0.6",
-    "jasmine-core": "~2.8.0",
     "jasmine-core": "~3.1.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",

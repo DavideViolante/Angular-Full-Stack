@@ -8,7 +8,7 @@ import { Cat } from '../shared/models/cat.model';
 @Component({
   selector: 'app-cats',
   templateUrl: './cats.component.html',
-  styleUrls: ['./cats.component.css']
+  styleUrls: ['./cats.component.css'],
 })
 export class CatsComponent implements OnInit {
 
@@ -31,7 +31,7 @@ export class CatsComponent implements OnInit {
     this.addCatForm = this.formBuilder.group({
       name: this.name,
       age: this.age,
-      weight: this.weight
+      weight: this.weight,
     });
   }
 
@@ -39,18 +39,18 @@ export class CatsComponent implements OnInit {
     this.catService.getCats().subscribe(
       data => this.cats = data,
       error => console.log(error),
-      () => this.isLoading = false
+      () => this.isLoading = false,
     );
   }
 
   addCat() {
     this.catService.addCat(this.addCatForm.value).subscribe(
-      res => {
+      (res) => {
         this.cats.push(res);
         this.addCatForm.reset();
         this.toast.setMessage('item added successfully.', 'success');
       },
-      error => console.log(error)
+      error => console.log(error),
     );
   }
 
@@ -74,7 +74,7 @@ export class CatsComponent implements OnInit {
         this.cat = cat;
         this.toast.setMessage('item edited successfully.', 'success');
       },
-      error => console.log(error)
+      error => console.log(error),
     );
   }
 
@@ -86,7 +86,7 @@ export class CatsComponent implements OnInit {
           this.cats.splice(pos, 1);
           this.toast.setMessage('item deleted successfully.', 'success');
         },
-        error => console.log(error)
+        error => console.log(error),
       );
     }
   }

@@ -11,7 +11,7 @@ import { LoadingComponent } from './loading/loading.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports: [
     // Shared Modules
@@ -21,14 +21,14 @@ import { LoadingComponent } from './loading/loading.component';
     HttpClientModule,
     // Shared Components
     ToastComponent,
-    LoadingComponent
+    LoadingComponent,
   ],
   declarations: [
     ToastComponent,
-    LoadingComponent
+    LoadingComponent,
   ],
   providers: [
-    ToastComponent
-  ]
+    ToastComponent,
+  ],
 })
 export class SharedModule { }

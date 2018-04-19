@@ -1,4 +1,4 @@
-abstract class BaseCtrl {
+abstract class Base {
 
   abstract model: any;
 
@@ -58,4 +58,4 @@ abstract class BaseCtrl {
   }
 }
 
-export default BaseCtrl;
+export default Base;

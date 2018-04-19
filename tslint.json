@@ -1,3 +1,10 @@
 {
-  "extends": "tslint-config-airbnb"
+  "extends": "tslint-config-airbnb",
+  "rules": {
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore"
+    ]
+  }
 }

@@ -3,21 +3,21 @@ import * as chaiHttp from 'chai-http';
 
 process.env.NODE_ENV = 'test';
 import { app } from '../app';
-import User from '../models/user';
+import user from '../models/user';
 
 const should = chai.use(chaiHttp).should();
 
-describe('Users', () => {
+describe('users', () => {
 
-  beforeEach(done => {
-    User.remove({}, err => {
+  beforeEach((done) => {
+    user.remove({}, (err) => {
       done();
     });
   });
 
   describe('Backend tests for users', () => {
 
-    it('should get all the users', done => {
+    it('should get all the users', (done) => {
       chai.request(app)
         .get('/api/users')
         .end((err, res) => {
@@ -28,7 +28,7 @@ describe('Users', () => {
         });
     });
 
-    it('should get users count', done => {
+    it('should get users count', (done) => {
       chai.request(app)
         .get('/api/users/count')
         .end((err, res) => {
@@ -39,11 +39,11 @@ describe('Users', () => {
         });
     });
 
-    it('should create new user', done => {
-      const user = new User({ username: 'Dave', email: 'dave@example.com', role: 'user' });
+    it('should create new user', (done) => {
+      const newUser = new user({ username: 'Dave', email: 'dave@example.com', role: 'user' });
       chai.request(app)
         .post('/api/user')
-        .send(user)
+        .send(newUser)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
@@ -54,29 +54,29 @@ describe('Users', () => {
         });
     });
 
-    it('should get a user by its id', done => {
-      const user = new User({ username: 'User', email: 'user@example.com', role: 'user' });
-      user.save((error, newUser) => {
+    it('should get a user by its id', (done) => {
+      const newUser = new user({ username: 'user', email: 'user@example.com', role: 'user' });
+      newUser.save((error, newuser) => {
         chai.request(app)
-          .get(`/api/user/${newUser.id}`)
+          .get(`/api/user/${newuser.id}`)
           .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
             res.body.should.have.property('username');
             res.body.should.have.property('email');
             res.body.should.have.property('role');
-            res.body.should.have.property('_id').eql(newUser.id);
+            res.body.should.have.property('id').eql(newuser.id);
             done();
           });
       });
     });
 
-    it('should update a user by its id', done => {
-      const user = new User({ username: 'User', email: 'user@example.com', role: 'user' });
-      user.save((error, newUser) => {
+    it('should update a user by its id', (done) => {
+      const newUser = new user({ username: 'user', email: 'user@example.com', role: 'user' });
+      newUser.save((error, newuser) => {
         chai.request(app)
-          .put(`/api/user/${newUser.id}`)
-          .send({ username: 'User 2' })
+          .put(`/api/user/${newuser.id}`)
+          .send({ username: 'user 2' })
           .end((err, res) => {
             res.should.have.status(200);
             done();
@@ -84,11 +84,11 @@ describe('Users', () => {
       });
     });
 
-    it('should delete a user by its id', done => {
-      const user = new User({ username: 'User', email: 'user@example.com', role: 'user' });
-      user.save((error, newUser) => {
+    it('should delete a user by its id', (done) => {
+      const newUser = new user({ username: 'user', email: 'user@example.com', role: 'user' });
+      newUser.save((error, newuser) => {
         chai.request(app)
-          .delete(`/api/user/${newUser.id}`)
+          .delete(`/api/user/${newuser.id}`)
           .end((err, res) => {
             res.should.have.status(200);
             done();
