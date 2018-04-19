@@ -7,4 +7,5 @@ script:
   - npm run lint:back
   - npm run lint:html
   - npm run lint:style
-  - npm run test
+  - npm run test:front
+  - npm run test:back
