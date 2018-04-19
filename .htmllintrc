@@ -4,6 +4,9 @@
     "attr-name-style": false,
     "id-class-style": false,
     "line-end-style": false,
+    "tag-bans": ["style", "b"],
+    "indent-width": 2,
+    "spec-char-escape": false,
     "attr-req-value": false
     // TODO: export htmllint's default cfg
 }

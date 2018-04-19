@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/9.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js lint:autofix
+  /usr/local/Cellar/node/9.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js lint:html
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/heroku:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/pip:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/lein:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/command-not-found:/Users/martindonadieu/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/Users/martindonadieu/.antigen/bundles/zsh-users/zsh-autosuggestions
@@ -34,11 +34,12 @@ npm manifest:
       "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\"",
       "test": "ng test",
       "testbe": "tsc -p server && mocha dist/server/test --exit",
+      "lint": "npm run lint:style && npm run lint:front && npm run lint:html && npm run lint:back",
       "lint:style": "stylelint 'client/**/*{.css,.scss}'",
       "lint:front": "ng lint",
+      "lint:back": "tslint server/**/**.ts{,x}",
       "lint:html": "htmllint client/**/*.html",
       "lint:autofix": "ng lint --fix && tslint server/**/**.ts{,x} && stylelint 'client/**/*{.css,.scss}' --fix",
-      "lint:back": "tslint server/**/**.ts{,x}",
       "e2e": "ng e2e"
     },
     "private": true,
@@ -82,7 +83,7 @@ npm manifest:
       "chai-http": "^4.0.0",
       "codelyzer": "~4.2.1",
       "concurrently": "^3.5.1",
-      "htmllint-cli": "^0.0.6",
+      "htmllint-cli": "^0.0.7",
       "jasmine-core": "~3.1.0",
       "jasmine-spec-reporter": "~4.2.1",
       "karma": "~2.0.0",
@@ -9965,9 +9966,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 2
+  Exit code: 1
   Command: sh
-  Arguments: -c ng lint --fix && tslint server/**/**.ts{,x} && stylelint 'client/**/*{.css,.scss}' --fix
+  Arguments: -c htmllint client/**/*.html
   Directory: /Users/martindonadieu/Projects/Angular-Full-Stack
   Output:
   
