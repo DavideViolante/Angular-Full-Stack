@@ -71,8 +71,12 @@ Before running the tests make sure you are serving the app via `npm start`.
 ## Running backend tests
 Run `mongod` to run an instance of MongoDB, then run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/).
 
-## Running TSLint
-Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter via [TSLint](https://palantir.github.io/tslint/).
+## Running lint
+Run `npm run lint:front` for frontend
+Run `npm run lint:back` for backend
+Run `npm run lint:style` for style
+Run `npm run lint:html` for html
+Or `npm run lint` for all kind of linter
 
 ## Wiki
 To get more help about this project, [visit the official wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).
