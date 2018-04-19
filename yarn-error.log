@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/9.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js lint:html
+  /usr/local/Cellar/node/9.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js test:back
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/lib:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/git:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/heroku:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/pip:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/lein:/Users/martindonadieu/.antigen/bundles/robbyrussell/oh-my-zsh/plugins/command-not-found:/Users/martindonadieu/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/Users/martindonadieu/.antigen/bundles/zsh-users/zsh-autosuggestions
@@ -32,8 +32,8 @@ npm manifest:
       "predev": "tsc -p server",
       "dev": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
       "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\"",
-      "test": "ng test",
-      "testbe": "tsc -p server && mocha dist/server/test --exit",
+      "test:front": "ng test",
+      "test:back": "tsc -p server && mocha dist/server/test --exit",
       "lint": "npm run lint:style && npm run lint:front && npm run lint:html && npm run lint:back",
       "lint:style": "stylelint 'client/**/*{.css,.scss}'",
       "lint:front": "ng lint",
@@ -9966,9 +9966,9 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 2
   Command: sh
-  Arguments: -c htmllint client/**/*.html
+  Arguments: -c tsc -p server && mocha dist/server/test --exit
   Directory: /Users/martindonadieu/Projects/Angular-Full-Stack
   Output:
   

@@ -65,7 +65,7 @@ describe('cats', () => {
             res.body.should.have.property('name');
             res.body.should.have.property('weight');
             res.body.should.have.property('age');
-            res.body.should.have.property('id').eql(newcat.id);
+            res.body.should.have.property('_id').eql(newcat.id);
             done();
           });
       });

@@ -65,7 +65,7 @@ describe('users', () => {
             res.body.should.have.property('username');
             res.body.should.have.property('email');
             res.body.should.have.property('role');
-            res.body.should.have.property('id').eql(newuser.id);
+            res.body.should.have.property('_id').eql(newuser.id);
             done();
           });
       });
@@ -84,7 +84,7 @@ describe('users', () => {
       });
     });
 
-    it('should delete a user by its id', (done) => {
+    it('should delete a user by its _id', (done) => {
       const newUser = new user({ username: 'user', email: 'user@example.com', role: 'user' });
       newUser.save((error, newuser) => {
         chai.request(app)
