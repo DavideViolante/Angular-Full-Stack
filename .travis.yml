@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "9"
+
+script:
+  - npm run lint:js
+  - npm run lint:html
+  - npm run lint:style
