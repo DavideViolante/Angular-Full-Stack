@@ -65,7 +65,7 @@
     "chai-http": "^4.0.0",
     "codelyzer": "~4.2.1",
     "concurrently": "^3.5.1",
-    "htmllint-cli": "^0.0.6",
+    "htmllint-cli": "^0.0.7",
     "jasmine-core": "~2.8.0",
     "jasmine-core": "~3.1.0",
     "jasmine-spec-reporter": "~4.2.1",
