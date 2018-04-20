@@ -1,4 +1,4 @@
-abstract class Base {
+abstract class BaseController {
 
   abstract model: any;
 
@@ -58,4 +58,4 @@ abstract class Base {
   }
 }
 
-export default Base;
+export default BaseController;

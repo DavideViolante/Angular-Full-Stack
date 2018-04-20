@@ -1,7 +1,7 @@
 import * as express from 'express';
 
-import Cat from './controllers/Cat';
-import User from './controllers/User';
+import CatController from './controllers/CatController';
+import UserController from './controllers/UserController';
 // import cat from './models/cat';
 // import user from './models/user';
 
@@ -9,8 +9,8 @@ export default function routes(app) {
 
   const router = express.Router();
 
-  const cat = new Cat();
-  const user = new User();
+  const cat = new CatController();
+  const user = new UserController();
 
   // cats
   router.route('/cats').get(cat.getAll);

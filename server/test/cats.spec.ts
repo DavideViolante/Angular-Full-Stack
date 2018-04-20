@@ -3,14 +3,14 @@ import * as chaiHttp from 'chai-http';
 
 process.env.NODE_ENV = 'test';
 import { app } from '../app';
-import cat from '../models/cat';
+import catModel from '../models/catModel';
 
 const should = chai.use(chaiHttp).should();
 
 describe('cats', () => {
 
   beforeEach((done) => {
-    cat.remove({}, (err) => {
+    catModel.remove({}, (err) => {
       done();
     });
   });
@@ -40,7 +40,7 @@ describe('cats', () => {
     });
 
     it('should create new cat', (done) => {
-      const newCat = new cat({ name: 'Fluffy', weight: 4, age: 2 });
+      const newCat = new catModel({ name: 'Fluffy', weight: 4, age: 2 });
       chai.request(app)
         .post('/api/cat')
         .send(newCat)
@@ -55,7 +55,7 @@ describe('cats', () => {
     });
 
     it('should get a cat by its id', (done) => {
-      const newCat = new cat({ name: 'cat', weight: 2, age: 4 });
+      const newCat = new catModel({ name: 'cat', weight: 2, age: 4 });
       newCat.save((error, newcat) => {
         chai.request(app)
           .get(`/api/cat/${newcat.id}`)
@@ -72,7 +72,7 @@ describe('cats', () => {
     });
 
     it('should update a cat by its id', (done) => {
-      const newCat = new cat({ name: 'cat', weight: 2, age: 4 });
+      const newCat = new catModel({ name: 'cat', weight: 2, age: 4 });
       newCat.save((error, newcat) => {
         chai.request(app)
           .put(`/api/cat/${newcat.id}`)
@@ -85,7 +85,7 @@ describe('cats', () => {
     });
 
     it('should delete a cat by its id', (done) => {
-      const newCat = new cat({ name: 'cat', weight: 2, age: 4 });
+      const newCat = new catModel({ name: 'cat', weight: 2, age: 4 });
       newCat.save((error, newcat) => {
         chai.request(app)
           .delete(`/api/cat/${newcat.id}`)

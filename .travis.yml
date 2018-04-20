@@ -1,9 +1,6 @@
-sudo: required
 language: node_js
 node_js:
   - "9.8.0"
-addons:
-    chrome: stable
 script:
   - npm run lint:front
   - npm run lint:back

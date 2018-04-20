@@ -6,6 +6,6 @@ const catSchema = new mongoose.Schema({
   age: Number,
 });
 
-const cat = mongoose.model('cat', catSchema);
+const catModel = mongoose.model('cat', catSchema);
 
-export default cat;
+export default catModel;

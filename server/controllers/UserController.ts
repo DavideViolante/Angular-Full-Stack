@@ -1,11 +1,11 @@
 import * as dotenv from 'dotenv';
 import * as jwt from 'jsonwebtoken';
 
-import user from '../models/user';
-import base from './base';
+import userModel from '../models/userModel';
+import BaseController from './BaseController';
 
-export default class User extends base {
-  model = user;
+export default class UserController extends BaseController {
+  model = userModel;
 
   login = (req, res) => {
     this.model.findOne({ email: req.body.email }, (err, user) => {

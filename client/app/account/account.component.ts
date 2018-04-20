@@ -8,7 +8,7 @@ import { User } from '../shared/models/user.model';
   selector: 'app-account',
   templateUrl: './account.component.html',
 })
-export class AccountComponent implements OnInit {
+export default class AccountComponent implements OnInit {
 
   user: User;
   isLoading = true;

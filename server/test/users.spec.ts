@@ -3,14 +3,14 @@ import * as chaiHttp from 'chai-http';
 
 process.env.NODE_ENV = 'test';
 import { app } from '../app';
-import user from '../models/user';
+import userModel from '../models/userModel';
 
 const should = chai.use(chaiHttp).should();
 
 describe('users', () => {
 
   beforeEach((done) => {
-    user.remove({}, (err) => {
+    userModel.remove({}, (err) => {
       done();
     });
   });
@@ -40,7 +40,7 @@ describe('users', () => {
     });
 
     it('should create new user', (done) => {
-      const newUser = new user({ username: 'Dave', email: 'dave@example.com', role: 'user' });
+      const newUser = new userModel({ username: 'Dave', email: 'dave@example.com', role: 'user' });
       chai.request(app)
         .post('/api/user')
         .send(newUser)
@@ -55,7 +55,7 @@ describe('users', () => {
     });
 
     it('should get a user by its id', (done) => {
-      const newUser = new user({ username: 'user', email: 'user@example.com', role: 'user' });
+      const newUser = new userModel({ username: 'user', email: 'user@example.com', role: 'user' });
       newUser.save((error, newuser) => {
         chai.request(app)
           .get(`/api/user/${newuser.id}`)
@@ -72,7 +72,7 @@ describe('users', () => {
     });
 
     it('should update a user by its id', (done) => {
-      const newUser = new user({ username: 'user', email: 'user@example.com', role: 'user' });
+      const newUser = new userModel({ username: 'user', email: 'user@example.com', role: 'user' });
       newUser.save((error, newuser) => {
         chai.request(app)
           .put(`/api/user/${newuser.id}`)
@@ -85,7 +85,7 @@ describe('users', () => {
     });
 
     it('should delete a user by its _id', (done) => {
-      const newUser = new user({ username: 'user', email: 'user@example.com', role: 'user' });
+      const newUser = new userModel({ username: 'user', email: 'user@example.com', role: 'user' });
       newUser.save((error, newuser) => {
         chai.request(app)
           .delete(`/api/user/${newuser.id}`)
