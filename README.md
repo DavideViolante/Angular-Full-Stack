@@ -2,6 +2,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/c11813043e4ad0f0e1e7/maintainability)](https://codeclimate.com/github/riderx/Angular-Full-Stack/maintainability)
 [![dependencies Status](https://david-dm.org/riderx/Angular-Full-Stack/status.svg)](https://david-dm.org/riderx/Angular-Full-Stack)
+[![devDependencies Status](https://david-dm.org/riderx/Angular-Full-Stack/dev-status.svg)](https://david-dm.org/riderx/Angular-Full-Stack?type=dev)
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/riderx/Angular-Full-Stack.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/riderx/Angular-Full-Stack.svg?branch=master)](https://travis-ci.org/riderx/Angular-Full-Stack)
 [![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
