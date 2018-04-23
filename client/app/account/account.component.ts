@@ -8,14 +8,14 @@ import { User } from '../shared/models/user.model';
   selector: 'app-account',
   templateUrl: './account.component.html',
 })
-export default class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit {
 
   user: User;
   isLoading = true;
 
   constructor(private auth: AuthService,
-              public toast: ToastComponent,
-              private userService: UserService) { }
+    public toast: ToastComponent,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.getUser();
