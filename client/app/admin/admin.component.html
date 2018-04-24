@@ -3,7 +3,7 @@
 <app-toast [message]="toast.message"></app-toast>
 
 <div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Registered users ({{users.length}})</h4>
+  <h4 class="card-header">Registered users ({{ users.length }})</h4>
   <div class="card-body">
     <table class="table table-bordered">
       <thead class="thead-light">
@@ -21,11 +21,11 @@
       </tbody>
       <tbody>
         <tr *ngFor="let user of users">
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.role}}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
           <td>
-            <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser._id === user._id">
+            <button class="btn btn-sm btn-danger" (click)="deleteUser(user)" [disabled]="auth.currentUser.id === user.id">
               <i class="fa fa-trash"></i>
             </button>
           </td>

@@ -6,7 +6,7 @@ import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-account',
-  templateUrl: './account.component.html'
+  templateUrl: './account.component.html',
 })
 export class AccountComponent implements OnInit {
 
@@ -25,14 +25,14 @@ export class AccountComponent implements OnInit {
     this.userService.getUser(this.auth.currentUser).subscribe(
       data => this.user = data,
       error => console.log(error),
-      () => this.isLoading = false
+      () => this.isLoading = false,
     );
   }
 
   save(user: User) {
     this.userService.editUser(user).subscribe(
       res => this.toast.setMessage('account settings saved!', 'success'),
-      error => console.log(error)
+      error => console.log(error),
     );
   }
 

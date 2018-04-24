@@ -9,7 +9,7 @@ describe('ToastComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToastComponent ]
+      declarations: [ToastComponent],
     })
     .compileComponents();
   }));
@@ -34,7 +34,7 @@ describe('ToastComponent', () => {
   it('should set the message and create the DOM element', () => {
     const mockMessage = {
       body: 'test message',
-      type: 'warning'
+      type: 'warning',
     };
     component.setMessage(mockMessage.body, mockMessage.type);
     expect(component.message.body).toBe(mockMessage.body);

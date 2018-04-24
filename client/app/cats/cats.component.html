@@ -3,7 +3,7 @@
 <app-toast [message]="toast.message"></app-toast>
 
 <div class="card mb-3" *ngIf="!isLoading">
-  <h4 class="card-header">Current cats ({{cats.length}})</h4>
+  <h4 class="card-header">Current cats ({{ cats.length }})</h4>
   <div class="card-body">
     <table class="table table-bordered">
       <thead class="thead-light">
@@ -21,9 +21,9 @@
       </tbody>
       <tbody *ngIf="!isEditing">
         <tr *ngFor="let cat of cats">
-          <td>{{cat.name}}</td>
-          <td>{{cat.age}}</td>
-          <td>{{cat.weight}}</td>
+          <td>{{ cat.name }}</td>
+          <td>{{ cat.age }}</td>
+          <td>{{ cat.weight }}</td>
           <td>
             <button class="btn btn-sm btn-primary" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
             <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>

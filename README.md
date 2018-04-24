@@ -1,5 +1,12 @@
-# Angular Full Stack [![Dependencies](https://david-dm.org/DavideViolante/Angular-Full-Stack.svg)](https://david-dm.org/DavideViolante/Angular2-Full-Stack) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
+# Angular Full Stack  
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/c11813043e4ad0f0e1e7/maintainability)](https://codeclimate.com/github/riderx/Angular-Full-Stack/maintainability)
+[![dependencies Status](https://david-dm.org/riderx/Angular-Full-Stack/status.svg)](https://david-dm.org/riderx/Angular-Full-Stack)
+[![devDependencies Status](https://david-dm.org/riderx/Angular-Full-Stack/dev-status.svg)](https://david-dm.org/riderx/Angular-Full-Stack?type=dev)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/riderx/Angular-Full-Stack.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/riderx/Angular-Full-Stack.svg?branch=master)](https://travis-ci.org/riderx/Angular-Full-Stack)
+[![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
 
 The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). The backend is made from scratch. Whole stack in [TypeScript](https://www.typescriptlang.org).
 
@@ -16,6 +23,8 @@ Other tools and technologies used:
 * [JSON Web Token](https://jwt.io): user authentication
 * [Angular 2 JWT](https://github.com/auth0/angular2-jwt/tree/v1.0): JWT helper for Angular
 * [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js): password encryption
+* [stylelint](https://github.com/stylelint/stylelint): style linter
+* [htmllint](https://github.com/htmllint/htmllint): html linter
 
 ## Prerequisites
 1. Install [Node.js](https://nodejs.org) and [MongoDB](https://www.mongodb.com)
@@ -60,17 +69,21 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 * More tests
 
 ## Running frontend unit tests
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run test:front` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running frontend end-to-end tests
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
 Before running the tests make sure you are serving the app via `npm start`.
 
 ## Running backend tests
-Run `mongod` to run an instance of MongoDB, then run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/).
+Run `mongod` to run an instance of MongoDB, then run `npm run test:back` to execute the backend tests via [Mocha](https://mochajs.org/).
 
-## Running TSLint
-Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter via [TSLint](https://palantir.github.io/tslint/).
+## Running lint
+Run `npm run lint:front` for frontend
+Run `npm run lint:back` for backend
+Run `npm run lint:style` for style
+Run `npm run lint:html` for html
+Or `npm run lint` for all kind of linter
 
 ## Wiki
 To get more help about this project, [visit the official wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).

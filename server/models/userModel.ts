@@ -5,25 +5,24 @@ const userSchema = new mongoose.Schema({
   username: String,
   email: { type: String, unique: true, lowercase: true, trim: true },
   password: String,
-  role: String
+  role: String,
 });
 
 // Before saving the user, hash the password
-userSchema.pre('save', function(next) {
-  const user = this;
-  if (!user.isModified('password')) { return next(); }
-  bcrypt.genSalt(10, function(err, salt) {
+userSchema.pre('save', function (next) {
+  if (!this.isModified('password')) { return next(); }
+  bcrypt.genSalt(10, (err, salt) => {
     if (err) { return next(err); }
-    bcrypt.hash(user.password, salt, function(error, hash) {
+    bcrypt.hash(this.password, salt, (error, hash) => {
       if (error) { return next(error); }
-      user.password = hash;
+      this.password = hash;
       next();
     });
   });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, callback) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+userSchema.methods.comparePassword = function (candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) { return callback(err); }
     callback(null, isMatch);
   });
@@ -31,12 +30,12 @@ userSchema.methods.comparePassword = function(candidatePassword, callback) {
 
 // Omit the password when returning a user
 userSchema.set('toJSON', {
-  transform: function(doc, ret, options) {
+  transform(doc, ret, options) {
     delete ret.password;
     return ret;
-  }
+  },
 });
 
-const User = mongoose.model('User', userSchema);
+const userModel = mongoose.model('user', userSchema);
 
-export default User;
+export default userModel;

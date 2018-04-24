@@ -12,19 +12,19 @@ describe('Component: App', () => {
   let authServiceStub: {
     loggedIn: boolean,
     isAdmin: boolean,
-    currentUser: any
+    currentUser: any,
   };
 
   beforeEach(async(() => {
     authServiceStub = {
       loggedIn: false,
       isAdmin: false,
-      currentUser: { username: 'Tester' }
+      currentUser: { username: 'Tester' },
     };
     TestBed.configureTestingModule({
-      declarations: [ AppComponent ],
-      providers: [ { provide: AuthService, useValue: authServiceStub } ],
-      schemas: [ NO_ERRORS_SCHEMA ]
+      declarations: [AppComponent],
+      providers: [{ provide: AuthService, useValue: authServiceStub }],
+      schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents().then(() => {
       fixture = TestBed.createComponent(AppComponent);

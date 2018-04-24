@@ -5,7 +5,7 @@ import * as morgan from 'morgan';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
 
-import setRoutes from './routes';
+import routes from './routes';
 
 const app = express();
 dotenv.load({ path: '.env' });
@@ -30,9 +30,9 @@ mongodb
   .then((db) => {
     console.log('Connected to MongoDB');
 
-    setRoutes(app);
+    routes(app);
 
-    app.get('/*', function(req, res) {
+    app.get('/*', (req, res) => {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
@@ -45,6 +45,6 @@ mongodb
   })
   .catch((err) => {
     console.error(err);
-});
+  });
 
 export { app };

@@ -1,8 +1,22 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
+  "extends": [
+    "tslint-config-airbnb",
+    "codelyzer"
   ],
   "rules": {
+    "variable-name": [
+      true,
+      "check-format",
+      "allow-leading-underscore"
+    ],
+    "angular-whitespace": [
+      true,
+      "check-interpolation",
+      "check-semicolon"
+    ],
+    "no-attribute-parameter-decorator": true,
+    "no-forward-ref": true,
+    "no-output-named-after-standard-event": true,
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
@@ -108,7 +122,6 @@
       }
     ],
     "unified-signatures": true,
-    "variable-name": false,
     "whitespace": [
       true,
       "check-branch",
@@ -137,7 +150,13 @@
     "no-output-rename": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
-    "directive-class-suffix": true
+    "component-class-suffix": [
+      true,
+      "Component"
+    ],
+    "directive-class-suffix": [
+      true,
+      "Directive"
+    ]
   }
 }

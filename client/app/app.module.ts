@@ -32,27 +32,27 @@ export function tokenGetter() {
     LogoutComponent,
     AccountComponent,
     AdminComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     RoutingModule,
     SharedModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         // whitelistedDomains: ['localhost:3000', 'localhost:4200']
-      }
-    })
+      },
+    }),
   ],
   providers: [
     AuthService,
     AuthGuardLogin,
     AuthGuardAdmin,
     CatService,
-    UserService
+    UserService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 
 export class AppModule { }

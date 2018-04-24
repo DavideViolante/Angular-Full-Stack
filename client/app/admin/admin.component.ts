@@ -7,7 +7,7 @@ import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html'
+  templateUrl: './admin.component.html',
 })
 export class AdminComponent implements OnInit {
 
@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
     this.userService.getUsers().subscribe(
       data => this.users = data,
       error => console.log(error),
-      () => this.isLoading = false
+      () => this.isLoading = false,
     );
   }
 
@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
       this.userService.deleteUser(user).subscribe(
         data => this.toast.setMessage('user deleted successfully.', 'success'),
         error => console.log(error),
-        () => this.getUsers()
+        () => this.getUsers(),
       );
     }
   }

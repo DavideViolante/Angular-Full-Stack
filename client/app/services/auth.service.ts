@@ -27,12 +27,12 @@ export class AuthService {
 
   login(emailAndPassword) {
     return this.userService.login(emailAndPassword).map(
-      res => {
+      (res) => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
         return this.loggedIn;
-      }
+      },
     );
   }
 
@@ -49,6 +49,8 @@ export class AuthService {
   }
 
   setCurrentUser(decodedUser) {
+    console.log('decode', decodedUser);
+
     this.loggedIn = true;
     this.currentUser._id = decodedUser._id;
     this.currentUser.username = decodedUser.username;
