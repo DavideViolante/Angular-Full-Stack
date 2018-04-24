@@ -14,8 +14,8 @@ export class AccountComponent implements OnInit {
   isLoading = true;
 
   constructor(private auth: AuthService,
-    public toast: ToastComponent,
-    private userService: UserService) { }
+              public toast: ToastComponent,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.getUser();
