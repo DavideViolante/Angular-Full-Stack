@@ -30,11 +30,10 @@
     "@angular/core": "^6.0.3",
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
-    "@angular/material": "^6.1.0",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
-    "@auth0/angular-jwt": "~1.1.0",
+    "@auth0/angular-jwt": "^2.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.1",
@@ -49,7 +48,7 @@
     "popper.js": "^1.14.3",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.0",
-    "tether": "1.4.0",
+    "tether": "^1.4.4",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
