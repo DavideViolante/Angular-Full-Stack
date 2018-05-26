@@ -26,7 +26,7 @@
           <td>{{cat.weight}}</td>
           <td>
             <button class="btn btn-sm btn-primary" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
-            <button class="btn btn-sm btn-danger" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
+            <button class="btn btn-sm btn-danger ml-1" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
           </td>
         </tr>  
       </tbody>
@@ -54,7 +54,7 @@
       <input class="form-control mr-2" type="text" name="name" formControlName="name" placeholder="Name">
       <input class="form-control mr-2" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">
       <input class="form-control mr-2" type="number" name="age" formControlName="age" placeholder="Age" min="0">
-      <button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid"><i class="fa fa-floppy-o"></i> Add</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid"><i class="fa fa-plus"></i> Add</button>
     </form>
   </div>
 </div>
