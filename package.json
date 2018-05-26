@@ -47,6 +47,7 @@
     "morgan": "^1.9.0",
     "popper.js": "^1.14.3",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.2.0",
     "tether": "1.4.0",
     "zone.js": "^0.8.26"
   },
