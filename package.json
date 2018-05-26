@@ -37,7 +37,7 @@
     "@auth0/angular-jwt": "~1.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.1.1",
     "core-js": "^2.5.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
