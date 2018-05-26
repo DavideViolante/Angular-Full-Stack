@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { Cat } from '../shared/models/cat.model';
 
@@ -25,11 +25,11 @@ export class CatService {
     return this.http.get<Cat>(`/api/cat/${cat._id}`);
   }
 
-  editCat(cat: Cat): Observable<string> {
+  editCat(cat: Cat): Observable<any> {
     return this.http.put(`/api/cat/${cat._id}`, cat, { responseType: 'text' });
   }
 
-  deleteCat(cat: Cat): Observable<string> {
+  deleteCat(cat: Cat): Observable<any> {
     return this.http.delete(`/api/cat/${cat._id}`, { responseType: 'text' });
   }
 

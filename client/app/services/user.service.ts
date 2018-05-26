@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { User } from '../shared/models/user.model';
 
@@ -14,7 +14,7 @@ export class UserService {
   }
 
   login(credentials): Observable<any> {
-    return this.http.post<any>('/api/login', credentials);
+    return this.http.post('/api/login', credentials);
   }
 
   getUsers(): Observable<User[]> {
@@ -33,11 +33,11 @@ export class UserService {
     return this.http.get<User>(`/api/user/${user._id}`);
   }
 
-  editUser(user: User): Observable<string> {
+  editUser(user: User): Observable<any> {
     return this.http.put(`/api/user/${user._id}`, user, { responseType: 'text' });
   }
 
-  deleteUser(user: User): Observable<string> {
+  deleteUser(user: User): Observable<any> {
     return this.http.delete(`/api/user/${user._id}`, { responseType: 'text' });
   }
 
