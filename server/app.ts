@@ -1,4 +1,3 @@
-import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as morgan from 'morgan';
@@ -12,8 +11,8 @@ dotenv.load({ path: '.env' });
 app.set('port', (process.env.PORT || 3000));
 
 app.use('/', express.static(path.join(__dirname, '../public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 let mongodbURI;
 if (process.env.NODE_ENV === 'test') {
@@ -24,10 +23,8 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 mongoose.Promise = global.Promise;
-const mongodb = mongoose.connect(mongodbURI);
-
-mongodb
-  .then((db) => {
+mongoose.connect(mongodbURI)
+  .then(db => {
     console.log('Connected to MongoDB');
 
     setRoutes(app);
@@ -37,14 +34,9 @@ mongodb
     });
 
     if (!module.parent) {
-      app.listen(app.get('port'), () => {
-        console.log('Angular Full Stack listening on port ' + app.get('port'));
-      });
+      app.listen(app.get('port'), () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
     }
-
   })
-  .catch((err) => {
-    console.error(err);
-});
+  .catch(err => console.error(err));
 
 export { app };
