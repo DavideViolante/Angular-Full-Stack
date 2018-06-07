@@ -79,7 +79,7 @@
     "nodemon": "^1.17.3",
     "protractor": "~5.3.1",
     "stylelint": "^9.2.0",
-    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-standard": "^18.2.0",
     "ts-node": "~6.0.0",
     "tslint": "~5.9.1",
     "tslint-config-airbnb": "^5.8.0",
