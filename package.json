@@ -80,7 +80,7 @@
     "protractor": "~5.3.1",
     "stylelint": "^9.2.0",
     "stylelint-config-standard": "^18.2.0",
-    "ts-node": "~6.0.0",
+    "ts-node": "~6.1.0",
     "tslint": "~5.9.1",
     "tslint-config-airbnb": "^5.8.0",
     "typescript": "~2.8.1"
