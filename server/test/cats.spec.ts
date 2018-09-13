@@ -1,12 +1,11 @@
 import * as chai from 'chai';
-import * as chaiHttp from 'chai-http';
 import { describe, it } from 'mocha';
 
 process.env.NODE_ENV = 'test';
 import { app } from '../app';
 import Cat from '../models/cat';
 
-const should = chai.use(chaiHttp).should();
+chai.use(require('chai-http')).should();
 
 describe('Cats', () => {
 
@@ -89,7 +88,7 @@ describe('Cats', () => {
       const cat = new Cat({ name: 'Cat', weight: 2, age: 4 });
       cat.save((error, newCat) => {
         chai.request(app)
-          .delete(`/api/cat/${newCat.id}`)
+          .del(`/api/cat/${newCat.id}`)
           .end((err, res) => {
             res.should.have.status(200);
             done();
