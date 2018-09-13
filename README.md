@@ -12,9 +12,9 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 Other tools and technologies used:
 * [Angular CLI](https://cli.angular.io): frontend scaffolding
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
-* [Font Awesome](http://fontawesome.io): icons
+* [Font Awesome](http://fontawesome.com): icons
 * [JSON Web Token](https://jwt.io): user authentication
-* [Angular 2 JWT](https://github.com/auth0/angular2-jwt/tree/v1.0): JWT helper for Angular
+* [Angular 2 JWT](https://github.com/auth0/angular2-jwt): JWT helper for Angular 2+
 * [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js): password encryption
 
 ## Prerequisites
@@ -33,7 +33,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 
 ## Deploy (Heroku)
 1. Go to Heroku and create a new app (eg: `your-app-name`)
-2. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+2. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 3. `heroku login`
 4. `mkdir your-app-name && cd your-app-name`
 5. `git init`
@@ -56,15 +56,11 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 * you have any suggestion to improve this project
 * you noticed any problem or error
 
-## To do
-* More tests
-
 ## Running frontend unit tests
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running frontend end-to-end tests
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `npm start`.
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ## Running backend tests
 Run `mongod` to run an instance of MongoDB, then run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/).
