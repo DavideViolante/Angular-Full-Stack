@@ -7,15 +7,17 @@
       "root": "",
       "sourceRoot": "client",
       "projectType": "application",
-      "architect": {
+      "prefix": "app",
+      "schematics": {},
+      "targets": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/public",
             "index": "client/index.html",
             "main": "client/main.ts",
-            "tsConfig": "client/tsconfig.app.json",
             "polyfills": "client/polyfills.ts",
+            "tsConfig": "client/tsconfig.app.json",
             "assets": [
               "client/assets",
               "client/assets/favicon.ico"
@@ -33,6 +35,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "client/environments/environment.ts",
+                  "with": "client/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -41,13 +49,7 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "client/environments/environment.ts",
-                  "with": "client/environments/environment.prod.ts"
-                }
-              ]
+              "buildOptimizer": true
             }
           }
         },
@@ -72,18 +74,18 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "client/test.ts",
-            "karmaConfig": "client/karma.conf.js",
             "polyfills": "client/polyfills.ts",
             "tsConfig": "client/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/tether/dist/js/tether.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ],
+            "karmaConfig": "client/karma.conf.js",
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "client/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/tether/dist/js/tether.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "assets": [
               "client/assets",
@@ -106,23 +108,25 @@
       }
     },
     "angular2-full-stack-e2e": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "e2e/",
       "projectType": "application",
-      "architect": {
+      "targets": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "angular2-full-stack:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular2-full-stack:serve:production"
+            }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": "e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -131,14 +135,5 @@
       }
     }
   },
-  "defaultProject": "angular2-full-stack",
-  "schematics": {
-    "@schematics/angular:component": {
-      "prefix": "app",
-      "styleext": "css"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "app"
-    }
-  }
+  "defaultProject": "angular2-full-stack"
 }
