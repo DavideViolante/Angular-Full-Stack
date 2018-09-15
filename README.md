@@ -41,7 +41,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 7. Download this repo and copy all files into `your-app-name` folder
 8. `npm i`
 9. Edit `package.json` as following:
-   - add this line to scripts: `"postinstall": "tsc -p server && ng build -aot -prod"`
+   - add this line to scripts: `"postinstall": "tsc -p server && ng build --aot --prod"`
    - move the following packages from devDependencies to dependencies: `@angular/cli`, `@angular/compiler-cli`, `@types/jasmine`, `@types/node`, `chai`, `chai-http` and `typescript`.
 10. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
 11. `git add .`
