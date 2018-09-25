@@ -76,6 +76,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
     "protractor": "~5.4.0",
+    "sass-lint": "^1.12.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"
