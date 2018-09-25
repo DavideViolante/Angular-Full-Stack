@@ -25,8 +25,12 @@
           <td>{{cat.age}}</td>
           <td>{{cat.weight}}</td>
           <td>
-            <button class="btn btn-sm btn-primary" (click)="enableEditing(cat)"><i class="fa fa-pencil"></i> Edit</button> 
-            <button class="btn btn-sm btn-danger ml-1" (click)="deleteCat(cat)"><i class="fa fa-trash"></i> Delete</button>
+            <button class="btn btn-sm btn-primary" (click)="enableEditing(cat)">
+              <i class="fa fa-pencil"></i> Edit
+            </button> 
+            <button class="btn btn-sm btn-danger ml-1" (click)="deleteCat(cat)">
+              <i class="fa fa-trash"></i> Delete
+            </button>
           </td>
         </tr>  
       </tbody>
@@ -34,11 +38,18 @@
         <tr>
           <td colspan="4">
             <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)">
-              <input class="form-control mr-2" type="text" name="name" [(ngModel)]="cat.name" placeholder="Name" required>
-              <input class="form-control mr-2" type="number" name="age" [(ngModel)]="cat.age" placeholder="Age" min="0" required>
-              <input class="form-control mr-2" type="number" name="weight" [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
-              <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid"><i class="fa fa-floppy-o"></i> Save</button>
-              <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+              <input class="form-control mr-2" type="text" name="name"
+                     [(ngModel)]="cat.name" placeholder="Name" required>
+              <input class="form-control mr-2" type="number" name="age"
+                     [(ngModel)]="cat.age" placeholder="Age" min="0" required>
+              <input class="form-control mr-2" type="number" name="weight"
+                     [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
+              <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
+                <i class="fa fa-floppy-o"></i> Save
+              </button>
+              <button class="btn btn-sm btn-warning" (click)="cancelEditing()">
+                <i class="fa fa-times"></i> Cancel
+              </button>
             </form>
           </td>
         </tr>
@@ -51,10 +62,15 @@
   <h4 class="card-header">Add new cat</h4>
   <div class="card-body">
     <form class="form-inline" [formGroup]="addCatForm" (ngSubmit)="addCat()">
-      <input class="form-control mr-2" type="text" name="name" formControlName="name" placeholder="Name">
-      <input class="form-control mr-2" type="number" name="age" formControlName="age" placeholder="Age" min="0">
-      <input class="form-control mr-2" type="number" name="weight" formControlName="weight" placeholder="Weight" step="any" min="0">
-      <button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid"><i class="fa fa-plus"></i> Add</button>
+      <input class="form-control mr-2" type="text" name="name"
+             formControlName="name" placeholder="Name">
+      <input class="form-control mr-2" type="number" name="age"
+             formControlName="age" placeholder="Age" min="0">
+      <input class="form-control mr-2" type="number" name="weight"
+             formControlName="weight" placeholder="Weight" step="any" min="0">
+      <button class="btn btn-primary" type="submit" [disabled]="!addCatForm.valid">
+        <i class="fa fa-plus"></i> Add
+      </button>
     </form>
   </div>
 </div>
