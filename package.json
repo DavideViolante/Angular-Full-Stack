@@ -19,6 +19,7 @@
     "testbe": "tsc -p server && mocha dist/server/test --exit",
     "lint": "ng lint",
     "linthtml": "htmlhint \"client/**/*.html\"",
+    "lintscss": "sass-lint \"client/**/*.scss\" -v",
     "lintbe": "tslint server/**/**.ts{,x}",
     "e2e": "ng e2e"
   },
