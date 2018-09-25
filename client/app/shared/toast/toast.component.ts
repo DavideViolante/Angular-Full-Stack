@@ -11,6 +11,6 @@ export class ToastComponent {
   setMessage(body, type, time = 3000) {
     this.message.body = body;
     this.message.type = type;
-    setTimeout(() => { this.message.body = ''; }, time);
+    setTimeout(() => this.message.body = '', time);
   }
 }
