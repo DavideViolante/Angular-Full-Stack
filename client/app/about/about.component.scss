@@ -1,4 +1,6 @@
-ul:first-child {
-  margin-left: -20px;
-  list-style-type: none;
+ul {
+  &:first-child {
+    list-style-type: none;
+    margin-left: -20px;
+  }
 }
