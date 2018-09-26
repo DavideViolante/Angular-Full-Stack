@@ -18,6 +18,8 @@
     "test": "ng test",
     "testbe": "tsc -p server && mocha dist/server/test --exit",
     "lint": "ng lint",
+    "linthtml": "htmlhint \"client/**/*.html\"",
+    "lintscss": "sass-lint \"client/**/*.scss\" -v",
     "lintbe": "tslint server/**/**.ts{,x}",
     "e2e": "ng e2e"
   },
@@ -64,6 +66,7 @@
     "chai-http": "^4.2.0",
     "codelyzer": "~4.3.0",
     "concurrently": "^3.6.1",
+    "htmlhint": "^0.10.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.0.0",
@@ -74,6 +77,7 @@
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
     "protractor": "~5.4.0",
+    "sass-lint": "^1.12.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~2.9.2"

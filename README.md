@@ -42,7 +42,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 8. `npm i`
 9. Edit `package.json` as following:
    - add this line to scripts: `"postinstall": "tsc -p server && ng build --aot --prod"`
-   - move the following packages from devDependencies to dependencies: `@angular/cli`, `@angular/compiler-cli`, `@types/jasmine`, `@types/node`, `chai`, `chai-http` and `typescript`.
+   - move the following packages from devDependencies to dependencies: `@angular/cli`, `@angular/compiler-cli`, `@types/*`, `chai`, `chai-http` and `typescript`.
 10. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
 11. `git add .`
 12. `git commit -m "Going to Heroku"`
@@ -65,8 +65,14 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Running backend tests
 Run `mongod` to run an instance of MongoDB, then run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/).
 
-## Running TSLint
-Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter via [TSLint](https://palantir.github.io/tslint/).
+## Running linters
+Run `ng lint` to execute the frontend TS linting via [TSLint](https://github.com/palantir/tslint).
+
+Run `npm run lintbe` to execute the backend TS linting via [TSLint](https://github.com/palantir/tslint).
+
+Run `npm run linthtml` to execute the frontend HTML linting via [HTMLHint](https://github.com/htmlhint/HTMLHint).
+
+Run `npm run lintscss` to execute the frontend SCSS linting via [SASS-Lint](https://github.com/sasstools/sass-lint).
 
 ## Wiki
 To get more help about this project, [visit the official wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).
