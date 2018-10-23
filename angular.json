@@ -8,7 +8,11 @@
       "sourceRoot": "client",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -19,8 +23,8 @@
             "polyfills": "client/polyfills.ts",
             "tsConfig": "client/tsconfig.app.json",
             "assets": [
-              "client/assets",
-              "client/assets/favicon.ico"
+              "client/assets/favicon.ico",
+              "client/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -95,8 +99,8 @@
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "assets": [
-              "client/assets",
-              "client/assets/favicon.ico"
+              "client/assets/favicon.ico",
+              "client/assets"
             ]
           }
         },
