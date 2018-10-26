@@ -10,7 +10,7 @@ abstract class BaseCtrl {
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-  };
+  }
 
   // Count all
   count = async (req, res) => {
@@ -20,17 +20,17 @@ abstract class BaseCtrl {
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-  };
+  }
 
   // Insert
   insert = async (req, res) => {
     try {
       const obj = await new this.model(req.body).save();
-      res.status(201).json(obj)
+      res.status(201).json(obj);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-  };
+  }
 
   // Get by id
   get = async (req, res) => {
@@ -40,27 +40,27 @@ abstract class BaseCtrl {
     } catch (err) {
       return res.status(500).json({ error: err.message });
     }
-  };
+  }
 
   // Update by id
   update = async (req, res) => {
     try {
-      const obj = await this.model.findOneAndUpdate({ _id: req.params.id }, req.body, {new: true});
-      res.status(200).json(obj)
+      await this.model.findOneAndUpdate({ _id: req.params.id }, req.body);
+      res.status(200);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-  };
+  }
 
   // Delete by id
   delete = async (req, res) => {
     try {
-      const obj = await this.model.findOneAndRemove({ _id: req.params.id });
-      res.status(200).json(obj)
+      await this.model.findOneAndRemove({ _id: req.params.id });
+      res.status(200);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-  };
+  }
 }
 
 export default BaseCtrl;
