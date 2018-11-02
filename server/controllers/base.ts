@@ -46,7 +46,7 @@ abstract class BaseCtrl {
   update = async (req, res) => {
     try {
       await this.model.findOneAndUpdate({ _id: req.params.id }, req.body);
-      res.status(200);
+      res.sendStatus(200);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -56,7 +56,7 @@ abstract class BaseCtrl {
   delete = async (req, res) => {
     try {
       await this.model.findOneAndRemove({ _id: req.params.id });
-      res.status(200);
+      res.sendStatus(200);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
