@@ -45,7 +45,7 @@ describe('Users', () => {
         .post('/api/user')
         .send(user)
         .end((err, res) => {
-          res.should.have.status(200);
+          res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.a.property('username');
           res.body.should.have.a.property('email');

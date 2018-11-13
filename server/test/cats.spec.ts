@@ -45,7 +45,7 @@ describe('Cats', () => {
         .post('/api/cat')
         .send(cat)
         .end((err, res) => {
-          res.should.have.status(200);
+          res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.a.property('name');
           res.body.should.have.a.property('weight');
