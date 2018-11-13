@@ -3,58 +3,63 @@ abstract class BaseCtrl {
   abstract model: any;
 
   // Get all
-  getAll = (req, res) => {
-    this.model.find({}, (err, docs) => {
-      if (err) { return console.error(err); }
+  getAll = async (req, res) => {
+    try {
+      const docs = await this.model.find({});
       res.status(200).json(docs);
-    });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   }
 
   // Count all
-  count = (req, res) => {
-    this.model.count((err, count) => {
-      if (err) { return console.error(err); }
+  count = async (req, res) => {
+    try {
+      const count = await this.model.count();
       res.status(200).json(count);
-    });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   }
 
   // Insert
-  insert = (req, res) => {
-    const obj = new this.model(req.body);
-    obj.save((err, item) => {
-      // 11000 is the code for duplicate key error
-      if (err && err.code === 11000) {
-        res.sendStatus(400);
-      }
-      if (err) {
-        return console.error(err);
-      }
-      res.status(200).json(item);
-    });
+  insert = async (req, res) => {
+    try {
+      const obj = await new this.model(req.body).save();
+      res.status(201).json(obj);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   }
 
   // Get by id
-  get = (req, res) => {
-    this.model.findOne({ _id: req.params.id }, (err, item) => {
-      if (err) { return console.error(err); }
-      res.status(200).json(item);
-    });
+  get = async (req, res) => {
+    try {
+      const obj = await this.model.findOne({ _id: req.params.id });
+      res.status(200).json(obj);
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
   }
 
   // Update by id
-  update = (req, res) => {
-    this.model.findOneAndUpdate({ _id: req.params.id }, req.body, (err) => {
-      if (err) { return console.error(err); }
+  update = async (req, res) => {
+    try {
+      await this.model.findOneAndUpdate({ _id: req.params.id }, req.body);
       res.sendStatus(200);
-    });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   }
 
   // Delete by id
-  delete = (req, res) => {
-    this.model.findOneAndRemove({ _id: req.params.id }, (err) => {
-      if (err) { return console.error(err); }
+  delete = async (req, res) => {
+    try {
+      await this.model.findOneAndRemove({ _id: req.params.id });
       res.sendStatus(200);
-    });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   }
 }
 
