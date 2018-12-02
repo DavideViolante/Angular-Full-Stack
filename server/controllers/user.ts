@@ -1,4 +1,3 @@
-import * as dotenv from 'dotenv';
 import * as jwt from 'jsonwebtoken';
 
 import User from '../models/user';
