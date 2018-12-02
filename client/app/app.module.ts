@@ -1,13 +1,16 @@
+// Angular
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
-
-import { RoutingModule } from './routing.module';
+// Modules
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+// Services
 import { CatService } from './services/cat.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
 import { AuthGuardAdmin } from './services/auth-guard-admin.service';
+// Components
 import { AppComponent } from './app.component';
 import { CatsComponent } from './cats/cats.component';
 import { AboutComponent } from './about/about.component';
@@ -35,7 +38,7 @@ export function tokenGetter() {
     NotFoundComponent
   ],
   imports: [
-    RoutingModule,
+    AppRoutingModule,
     SharedModule,
     JwtModule.forRoot({
       config: {
