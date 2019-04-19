@@ -36,7 +36,6 @@
     "@angular/router": "~7.2.0",
     "@auth0/angular-jwt": "^2.1.0",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
     "dotenv": "^6.2.0",
