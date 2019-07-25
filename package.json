@@ -33,7 +33,7 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
-    "@auth0/angular-jwt": "^2.1.0",
+    "@auth0/angular-jwt": "^3.0.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.0.0",
