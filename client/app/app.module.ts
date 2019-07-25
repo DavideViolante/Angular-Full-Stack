@@ -42,7 +42,7 @@ export function tokenGetter() {
     SharedModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         // whitelistedDomains: ['localhost:3000', 'localhost:4200']
       }
     })
