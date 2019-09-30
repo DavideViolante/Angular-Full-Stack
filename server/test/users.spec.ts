@@ -1,11 +1,12 @@
 import * as chai from 'chai';
+import chaiHttp = require('chai-http');
 import { describe, it } from 'mocha';
 
 process.env.NODE_ENV = 'test';
 import { app } from '../app';
 import User from '../models/user';
 
-chai.use(require('chai-http')).should();
+chai.use(chaiHttp).should();
 
 describe('Users', () => {
 
