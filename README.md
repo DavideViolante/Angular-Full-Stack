@@ -18,7 +18,7 @@ Other tools and technologies used:
 * [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js): password encryption
 
 ## Prerequisites
-1. Install [Node.js](https://nodejs.org) and [MongoDB](https://www.mongodb.com)
+1. Install [Node.js](https://nodejs.org) and [MongoDB](https://www.mongodb.com)(n.b. NodeJs version 10 is required)
 2. Install Angular CLI: `npm i -g @angular/cli`
 3. From project root folder install all the dependencies: `npm i`
 
