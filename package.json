@@ -1,12 +1,12 @@
 {
   "name": "angular2-full-stack",
-  "version": "8.2.12",
+  "version": "9.0.2",
   "license": "MIT",
   "author": "Davide Violante",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "engines": {
-    "node": "10.16.0",
-    "npm": "6.9.0"
+    "node": "12.16.1",
+    "npm": "6.13.4"
   },
   "scripts": {
     "ng": "ng",
@@ -45,7 +45,7 @@
     "morgan": "^1.9.1",
     "popper.js": "^1.16.0",
     "rxjs": "~6.5.4",
-    "rxjs-compat": "~6.3.3",
+    "rxjs-compat": "~6.5.4",
     "tslib": "^1.10.0",
     "tether": "^1.4.7",
     "zone.js": "~0.10.2"
