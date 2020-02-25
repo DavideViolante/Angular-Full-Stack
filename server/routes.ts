@@ -3,10 +3,8 @@ import * as express from 'express';
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
 
-export default function setRoutes(app) {
-
+function setRoutes(app) {
   const router = express.Router();
-
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();
 
@@ -31,3 +29,5 @@ export default function setRoutes(app) {
   app.use('/api', router);
 
 }
+
+export default setRoutes;

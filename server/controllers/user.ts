@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken';
 import User from '../models/user';
 import BaseCtrl from './base';
 
-export default class UserCtrl extends BaseCtrl {
+class UserCtrl extends BaseCtrl {
   model = User;
 
   login = (req, res) => {
@@ -18,3 +18,5 @@ export default class UserCtrl extends BaseCtrl {
   }
 
 }
+
+export default UserCtrl;
