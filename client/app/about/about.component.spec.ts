@@ -24,7 +24,7 @@ describe('Component: About', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the string "About" in h4', () => {
+  it('should display the page header text', () => {
     const el = fixture.debugElement.query(By.css('h4')).nativeElement;
     expect(el.textContent).toContain('About');
   });
