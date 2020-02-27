@@ -67,7 +67,7 @@ describe('Component: Account', () => {
 
   it('should display the save button and be enabled', () => {
     const saveBtn = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(saveBtn.disabled).toBeFalsy();
+    expect(saveBtn).toBeTruthy();
   });
 
 });
