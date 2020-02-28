@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 
 import { RegisterComponent } from './register.component';
 
-describe('RegisterComponent', () => {
+describe('Component: Register', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 

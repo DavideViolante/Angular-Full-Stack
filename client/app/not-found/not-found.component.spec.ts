@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 
 import { NotFoundComponent } from './not-found.component';
 
-describe('NotFoundComponent', () => {
+describe('Component: NotFound', () => {
   let component: NotFoundComponent;
   let fixture: ComponentFixture<NotFoundComponent>;
 

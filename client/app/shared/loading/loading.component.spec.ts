@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 
 import { LoadingComponent } from './loading.component';
 
-describe('LoadingComponent', () => {
+describe('Component: Loading', () => {
   let component: LoadingComponent;
   let fixture: ComponentFixture<LoadingComponent>;
 
