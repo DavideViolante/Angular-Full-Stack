@@ -106,6 +106,9 @@ describe('Component: Cats', () => {
     expect(inputName.nativeElement).toBeTruthy();
     expect(inputAge.nativeElement).toBeTruthy();
     expect(inputWeight.nativeElement).toBeTruthy();
+    expect(inputName.nativeElement.value).toBeFalsy();
+    expect(inputAge.nativeElement.value).toBeFalsy();
+    expect(inputWeight.nativeElement.value).toBeFalsy();
     const btnAdd = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(btnAdd).toBeTruthy();
   });

@@ -65,7 +65,7 @@ describe('Component: Account', () => {
     expect(emailInput.nativeElement.value).toContain('test@example.com');
   });
 
-  it('should display the save button and be enabled', () => {
+  it('should display the save button', () => {
     const saveBtn = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(saveBtn).toBeTruthy();
   });
