@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -17,22 +16,11 @@ export class CatsComponent implements OnInit {
   isLoading = true;
   isEditing = false;
 
-  addCatForm: FormGroup;
-  name = new FormControl('', Validators.required);
-  age = new FormControl('', Validators.required);
-  weight = new FormControl('', Validators.required);
-
   constructor(private catService: CatService,
-              private formBuilder: FormBuilder,
               public toast: ToastComponent) { }
 
   ngOnInit() {
     this.getCats();
-    this.addCatForm = this.formBuilder.group({
-      name: this.name,
-      age: this.age,
-      weight: this.weight
-    });
   }
 
   getCats() {
@@ -40,17 +28,6 @@ export class CatsComponent implements OnInit {
       data => this.cats = data,
       error => console.log(error),
       () => this.isLoading = false
-    );
-  }
-
-  addCat() {
-    this.catService.addCat(this.addCatForm.value).subscribe(
-      res => {
-        this.cats.push(res);
-        this.addCatForm.reset();
-        this.toast.setMessage('item added successfully.', 'success');
-      },
-      error => console.log(error)
     );
   }
 

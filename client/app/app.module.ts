@@ -13,6 +13,7 @@ import { AuthGuardAdmin } from './services/auth-guard-admin.service';
 // Components
 import { AppComponent } from './app.component';
 import { CatsComponent } from './cats/cats.component';
+import { AddCatFormComponent } from './add-cat-form/add-cat-form.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -29,6 +30,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     CatsComponent,
+    AddCatFormComponent,
     AboutComponent,
     RegisterComponent,
     LoginComponent,
