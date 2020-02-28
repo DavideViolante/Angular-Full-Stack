@@ -3,25 +3,22 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LogoutComponent } from './logout.component';
 import { AuthService } from '../services/auth.service';
 
-describe('LogoutComponent', () => {
+class AuthServiceMock {
+  loggedIn = true;
+  logout() {
+    this.loggedIn = false;
+  }
+}
+
+describe('Component: Logout', () => {
   let component: LogoutComponent;
   let fixture: ComponentFixture<LogoutComponent>;
   let authService: AuthService;
-  let authServiceStub: {
-    loggedIn: boolean,
-    logout: any
-  };
 
   beforeEach(async(() => {
-    authServiceStub = {
-      loggedIn: true,
-      logout: (function() {
-        this.loggedIn = false;
-      })
-    };
     TestBed.configureTestingModule({
       declarations: [ LogoutComponent ],
-      providers: [ { provide: AuthService, useValue: authServiceStub } ],
+      providers: [ { provide: AuthService, useClass: AuthServiceMock } ],
     })
     .compileComponents();
   }));
