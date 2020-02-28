@@ -5,25 +5,17 @@ import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 
+class AuthServiceMock { }
+
 describe('Component: App', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let authService: AuthService;
-  let authServiceStub: {
-    loggedIn: boolean,
-    isAdmin: boolean,
-    currentUser: any
-  };
 
   beforeEach(async(() => {
-    authServiceStub = {
-      loggedIn: false,
-      isAdmin: false,
-      currentUser: { username: 'Tester' }
-    };
     TestBed.configureTestingModule({
       declarations: [ AppComponent ],
-      providers: [ { provide: AuthService, useValue: authServiceStub } ],
+      providers: [ { provide: AuthService, useClass: AuthServiceMock } ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents().then(() => {
@@ -53,6 +45,7 @@ describe('Component: App', () => {
 
   it('should display the navigation bar correctly for logged users', () => {
     authService.loggedIn = true;
+    authService.currentUser = { username: 'Tester' };
     fixture.detectChanges();
     const de = fixture.debugElement.queryAll(By.css('a'));
     expect(de.length).toBe(4);
@@ -69,6 +62,7 @@ describe('Component: App', () => {
   it('should display the navigation bar correctly for admin users', () => {
     authService.loggedIn = true;
     authService.isAdmin = true;
+    authService.currentUser = { username: 'Tester' };
     fixture.detectChanges();
     const de = fixture.debugElement.queryAll(By.css('a'));
     expect(de.length).toBe(5);
