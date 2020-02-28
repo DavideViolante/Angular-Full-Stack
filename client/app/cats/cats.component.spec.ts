@@ -112,5 +112,4 @@ describe('Component: Cats', () => {
     const btnAdd = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(btnAdd).toBeTruthy();
   });
-
 });

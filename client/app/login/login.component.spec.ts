@@ -56,5 +56,4 @@ describe('Component: Login', () => {
     expect(el.textContent).toContain('Login');
     expect(el.disabled).toBeTruthy();
   });
-
 });

@@ -24,7 +24,7 @@ describe('Component: NotFound', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the string "404 Not Found" in h4', () => {
+  it('should display the page header text', () => {
     const el = fixture.debugElement.query(By.css('h4')).nativeElement;
     expect(el.textContent).toContain('404 Not Found');
   });

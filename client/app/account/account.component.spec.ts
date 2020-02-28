@@ -70,5 +70,4 @@ describe('Component: Account', () => {
     expect(saveBtn).toBeTruthy();
     expect(saveBtn.disabled).toBeFalsy();
   });
-
 });

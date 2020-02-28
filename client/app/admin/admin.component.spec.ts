@@ -78,5 +78,4 @@ describe('Component: Admin', () => {
     expect(btnDelete2.nativeElement.disabled).toBeFalsy();
     expect(btnDelete2.nativeElement.textContent).toContain('Delete');
   });
-
 });
