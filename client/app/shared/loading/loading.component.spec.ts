@@ -38,4 +38,5 @@ describe('Component: Loading', () => {
     expect(de).toBeDefined();
     expect(el.textContent).toContain('Loading...');
   });
+
 });

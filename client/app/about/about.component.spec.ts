@@ -28,4 +28,5 @@ describe('Component: About', () => {
     const el = fixture.debugElement.query(By.css('h4')).nativeElement;
     expect(el.textContent).toContain('About');
   });
+
 });

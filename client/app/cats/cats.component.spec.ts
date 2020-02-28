@@ -1,10 +1,11 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { CatsComponent } from './cats.component';
+import { By } from '@angular/platform-browser';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+
 import { ToastComponent } from '../shared/toast/toast.component';
 import { CatService } from '../services/cat.service';
-import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CatsComponent } from './cats.component';
 import { of } from 'rxjs';
-import { By } from '@angular/platform-browser';
 
 class CatServiceMock {
   mockCats = [

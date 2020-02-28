@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
-import { RegisterComponent } from './register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToastComponent } from '../shared/toast/toast.component';
 import { Router } from '@angular/router';
+
+import { ToastComponent } from '../shared/toast/toast.component';
 import { UserService } from '../services/user.service';
+import { RegisterComponent } from './register.component';
 
 class RouterMock { }
 class UserServiceMock { }
@@ -58,4 +58,5 @@ describe('Component: Register', () => {
     expect(el.textContent).toContain('Register');
     expect(el.disabled).toBeTruthy();
   });
+
 });

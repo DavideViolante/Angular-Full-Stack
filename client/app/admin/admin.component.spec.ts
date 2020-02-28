@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AdminComponent } from './admin.component';
-import { AuthService } from '../services/auth.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { UserService } from '../services/user.service';
-import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
+
+import { ToastComponent } from '../shared/toast/toast.component';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { AdminComponent } from './admin.component';
+import { of } from 'rxjs';
 
 class AuthServiceMock {
   currentUser = { _id: '1', username: 'test1@example.com', role: 'admin' };
@@ -15,7 +15,7 @@ class UserServiceMock {
   mockUsers = [
     { _id: '1', username: 'Test 1', email: 'test1@example.com', role: 'admin' },
     { _id: '2', username: 'Test 2', email: 'test2@example.com', role: 'user' },
-  ]
+  ];
   getUsers() {
     return of(this.mockUsers);
   }
@@ -78,4 +78,5 @@ describe('Component: Admin', () => {
     expect(btnDelete2.nativeElement.disabled).toBeFalsy();
     expect(btnDelete2.nativeElement.textContent).toContain('Delete');
   });
+
 });

@@ -3,8 +3,8 @@ import { By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
-import { AddCatFormComponent } from './add-cat-form.component';
 import { CatService } from '../services/cat.service';
+import { AddCatFormComponent } from './add-cat-form.component';
 
 class CatServiceMock { }
 
@@ -52,4 +52,5 @@ describe('Component: AddCatForm', () => {
     const btnAdd = fixture.debugElement.query(By.css('button')).nativeElement;
     expect(btnAdd).toBeTruthy();
   });
+
 });

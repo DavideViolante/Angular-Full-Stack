@@ -46,4 +46,5 @@ describe('Component: Toast', () => {
     expect(el.textContent).toContain(mockMessage.body);
     expect(el.className).toContain(mockMessage.type);
   });
+
 });

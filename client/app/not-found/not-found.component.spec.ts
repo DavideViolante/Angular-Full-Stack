@@ -34,4 +34,5 @@ describe('Component: NotFound', () => {
     expect(el.getAttribute('routerLink')).toBe('/');
     expect(el.textContent).toContain('Homepage');
   });
+
 });

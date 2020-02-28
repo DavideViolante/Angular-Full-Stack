@@ -2,10 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-import { AccountComponent } from './account.component';
+import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { AccountComponent } from './account.component';
 import { of } from 'rxjs';
 
 class AuthServiceMock { }
@@ -70,4 +70,5 @@ describe('Component: Account', () => {
     expect(saveBtn).toBeTruthy();
     expect(saveBtn.disabled).toBeFalsy();
   });
+
 });

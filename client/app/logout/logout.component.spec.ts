@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LogoutComponent } from './logout.component';
 import { AuthService } from '../services/auth.service';
+import { LogoutComponent } from './logout.component';
 
 class AuthServiceMock {
   loggedIn = true;
@@ -40,4 +40,5 @@ describe('Component: Logout', () => {
     authService.logout();
     expect(authService.loggedIn).toBeFalsy();
   });
+
 });
