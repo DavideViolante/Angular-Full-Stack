@@ -21,7 +21,8 @@
     "linthtml": "htmlhint \"client/**/*.html\"",
     "lintscss": "sass-lint \"client/**/*.scss\" -v",
     "lintbe": "tslint server/**/**.ts{,x}",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest"
   },
   "private": true,
   "dependencies": {
