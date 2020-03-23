@@ -17,7 +17,7 @@ script:
   - npm run lintbe
   - npm run linthtml
   - npm run lintscss
-  - npm run test
+  - npm run test -- --watch=false --browsers=ChromeHeadless
 #  - npm run testbe
 #  - npm run build
 #  - xvfb-run npm run e2e
