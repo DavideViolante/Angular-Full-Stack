@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+  - "12"
+
+dist: trusty
+sudo: false
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  chrome: stable
+
+script:
+  - npm run lint
+  - npm run lintbe
+  - npm run linthtml
+  - npm run lintscss
+#  - npm run test
+#  - npm run build
+#  - xvfb-run npm run e2e
