@@ -18,6 +18,6 @@ script:
   - npm run linthtml
   - npm run lintscss
   - npm run test -- --watch=false --browsers=ChromeHeadless
+  - npm run e2e -- --protractor-config='e2e/protractor.ci.conf.js'
 #  - npm run testbe
 #  - npm run build
-#  - xvfb-run npm run e2e
