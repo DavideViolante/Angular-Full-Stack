@@ -9,6 +9,9 @@ cache:
   directories:
     - node_modules
 
+services:
+  - mongodb
+
 addons:
   chrome: stable
 
@@ -19,6 +22,6 @@ script:
   - npm run lintscss
   - npm run test -- --watch=false --progress=false --browsers=ChromeHeadless
   - npm run e2e -- --protractor-config='e2e/protractor.ci.conf.js'
-#  - npm run testbe
+  - npm run testbe
   - npm run predev
   - npm run build -- --aot --prod
