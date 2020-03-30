@@ -10,9 +10,5 @@
   ],
   "include": [
     "client/**/*.d.ts"
-  ],
-  "exclude": [
-    "client/test.ts",
-    "client/**/*.spec.ts"
   ]
 }
