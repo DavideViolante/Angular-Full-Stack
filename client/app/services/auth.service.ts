@@ -53,7 +53,7 @@ export class AuthService {
     this.currentUser._id = decodedUser._id;
     this.currentUser.username = decodedUser.username;
     this.currentUser.role = decodedUser.role;
-    decodedUser.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+    this.isAdmin = decodedUser.role === 'admin';
     delete decodedUser.role;
   }
 
