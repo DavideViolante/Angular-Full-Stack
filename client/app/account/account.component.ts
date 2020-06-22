@@ -34,7 +34,7 @@ export class AccountComponent implements OnInit {
       res => {
         this.toast.setMessage('account settings saved!', 'success');
         this.auth.currentUser = user;
-        this.auth.isAdmin = user.role === 'admin' ? true : false;
+        this.auth.isAdmin = user.role === 'admin';
       },
       error => console.log(error)
     );
