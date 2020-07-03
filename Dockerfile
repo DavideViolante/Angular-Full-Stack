@@ -1,10 +1,10 @@
 FROM node:12.18.2
 
 WORKDIR /usr/src/app
-COPY package.json .
-RUN npm i -g @angular/cli@~10.0.1 typescript@~3.9.6
-RUN npm i
+COPY package*.json ./
+RUN npm ci
 COPY . .
-RUN tsc -p ./server && ng build --aot --prod
-
+ENV MONGODB_URI mongodb://mongo:27017/angularfullstack
+RUN npm run predev && npm run buildprod
+EXPOSE 3000
 CMD [ "npm", "start" ]
