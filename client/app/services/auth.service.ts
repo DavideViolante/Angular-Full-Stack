@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { User } from '../shared/models/user.model';
 
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -25,7 +26,7 @@ export class AuthService {
     }
   }
 
-  login(emailAndPassword) {
+  login(emailAndPassword): Observable<any> {
     return this.userService.login(emailAndPassword).map(
       res => {
         localStorage.setItem('token', res.token);
@@ -36,7 +37,7 @@ export class AuthService {
     );
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     this.loggedIn = false;
     this.isAdmin = false;
@@ -44,11 +45,11 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  decodeUserFromToken(token) {
+  decodeUserFromToken(token): object {
     return this.jwtHelper.decodeToken(token).user;
   }
 
-  setCurrentUser(decodedUser) {
+  setCurrentUser(decodedUser): void {
     this.loggedIn = true;
     this.currentUser._id = decodedUser._id;
     this.currentUser.username = decodedUser.username;

@@ -18,11 +18,11 @@ export class AdminComponent implements OnInit {
               public toast: ToastComponent,
               private userService: UserService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUsers();
   }
 
-  getUsers() {
+  getUsers(): void {
     this.userService.getUsers().subscribe(
       data => this.users = data,
       error => console.log(error),
@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  deleteUser(user: User) {
+  deleteUser(user: User): void {
     if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
       this.userService.deleteUser(user).subscribe(
         data => this.toast.setMessage('user deleted successfully.', 'success'),

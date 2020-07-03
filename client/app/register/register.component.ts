@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
               public toast: ToastComponent,
               private userService: UserService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       username: this.username,
       email: this.email,
@@ -45,19 +45,19 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  setClassUsername() {
+  setClassUsername(): object {
     return { 'has-danger': !this.username.pristine && !this.username.valid };
   }
 
-  setClassEmail() {
+  setClassEmail(): object {
     return { 'has-danger': !this.email.pristine && !this.email.valid };
   }
 
-  setClassPassword() {
+  setClassPassword(): object {
     return { 'has-danger': !this.password.pristine && !this.password.valid };
   }
 
-  register() {
+  register(): void {
     this.userService.register(this.registerForm.value).subscribe(
       res => {
         this.toast.setMessage('you successfully registered!', 'success');

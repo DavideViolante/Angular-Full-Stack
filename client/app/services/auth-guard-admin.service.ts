@@ -7,7 +7,7 @@ export class AuthGuardAdmin implements CanActivate {
 
   constructor(public auth: AuthService) {}
 
-  canActivate() {
+  canActivate(): boolean {
     return this.auth.isAdmin;
   }
 

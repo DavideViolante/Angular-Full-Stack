@@ -17,11 +17,11 @@ export class AccountComponent implements OnInit {
               public toast: ToastComponent,
               private userService: UserService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUser();
   }
 
-  getUser() {
+  getUser(): void {
     this.userService.getUser(this.auth.currentUser).subscribe(
       data => this.user = data,
       error => console.log(error),
@@ -29,7 +29,7 @@ export class AccountComponent implements OnInit {
     );
   }
 
-  save(user: User) {
+  save(user: User): void {
     this.userService.editUser(user).subscribe(
       res => {
         this.toast.setMessage('account settings saved!', 'success');

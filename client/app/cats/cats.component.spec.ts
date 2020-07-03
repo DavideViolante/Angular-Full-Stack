@@ -5,14 +5,14 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { CatService } from '../services/cat.service';
 import { CatsComponent } from './cats.component';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 class CatServiceMock {
   mockCats = [
     { name: 'Cat 1', age: 1, weight: 2 },
     { name: 'Cat 2', age: 3, weight: 4.2 },
   ];
-  getCats() {
+  getCats(): Observable<object[]> {
     return of(this.mockCats);
   }
 }

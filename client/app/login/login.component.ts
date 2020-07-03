@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
               private router: Router,
               public toast: ToastComponent) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.auth.loggedIn) {
       this.router.navigate(['/']);
     }
@@ -37,15 +37,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  setClassEmail() {
+  setClassEmail(): object {
     return { 'has-danger': !this.email.pristine && !this.email.valid };
   }
 
-  setClassPassword() {
+  setClassPassword(): object {
     return { 'has-danger': !this.password.pristine && !this.password.valid };
   }
 
-  login() {
+  login(): void {
     this.auth.login(this.loginForm.value).subscribe(
       res => this.router.navigate(['/']),
       error => this.toast.setMessage('invalid email or password!', 'danger')

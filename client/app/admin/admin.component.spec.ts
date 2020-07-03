@@ -5,7 +5,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { AdminComponent } from './admin.component';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 class AuthServiceMock {
   currentUser = { _id: '1', username: 'test1@example.com', role: 'admin' };
@@ -16,7 +16,7 @@ class UserServiceMock {
     { _id: '1', username: 'Test 1', email: 'test1@example.com', role: 'admin' },
     { _id: '2', username: 'Test 2', email: 'test2@example.com', role: 'user' },
   ];
-  getUsers() {
+  getUsers(): Observable<object[]> {
     return of(this.mockUsers);
   }
 }

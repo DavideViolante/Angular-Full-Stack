@@ -9,7 +9,7 @@ export class LogoutComponent implements OnInit {
 
   constructor(private auth: AuthService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.auth.logout();
   }
 

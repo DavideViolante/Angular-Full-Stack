@@ -30,7 +30,7 @@ export class AddCatFormComponent implements OnInit {
     });
   }
 
-  addCat() {
+  addCat(): void {
     this.catService.addCat(this.addCatForm.value).subscribe(
       res => {
         this.cats.push(res);

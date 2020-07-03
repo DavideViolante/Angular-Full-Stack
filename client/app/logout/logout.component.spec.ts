@@ -5,7 +5,7 @@ import { LogoutComponent } from './logout.component';
 
 class AuthServiceMock {
   loggedIn = true;
-  logout() {
+  logout(): void {
     this.loggedIn = false;
   }
 }

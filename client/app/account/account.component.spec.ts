@@ -6,7 +6,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { AccountComponent } from './account.component';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 class AuthServiceMock { }
 
@@ -16,7 +16,7 @@ class UserServiceMock {
     email: 'test@example.com',
     role: 'user'
   };
-  getUser() {
+  getUser(): Observable<object> {
     return of(this.mockUser);
   }
 }

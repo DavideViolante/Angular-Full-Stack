@@ -19,11 +19,11 @@ export class CatsComponent implements OnInit {
   constructor(private catService: CatService,
               public toast: ToastComponent) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getCats();
   }
 
-  getCats() {
+  getCats(): void {
     this.catService.getCats().subscribe(
       data => this.cats = data,
       error => console.log(error),
@@ -31,12 +31,12 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  enableEditing(cat: Cat) {
+  enableEditing(cat: Cat): void {
     this.isEditing = true;
     this.cat = cat;
   }
 
-  cancelEditing() {
+  cancelEditing(): void {
     this.isEditing = false;
     this.cat = new Cat();
     this.toast.setMessage('item editing cancelled.', 'warning');
@@ -44,7 +44,7 @@ export class CatsComponent implements OnInit {
     this.getCats();
   }
 
-  editCat(cat: Cat) {
+  editCat(cat: Cat): void {
     this.catService.editCat(cat).subscribe(
       () => {
         this.isEditing = false;
@@ -55,7 +55,7 @@ export class CatsComponent implements OnInit {
     );
   }
 
-  deleteCat(cat: Cat) {
+  deleteCat(cat: Cat): void {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
       this.catService.deleteCat(cat).subscribe(
         () => {
