@@ -4,10 +4,8 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserService } from './user.service';
+import { ToastComponent } from '../shared/toast/toast.component';
 import { User } from '../shared/models/user.model';
-
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +16,8 @@ export class AuthService {
 
   constructor(private userService: UserService,
               private router: Router,
-              private jwtHelper: JwtHelperService) {
+              private jwtHelper: JwtHelperService,
+              public toast: ToastComponent) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
@@ -26,14 +25,16 @@ export class AuthService {
     }
   }
 
-  login(emailAndPassword): Observable<any> {
-    return this.userService.login(emailAndPassword).map(
+  login(emailAndPassword): void {
+    this.userService.login(emailAndPassword).subscribe(
       res => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
-        return this.loggedIn;
-      }
+        this.loggedIn = true;
+        this.router.navigate(['/']);
+      },
+      error => this.toast.setMessage('invalid email or password!', 'danger')
     );
   }
 

@@ -22,10 +22,6 @@ import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-export function tokenGetter(): string {
-  return localStorage.getItem('token');
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +40,7 @@ export function tokenGetter(): string {
     SharedModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter,
+        tokenGetter: (): string => localStorage.getItem('token'),
         // whitelistedDomains: ['localhost:3000', 'localhost:4200']
       }
     })
