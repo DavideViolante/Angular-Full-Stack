@@ -3,7 +3,7 @@ import * as express from 'express';
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
 
-function setRoutes(app) {
+function setRoutes(app): void {
   const router = express.Router();
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();

@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'));
 }
 
-async function main() {
+async function main(): Promise<any> {
   try {
     await setMongo();
     setRoutes(app);

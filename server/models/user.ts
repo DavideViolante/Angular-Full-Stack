@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Before saving the user, hash the password
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function(next): void {
   const user = this;
   if (!user.isModified('password')) { return next(); }
   bcrypt.genSalt(10, (err, salt) => {
@@ -22,7 +22,7 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, callback) {
+userSchema.methods.comparePassword = function(candidatePassword, callback): void {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) { return callback(err); }
     callback(null, isMatch);

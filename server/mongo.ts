@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-async function setMongo() {
+async function setMongo(): Promise<any> {
   let mongodbURI;
   if (process.env.NODE_ENV === 'test') {
     mongodbURI = process.env.MONGODB_TEST_URI;
