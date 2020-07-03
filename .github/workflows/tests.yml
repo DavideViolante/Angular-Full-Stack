@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm i
+    - run: npm ci
     - run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadless
     - run: npm run e2e -- --protractor-config='e2e/protractor.ci.conf.js'
     - run: npm run testbe
