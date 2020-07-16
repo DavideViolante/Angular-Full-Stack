@@ -22,8 +22,8 @@
     "linthtml": "htmlhint \"client/**/*.html\"",
     "lintscss": "sass-lint \"client/**/*.scss\" -v",
     "lintbe": "tslint server/**/**.ts{,x}",
-    "e2e": "ng e2e",
-    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest"
+    "e2e": "ng e2e --webdriver-update=false",
+    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager clean && webdriver-manager update --versions.chrome 83.0.4103.116"
   },
   "private": true,
   "dependencies": {
