@@ -41,7 +41,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     JwtModule.forRoot({
       config: {
         tokenGetter: (): string => localStorage.getItem('token'),
-        // whitelistedDomains: ['localhost:3000', 'localhost:4200']
+        // allowedDomains: ['localhost:3000', 'localhost:4200']
       }
     })
   ],
