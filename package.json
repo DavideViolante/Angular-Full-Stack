@@ -1,12 +1,12 @@
 {
   "name": "angular2-full-stack",
-  "version": "10.0.2",
+  "version": "10.1.1",
   "license": "MIT",
   "author": "Davide Violante",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "engines": {
-    "node": "12.16.1",
-    "npm": "6.13.4"
+    "node": "12.18.3",
+    "npm": "6.14.6"
   },
   "scripts": {
     "ng": "ng",
@@ -23,18 +23,18 @@
     "lintscss": "sass-lint \"client/**/*.scss\" -v",
     "lintbe": "tslint server/**/**.ts{,x}",
     "e2e": "ng e2e --webdriver-update=false",
-    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager clean && webdriver-manager update --versions.chrome 83.0.4103.116"
+    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager update --versions.chrome 85.0.4183.83"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~10.0.2",
-    "@angular/common": "~10.0.2",
-    "@angular/compiler": "~10.0.2",
-    "@angular/core": "~10.0.2",
-    "@angular/forms": "~10.0.2",
-    "@angular/platform-browser": "~10.0.2",
-    "@angular/platform-browser-dynamic": "~10.0.2",
-    "@angular/router": "~10.0.2",
+    "@angular/animations": "~10.1.1",
+    "@angular/common": "~10.1.1",
+    "@angular/compiler": "~10.1.1",
+    "@angular/core": "~10.1.1",
+    "@angular/forms": "~10.1.1",
+    "@angular/platform-browser": "~10.1.1",
+    "@angular/platform-browser-dynamic": "~10.1.1",
+    "@angular/router": "~10.1.1",
     "@auth0/angular-jwt": "^4.2.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
@@ -46,33 +46,33 @@
     "mongoose": "^5.9.6",
     "morgan": "^1.10.0",
     "popper.js": "^1.16.1",
-    "rxjs": "~6.5.4",
+    "rxjs": "~6.6.0",
     "rxjs-compat": "~6.5.4",
     "tslib": "^2.0.0",
     "tether": "^1.4.7",
-    "zone.js": "~0.10.3"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.1000.1",
-    "@angular/cli": "~10.0.1",
-    "@angular/compiler-cli": "~10.0.2",
-    "@angular/language-service": "~10.0.2",
+    "@angular-devkit/build-angular": "~0.1001.1",
+    "@angular/cli": "~10.1.1",
+    "@angular/compiler-cli": "~10.1.1",
+    "@angular/language-service": "~10.1.1",
     "@types/chai-http": "^4.2.0",
     "@types/express": "^4.17.2",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.12.32",
+    "@types/node": "^12.11.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "codelyzer": "^5.1.2",
+    "codelyzer": "^6.0.0",
     "concurrently": "^5.1.0",
     "htmlhint": "^0.11.0",
-    "jasmine-core": "~3.5.0",
+    "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
-    "karma-jasmine": "~3.3.0",
+    "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "mocha": "^7.1.1",
     "nodemon": "^2.0.2",
@@ -80,6 +80,6 @@
     "sass-lint": "^1.13.1",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.6"
+    "typescript": "~4.0.2"
   }
 }
