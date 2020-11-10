@@ -21,7 +21,7 @@
     "testbe": "tsc -p server && mocha dist/server/test --exit",
     "lint": "ng lint && htmlhint \"client/**/*.html\" && sass-lint \"client/**/*.scss\" -v && tslint server/**/**.ts{,x}",
     "e2e": "ng e2e --webdriver-update=false",
-    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager update --versions.chrome 85.0.4183.83"
+    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager update --versions.chrome 86.0.4240.22"
   },
   "private": true,
   "dependencies": {
