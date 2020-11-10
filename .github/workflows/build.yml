@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -20,8 +20,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run lint
-    - run: npm run lintbe
-    - run: npm run linthtml
-    - run: npm run lintscss
-    - run: npm run predev
+    - run: npm run buildbe
     - run: npm run build -- --aot --prod

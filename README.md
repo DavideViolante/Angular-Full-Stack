@@ -48,16 +48,10 @@ Run `ng test` to execute the frontend unit tests via [Karma](https://karma-runne
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-Run `mongod` to run an instance of MongoDB then run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/).
+Run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/) (it requires `mongod` already running).
 
 ## Running linters
-Run `ng lint` to execute the frontend TS linting via [TSLint](https://github.com/palantir/tslint).
-
-Run `npm run lintbe` to execute the backend TS linting via [TSLint](https://github.com/palantir/tslint).
-
-Run `npm run linthtml` to execute the frontend HTML linting via [HTMLHint](https://github.com/htmlhint/HTMLHint).
-
-Run `npm run lintscss` to execute the frontend SCSS linting via [SASS-Lint](https://github.com/sasstools/sass-lint).
+Run `npm run lint` to execute [TS linting](https://github.com/palantir/tslint), [HTML linting](https://github.com/htmlhint/HTMLHint) and [SASS linting](https://github.com/sasstools/sass-lint).
 
 ## Wiki
 To get more help about this project, [visit the official wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).
