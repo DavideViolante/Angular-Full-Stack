@@ -1,5 +1,5 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { AuthService } from './services/auth.service';
@@ -12,7 +12,7 @@ describe('Component: App', () => {
   let fixture: ComponentFixture<AppComponent>;
   let authService: AuthService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AppComponent ],
       providers: [ { provide: AuthService, useClass: AuthServiceMock } ],
@@ -26,7 +26,7 @@ describe('Component: App', () => {
     });
   }));
 
-  it('should create the app', async(() => {
+  it('should create the app', waitForAsync(() => {
     expect(component).toBeTruthy();
   }));
 

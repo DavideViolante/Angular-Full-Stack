@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthService } from '../services/auth.service';
 import { LogoutComponent } from './logout.component';
@@ -15,7 +15,7 @@ describe('Component: Logout', () => {
   let fixture: ComponentFixture<LogoutComponent>;
   let authService: AuthService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LogoutComponent ],
       providers: [ { provide: AuthService, useClass: AuthServiceMock } ],
