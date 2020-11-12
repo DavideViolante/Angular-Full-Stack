@@ -1,7 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/data
 /dist
 /tmp
 /out-tsc
@@ -12,8 +11,8 @@
 /node_modules
 
 # profiling files
-chrome-profiler-events.json
-speed-measure-plugin.json
+chrome-profiler-events*.json
+speed-measure-plugin*.json
 
 # IDEs and editors
 /.idea
@@ -45,3 +44,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# MongoDB
+/data
