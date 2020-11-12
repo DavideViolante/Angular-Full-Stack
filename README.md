@@ -43,10 +43,9 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 4. If you use a remote MongoDB instance, edit `.env` file
 5. Run `npm ci`
 6. Run `npm run build` or `npm run buildprod`
-7. Run `npm run buildbe`
-8. Run `npm start`
-9. The app is now running and listening on port 3000
-10. Tip: use [pm2](https://pm2.keymetrics.io/) to run the app instead of `npm start`, eg: `pm2 start dist/server/app.js`
+7. Run `npm start`
+8. The app is now running and listening on port 3000
+9. Tip: use [pm2](https://pm2.keymetrics.io/) to run the app instead of `npm start`, eg: `pm2 start dist/server/app.js`
 
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")

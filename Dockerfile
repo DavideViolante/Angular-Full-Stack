@@ -5,6 +5,6 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 ENV MONGODB_URI mongodb://mongo:27017/angularfullstack
-RUN npm run buildbe && npm run buildprod
+RUN npm run buildprod
 EXPOSE 3000
 CMD [ "npm", "start" ]

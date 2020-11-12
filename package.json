@@ -1,6 +1,6 @@
 {
   "name": "angular2-full-stack",
-  "version": "10.1.1",
+  "version": "11.0.0",
   "license": "MIT",
   "author": "Davide Violante",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
@@ -10,9 +10,8 @@
   },
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
-    "buildprod": "ng build --aot --prod",
-    "buildbe": "tsc -p server",
+    "build": "ng build && tsc -p server",
+    "buildprod": "ng build --aot --prod && tsc -p server",
     "start": "node dist/server/app.js",
     "predev": "tsc -p server",
     "dev": "concurrently \"mongod\" \"ng serve --proxy-config proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
@@ -69,7 +68,7 @@
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.1.1",
     "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "mocha": "^8.2.1",
