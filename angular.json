@@ -71,7 +71,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular2-full-stack:build"
+            "browserTarget": "angular2-full-stack:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
