@@ -45,7 +45,8 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 6. Run `npm run build` or `npm run buildprod`
 7. Run `npm start`
 8. The app is now running and listening on port 3000
-9. Tip: use [pm2](https://pm2.keymetrics.io/) to run the app instead of `npm start`, eg: `pm2 start dist/server/app.js`
+9. You can now visit the public IP of your AWS EC2 followed by the port, eg: `12.34.56.78:3000`
+10. Tip: use [pm2](https://pm2.keymetrics.io/) to run the app instead of `npm start`, eg: `pm2 start dist/server/app.js`
 
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
