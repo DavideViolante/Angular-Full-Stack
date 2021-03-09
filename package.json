@@ -5,8 +5,8 @@
   "author": "Davide Violante",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "engines": {
-    "node": "14.15.0",
-    "npm": "6.14.8"
+    "node": "14.16.0",
+    "npm": "6.14.11"
   },
   "scripts": {
     "ng": "ng",
@@ -20,7 +20,7 @@
     "testbe": "tsc -p server && mocha dist/server/test --exit",
     "lint": "ng lint && htmlhint \"client/**/*.html\" && sass-lint \"client/**/*.scss\" -v && tslint server/**/**.ts{,x}",
     "e2e": "ng e2e --webdriver-update=false",
-    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager update --versions.chrome 86.0.4240.22"
+    "pree2e": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager update --versions.chrome $(google-chrome --version | cut -d ' ' -f 3)"
   },
   "private": true,
   "dependencies": {
