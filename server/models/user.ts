@@ -1,7 +1,7 @@
-import * as bcrypt from 'bcryptjs';
-import * as mongoose from 'mongoose';
+import { compare, genSalt, hash } from 'bcryptjs';
+import { Document, model, Schema} from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema<IUser>({
   username: String,
   email: { type: String, unique: true, lowercase: true, trim: true },
   password: String,
@@ -9,21 +9,21 @@ const userSchema = new mongoose.Schema({
 });
 
 // Before saving the user, hash the password
-userSchema.pre('save', function(next): void {
+userSchema.pre<IUser>('save', function(next): void {
   const user = this;
   if (!user.isModified('password')) { return next(); }
-  bcrypt.genSalt(10, (err, salt) => {
+  genSalt(10, (err, salt) => {
     if (err) { return next(err); }
-    bcrypt.hash(user.password, salt, (error, hash) => {
+    hash(user.password, salt, (error, hashedPassword) => {
       if (error) { return next(error); }
-      user.password = hash;
+      user.password = hashedPassword;
       next();
     });
   });
 });
 
 userSchema.methods.comparePassword = function(candidatePassword, callback): void {
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+  compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) { return callback(err); }
     callback(null, isMatch);
   });
@@ -37,6 +37,15 @@ userSchema.set('toJSON', {
   }
 });
 
-const User = mongoose.model('User', userSchema);
+export interface IUser extends Document {
+  _id: any;
+  username: string;
+  email: string;
+  password: string;
+  role: string;
+  isModified(password: string): boolean;
+}
+
+const User = model<IUser>('User', userSchema);
 
 export default User;

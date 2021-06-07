@@ -1,11 +1,11 @@
-import * as mongoose from 'mongoose';
+import { model, Schema} from 'mongoose';
 
-const catSchema = new mongoose.Schema({
+const catSchema = new Schema({
   name: String,
   weight: Number,
   age: Number
 });
 
-const Cat = mongoose.model('Cat', catSchema);
+const Cat = model('Cat', catSchema);
 
 export default Cat;
