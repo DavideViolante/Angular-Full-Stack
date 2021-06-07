@@ -7,7 +7,6 @@ async function setMongo(): Promise<any> {
   } else {
     mongodbURI = process.env.MONGODB_URI;
   }
-  mongoose.Promise = global.Promise;
   mongoose.set('useCreateIndex', true);
   mongoose.set('useNewUrlParser', true);
   mongoose.set('useFindAndModify', false);
