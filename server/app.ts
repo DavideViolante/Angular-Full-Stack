@@ -1,4 +1,5 @@
 import * as dotenv from 'dotenv';
+dotenv.config();
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as path from 'path';
@@ -7,7 +8,6 @@ import setMongo from './mongo';
 import setRoutes from './routes';
 
 const app = express();
-dotenv.config();
 app.set('port', (process.env.PORT || 3000));
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use(express.json());
@@ -23,9 +23,7 @@ async function main(): Promise<any> {
     app.get('/*', (req, res) => {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
-    if (!module.parent) {
-      app.listen(app.get('port'), () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
-    }
+    app.listen(app.get('port'), () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
   } catch (err) {
     console.error(err);
   }
