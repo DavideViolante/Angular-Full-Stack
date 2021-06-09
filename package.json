@@ -10,17 +10,16 @@
   },
   "scripts": {
     "ng": "ng",
+    "builddev": "ng build -c development && tsc -p server",
     "build": "ng build && tsc -p server",
-    "buildprod": "ng build --aot --prod && tsc -p server",
     "start": "node dist/server/app.js",
     "predev": "tsc -p server",
     "dev": "concurrently \"mongod\" \"ng serve --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
-    "prod": "concurrently \"mongod\" \"ng build --aot --prod && tsc -p server && node dist/server/app.js\"",
+    "prod": "concurrently \"mongod\" \"ng build && tsc -p server && node dist/server/app.js\"",
     "test": "ng test",
     "testbe": "tsc -p server && mocha dist/server/test --exit",
     "lint": "ng lint && htmlhint \"client/**/*.html\" && sass-lint \"client/**/*.scss\" -v && tslint server/**/**.ts{,x}",
-    "e2e": "ng e2e --webdriver-update=false",
-    "pree2e": "cd ./node_modules/protractor && npm i webdriver-manager@latest && webdriver-manager update --versions.chrome $(google-chrome --version | cut -d ' ' -f 3)"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

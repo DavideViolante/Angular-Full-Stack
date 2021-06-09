@@ -24,13 +24,19 @@ Other tools and technologies used:
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
-### Development mode
+### Development mode with files watching
 `npm run dev`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build, TypeScript compiler and Express server.
 
 A window will automatically open at [localhost:4200](http://localhost:4200). Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
 
 ### Production mode
-`npm run prod`: run the project with a production bundle and AOT compilation listening at [localhost:3000](http://localhost:3000) 
+`npm run prod`: run the project with a production bundle listening at [localhost:3000](http://localhost:3000) 
+
+### Manual mode
+1. Build frontend: `npm run builddev` for dev or `npm run build` for prod
+2. Build backend: `npm run predev`
+3. Run MongoDB: `mongod`
+4. Run the app: `npm start`
 
 ### Docker
 1. `docker-compose up`
@@ -42,7 +48,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 3. Clone this repo into the EC2 machine
 4. If you use a remote MongoDB instance, edit `.env` file
 5. Run `npm ci`
-6. Run `npm run build` or `npm run buildprod`
+6. Run `npm run build`
 7. Run `npm start`
 8. The app is now running and listening on port 3000
 9. You can now visit the public IP of your AWS EC2 followed by the port, eg: `12.34.56.78:3000`

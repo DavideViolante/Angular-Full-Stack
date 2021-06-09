@@ -8,6 +8,9 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -22,6 +25,7 @@
             "main": "client/main.ts",
             "polyfills": "client/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "client/assets/favicon.ico",
               "client/assets"
@@ -35,56 +39,53 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/tether/dist/js/tether.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            ]
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "client/environments/environment.ts",
                   "with": "client/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "angular2-full-stack:build",
-            "proxyConfig": "proxy.conf.json"
-          },
           "configurations": {
             "production": {
               "browserTarget": "angular2-full-stack:build:production"
+            },
+            "development": {
+              "browserTarget": "angular2-full-stack:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -99,6 +100,11 @@
             "polyfills": "client/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "client/assets/favicon.ico",
+              "client/assets"
+            ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
@@ -108,10 +114,6 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/tether/dist/js/tether.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ],
-            "assets": [
-              "client/assets/favicon.ico",
-              "client/assets"
             ]
           }
         },
