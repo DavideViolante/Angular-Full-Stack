@@ -39,7 +39,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 4. Run the app: `npm start`
 
 ### Docker
-1. `docker-compose up`
+1. `sudo docker-compose up`
 2. Go to [localhost:3000](http://localhost:3000)
 
 ### AWS EC2
