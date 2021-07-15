@@ -7,8 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { AuthService } from '../services';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { AuthService } from '@services';
+import { ToastComponent } from '@shared/components/index';
 
 @Component({
   selector: 'app-login',

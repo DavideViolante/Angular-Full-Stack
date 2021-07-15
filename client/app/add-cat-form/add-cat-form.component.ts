@@ -5,9 +5,9 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { CatService } from '../services/cat.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { Cat } from '../shared/models';
+import { CatService } from '@services';
+import { ToastComponent } from '@shared/components/index';
+import { Cat } from '@shared/models';
 
 @Component({
   selector: 'app-add-cat-form',

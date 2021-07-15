@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { User } from '../shared/models/user.model';
+import { User } from '@shared/models';
 
 @Injectable()
 export class UserService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   register(user: User): Observable<User> {
     return this.http.post<User>('/api/user', user);
@@ -34,11 +33,12 @@ export class UserService {
   }
 
   editUser(user: User): Observable<any> {
-    return this.http.put(`/api/user/${user._id}`, user, { responseType: 'text' });
+    return this.http.put(`/api/user/${user._id}`, user, {
+      responseType: 'text',
+    });
   }
 
   deleteUser(user: User): Observable<any> {
     return this.http.delete(`/api/user/${user._id}`, { responseType: 'text' });
   }
-
 }
