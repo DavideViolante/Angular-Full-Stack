@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserService } from './user.service';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { User } from '../shared/models/user.model';
+import { ToastComponent } from '@shared/components/index';
+import { User } from '@shared/models';
 
 @Injectable()
 export class AuthService {
@@ -14,10 +14,12 @@ export class AuthService {
 
   currentUser: User = new User();
 
-  constructor(private userService: UserService,
-              private router: Router,
-              private jwtHelper: JwtHelperService,
-              public toast: ToastComponent) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private jwtHelper: JwtHelperService,
+    public toast: ToastComponent
+  ) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
@@ -27,14 +29,14 @@ export class AuthService {
 
   login(emailAndPassword): void {
     this.userService.login(emailAndPassword).subscribe(
-      res => {
+      (res) => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
         this.loggedIn = true;
         this.router.navigate(['/']);
       },
-      error => this.toast.setMessage('invalid email or password!', 'danger')
+      (error) => this.toast.setMessage('invalid email or password!', 'danger')
     );
   }
 
@@ -58,5 +60,4 @@ export class AuthService {
     this.isAdmin = decodedUser.role === 'admin';
     delete decodedUser.role;
   }
-
 }

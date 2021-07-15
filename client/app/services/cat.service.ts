@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Cat } from '../shared/models/cat.model';
+import { Cat } from '@shared/models';
 
 @Injectable()
 export class CatService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getCats(): Observable<Cat[]> {
     return this.http.get<Cat[]>('/api/cats');
@@ -32,5 +31,4 @@ export class CatService {
   deleteCat(cat: Cat): Observable<any> {
     return this.http.delete(`/api/cat/${cat._id}`, { responseType: 'text' });
   }
-
 }
