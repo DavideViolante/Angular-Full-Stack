@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastComponent } from '../shared/toast/toast.component';
-import { AuthService, UserService } from '../services';
-import { User } from '../shared/models/user.model';
+import { ToastComponent } from '@shared/components/index';
+import { AuthService, UserService } from '@services/index';
+import { User } from '@shared/models';
 
 @Component({
   selector: 'app-account',
