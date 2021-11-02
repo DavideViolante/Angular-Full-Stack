@@ -18,8 +18,7 @@
     "prod": "concurrently \"mongod\" \"ng build && tsc -p server && node dist/server/app.js\"",
     "test": "ng test",
     "testbe": "tsc -p server && mocha dist/server/test --exit",
-    "lint": "ng lint && htmlhint \"client/**/*.html\" && sass-lint \"client/**/*.scss\" -v && tslint server/**/**.ts{,x}",
-    "e2e": "ng e2e"
+    "lint": "ng lint && htmlhint \"client/**/*.html\" && sass-lint \"client/**/*.scss\" -v && tslint server/**/**.ts{,x}"
   },
   "private": true,
   "dependencies": {
@@ -71,7 +70,6 @@
     "karma-jasmine-html-reporter": "^1.5.0",
     "mocha": "^9.1.3",
     "nodemon": "^2.0.14",
-    "protractor": "~7.0.0",
     "sass-lint": "^1.13.1",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.3",

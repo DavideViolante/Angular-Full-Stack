@@ -64,8 +64,6 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 ## Running tests
 Run `ng test` to execute the frontend unit tests via [Karma](https://karma-runner.github.io).
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
 Run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/) (it requires `mongod` already running).
 
 ## Running linters
