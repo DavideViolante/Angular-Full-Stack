@@ -14,15 +14,13 @@ jobs:
         image: mongo:3.4.10
         ports:
           - 27017:27017
-    strategy:
-      matrix:
-        node-version: [14.x]
+    if: "!contains(github.event.head_commit.message, '[skip tests]')"
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '14'
+        cache: 'npm'
     - run: npm ci
     - run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadless
     - run: npm run testbe

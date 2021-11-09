@@ -25,7 +25,7 @@ export class AuthService {
     }
   }
 
-  login(emailAndPassword): void {
+  login(emailAndPassword: object): void {
     this.userService.login(emailAndPassword).subscribe(
       res => {
         localStorage.setItem('token', res.token);
@@ -46,11 +46,11 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  decodeUserFromToken(token): object {
+  decodeUserFromToken(token: string): object {
     return this.jwtHelper.decodeToken(token).user;
   }
 
-  setCurrentUser(decodedUser): void {
+  setCurrentUser(decodedUser: any): void {
     this.loggedIn = true;
     this.currentUser._id = decodedUser._id;
     this.currentUser.username = decodedUser.username;

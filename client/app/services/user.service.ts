@@ -13,7 +13,7 @@ export class UserService {
     return this.http.post<User>('/api/user', user);
   }
 
-  login(credentials): Observable<any> {
+  login(credentials: object): Observable<any> {
     return this.http.post('/api/login', credentials);
   }
 

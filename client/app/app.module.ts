@@ -40,7 +40,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SharedModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: (): string => localStorage.getItem('token'),
+        tokenGetter: (): string | null => localStorage.getItem('token'),
         // allowedDomains: ['localhost:3000', 'localhost:4200']
       }
     })

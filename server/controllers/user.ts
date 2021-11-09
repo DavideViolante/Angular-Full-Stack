@@ -15,7 +15,7 @@ class UserCtrl extends BaseCtrl {
         res.status(200).json({ token });
       });
     });
-  }
+  };
 
 }
 

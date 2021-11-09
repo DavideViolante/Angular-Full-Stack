@@ -116,19 +116,20 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "client/**/*.ts",
+              "client/**/*.html",
+              "server/**/*.ts"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "angular2-full-stack"
+  "defaultProject": "angular2-full-stack",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
