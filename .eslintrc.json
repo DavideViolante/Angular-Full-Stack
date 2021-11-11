@@ -1,6 +1,7 @@
 {
   "root": true,
   "ignorePatterns": [
+    "projects/**/*",
     "data",
     "dist",
     "node_modules"
@@ -18,17 +19,11 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "app",
-            "style": "camelCase"
-          }
-        ],
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -37,9 +32,15 @@
             "style": "kebab-case"
           }
         ],
-        "no-var": "error",
-        "prefer-const": "error",
-        "semi": "error"
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "no-underscore-dangle": "off"
       }
     },
     {

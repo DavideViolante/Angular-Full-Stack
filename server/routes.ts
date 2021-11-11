@@ -3,7 +3,7 @@ import * as express from 'express';
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
 
-function setRoutes(app): void {
+const setRoutes = (app): void => {
   const router = express.Router();
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();
@@ -28,6 +28,6 @@ function setRoutes(app): void {
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);
 
-}
+};
 
 export default setRoutes;

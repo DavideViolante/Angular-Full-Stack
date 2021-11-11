@@ -46,6 +46,7 @@ export interface IUser extends Document {
   isModified(password: string): boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const User = model<IUser>('User', userSchema);
 
 export default User;

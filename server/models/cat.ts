@@ -6,6 +6,7 @@ const catSchema = new Schema({
   age: Number
 });
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const Cat = model('Cat', catSchema);
 
 export default Cat;
