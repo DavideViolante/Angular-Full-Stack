@@ -1,3 +1,7 @@
 <div *ngIf="message.body" class="alert" [ngClass]="'alert-' + message.type" role="alert">
-  <b>Message:</b> {{message.body}}
+  <i class="fa mr-2" [ngClass]="{
+    'fa-check-circle': message.type === 'success',
+    'fa-exclamation-circle': message.type === 'warning' || message.type === 'danger'
+  }"></i>
+  <span [innerHTML]="message.body"></span>
 </div>
