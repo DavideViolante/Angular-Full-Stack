@@ -35,7 +35,7 @@ export class AddCatFormComponent implements OnInit {
       res => {
         this.cats.push(res);
         this.addCatForm.reset();
-        this.toast.setMessage('item added successfully.', 'success');
+        this.toast.setMessage('Item added successfully.', 'success');
       },
       error => console.log(error)
     );

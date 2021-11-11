@@ -39,7 +39,7 @@ export class CatsComponent implements OnInit {
   cancelEditing(): void {
     this.isEditing = false;
     this.cat = new Cat();
-    this.toast.setMessage('item editing cancelled.', 'warning');
+    this.toast.setMessage('Item editing cancelled.', 'warning');
     // reload the cats to reset the editing
     this.getCats();
   }
@@ -49,7 +49,7 @@ export class CatsComponent implements OnInit {
       () => {
         this.isEditing = false;
         this.cat = cat;
-        this.toast.setMessage('item edited successfully.', 'success');
+        this.toast.setMessage('Item edited successfully.', 'success');
       },
       error => console.log(error)
     );
@@ -60,7 +60,7 @@ export class CatsComponent implements OnInit {
       this.catService.deleteCat(cat).subscribe(
         () => {
           this.cats = this.cats.filter(elem => elem._id !== cat._id);
-          this.toast.setMessage('item deleted successfully.', 'success');
+          this.toast.setMessage('Item deleted successfully.', 'success');
         },
         error => console.log(error)
       );

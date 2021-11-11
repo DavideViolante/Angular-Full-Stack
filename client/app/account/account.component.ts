@@ -32,7 +32,7 @@ export class AccountComponent implements OnInit {
   save(user: User): void {
     this.userService.editUser(user).subscribe(
       res => {
-        this.toast.setMessage('account settings saved!', 'success');
+        this.toast.setMessage('Account settings saved!', 'success');
         this.auth.currentUser = user;
         this.auth.isAdmin = user.role === 'admin';
       },

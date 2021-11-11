@@ -34,7 +34,7 @@ export class AuthService {
         this.loggedIn = true;
         this.router.navigate(['/']);
       },
-      error => this.toast.setMessage('invalid email or password!', 'danger')
+      error => this.toast.setMessage('Invalid email or password!', 'danger')
     );
   }
 
