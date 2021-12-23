@@ -11,7 +11,7 @@ chai.use(chaiHttp).should();
 describe('Cats', () => {
 
   beforeEach(done => {
-    Cat.remove({}, err => {
+    Cat.deleteMany({}, err => {
       done();
     });
   });

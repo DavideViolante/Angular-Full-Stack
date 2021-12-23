@@ -11,7 +11,7 @@ chai.use(chaiHttp).should();
 describe('Users', () => {
 
   beforeEach(done => {
-    User.remove({}, err => {
+    User.deleteMany({}, err => {
       done();
     });
   });
