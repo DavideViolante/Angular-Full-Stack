@@ -37,13 +37,14 @@ userSchema.set('toJSON', {
   }
 });
 
-export interface IUser extends Document {
+interface IUser extends Document {
   _id: any;
   username: string;
   email: string;
   password: string;
   role: string;
   isModified(password: string): boolean;
+  comparePassword(password: string, callback: (err: any, isMatch: boolean) => void): boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

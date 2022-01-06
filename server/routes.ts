@@ -1,10 +1,10 @@
-import * as express from 'express';
+import { Router, Application } from 'express';
 
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
 
-const setRoutes = (app): void => {
-  const router = express.Router();
+const setRoutes = (app: Application): void => {
+  const router = Router();
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();
 

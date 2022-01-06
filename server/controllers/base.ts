@@ -1,63 +1,65 @@
+import { Request, Response } from 'express';
+
 abstract class BaseCtrl {
 
   abstract model: any;
 
   // Get all
-  getAll = async (req, res) => {
+  getAll = async (req: Request, res: Response) => {
     try {
       const docs = await this.model.find({});
-      res.status(200).json(docs);
-    } catch (err) {
+      return res.status(200).json(docs);
+    } catch (err: any) {
       return res.status(400).json({ error: err.message });
     }
   };
 
   // Count all
-  count = async (req, res) => {
+  count = async (req: Request, res: Response) => {
     try {
       const count = await this.model.count();
-      res.status(200).json(count);
-    } catch (err) {
+      return res.status(200).json(count);
+    } catch (err: any) {
       return res.status(400).json({ error: err.message });
     }
   };
 
   // Insert
-  insert = async (req, res) => {
+  insert = async (req: Request, res: Response) => {
     try {
       const obj = await new this.model(req.body).save();
-      res.status(201).json(obj);
-    } catch (err) {
+      return res.status(201).json(obj);
+    } catch (err: any) {
       return res.status(400).json({ error: err.message });
     }
   };
 
   // Get by id
-  get = async (req, res) => {
+  get = async (req: Request, res: Response) => {
     try {
       const obj = await this.model.findOne({ _id: req.params.id });
-      res.status(200).json(obj);
-    } catch (err) {
+      return res.status(200).json(obj);
+    } catch (err: any) {
       return res.status(500).json({ error: err.message });
     }
   };
 
   // Update by id
-  update = async (req, res) => {
+  update = async (req: Request, res: Response) => {
     try {
       await this.model.findOneAndUpdate({ _id: req.params.id }, req.body);
-      res.sendStatus(200);
-    } catch (err) {
+      return res.sendStatus(200);
+    } catch (err: any) {
       return res.status(400).json({ error: err.message });
     }
   };
 
   // Delete by id
-  delete = async (req, res) => {
+  delete = async (req: Request, res: Response) => {
     try {
       await this.model.findOneAndRemove({ _id: req.params.id });
-      res.sendStatus(200);
-    } catch (err) {
+      return res.sendStatus(200);
+    } catch (err: any) {
       return res.status(400).json({ error: err.message });
     }
   };

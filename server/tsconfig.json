@@ -4,7 +4,8 @@
     "outDir": "../dist/server",
     "baseUrl": "",
     "module": "commonjs",
-    "strict": false, // This should be true
-    "noPropertyAccessFromIndexSignature": false
+    "strict": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "skipLibCheck": true // Added due to mocha and jasmine errors
   }
 }
