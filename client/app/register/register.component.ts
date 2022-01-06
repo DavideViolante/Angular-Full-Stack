@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -9,7 +9,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
   selector: 'app-register',
   templateUrl: './register.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   registerForm: FormGroup;
   username = new FormControl('', [
@@ -35,9 +35,7 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               public toast: ToastComponent,
-              private userService: UserService) { }
-
-  ngOnInit(): void {
+              private userService: UserService) {
     this.registerForm = this.formBuilder.group({
       username: this.username,
       email: this.email,

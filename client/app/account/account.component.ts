@@ -10,7 +10,7 @@ import { User } from '../shared/models/user.model';
 })
 export class AccountComponent implements OnInit {
 
-  user: User;
+  user: User = new User();
   isLoading = true;
 
   constructor(private auth: AuthService,

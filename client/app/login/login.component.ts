@@ -26,16 +26,17 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService,
               private formBuilder: FormBuilder,
               private router: Router,
-              public toast: ToastComponent) { }
+              public toast: ToastComponent) {
+    this.loginForm = this.formBuilder.group({
+      email: this.email,
+      password: this.password
+    });
+  }
 
   ngOnInit(): void {
     if (this.auth.loggedIn) {
       this.router.navigate(['/']);
     }
-    this.loginForm = this.formBuilder.group({
-      email: this.email,
-      password: this.password
-    });
   }
 
   setClassEmail(): object {
