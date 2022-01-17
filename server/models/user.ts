@@ -22,7 +22,7 @@ userSchema.pre<IUser>('save', function(next): void {
   });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, callback): void {
+userSchema.methods.comparePassword = function(candidatePassword: string, callback: any): void {
   compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) { return callback(err); }
     callback(null, isMatch);
