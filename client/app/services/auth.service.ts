@@ -26,16 +26,16 @@ export class AuthService {
   }
 
   login(emailAndPassword: object): void {
-    this.userService.login(emailAndPassword).subscribe(
-      res => {
+    this.userService.login(emailAndPassword).subscribe({
+      next: res => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
         this.loggedIn = true;
         this.router.navigate(['/']);
       },
-      error => this.toast.setMessage('Invalid email or password!', 'danger')
-    );
+      error: error => this.toast.setMessage('Invalid email or password!', 'danger')
+    });
   }
 
   logout(): void {

@@ -29,14 +29,14 @@ export class AddCatFormComponent {
   }
 
   addCat(): void {
-    this.catService.addCat(this.addCatForm.value).subscribe(
-      res => {
+    this.catService.addCat(this.addCatForm.value).subscribe({
+      next: res => {
         this.cats.push(res);
         this.addCatForm.reset();
         this.toast.setMessage('Item added successfully.', 'success');
       },
-      error => console.log(error)
-    );
+      error: error => console.log(error)
+    });
   }
 
 }

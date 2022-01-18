@@ -22,22 +22,22 @@ export class AccountComponent implements OnInit {
   }
 
   getUser(): void {
-    this.userService.getUser(this.auth.currentUser).subscribe(
-      data => this.user = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
+    this.userService.getUser(this.auth.currentUser).subscribe({
+      next: data => this.user = data,
+      error: error => console.log(error),
+      complete: () => this.isLoading = false
+    });
   }
 
   save(user: User): void {
-    this.userService.editUser(user).subscribe(
-      res => {
+    this.userService.editUser(user).subscribe({
+      next: res => {
         this.toast.setMessage('Account settings saved!', 'success');
         this.auth.currentUser = user;
         this.auth.isAdmin = user.role === 'admin';
       },
-      error => console.log(error)
-    );
+      error: error => console.log(error)
+    });
   }
 
 }

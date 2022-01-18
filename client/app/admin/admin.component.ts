@@ -23,20 +23,20 @@ export class AdminComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(
-      data => this.users = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
+    this.userService.getUsers().subscribe({
+      next: data => this.users = data,
+      error: error => console.log(error),
+      complete: () => this.isLoading = false
+    });
   }
 
   deleteUser(user: User): void {
     if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
-      this.userService.deleteUser(user).subscribe(
-        data => this.toast.setMessage('User deleted successfully.', 'success'),
-        error => console.log(error),
-        () => this.getUsers()
-      );
+      this.userService.deleteUser(user).subscribe({
+        next: data => this.toast.setMessage('User deleted successfully.', 'success'),
+        error: error => console.log(error),
+        complete: () => this.getUsers()
+      });
     }
   }
 

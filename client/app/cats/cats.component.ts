@@ -24,11 +24,11 @@ export class CatsComponent implements OnInit {
   }
 
   getCats(): void {
-    this.catService.getCats().subscribe(
-      data => this.cats = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
+    this.catService.getCats().subscribe({
+      next: data => this.cats = data,
+      error: error => console.log(error),
+      complete: () => this.isLoading = false
+    });
   }
 
   enableEditing(cat: Cat): void {
@@ -45,25 +45,25 @@ export class CatsComponent implements OnInit {
   }
 
   editCat(cat: Cat): void {
-    this.catService.editCat(cat).subscribe(
-      () => {
+    this.catService.editCat(cat).subscribe({
+      next: () => {
         this.isEditing = false;
         this.cat = cat;
         this.toast.setMessage('Item edited successfully.', 'success');
       },
-      error => console.log(error)
-    );
+      error: error => console.log(error)
+    });
   }
 
   deleteCat(cat: Cat): void {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.catService.deleteCat(cat).subscribe(
-        () => {
+      this.catService.deleteCat(cat).subscribe({
+        next: () => {
           this.cats = this.cats.filter(elem => elem._id !== cat._id);
           this.toast.setMessage('Item deleted successfully.', 'success');
         },
-        error => console.log(error)
-      );
+        error: error => console.log(error)
+      });
     }
   }
 
