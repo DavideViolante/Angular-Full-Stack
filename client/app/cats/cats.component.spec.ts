@@ -1,6 +1,6 @@
 import { waitForAsync, TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { CatService } from '../services/cat.service';
@@ -26,7 +26,7 @@ describe('Component: Cats', () => {
       imports: [ FormsModule, ReactiveFormsModule ],
       declarations: [ CatsComponent ],
       providers: [
-        ToastComponent, FormBuilder,
+        ToastComponent, UntypedFormBuilder,
         { provide: CatService, useClass: CatServiceMock }
       ]
     })

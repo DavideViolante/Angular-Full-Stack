@@ -128,8 +128,9 @@
       }
     }
   },
-  "defaultProject": "angular2-full-stack",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

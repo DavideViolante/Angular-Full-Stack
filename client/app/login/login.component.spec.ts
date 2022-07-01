@@ -1,6 +1,6 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -19,7 +19,7 @@ describe('Component: Login', () => {
       imports: [ FormsModule, ReactiveFormsModule ],
       declarations: [ LoginComponent ],
       providers: [
-        FormBuilder, ToastComponent,
+        UntypedFormBuilder, ToastComponent,
         { provide: Router, useClass: RouterMock },
         { provide: AuthService, useClass: AuthServiceMock }
       ]

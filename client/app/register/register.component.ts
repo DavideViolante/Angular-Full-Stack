@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { UserService } from '../services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -11,28 +11,28 @@ import { ToastComponent } from '../shared/toast/toast.component';
 })
 export class RegisterComponent {
 
-  registerForm: FormGroup;
-  username = new FormControl('', [
+  registerForm: UntypedFormGroup;
+  username = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(2),
     Validators.maxLength(30),
     Validators.pattern('[a-zA-Z0-9_-\\s]*')
   ]);
-  email = new FormControl('', [
+  email = new UntypedFormControl('', [
     Validators.email,
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(100)
   ]);
-  password = new FormControl('', [
+  password = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(6)
   ]);
-  role = new FormControl('', [
+  role = new UntypedFormControl('', [
     Validators.required
   ]);
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
               private router: Router,
               public toast: ToastComponent,
               private userService: UserService) {

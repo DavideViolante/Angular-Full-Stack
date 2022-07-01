@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder } from '@angular/forms';
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { Cat } from '../shared/models/cat.model';
@@ -13,13 +13,13 @@ import { Cat } from '../shared/models/cat.model';
 export class AddCatFormComponent {
   @Input() cats: Cat[] = [];
 
-  addCatForm: FormGroup;
-  name = new FormControl('', Validators.required);
-  age = new FormControl('', Validators.required);
-  weight = new FormControl('', Validators.required);
+  addCatForm: UntypedFormGroup;
+  name = new UntypedFormControl('', Validators.required);
+  age = new UntypedFormControl('', Validators.required);
+  weight = new UntypedFormControl('', Validators.required);
 
   constructor(private catService: CatService,
-              private formBuilder: FormBuilder,
+              private formBuilder: UntypedFormBuilder,
               public toast: ToastComponent) {
     this.addCatForm = this.formBuilder.group({
       name: this.name,
