@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
 import * as jwt from 'jsonwebtoken';
 
 import User, { IUser } from '../models/user';
@@ -10,6 +10,11 @@ class UserCtrl extends BaseCtrl<IUser> {
   constructor() {
     super(User, 'user');
   }
+
+  public override setRoutes(router: Router) {
+    router.route('/login').post(this.login);
+    super.setRoutes(router);
+ }
 
   login = async (req: Request, res: Response) => {
     try {
