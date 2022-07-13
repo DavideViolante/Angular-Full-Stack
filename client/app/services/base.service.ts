@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export abstract class Entity<T extends { _id?: string }> {
+export abstract class EntityService<T extends { _id?: string }> {
   abstract SingularAPI: string;
   abstract PluralAPI: string;
 
