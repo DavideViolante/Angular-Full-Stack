@@ -6,9 +6,7 @@ import { User } from '../shared/models/user.model';
 @Injectable()
 export class UserService {
 
-
   constructor(protected http: HttpClient) { }
-
 
   register(user: User): Observable<User> {
     return this.http.post<User>('/api/user', user);

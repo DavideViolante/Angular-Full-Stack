@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { CatService } from '../services/cat.service';
-import { ToastComponent } from '../shared/toast/toast.component';
 import { Cat } from '../shared/models/cat.model';
+import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-add-cat-form',
@@ -29,7 +29,7 @@ export class AddCatFormComponent {
   }
 
   addCat(): void {
-    this.catService.addCat(this.addCatForm.value).subscribe({
+    this.catService.add(this.addCatForm.value).subscribe({
       next: res => {
         this.cats.push(res);
         this.addCatForm.reset();

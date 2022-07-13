@@ -24,7 +24,7 @@ export class CatsComponent implements OnInit {
   }
 
   getCats(): void {
-    this.catService.getCats().subscribe({
+    this.catService.getAll().subscribe({
       next: data => this.cats = data,
       error: error => console.log(error),
       complete: () => this.isLoading = false
@@ -45,7 +45,7 @@ export class CatsComponent implements OnInit {
   }
 
   editCat(cat: Cat): void {
-    this.catService.editCat(cat).subscribe({
+    this.catService.edit(cat).subscribe({
       next: () => {
         this.isEditing = false;
         this.cat = cat;
@@ -57,7 +57,7 @@ export class CatsComponent implements OnInit {
 
   deleteCat(cat: Cat): void {
     if (window.confirm('Are you sure you want to permanently delete this item?')) {
-      this.catService.deleteCat(cat).subscribe({
+      this.catService.delete(cat).subscribe({
         next: () => {
           this.cats = this.cats.filter(elem => elem._id !== cat._id);
           this.toast.setMessage('Item deleted successfully.', 'success');

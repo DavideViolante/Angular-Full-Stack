@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
- import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { UserService } from './user.service';
-import { ToastComponent } from '../shared/toast/toast.component';
 import { User } from '../shared/models/user.model';
+import { ToastComponent } from '../shared/toast/toast.component';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthService {
