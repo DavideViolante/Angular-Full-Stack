@@ -1,14 +1,10 @@
-import * as express from 'express';
+import { Router, Application } from 'express';
 
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
-import Cat from './models/cat';
-import User from './models/user';
 
-export default function setRoutes(app) {
-
-  const router = express.Router();
-
+const setRoutes = (app: Application): void => {
+  const router = Router();
   const catCtrl = new CatCtrl();
   const userCtrl = new UserCtrl();
 
@@ -21,4 +17,6 @@ export default function setRoutes(app) {
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);
 
-}
+};
+
+export default setRoutes;

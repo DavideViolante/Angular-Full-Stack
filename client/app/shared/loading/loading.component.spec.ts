@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { LoadingComponent } from './loading.component';
 
-describe('LoadingComponent', () => {
+describe('Component: Loading', () => {
   let component: LoadingComponent;
   let fixture: ComponentFixture<LoadingComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LoadingComponent ]
     })
@@ -38,4 +38,5 @@ describe('LoadingComponent', () => {
     expect(de).toBeDefined();
     expect(el.textContent).toContain('Loading...');
   });
+
 });

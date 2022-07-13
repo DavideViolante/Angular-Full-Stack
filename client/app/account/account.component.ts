@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../shared/models/user.model';
+import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-account',
@@ -10,30 +10,34 @@ import { User } from '../shared/models/user.model';
 })
 export class AccountComponent implements OnInit {
 
-  user: User;
+  user: User = new User();
   isLoading = true;
 
   constructor(private auth: AuthService,
     public toast: ToastComponent,
     private userService: UserService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUser();
   }
 
-  getUser() {
-    this.userService.get(this.auth.currentUser).subscribe(
-      data => this.user = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
+  getUser(): void {
+    this.userService.getUser(this.auth.currentUser).subscribe({
+      next: data => this.user = data,
+      error: error => console.log(error),
+      complete: () => this.isLoading = false
+    });
   }
 
-  save(user: User) {
-    this.userService.edit(user).subscribe(
-      res => this.toast.setMessage('account settings saved!', 'success'),
-      error => console.log(error)
-    );
+  save(user: User): void {
+    this.userService.editUser(user).subscribe({
+      next: res => {
+        this.toast.setMessage('Account settings saved!', 'success');
+        this.auth.currentUser = user;
+        this.auth.isAdmin = user.role === 'admin';
+      },
+      error: error => console.log(error)
+    });
   }
 
 }

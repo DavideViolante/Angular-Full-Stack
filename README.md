@@ -1,7 +1,8 @@
-# Angular Full Stack [![Dependencies](https://david-dm.org/DavideViolante/Angular-Full-Stack.svg)](https://david-dm.org/DavideViolante/Angular2-Full-Stack) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante) [![MIT license](http://img.shields.io/badge/license-MIT-lightgrey.svg)](http://opensource.org/licenses/MIT)
+# Angular Full Stack 
+[![](https://github.com/davideviolante/Angular-Full-Stack/workflows/Build/badge.svg)](https://github.com/DavideViolante/Angular-Full-Stack/actions?query=workflow%3ABuild) [![](https://github.com/davideviolante/Angular-Full-Stack/workflows/Tests/badge.svg)](https://github.com/DavideViolante/Angular-Full-Stack/actions?query=workflow%3ATests) [![Donate](https://img.shields.io/badge/paypal-donate-179BD7.svg)](https://www.paypal.me/dviolante)
 
 
-The frontend is generated with [Angular CLI](https://github.com/angular/angular-cli). The backend is made from scratch. Whole stack in [TypeScript](https://www.typescriptlang.org).
+Angular Full Stack is a project to easly get started with the latest Angular using a real backend and database. Whole stack is in TypeScript, from frontend to backend, giving you the advantage to code in one single language throughout the all stack.
 
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](https://www.mongodb.com)): database
@@ -12,9 +13,9 @@ This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_
 Other tools and technologies used:
 * [Angular CLI](https://cli.angular.io): frontend scaffolding
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
-* [Font Awesome](http://fontawesome.io): icons
+* [Font Awesome](http://fontawesome.com): icons
 * [JSON Web Token](https://jwt.io): user authentication
-* [Angular 2 JWT](https://github.com/auth0/angular2-jwt/tree/v1.0): JWT helper for Angular
+* [Angular 2 JWT](https://github.com/auth0/angular2-jwt): JWT helper for Angular 2+
 * [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js): password encryption
 
 ## Prerequisites
@@ -23,31 +24,35 @@ Other tools and technologies used:
 3. From project root folder install all the dependencies: `npm i`
 
 ## Run
-### Development mode
+### Development mode with files watching
 `npm run dev`: [concurrently](https://github.com/kimmobrunfeldt/concurrently) execute MongoDB, Angular build, TypeScript compiler and Express server.
 
 A window will automatically open at [localhost:4200](http://localhost:4200). Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
 
 ### Production mode
-`npm run prod`: run the project with a production bundle and AOT compilation listening at [localhost:3000](http://localhost:3000) 
+`npm run prod`: run the project with a production bundle listening at [localhost:3000](http://localhost:3000) 
 
-## Deploy (Heroku)
-1. Go to Heroku and create a new app (eg: `your-app-name`)
-2. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-3. `heroku login`
-4. `mkdir your-app-name && cd your-app-name`
-5. `git init`
-6. `heroku git:remote -a your-app-name`
-7. Download this repo and copy all files into `your-app-name` folder
-8. `npm i`
-9. Edit `package.json` as following:
-   - add this line to scripts: `"postinstall": "tsc -p server && ng build -aot -prod"`
-   - move the following packages from devDependencies to dependencies: `@angular/cli`, `@angular/compiler-cli`, `@types/jasmine`, `@types/node`, `chai`, `chai-http` and `typescript`.
-10. Edit `.env` and replace the MongoDB URI with a real remote MongoDB server. You can create a MongoDB server with Heroku or mLab.
-11. `git add .`
-12. `git commit -m "Going to Heroku"`
-13. `git push heroku master`
-14. `heroku open` and a window will open with your app online
+### Manual mode
+1. Build frontend: `npm run builddev` for dev or `npm run build` for prod
+2. Build backend: `npm run predev`
+3. Run MongoDB: `mongod`
+4. Run the app: `npm start`
+
+### Docker
+1. `sudo docker-compose up`
+2. Go to [localhost:3000](http://localhost:3000)
+
+### AWS EC2
+1. Create a EC2 Linux machine on AWS
+2. Edit the EC2 Security Group and add TCP port `3000` as an Inbound rule for Source `0.0.0.0/0`
+3. Clone this repo into the EC2 machine
+4. If you use a remote MongoDB instance, edit `.env` file
+5. Run `npm ci`
+6. Run `npm run build`
+7. Run `npm start`
+8. The app is now running and listening on port 3000
+9. You can now visit the public IP of your AWS EC2 followed by the port, eg: `12.34.56.78:3000`
+10. Tip: use [pm2](https://pm2.keymetrics.io/) to run the app instead of `npm start`, eg: `pm2 start dist/server/app.js`
 
 ## Preview
 ![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
@@ -56,21 +61,13 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 * you have any suggestion to improve this project
 * you noticed any problem or error
 
-## To do
-* More tests
+## Running tests
+Run `ng test` to execute the frontend unit tests via [Karma](https://karma-runner.github.io).
 
-## Running frontend unit tests
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/) (it requires `mongod` already running).
 
-## Running frontend end-to-end tests
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `npm start`.
-
-## Running backend tests
-Run `mongod` to run an instance of MongoDB, then run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/).
-
-## Running TSLint
-Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter via [TSLint](https://palantir.github.io/tslint/).
+## Running linters
+Run `npm run lint` to execute [Angular ESLint](https://github.com/angular-eslint/angular-eslint), [HTML linting](https://github.com/htmlhint/HTMLHint) and [SASS linting](https://github.com/sasstools/sass-lint).
 
 ## Wiki
 To get more help about this project, [visit the official wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).

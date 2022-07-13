@@ -1,16 +1,17 @@
 import * as chai from 'chai';
-import * as chaiHttp from 'chai-http';
+import chaiHttp = require('chai-http');
+import { describe, it } from 'mocha';
 
 process.env.NODE_ENV = 'test';
 import { app } from '../app';
 import User from '../models/user';
 
-const should = chai.use(chaiHttp).should();
+chai.use(chaiHttp).should();
 
 describe('Users', () => {
 
   beforeEach(done => {
-    User.remove({}, err => {
+    User.deleteMany({}, err => {
       done();
     });
   });
@@ -45,7 +46,7 @@ describe('Users', () => {
         .post('/api/user')
         .send(user)
         .end((err, res) => {
-          res.should.have.status(200);
+          res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.a.property('username');
           res.body.should.have.a.property('email');
@@ -88,7 +89,7 @@ describe('Users', () => {
       const user = new User({ username: 'User', email: 'user@example.com', role: 'user' });
       user.save((error, newUser) => {
         chai.request(app)
-          .delete(`/api/user/${newUser.id}`)
+          .del(`/api/user/${newUser.id}`)
           .end((err, res) => {
             res.should.have.status(200);
             done();

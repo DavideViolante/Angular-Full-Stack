@@ -11,7 +11,7 @@ export class AppComponent implements AfterViewChecked {
               private changeDetector: ChangeDetectorRef) { }
 
   // This fixes: https://github.com/DavideViolante/Angular-Full-Stack/issues/105
-  ngAfterViewChecked() {
+  ngAfterViewChecked(): void {
     this.changeDetector.detectChanges();
   }
 

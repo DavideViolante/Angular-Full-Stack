@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { UserService } from '../services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -9,34 +9,33 @@ import { ToastComponent } from '../shared/toast/toast.component';
   selector: 'app-register',
   templateUrl: './register.component.html'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  registerForm: FormGroup;
-  username = new FormControl('', [
+  registerForm: UntypedFormGroup;
+  username = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(2),
     Validators.maxLength(30),
     Validators.pattern('[a-zA-Z0-9_-\\s]*')
   ]);
-  email = new FormControl('', [
+  email = new UntypedFormControl('', [
+    Validators.email,
     Validators.required,
     Validators.minLength(3),
     Validators.maxLength(100)
   ]);
-  password = new FormControl('', [
+  password = new UntypedFormControl('', [
     Validators.required,
     Validators.minLength(6)
   ]);
-  role = new FormControl('', [
+  role = new UntypedFormControl('', [
     Validators.required
   ]);
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
               private router: Router,
               public toast: ToastComponent,
-              private userService: UserService) { }
-
-  ngOnInit() {
+              private userService: UserService) {
     this.registerForm = this.formBuilder.group({
       username: this.username,
       email: this.email,
@@ -45,25 +44,25 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  setClassUsername() {
+  setClassUsername(): object {
     return { 'has-danger': !this.username.pristine && !this.username.valid };
   }
 
-  setClassEmail() {
+  setClassEmail(): object {
     return { 'has-danger': !this.email.pristine && !this.email.valid };
   }
 
-  setClassPassword() {
+  setClassPassword(): object {
     return { 'has-danger': !this.password.pristine && !this.password.valid };
   }
 
-  register() {
-    this.userService.register(this.registerForm.value).subscribe(
-      res => {
-        this.toast.setMessage('you successfully registered!', 'success');
+  register(): void {
+    this.userService.register(this.registerForm.value).subscribe({
+      next: res => {
+        this.toast.setMessage('You successfully registered!', 'success');
         this.router.navigate(['/login']);
       },
-      error => this.toast.setMessage('email already exists', 'danger')
-    );
+      error: error => this.toast.setMessage('Email already exists', 'danger')
+    });
   }
 }

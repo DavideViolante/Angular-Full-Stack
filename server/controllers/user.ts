@@ -1,30 +1,32 @@
-import * as dotenv from 'dotenv';
+import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
-import * as ex from 'express';
+
 import User from '../models/user';
 import BaseCtrl from './base';
 
-export default class UserCtrl extends BaseCtrl {
-  // model = User;
-  constructor() {
-    super(User, 'user');
-  }
+const secret: jwt.Secret = process.env.SECRET_TOKEN as string;
 
-  public setRoutes(router: ex.Router) {
-     router.route('/login').post(this.login);
-     super.setRoutes(router);
-  }
+class UserCtrl extends BaseCtrl {
+  model = User;
 
-  login = (req, res) => {
-
-    this.model.findOne({ email: req.body.email }, (err, user) => {
-      if (!user) { return res.sendStatus(403); }
-      user.comparePassword(req.body.password, (error, isMatch) => {
-        if (!isMatch) { return res.sendStatus(403); }
-        const token = jwt.sign({ user: user }, process.env.SECRET_TOKEN); // , { expiresIn: 10 } seconds
-        res.status(200).json({ token: token });
+  login = async (req: Request, res: Response) => {
+    try {
+      const user = await this.model.findOne({ email: req.body.email });
+      if (!user) {
+        return res.sendStatus(403);
+      }
+      return user.comparePassword(req.body.password, (error: any, isMatch: boolean) => {
+        if (error || !isMatch) {
+          return res.sendStatus(403);
+        }
+        const token = jwt.sign({ user }, secret, { expiresIn: '24h' });
+        return res.status(200).json({ token });
       });
-    });
-  }
+    } catch (err: any) {
+      return res.status(400).json({ error: err.message });
+    }
+  };
 
 }
+
+export default UserCtrl;

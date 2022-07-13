@@ -6,25 +6,36 @@
     <form [formGroup]="registerForm" (ngSubmit)="register()">
       <div class="input-group" [ngClass]="setClassUsername()">
         <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fa fa-user"></i></span>
+          <span class="input-group-text">
+            <i class="fa fa-user"></i>
+          </span>
         </div>
-        <input class="form-control" type="text" name="username" formControlName="username" placeholder="Username" autofocus>
+        <input class="form-control" type="text" name="username"
+               formControlName="username" placeholder="Username" autofocus>
       </div>
       <div class="input-group" [ngClass]="setClassEmail()">
         <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+          <span class="input-group-text">
+            <i class="fa fa-envelope"></i>
+          </span>
         </div>
-        <input class="form-control" type="email" name="email" formControlName="email" placeholder="Email">
+        <input class="form-control" type="email" name="email"
+               formControlName="email" placeholder="Email">
       </div>
       <div class="input-group" [ngClass]="setClassPassword()">
         <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fa fa-key"></i></span>
+          <span class="input-group-text">
+            <i class="fa fa-key"></i>
+          </span>
         </div>
-        <input class="form-control" type="password" name="password" formControlName="password" placeholder="Password">
+        <input class="form-control" type="password" name="password"
+               formControlName="password" placeholder="Password">
       </div>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text"><i class="fa fa-black-tie"></i></span>
+          <span class="input-group-text">
+            <i class="fa fa-black-tie"></i>
+          </span>
         </div>
         <select class="custom-select" name="role" formControlName="role">
           <option value="" selected disabled>Role</option>
@@ -32,7 +43,9 @@
           <option value="admin">Admin</option>
         </select>
       </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid"><i class="fa fa-user-plus"></i> Register</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid">
+        <i class="fa fa-user-plus"></i> Register
+      </button>
     </form>
   </div>
 </div>

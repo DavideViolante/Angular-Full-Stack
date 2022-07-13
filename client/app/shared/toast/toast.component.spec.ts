@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { ToastComponent } from './toast.component';
 
-describe('ToastComponent', () => {
+describe('Component: Toast', () => {
   let component: ToastComponent;
   let fixture: ComponentFixture<ToastComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ToastComponent ]
     })
@@ -46,4 +46,5 @@ describe('ToastComponent', () => {
     expect(el.textContent).toContain(mockMessage.body);
     expect(el.className).toContain(mockMessage.type);
   });
+
 });

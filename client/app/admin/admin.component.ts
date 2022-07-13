@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../shared/models/user.model';
+import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-admin',
@@ -18,25 +18,25 @@ export class AdminComponent implements OnInit {
               public toast: ToastComponent,
               private userService: UserService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUsers();
   }
 
-  getUsers() {
-    this.userService.getAll().subscribe(
-      data => this.users = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
+  getUsers(): void {
+    this.userService.getUsers().subscribe({
+      next: data => this.users = data,
+      error: error => console.log(error),
+      complete: () => this.isLoading = false
+    });
   }
 
-  deleteUser(user: User) {
+  deleteUser(user: User): void {
     if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
-      this.userService.delete(user).subscribe(
-        data => this.toast.setMessage('user deleted successfully.', 'success'),
-        error => console.log(error),
-        () => this.getUsers()
-      );
+      this.userService.deleteUser(user).subscribe({
+        next: data => this.toast.setMessage('User deleted successfully.', 'success'),
+        error: error => console.log(error),
+        complete: () => this.getUsers()
+      });
     }
   }
 

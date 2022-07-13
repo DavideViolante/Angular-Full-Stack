@@ -5,9 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserService } from './user.service';
+import { ToastComponent } from '../shared/toast/toast.component';
 import { User } from '../shared/models/user.model';
-
-import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +17,8 @@ export class AuthService {
 
   constructor(private userService: UserService,
               private router: Router,
-              private jwtHelper: JwtHelperService) {
+              private jwtHelper: JwtHelperService,
+              public toast: ToastComponent) {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);
@@ -26,18 +26,20 @@ export class AuthService {
     }
   }
 
-  login(emailAndPassword) {
-    return this.userService.login(emailAndPassword).map(
-      res => {
+  login(emailAndPassword: object): void {
+    this.userService.login(emailAndPassword).subscribe({
+      next: res => {
         localStorage.setItem('token', res.token);
         const decodedUser = this.decodeUserFromToken(res.token);
         this.setCurrentUser(decodedUser);
-        return this.loggedIn;
-      }
-    );
+        this.loggedIn = true;
+        this.router.navigate(['/']);
+      },
+      error: error => this.toast.setMessage('Invalid email or password!', 'danger')
+    });
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('token');
     this.loggedIn = false;
     this.isAdmin = false;
@@ -45,16 +47,16 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  decodeUserFromToken(token) {
+  decodeUserFromToken(token: string): object {
     return this.jwtHelper.decodeToken(token).user;
   }
 
-  setCurrentUser(decodedUser) {
+  setCurrentUser(decodedUser: any): void {
     this.loggedIn = true;
     this.currentUser._id = decodedUser._id;
     this.currentUser.username = decodedUser.username;
     this.currentUser.role = decodedUser.role;
-    decodedUser.role === 'admin' ? this.isAdmin = true : this.isAdmin = false;
+    this.isAdmin = decodedUser.role === 'admin';
     delete decodedUser.role;
   }
 

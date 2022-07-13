@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { NotFoundComponent } from './not-found.component';
 
-describe('NotFoundComponent', () => {
+describe('Component: NotFound', () => {
   let component: NotFoundComponent;
   let fixture: ComponentFixture<NotFoundComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NotFoundComponent ]
     })
@@ -24,8 +24,15 @@ describe('NotFoundComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display the string "404 Not Found" in h4', () => {
+  it('should display the page header text', () => {
     const el = fixture.debugElement.query(By.css('h4')).nativeElement;
     expect(el.textContent).toContain('404 Not Found');
   });
+
+  it('should display the link for homepage', () => {
+    const el = fixture.debugElement.query(By.css('a')).nativeElement;
+    expect(el.getAttribute('routerLink')).toBe('/');
+    expect(el.textContent).toContain('Homepage');
+  });
+
 });
