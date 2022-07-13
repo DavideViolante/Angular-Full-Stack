@@ -1,4 +1,4 @@
-import { Router, Application } from 'express';
+import { Application, Router } from 'express';
 
 import CatCtrl from './controllers/cat';
 import UserCtrl from './controllers/user';
