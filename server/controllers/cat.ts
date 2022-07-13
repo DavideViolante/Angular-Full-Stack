@@ -2,7 +2,9 @@ import Cat, { ICat } from '../models/cat';
 import BaseCtrl from './base';
 
 class CatCtrl extends BaseCtrl<ICat> {
-  override model = Cat;
+  constructor() {
+    super(Cat, 'cat');
+  }
 }
 
 export default CatCtrl;

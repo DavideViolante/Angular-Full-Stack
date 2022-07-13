@@ -7,7 +7,9 @@ import BaseCtrl from './base';
 const secret: jwt.Secret = process.env.SECRET_TOKEN as string;
 
 class UserCtrl extends BaseCtrl<IUser> {
-  public override model = User;
+  constructor() {
+    super(User, 'user');
+  }
 
   login = async (req: Request, res: Response) => {
     try {
