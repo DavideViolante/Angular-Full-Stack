@@ -1,18 +1,17 @@
-import { Request, Response } from 'express';
+import { Request, Response, Router } from 'express';
+import { Document, Model } from 'mongoose';
 
-abstract class BaseCtrl {
-
-abstract class BaseCtrl {
-  protected model: M.Model<any>;
+abstract class BaseCtrl<T extends Document> {
+  protected model: Model<T>;
   protected baseRouterURI: string;
   protected baseRouterURIPlural: string;
-  constructor(schemaModel: M.Model<M.Document>, baseuri: string) {
+  constructor(schemaModel: Model<T>, baseuri: string) {
     this.model = schemaModel;
     this.baseRouterURI = baseuri;
     this.baseRouterURIPlural = baseuri + 's';
   }
 
-  public setRoutes(router: Ex.Router) {
+  public setRoutes(router: Router) {
     router.route(`/${this.baseRouterURIPlural}`).get(this.getAll);
     router.route(`/${this.baseRouterURIPlural}/count`).get(this.count);
     router.route(`/${this.baseRouterURI}`).post(this.insert);

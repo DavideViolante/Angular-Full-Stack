@@ -6,7 +6,7 @@ const catSchema = new Schema<ICat>({
   age: Number
 });
 
-interface ICat extends Document {
+export interface ICat extends Document {
   name: string;
   weight: number;
   age: number;

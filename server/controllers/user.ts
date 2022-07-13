@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 
-import User from '../models/user';
+import User, { IUser } from '../models/user';
 import BaseCtrl from './base';
 
 const secret: jwt.Secret = process.env.SECRET_TOKEN as string;
 
-class UserCtrl extends BaseCtrl {
-  model = User;
+class UserCtrl extends BaseCtrl<IUser> {
+  public override model = User;
 
   login = async (req: Request, res: Response) => {
     try {

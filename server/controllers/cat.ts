@@ -1,8 +1,8 @@
-import Cat from '../models/cat';
+import Cat, { ICat } from '../models/cat';
 import BaseCtrl from './base';
 
-class CatCtrl extends BaseCtrl {
-  model = Cat;
+class CatCtrl extends BaseCtrl<ICat> {
+  override model = Cat;
 }
 
 export default CatCtrl;

@@ -1,5 +1,5 @@
 import { compare, genSalt, hash } from 'bcryptjs';
-import { Document, model, Schema} from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
 
 const userSchema = new Schema<IUser>({
   username: String,
@@ -37,7 +37,7 @@ userSchema.set('toJSON', {
   }
 });
 
-interface IUser extends Document {
+export interface IUser extends Document {
   _id: any;
   username: string;
   email: string;
