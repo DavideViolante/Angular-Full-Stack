@@ -6,7 +6,7 @@
   <h4 class="card-header">Current cats ({{cats.length}})</h4>
   <div class="card-body">
     <table class="table table-bordered">
-      <thead class="thead-light">
+      <thead class="table-secondary">
         <tr>
           <th scope="col">Name</th>
           <th scope="col">Age</th>
@@ -17,7 +17,7 @@
       <tbody *ngIf="cats.length === 0">
         <tr>
           <td colspan="4">There are no cats in the DB. Add a new cat below.</td>
-        </tr>  
+        </tr>
       </tbody>
       <tbody *ngIf="!isEditing">
         <tr *ngFor="let cat of cats">
@@ -27,29 +27,39 @@
           <td>
             <button class="btn btn-sm btn-primary" (click)="enableEditing(cat)">
               <i class="fa fa-pencil"></i> Edit
-            </button> 
-            <button class="btn btn-sm btn-danger ml-1" (click)="deleteCat(cat)">
+            </button>
+            <button class="btn btn-sm btn-danger ms-1" (click)="deleteCat(cat)">
               <i class="fa fa-trash"></i> Delete
             </button>
           </td>
-        </tr>  
+        </tr>
       </tbody>
       <tbody *ngIf="isEditing">
         <tr>
           <td colspan="4">
-            <form class="form-inline" #form="ngForm" (ngSubmit)="editCat(cat)">
-              <input class="form-control mr-2" type="text" name="name"
-                     [(ngModel)]="cat.name" placeholder="Name" required>
-              <input class="form-control mr-2" type="number" name="age"
-                     [(ngModel)]="cat.age" placeholder="Age" min="0" required>
-              <input class="form-control mr-2" type="number" name="weight"
-                     [(ngModel)]="cat.weight" placeholder="Weight" step="any" min="0" required>
-              <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
-                <i class="fa fa-floppy-o"></i> Save
-              </button>
-              <button class="btn btn-sm btn-warning" (click)="cancelEditing()">
-                <i class="fa fa-times"></i> Cancel
-              </button>
+            <form #form="ngForm" (ngSubmit)="editCat(cat)">
+              <div class="row row-cols-1 row-cols-sm-auto g-2">
+                <div class="col">
+                  <input class="form-control" type="text" name="name" [(ngModel)]="cat.name" placeholder="Name"
+                    required>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" name="age" [(ngModel)]="cat.age" placeholder="Age" min="0"
+                    required>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" name="weight" [(ngModel)]="cat.weight" placeholder="Weight"
+                    step="any" min="0" required>
+                </div>
+                <div class="col d-flex align-items-center">
+                  <button class="btn btn-sm btn-primary me-2" type="submit" [disabled]="!form.form.valid">
+                    <i class="fa fa-floppy-o"></i> Save
+                  </button>
+                  <button class="btn btn-sm btn-warning" (click)="cancelEditing()">
+                    <i class="fa fa-times"></i> Cancel
+                  </button>
+                </div>
+              </div>
             </form>
           </td>
         </tr>

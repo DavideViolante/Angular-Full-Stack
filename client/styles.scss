@@ -1,4 +1,17 @@
 // You can add global styles to this file, and also import other style files
+/* import the necessary Bootstrap files */
+@import "node_modules/bootstrap/scss/functions";
+
+$card-spacer-y: 1.25rem;
+$card-spacer-x: 1.25rem;
+$card-border-radius: 0.25rem;
+$card-cap-padding-x: 1.25rem;
+$card-cap-padding-y: 0.75rem;
+$navbar-padding-x: 1rem;
+
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/bootstrap";
+
 
 body {
   margin-bottom: 10px;
