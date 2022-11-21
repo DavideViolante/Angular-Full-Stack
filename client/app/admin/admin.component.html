@@ -6,7 +6,7 @@
   <h4 class="card-header">Registered users ({{users.length}})</h4>
   <div class="card-body">
     <table class="table table-bordered">
-      <thead class="thead-light">
+      <thead class="table-secondary">
         <tr>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
@@ -17,7 +17,7 @@
       <tbody *ngIf="users.length === 0">
         <tr>
           <td colspan="4">There are no registered users.</td>
-        </tr>  
+        </tr>
       </tbody>
       <tbody>
         <tr *ngFor="let user of users">
@@ -26,11 +26,11 @@
           <td>{{user.role}}</td>
           <td>
             <button class="btn btn-sm btn-danger" (click)="deleteUser(user)"
-                    [disabled]="auth.currentUser._id === user._id">
+              [disabled]="auth.currentUser._id === user._id">
               <i class="fa fa-trash"></i> Delete
             </button>
           </td>
-        </tr>  
+        </tr>
       </tbody>
     </table>
   </div>
