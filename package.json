@@ -1,12 +1,12 @@
 {
   "name": "angular2-full-stack",
-  "version": "14.1.3",
+  "version": "14.1.4",
   "license": "MIT",
   "author": "Davide Violante",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "engines": {
-    "node": ">=16",
-    "npm": ">=8"
+    "node": ">=18",
+    "npm": ">=9"
   },
   "scripts": {
     "ng": "ng",
