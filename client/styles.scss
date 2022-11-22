@@ -1,13 +1,11 @@
 // You can add global styles to this file, and also import other style files
-// Import Bootstrap
-@import '../node_modules/bootstrap/scss/functions';
 
-// Add custom bootstrap styles here
+// Add Bootstrap style overrides here
+$primary: #026fbd;
 
-@import '../node_modules/bootstrap/scss/variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
 
-
+// Add global app styles here
 body {
   margin-bottom: 10px;
   margin-top: 15px;
