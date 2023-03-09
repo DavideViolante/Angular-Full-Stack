@@ -1,11 +1,11 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { NotFoundComponent } from './not-found.component';
 
 describe('Component: NotFound', () => {
   let component: NotFoundComponent;
   let fixture: ComponentFixture<NotFoundComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -18,6 +18,7 @@ describe('Component: NotFound', () => {
     fixture = TestBed.createComponent(NotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -25,14 +26,14 @@ describe('Component: NotFound', () => {
   });
 
   it('should display the page header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('404 Not Found');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('404 Not Found');
   });
 
   it('should display the link for homepage', () => {
-    const el = fixture.debugElement.query(By.css('a')).nativeElement;
-    expect(el.getAttribute('routerLink')).toBe('/');
-    expect(el.textContent).toContain('Homepage');
+    const link = compiled.querySelector('a');
+    expect(link?.getAttribute('routerLink')).toBe('/');
+    expect(link?.textContent).toContain('Homepage');
   });
 
 });

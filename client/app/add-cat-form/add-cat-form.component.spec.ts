@@ -1,5 +1,4 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -11,6 +10,7 @@ class CatServiceMock { }
 describe('Component: AddCatForm', () => {
   let component: AddCatFormComponent;
   let fixture: ComponentFixture<AddCatFormComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -28,6 +28,7 @@ describe('Component: AddCatForm', () => {
     fixture = TestBed.createComponent(AddCatFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -35,22 +36,22 @@ describe('Component: AddCatForm', () => {
   });
 
   it('should display header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Add new cat');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('Add new cat');
   });
 
   it('should display the add form', () => {
-    const formEl = fixture.debugElement.query(By.css('form')).nativeElement;
-    expect(formEl).toBeTruthy();
-    const [inputName, inputAge, inputWeight] = fixture.debugElement.queryAll(By.css('input'));
-    expect(inputName.nativeElement).toBeTruthy();
-    expect(inputAge.nativeElement).toBeTruthy();
-    expect(inputWeight.nativeElement).toBeTruthy();
-    expect(inputName.nativeElement.value).toBeFalsy();
-    expect(inputAge.nativeElement.value).toBeFalsy();
-    expect(inputWeight.nativeElement.value).toBeFalsy();
-    const btnAdd = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(btnAdd).toBeTruthy();
+    const form = compiled.querySelector('form');
+    expect(form).toBeTruthy();
+    const inputs = compiled.querySelectorAll('input');
+    expect(inputs[0]).toBeTruthy();
+    expect(inputs[1]).toBeTruthy();
+    expect(inputs[2]).toBeTruthy();
+    expect(inputs[0].value).toBeFalsy();
+    expect(inputs[1].value).toBeFalsy();
+    expect(inputs[2].value).toBeFalsy();
+    const button = compiled.querySelector('button');
+    expect(button).toBeTruthy();
   });
 
 });

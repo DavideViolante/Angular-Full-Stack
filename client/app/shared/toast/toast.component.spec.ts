@@ -1,15 +1,17 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { ToastComponent } from './toast.component';
 
 describe('Component: Toast', () => {
   let component: ToastComponent;
   let fixture: ComponentFixture<ToastComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToastComponent ]
+      declarations: [ ToastComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -18,6 +20,7 @@ describe('Component: Toast', () => {
     fixture = TestBed.createComponent(ToastComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -27,8 +30,8 @@ describe('Component: Toast', () => {
   it('should not have message set nor DOM element', () => {
     expect(component.message.body).toBeFalsy();
     expect(component.message.type).toBeFalsy();
-    const de = fixture.debugElement.query(By.css('div'));
-    expect(de).toBeNull();
+    const div = compiled.querySelector('div');
+    expect(div).toBeNull();
   });
 
   it('should set the message and create the DOM element', () => {
@@ -40,11 +43,10 @@ describe('Component: Toast', () => {
     expect(component.message.body).toBe(mockMessage.body);
     expect(component.message.type).toBe(mockMessage.type);
     fixture.detectChanges();
-    const de = fixture.debugElement.query(By.css('div'));
-    const el = de.nativeElement;
-    expect(de).toBeDefined();
-    expect(el.textContent).toContain(mockMessage.body);
-    expect(el.className).toContain(mockMessage.type);
+    const div = compiled.querySelector('div');
+    expect(div).toBeDefined();
+    expect(div?.textContent).toContain(mockMessage.body);
+    expect(div?.className).toContain(mockMessage.type);
   });
 
 });

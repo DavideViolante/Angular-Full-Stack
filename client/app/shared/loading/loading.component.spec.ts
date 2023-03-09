@@ -1,15 +1,17 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { LoadingComponent } from './loading.component';
 
 describe('Component: Loading', () => {
   let component: LoadingComponent;
   let fixture: ComponentFixture<LoadingComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoadingComponent ]
+      declarations: [ LoadingComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -18,6 +20,7 @@ describe('Component: Loading', () => {
     fixture = TestBed.createComponent(LoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -25,18 +28,17 @@ describe('Component: Loading', () => {
   });
 
   it('should not show the DOM element', () => {
-    const de = fixture.debugElement.query(By.css('div'));
-    expect(de).toBeNull();
+    const div = compiled.querySelector('div');
+    expect(div).toBeNull();
   });
 
   it('should show the DOM element', () => {
     component.condition = true;
     fixture.detectChanges();
     expect(component).toBeTruthy();
-    const de = fixture.debugElement.query(By.css('div'));
-    const el = de.nativeElement;
-    expect(de).toBeDefined();
-    expect(el.textContent).toContain('Loading...');
+    const div = compiled.querySelector('div');
+    expect(div).toBeDefined();
+    expect(div?.textContent).toContain('Loading...');
   });
 
 });

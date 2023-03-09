@@ -1,5 +1,5 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
@@ -24,6 +24,7 @@ class UserServiceMock {
 describe('Component: Admin', () => {
   let component: AdminComponent;
   let fixture: ComponentFixture<AdminComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -32,7 +33,8 @@ describe('Component: Admin', () => {
         ToastComponent,
         { provide: AuthService, useClass: AuthServiceMock },
         { provide: UserService, useClass: UserServiceMock },
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -41,6 +43,7 @@ describe('Component: Admin', () => {
     fixture = TestBed.createComponent(AdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -48,35 +51,35 @@ describe('Component: Admin', () => {
   });
 
   it('should display the page header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Registered users (2)');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('Registered users (2)');
   });
 
   it('should display the text for no users', () => {
     component.users = [];
     fixture.detectChanges();
-    const headerEl = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(headerEl.textContent).toContain('Registered users (0)');
-    const tdEl = fixture.debugElement.query(By.css('td')).nativeElement;
-    expect(tdEl.textContent).toContain('There are no registered users');
+    const header = compiled.querySelector('h4');
+    expect(header?.textContent).toContain('Registered users (0)');
+    const td = compiled.querySelector('td');
+    expect(td?.textContent).toContain('There are no registered users');
   });
 
   it('should display registered users', () => {
-    const tds = fixture.debugElement.queryAll(By.css('td'));
-    expect(tds[0].nativeElement.textContent).toContain('Test 1');
-    expect(tds[1].nativeElement.textContent).toContain('test1@example.com');
-    expect(tds[2].nativeElement.textContent).toContain('admin');
-    expect(tds[4].nativeElement.textContent).toContain('Test 2');
-    expect(tds[5].nativeElement.textContent).toContain('test2@example.com');
-    expect(tds[6].nativeElement.textContent).toContain('user');
+    const tds = compiled.querySelectorAll('td');
+    expect(tds[0].textContent).toContain('Test 1');
+    expect(tds[1].textContent).toContain('test1@example.com');
+    expect(tds[2].textContent).toContain('admin');
+    expect(tds[4].textContent).toContain('Test 2');
+    expect(tds[5].textContent).toContain('test2@example.com');
+    expect(tds[6].textContent).toContain('user');
   });
 
   it('should display the delete buttons', () => {
-    const [btnDelete1, btnDelete2] = fixture.debugElement.queryAll(By.css('button'));
-    expect(btnDelete1.nativeElement.disabled).toBeTruthy();
-    expect(btnDelete1.nativeElement.textContent).toContain('Delete');
-    expect(btnDelete2.nativeElement.disabled).toBeFalsy();
-    expect(btnDelete2.nativeElement.textContent).toContain('Delete');
+    const buttons = compiled.querySelectorAll('button');
+    expect(buttons[0].disabled).toBeTruthy();
+    expect(buttons[0].textContent).toContain('Delete');
+    expect(buttons[1].disabled).toBeFalsy();
+    expect(buttons[1].textContent).toContain('Delete');
   });
 
 });

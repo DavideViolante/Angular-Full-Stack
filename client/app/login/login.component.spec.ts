@@ -1,5 +1,5 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ class RouterMock { }
 describe('Component: Login', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -22,7 +23,8 @@ describe('Component: Login', () => {
         UntypedFormBuilder, ToastComponent,
         { provide: Router, useClass: RouterMock },
         { provide: AuthService, useClass: AuthServiceMock }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -31,6 +33,7 @@ describe('Component: Login', () => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -38,23 +41,23 @@ describe('Component: Login', () => {
   });
 
   it('should display the page header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Login');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('Login');
   });
 
   it('should display the username and password inputs', () => {
-    const [inputUsername, inputPassword] = fixture.debugElement.queryAll(By.css('input'));
-    expect(inputUsername.nativeElement).toBeTruthy();
-    expect(inputPassword.nativeElement).toBeTruthy();
-    expect(inputUsername.nativeElement.value).toBeFalsy();
-    expect(inputPassword.nativeElement.value).toBeFalsy();
+    const inputs = compiled.querySelectorAll('input');
+    expect(inputs[0]).toBeTruthy();
+    expect(inputs[1]).toBeTruthy();
+    expect(inputs[0].value).toBeFalsy();
+    expect(inputs[1].value).toBeFalsy();
   });
 
   it('should display the login button', () => {
-    const el = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(el).toBeTruthy();
-    expect(el.textContent).toContain('Login');
-    expect(el.disabled).toBeTruthy();
+    const button = compiled.querySelector('button');
+    expect(button).toBeTruthy();
+    expect(button?.textContent).toContain('Login');
+    expect(button?.disabled).toBeTruthy();
   });
 
 });

@@ -1,11 +1,11 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
 import { AboutComponent } from './about.component';
 
 describe('Component: About', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -18,6 +18,7 @@ describe('Component: About', () => {
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -25,8 +26,8 @@ describe('Component: About', () => {
   });
 
   it('should display the page header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('About');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('About');
   });
 
 });

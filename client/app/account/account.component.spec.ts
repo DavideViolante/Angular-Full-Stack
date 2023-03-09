@@ -1,5 +1,5 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -24,6 +24,7 @@ class UserServiceMock {
 describe('Component: Account', () => {
   let component: AccountComponent;
   let fixture: ComponentFixture<AccountComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -33,7 +34,8 @@ describe('Component: Account', () => {
         ToastComponent,
         { provide: AuthService, useClass: AuthServiceMock },
         { provide: UserService, useClass: UserServiceMock },
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -47,6 +49,7 @@ describe('Component: Account', () => {
       email: 'test@example.com'
     };
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -54,21 +57,21 @@ describe('Component: Account', () => {
   });
 
   it('should display the page header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Account settings');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('Account settings');
   });
 
   it('should display the username and email inputs filled', async () => {
     await fixture.whenStable();
-    const [usernameInput, emailInput] = fixture.debugElement.queryAll(By.css('input'));
-    expect(usernameInput.nativeElement.value).toContain('Test user');
-    expect(emailInput.nativeElement.value).toContain('test@example.com');
+    const inputs = compiled.querySelectorAll('input');
+    expect(inputs[0].value).toContain('Test user');
+    expect(inputs[1].value).toContain('test@example.com');
   });
 
   it('should display the save button enabled', () => {
-    const saveBtn = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(saveBtn).toBeTruthy();
-    expect(saveBtn.disabled).toBeFalsy();
+    const button = compiled.querySelector('button');
+    expect(button).toBeTruthy();
+    expect(button?.disabled).toBeFalsy();
   });
 
 });

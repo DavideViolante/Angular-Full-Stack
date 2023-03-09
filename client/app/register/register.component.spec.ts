@@ -1,5 +1,5 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -13,6 +13,7 @@ class UserServiceMock { }
 describe('Component: Register', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -22,7 +23,8 @@ describe('Component: Register', () => {
         ToastComponent,
         { provide: Router, useClass: RouterMock },
         { provide: UserService, useClass: UserServiceMock }
-      ]
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -31,6 +33,7 @@ describe('Component: Register', () => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -38,25 +41,25 @@ describe('Component: Register', () => {
   });
 
   it('should display the page header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Register');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('Register');
   });
 
   it('should display the username, email and password inputs', () => {
-    const [inputUsername, inputEmail, inputPassword] = fixture.debugElement.queryAll(By.css('input'));
-    expect(inputUsername.nativeElement).toBeTruthy();
-    expect(inputEmail.nativeElement).toBeTruthy();
-    expect(inputPassword.nativeElement).toBeTruthy();
-    expect(inputUsername.nativeElement.value).toBeFalsy();
-    expect(inputEmail.nativeElement.value).toBeFalsy();
-    expect(inputPassword.nativeElement.value).toBeFalsy();
+    const inputs = compiled.querySelectorAll('input');
+    expect(inputs[0]).toBeTruthy();
+    expect(inputs[1]).toBeTruthy();
+    expect(inputs[2]).toBeTruthy();
+    expect(inputs[0].value).toBeFalsy();
+    expect(inputs[1].value).toBeFalsy();
+    expect(inputs[2].value).toBeFalsy();
   });
 
   it('should display the register button', () => {
-    const el = fixture.debugElement.query(By.css('button')).nativeElement;
-    expect(el).toBeTruthy();
-    expect(el.textContent).toContain('Register');
-    expect(el.disabled).toBeTruthy();
+    const button = compiled.querySelector('button');
+    expect(button).toBeTruthy();
+    expect(button?.textContent).toContain('Register');
+    expect(button?.disabled).toBeTruthy();
   });
 
 });

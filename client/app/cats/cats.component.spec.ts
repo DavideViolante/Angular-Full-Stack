@@ -1,5 +1,6 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { waitForAsync, TestBed, ComponentFixture } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -20,15 +21,17 @@ class CatServiceMock {
 describe('Component: Cats', () => {
   let component: CatsComponent;
   let fixture: ComponentFixture<CatsComponent>;
+  let compiled: HTMLElement;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule ],
+      imports: [ RouterTestingModule, FormsModule, ReactiveFormsModule ],
       declarations: [ CatsComponent ],
       providers: [
         ToastComponent, UntypedFormBuilder,
         { provide: CatService, useClass: CatServiceMock }
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -37,6 +40,7 @@ describe('Component: Cats', () => {
     fixture = TestBed.createComponent(CatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    compiled = fixture.nativeElement as HTMLElement;
   });
 
   it('should create', () => {
@@ -44,40 +48,36 @@ describe('Component: Cats', () => {
   });
 
   it('should display the page header text', () => {
-    const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Current cats (2)');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('Current cats (2)');
   });
 
   it('should display the text for no cats', () => {
     component.cats = [];
     fixture.detectChanges();
-    const headerEl = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(headerEl.textContent).toContain('Current cats (0)');
-    const tdEl = fixture.debugElement.query(By.css('td')).nativeElement;
-    expect(tdEl.textContent).toContain('There are no cats in the DB. Add a new cat below.');
+    const header = compiled.querySelector('.card-header');
+    expect(header?.textContent).toContain('Current cats (0)');
+    const td = compiled.querySelector('td');
+    expect(td?.textContent).toContain('There are no cats in the DB. Add a new cat below.');
   });
 
   it('should display current cats', () => {
-    const tds = fixture.debugElement.queryAll(By.css('td'));
+    const tds = compiled.querySelectorAll('td');
     expect(tds.length).toBe(8);
-    expect(tds[0].nativeElement.textContent).toContain('Cat 1');
-    expect(tds[1].nativeElement.textContent).toContain('1');
-    expect(tds[2].nativeElement.textContent).toContain('2');
-    expect(tds[4].nativeElement.textContent).toContain('Cat 2');
-    expect(tds[5].nativeElement.textContent).toContain('3');
-    expect(tds[6].nativeElement.textContent).toContain('4.2');
+    expect(tds[0].textContent).toContain('Cat 1');
+    expect(tds[1].textContent).toContain('1');
+    expect(tds[2].textContent).toContain('2');
+    expect(tds[4].textContent).toContain('Cat 2');
+    expect(tds[5].textContent).toContain('3');
+    expect(tds[6].textContent).toContain('4.2');
   });
 
   it('should display the edit and delete buttons', () => {
-    const [btnEdit1, btnDelete1, btnEdit2, btnDelete2] = fixture.debugElement.queryAll(By.css('button'));
-    expect(btnEdit1.nativeElement).toBeTruthy();
-    expect(btnEdit1.nativeElement.textContent).toContain('Edit');
-    expect(btnDelete1.nativeElement).toBeTruthy();
-    expect(btnDelete1.nativeElement.textContent).toContain('Delete');
-    expect(btnEdit2.nativeElement).toBeTruthy();
-    expect(btnEdit2.nativeElement.textContent).toContain('Edit');
-    expect(btnDelete2.nativeElement).toBeTruthy();
-    expect(btnDelete2.nativeElement.textContent).toContain('Delete');
+    const buttons = compiled.querySelectorAll('button');
+    expect(buttons[0].textContent).toContain('Edit');
+    expect(buttons[1].textContent).toContain('Delete');
+    expect(buttons[2].textContent).toContain('Edit');
+    expect(buttons[3].textContent).toContain('Delete');
   });
 
   it('should display the edit form', async () => {
@@ -85,19 +85,17 @@ describe('Component: Cats', () => {
     component.cat = { name: 'Cat 1', age: 1, weight: 2 };
     fixture.detectChanges();
     await fixture.whenStable();
-    const tds = fixture.debugElement.queryAll(By.css('td'));
+    const tds = compiled.querySelectorAll('td');
     expect(tds.length).toBe(1);
-    const formEl = fixture.debugElement.query(By.css('form')).nativeElement;
-    expect(formEl).toBeTruthy();
-    const [inputName, inputAge, inputWeight] = fixture.debugElement.queryAll(By.css('input'));
-    expect(inputName.nativeElement.value).toContain('Cat 1');
-    expect(inputAge.nativeElement.value).toContain('1');
-    expect(inputWeight.nativeElement.value).toContain('2');
-    const [btnSave, btnCancel] = fixture.debugElement.queryAll(By.css('button'));
-    expect(btnSave.nativeElement).toBeTruthy();
-    expect(btnSave.nativeElement.textContent).toContain('Save');
-    expect(btnCancel.nativeElement).toBeTruthy();
-    expect(btnCancel.nativeElement.textContent).toContain('Cancel');
+    const form = compiled.querySelector('form');
+    expect(form).toBeTruthy();
+    const inputs = compiled.querySelectorAll('input');
+    expect(inputs[0].value).toContain('Cat 1');
+    expect(inputs[1].value).toContain('1');
+    expect(inputs[2].value).toContain('2');
+    const buttons = compiled.querySelectorAll('button');
+    expect(buttons[0].textContent).toContain('Save');
+    expect(buttons[1].textContent).toContain('Cancel');
   });
 
 });
