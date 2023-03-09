@@ -8,10 +8,6 @@
       "jasmine"
     ]
   },
-  "files": [
-    "client/test.ts",
-    "client/polyfills.ts"
-  ],
   "include": [
     "client/**/*.spec.ts",
     "client/**/*.d.ts"
