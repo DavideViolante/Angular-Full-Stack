@@ -1,16 +1,16 @@
-import { Document, model, Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
+
+interface ICat {
+  name: string;
+  weight: number;
+  age: number;
+}
 
 const catSchema = new Schema<ICat>({
   name: String,
   weight: Number,
   age: Number
 });
-
-interface ICat extends Document {
-  name: string;
-  weight: number;
-  age: number;
-}
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const Cat = model<ICat>('Cat', catSchema);

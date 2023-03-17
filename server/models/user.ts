@@ -1,9 +1,18 @@
 import { compare, genSalt, hash } from 'bcryptjs';
-import { Document, model, Schema} from 'mongoose';
+import { model, Schema} from 'mongoose';
+
+interface IUser {
+  username: string;
+  email: string;
+  password: string;
+  role: string;
+  isModified(password: string): boolean;
+  comparePassword(password: string, callback: (err: any, isMatch: boolean) => void): boolean;
+}
 
 const userSchema = new Schema<IUser>({
-  username: String,
   email: { type: String, unique: true, lowercase: true, trim: true },
+  username: String,
   password: String,
   role: String
 });
@@ -37,17 +46,8 @@ userSchema.set('toJSON', {
   }
 });
 
-interface IUser extends Document {
-  _id: any;
-  username: string;
-  email: string;
-  password: string;
-  role: string;
-  isModified(password: string): boolean;
-  comparePassword(password: string, callback: (err: any, isMatch: boolean) => void): boolean;
-}
-
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const User = model<IUser>('User', userSchema);
 
+export type { IUser };
 export default User;
