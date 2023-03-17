@@ -4,6 +4,6 @@
     "outDir": "../dist/server",
     "baseUrl": "",
     "module": "commonjs",
-    "skipLibCheck": true // Added due to mocha and jasmine errors
+    "skipLibCheck": true // Added due to jest and jasmine errors
   }
 }

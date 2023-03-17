@@ -25,6 +25,12 @@ const setRoutes = (app: Application): void => {
   router.route('/user/:id').put(userCtrl.update);
   router.route('/user/:id').delete(userCtrl.delete);
 
+  // Test routes
+  if (process.env.NODE_ENV === 'test') {
+    router.route('/cats/delete').delete(catCtrl.deleteAll);
+    router.route('/users/delete').delete(userCtrl.deleteAll);
+  }
+
   // Apply the routes to our application with the prefix /api
   app.use('/api', router);
 

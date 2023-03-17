@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 
-const setMongo = async (): Promise<any> => {
+const connectToMongo = async (): Promise<void> => {
   let mongodbURI: string;
   if (process.env.NODE_ENV === 'test') {
     mongodbURI = process.env.MONGODB_TEST_URI as string;
@@ -8,7 +8,11 @@ const setMongo = async (): Promise<any> => {
     mongodbURI = process.env.MONGODB_URI as string;
   }
   await mongoose.connect(mongodbURI);
-  console.log('Connected to MongoDB');
+  console.log(`Connected to MongoDB (db: ${mongodbURI.split('/').pop()})`);
 };
 
-export default setMongo;
+const disconnectMongo = async (): Promise<void> => {
+  await mongoose.connection.close();
+};
+
+export { connectToMongo, disconnectMongo };

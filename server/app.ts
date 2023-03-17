@@ -4,7 +4,7 @@ import * as express from 'express';
 import * as morgan from 'morgan';
 import * as path from 'path';
 
-import setMongo from './mongo';
+import { connectToMongo } from './mongo';
 import setRoutes from './routes';
 
 const app = express();
@@ -16,10 +16,11 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'));
 }
 
+setRoutes(app);
+
 const main = async (): Promise<any> => {
   try {
-    await setMongo();
-    setRoutes(app);
+    await connectToMongo();
     app.get('/*', (req, res) => {
       res.sendFile(path.join(__dirname, '../public/index.html'));
     });
@@ -29,6 +30,8 @@ const main = async (): Promise<any> => {
   }
 };
 
-main();
+if (process.env.NODE_ENV !== 'test') {
+  main();
+}
 
 export { app };

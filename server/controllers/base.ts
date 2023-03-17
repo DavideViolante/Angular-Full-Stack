@@ -63,6 +63,16 @@ abstract class BaseCtrl {
       return res.status(400).json({ error: err.message });
     }
   };
+
+  // Drop collection (for tests)
+  deleteAll = async (_req: Request, res: Response) => {
+    try {
+      await this.model.deleteMany();
+      return res.sendStatus(200);
+    } catch (err: any) {
+      return res.status(400).json({ error: err.message });
+    }
+  };
 }
 
 export default BaseCtrl;

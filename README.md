@@ -64,7 +64,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 ## Running tests
 Run `ng test` to execute the frontend unit tests via [Karma](https://karma-runner.github.io).
 
-Run `npm run testbe` to execute the backend tests via [Mocha](https://mochajs.org/) (it requires `mongod` already running).
+Run `npm run testbe` to execute the backend tests via [Jest](https://jestjs.io/) (it requires mongod already running).
 
 ## Running linters
 Run `npm run lint` to execute [Angular ESLint](https://github.com/angular-eslint/angular-eslint), [HTML linting](https://github.com/htmlhint/HTMLHint) and [SASS linting](https://github.com/sasstools/sass-lint).
