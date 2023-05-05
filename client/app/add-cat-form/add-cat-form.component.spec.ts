@@ -21,7 +21,7 @@ describe('Component: AddCatForm', () => {
         { provide: CatService, useClass: CatServiceMock }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

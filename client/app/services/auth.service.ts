@@ -25,7 +25,7 @@ export class AuthService {
     }
   }
 
-  login(emailAndPassword: object): void {
+  login(emailAndPassword: { email: string; password: string }): void {
     this.userService.login(emailAndPassword).subscribe({
       next: res => {
         localStorage.setItem('token', res.token);
@@ -34,7 +34,7 @@ export class AuthService {
         this.loggedIn = true;
         this.router.navigate(['/']);
       },
-      error: error => this.toast.setMessage('Invalid email or password!', 'danger')
+      error: () => this.toast.setMessage('Invalid email or password!', 'danger')
     });
   }
 

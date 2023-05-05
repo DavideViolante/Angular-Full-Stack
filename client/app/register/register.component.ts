@@ -58,11 +58,11 @@ export class RegisterComponent {
 
   register(): void {
     this.userService.register(this.registerForm.value).subscribe({
-      next: res => {
+      next: () => {
         this.toast.setMessage('You successfully registered!', 'success');
         this.router.navigate(['/login']);
       },
-      error: error => this.toast.setMessage('Email already exists', 'danger')
+      error: () => this.toast.setMessage('Email already exists', 'danger')
     });
   }
 }

@@ -18,9 +18,9 @@
         "createDefaultProgram": true
       },
       "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
@@ -81,7 +81,19 @@
             "format": null
           }
         ],
-        "no-underscore-dangle": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-underscore-dangle": "off",
+        "arrow-spacing": "error",
+        "comma-spacing": "error",
+        "indent": ["error", 2],
+        "key-spacing": "error",
+        "keyword-spacing": "error",
+        "object-curly-spacing": ["error", "always"],
+        "object-shorthand": "error",
+        "spaced-comment": "error",
+        "space-before-blocks": "error",
+        "space-infix-ops": "error",
+        "semi": "error"
       }
     },
     {

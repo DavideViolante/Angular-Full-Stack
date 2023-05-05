@@ -20,7 +20,7 @@ describe('Component: Logout', () => {
       declarations: [ LogoutComponent ],
       providers: [ { provide: AuthService, useClass: AuthServiceMock } ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

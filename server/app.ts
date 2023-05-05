@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 setRoutes(app);
 
-const main = async (): Promise<any> => {
+const main = async (): Promise<void> => {
   try {
     await connectToMongo();
     app.get('/*', (req, res) => {

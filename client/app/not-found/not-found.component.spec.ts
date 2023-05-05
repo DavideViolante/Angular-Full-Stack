@@ -11,7 +11,7 @@ describe('Component: NotFound', () => {
     TestBed.configureTestingModule({
       declarations: [ NotFoundComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
