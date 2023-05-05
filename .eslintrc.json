@@ -44,19 +44,26 @@
           "error",
           {
             "selector": "default",
-            "format": ["camelCase"],
+            "format": [
+              "camelCase"
+            ],
             "leadingUnderscore": "allow",
             "trailingUnderscore": "allow"
           },
           {
             "selector": "variable",
-            "format": ["camelCase", "UPPER_CASE"],
+            "format": [
+              "camelCase",
+              "UPPER_CASE"
+            ],
             "leadingUnderscore": "allow",
             "trailingUnderscore": "allow"
           },
           {
             "selector": "typeLike",
-            "format": ["PascalCase"]
+            "format": [
+              "PascalCase"
+            ]
           },
           {
             "selector": [
@@ -68,7 +75,9 @@
           },
           {
             "selector": "variable",
-            "modifiers": ["destructured"],
+            "modifiers": [
+              "destructured"
+            ],
             "format": null
           }
         ],
