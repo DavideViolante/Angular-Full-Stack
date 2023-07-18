@@ -39,7 +39,7 @@
     "express": "^4.18.2",
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.2.0",
+    "mongoose": "^7.3.3",
     "morgan": "^1.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
