@@ -3,6 +3,7 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
+import { User } from '../shared/models/user.model';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { AccountComponent } from './account.component';
@@ -16,7 +17,7 @@ class UserServiceMock {
     email: 'test@example.com',
     role: 'user'
   };
-  getUser(): Observable<object> {
+  getUser(): Observable<User> {
     return of(this.mockUser);
   }
 }

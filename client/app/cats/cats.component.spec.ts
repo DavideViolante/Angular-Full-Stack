@@ -13,7 +13,7 @@ class CatServiceMock {
     { name: 'Cat 1', age: 1, weight: 2 },
     { name: 'Cat 2', age: 3, weight: 4.2 },
   ];
-  getCats(): Observable<object[]> {
+  getCats(): Observable<{name: string; age: number; weight: number}[]> {
     return of(this.mockCats);
   }
 }

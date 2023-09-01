@@ -50,7 +50,7 @@ export class AuthService {
     return this.jwtHelper.decodeToken(token).user;
   }
 
-  setCurrentUser(decodedUser: any): void {
+  setCurrentUser(decodedUser: User): void {
     this.loggedIn = true;
     this.currentUser._id = decodedUser._id;
     this.currentUser.username = decodedUser.username;

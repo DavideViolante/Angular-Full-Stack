@@ -16,7 +16,7 @@ class UserServiceMock {
     { _id: '1', username: 'Test 1', email: 'test1@example.com', role: 'admin' },
     { _id: '2', username: 'Test 2', email: 'test2@example.com', role: 'user' },
   ];
-  getUsers(): Observable<object[]> {
+  getUsers(): Observable<{_id: string; username: string; email: string; role: string;}[]> {
     return of(this.mockUsers);
   }
 }
