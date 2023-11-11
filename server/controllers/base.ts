@@ -17,7 +17,7 @@ abstract class BaseCtrl {
   // Count all
   count = async (req: Request, res: Response) => {
     try {
-      const count = await this.model.count();
+      const count = await this.model.countDocuments();
       return res.status(200).json(count);
     } catch (err: any) {
       return res.status(400).json({ error: err.message });
@@ -57,7 +57,7 @@ abstract class BaseCtrl {
   // Delete by id
   delete = async (req: Request, res: Response) => {
     try {
-      await this.model.findOneAndRemove({ _id: req.params.id });
+      await this.model.findOneAndDelete({ _id: req.params.id });
       return res.sendStatus(200);
     } catch (err: any) {
       return res.status(400).json({ error: err.message });

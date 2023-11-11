@@ -81,8 +81,7 @@
     "nodemon": "^3.0.1",
     "sass-lint": "^1.13.1",
     "supertest": "^6.3.3",
-    "ts-jest": "^29.0.5",
-    "ts-node": "~8.3.0",
+    "ts-jest": "^29.1.1",
     "typescript": "~5.2.2"
   }
 }
