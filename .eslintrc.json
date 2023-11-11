@@ -69,7 +69,8 @@
             "selector": [
               "classProperty",
               "objectLiteralProperty",
-              "typeProperty"
+              "typeProperty",
+              "import"
             ],
             "format": null
           },
