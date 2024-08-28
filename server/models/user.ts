@@ -47,7 +47,6 @@ userSchema.set('toJSON', {
   }
 });
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 const User = model<IUser>('User', userSchema);
 
 export type { IUser };
