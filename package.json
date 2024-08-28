@@ -20,7 +20,7 @@
     "testbe": "tsc -p server && jest",
     "testbecov": "tsc -p server && jest --coverage",
     "lint": "ng lint && htmlhint \"client/**/*.html\" && sass-lint \"client/**/*.scss\" -v",
-    "lintfix": "ng lint -- --fix"
+    "lintfix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
