@@ -12,7 +12,6 @@ const catSchema = new Schema<ICat>({
   age: Number
 });
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 const Cat = model<ICat>('Cat', catSchema);
 
 export default Cat;
