@@ -15,15 +15,15 @@ class UserCtrl extends BaseCtrl {
       if (!user) {
         return res.sendStatus(403);
       }
-      return user.comparePassword(req.body.password, (error: any, isMatch: boolean) => {
+      return user.comparePassword(req.body.password, (error, isMatch: boolean) => {
         if (error || !isMatch) {
           return res.sendStatus(403);
         }
         const token = sign({ user }, secret, { expiresIn: '24h' });
         return res.status(200).json({ token });
       });
-    } catch (err: any) {
-      return res.status(400).json({ error: err.message });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
     }
   };
 

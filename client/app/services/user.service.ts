@@ -13,8 +13,8 @@ export class UserService {
     return this.http.post<User>('/api/user', user);
   }
 
-  login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post('/api/login', credentials);
+  login(credentials: { email: string; password: string }): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>('/api/login', credentials);
   }
 
   getUsers(): Observable<User[]> {
@@ -33,11 +33,11 @@ export class UserService {
     return this.http.get<User>(`/api/user/${user._id}`);
   }
 
-  editUser(user: User): Observable<any> {
+  editUser(user: User): Observable<string> {
     return this.http.put(`/api/user/${user._id}`, user, { responseType: 'text' });
   }
 
-  deleteUser(user: User): Observable<any> {
+  deleteUser(user: User): Observable<string> {
     return this.http.delete(`/api/user/${user._id}`, { responseType: 'text' });
   }
 

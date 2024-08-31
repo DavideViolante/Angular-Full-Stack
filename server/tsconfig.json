@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../dist/server",
     "baseUrl": "",
-    "module": "commonjs",
+    "types": ["node", "jest"],
     "skipLibCheck": true // Added due to jest and jasmine errors
   }
 }

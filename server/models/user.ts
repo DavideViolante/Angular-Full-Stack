@@ -7,6 +7,7 @@ interface IUser {
   password: string;
   role: string;
   isModified(password: string): boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   comparePassword(password: string, callback: (err: any, isMatch: boolean) => void): boolean;
 }
 
@@ -32,6 +33,7 @@ userSchema.pre<IUser>('save', function(next): void {
   });
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 userSchema.methods.comparePassword = function(candidatePassword: string, callback: any): void {
   compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) { return callback(err); }

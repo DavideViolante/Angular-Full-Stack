@@ -14,4 +14,5 @@ const catSchema = new Schema<ICat>({
 
 const Cat = model<ICat>('Cat', catSchema);
 
+export type { ICat };
 export default Cat;

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 
 abstract class BaseCtrl {
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   abstract model: any;
 
   // Get all
@@ -9,8 +10,8 @@ abstract class BaseCtrl {
     try {
       const docs = await this.model.find({});
       return res.status(200).json(docs);
-    } catch (err: any) {
-      return res.status(400).json({ error: err.message });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
     }
   };
 
@@ -19,8 +20,8 @@ abstract class BaseCtrl {
     try {
       const count = await this.model.countDocuments();
       return res.status(200).json(count);
-    } catch (err: any) {
-      return res.status(400).json({ error: err.message });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
     }
   };
 
@@ -29,8 +30,8 @@ abstract class BaseCtrl {
     try {
       const obj = await new this.model(req.body).save();
       return res.status(201).json(obj);
-    } catch (err: any) {
-      return res.status(400).json({ error: err.message });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
     }
   };
 
@@ -39,8 +40,8 @@ abstract class BaseCtrl {
     try {
       const obj = await this.model.findOne({ _id: req.params.id });
       return res.status(200).json(obj);
-    } catch (err: any) {
-      return res.status(500).json({ error: err.message });
+    } catch (err) {
+      return res.status(500).json({ error: (err as Error).message });
     }
   };
 
@@ -49,8 +50,8 @@ abstract class BaseCtrl {
     try {
       await this.model.findOneAndUpdate({ _id: req.params.id }, req.body);
       return res.sendStatus(200);
-    } catch (err: any) {
-      return res.status(400).json({ error: err.message });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
     }
   };
 
@@ -59,8 +60,8 @@ abstract class BaseCtrl {
     try {
       await this.model.findOneAndDelete({ _id: req.params.id });
       return res.sendStatus(200);
-    } catch (err: any) {
-      return res.status(400).json({ error: err.message });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
     }
   };
 
@@ -69,8 +70,8 @@ abstract class BaseCtrl {
     try {
       await this.model.deleteMany();
       return res.sendStatus(200);
-    } catch (err: any) {
-      return res.status(400).json({ error: err.message });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
     }
   };
 }
