@@ -5,22 +5,22 @@
   "author": "Davide Violante",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
   "engines": {
-    "node": ">=18",
-    "npm": ">=8"
+    "node": ">=20",
+    "npm": ">=10"
   },
   "scripts": {
     "ng": "ng",
-    "builddev": "ng build -c development && tsc -p server",
+    "build:dev": "ng build -c development && tsc -p server",
     "build": "ng build && tsc -p server",
     "start": "node dist/server/app.js",
     "predev": "tsc -p server",
     "dev": "concurrently \"mongod\" \"ng serve --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
     "prod": "concurrently \"mongod\" \"ng build && tsc -p server && node dist/server/app.js\"",
     "test": "ng test",
-    "testbe": "tsc -p server && jest",
-    "testbecov": "tsc -p server && jest --coverage",
+    "test:be": "tsc -p server && jest",
+    "test:becov": "tsc -p server && jest --coverage",
     "lint": "ng lint && htmlhint \"client/**/*.html\" && sass-lint \"client/**/*.scss\" -v",
-    "lintfix": "ng lint --fix"
+    "lint:fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {

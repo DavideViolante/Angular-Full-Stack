@@ -33,7 +33,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 `npm run prod`: run the project with a production bundle listening at [localhost:3000](http://localhost:3000) 
 
 ### Manual mode
-1. Build frontend: `npm run builddev` for dev or `npm run build` for prod
+1. Build frontend: `npm run build:dev` for dev or `npm run build` for prod
 2. Build backend: `npm run predev`
 3. Run MongoDB: `mongod`
 4. Run the app: `npm start`
@@ -64,7 +64,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 ## Running tests
 Run `ng test` to execute the frontend unit tests via [Karma](https://karma-runner.github.io).
 
-Run `npm run testbe` to execute the backend tests via [Jest](https://jestjs.io/) (it requires `mongod` already running).
+Run `npm run test:be` to execute the backend tests via [Jest](https://jestjs.io/) (it requires `mongod` already running).
 
 ## Running linters
 Run `npm run lint` to execute [Angular ESLint](https://github.com/angular-eslint/angular-eslint), [HTML linting](https://github.com/htmlhint/HTMLHint) and [SASS linting](https://github.com/sasstools/sass-lint).
