@@ -1,10 +1,10 @@
-import * as jwt from 'jsonwebtoken';
+import { sign, Secret } from 'jsonwebtoken';
 import { Request, Response } from 'express';
 
 import User from '../models/user';
 import BaseCtrl from './base';
 
-const secret: jwt.Secret = process.env.SECRET_TOKEN as string;
+const secret: Secret = process.env.SECRET_TOKEN as string;
 
 class UserCtrl extends BaseCtrl {
   model = User;
@@ -19,7 +19,7 @@ class UserCtrl extends BaseCtrl {
         if (error || !isMatch) {
           return res.sendStatus(403);
         }
-        const token = jwt.sign({ user }, secret, { expiresIn: '24h' });
+        const token = sign({ user }, secret, { expiresIn: '24h' });
         return res.status(200).json({ token });
       });
     } catch (err: any) {

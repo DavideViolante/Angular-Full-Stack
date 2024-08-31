@@ -24,14 +24,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^17.3.1",
-    "@angular/common": "^17.3.1",
-    "@angular/compiler": "^17.3.1",
-    "@angular/core": "^17.3.1",
-    "@angular/forms": "^17.3.1",
-    "@angular/platform-browser": "^17.3.1",
-    "@angular/platform-browser-dynamic": "^17.3.1",
-    "@angular/router": "^17.3.1",
+    "@angular/animations": "^18.2.2",
+    "@angular/common": "^18.2.2",
+    "@angular/compiler": "^18.2.2",
+    "@angular/core": "^18.2.2",
+    "@angular/forms": "^18.2.2",
+    "@angular/platform-browser": "^18.2.2",
+    "@angular/platform-browser-dynamic": "^18.2.2",
+    "@angular/router": "^18.2.2",
     "@auth0/angular-jwt": "^5.2.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
@@ -46,10 +46,10 @@
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.3.1",
-    "@angular/cli": "^17.3.1",
-    "@angular/compiler-cli": "^17.3.1",
-    "@angular/language-service": "^17.3.1",
+    "@angular-devkit/build-angular": "^18.2.2",
+    "@angular/cli": "^18.2.2",
+    "@angular/compiler-cli": "^18.2.2",
+    "@angular/language-service": "^18.2.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.21",
     "@types/jasmine": "~5.1.0",
@@ -73,7 +73,7 @@
     "sass-lint": "^1.13.1",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
-    "typescript": "~5.2.2",
+    "typescript": "~5.5.4",
     "typescript-eslint": "8.1.0"
   }
 }

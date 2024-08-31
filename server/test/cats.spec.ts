@@ -1,7 +1,8 @@
 
-import * as request from 'supertest';
+import request from 'supertest';
 import { describe, expect, test } from '@jest/globals';
 process.env.NODE_ENV = 'test';
+
 import { app } from '../app';
 import { connectToMongo, disconnectMongo } from '../mongo';
 
