@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
+import { Model } from 'mongoose';
 
-abstract class BaseCtrl {
+abstract class BaseCtrl<T> {
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  abstract model: any;
+  abstract model:Model<T>
 
   // Get all
   getAll = async (req: Request, res: Response) => {
