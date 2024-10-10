@@ -1,7 +1,7 @@
 import { sign, Secret } from 'jsonwebtoken';
 import { Request, Response } from 'express';
 
-import User,  { IUser } from '../models/user';
+import User, { IUser } from '../models/user';
 import BaseCtrl from './base';
 
 const secret: Secret = process.env.SECRET_TOKEN as string;
