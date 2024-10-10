@@ -1,12 +1,12 @@
 import { sign, Secret } from 'jsonwebtoken';
 import { Request, Response } from 'express';
 
-import User from '../models/user';
+import User, { IUser } from '../models/user';
 import BaseCtrl from './base';
 
 const secret: Secret = process.env.SECRET_TOKEN as string;
 
-class UserCtrl extends BaseCtrl {
+class UserCtrl extends BaseCtrl<IUser> {
   model = User;
 
   login = async (req: Request, res: Response) => {

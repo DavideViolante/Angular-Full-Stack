@@ -1,7 +1,7 @@
-import Cat from '../models/cat';
+import Cat, { ICat } from '../models/cat';
 import BaseCtrl from './base';
 
-class CatCtrl extends BaseCtrl {
+class CatCtrl extends BaseCtrl<ICat> {
   model = Cat;
 }
 
