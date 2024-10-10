@@ -37,7 +37,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
-    "express": "^4.21.0",
+    "express": "^4.21.1",
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.3",
