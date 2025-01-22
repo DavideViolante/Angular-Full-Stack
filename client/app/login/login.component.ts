@@ -7,7 +7,8 @@ import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  standalone: false
 })
 export class LoginComponent implements OnInit {
 

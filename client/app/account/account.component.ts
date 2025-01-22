@@ -6,7 +6,8 @@ import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-account',
-  templateUrl: './account.component.html'
+  templateUrl: './account.component.html',
+  standalone: false
 })
 export class AccountComponent implements OnInit {
 

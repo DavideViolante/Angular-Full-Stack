@@ -7,7 +7,8 @@ import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html'
+  templateUrl: './admin.component.html',
+  standalone: false
 })
 export class AdminComponent implements OnInit {
 

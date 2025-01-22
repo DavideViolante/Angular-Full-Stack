@@ -7,7 +7,8 @@ import { Cat } from '../shared/models/cat.model';
 @Component({
   selector: 'app-add-cat-form',
   templateUrl: './add-cat-form.component.html',
-  styleUrls: ['./add-cat-form.component.scss']
+  styleUrls: ['./add-cat-form.component.scss'],
+  standalone: false
 })
 
 export class AddCatFormComponent {
