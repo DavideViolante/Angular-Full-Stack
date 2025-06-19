@@ -9,14 +9,14 @@
           <i class="fa fa-envelope"></i>
         </span>
         <input class="form-control" type="email" name="email"
-               formControlName="email" placeholder="Email">
+               formControlName="email" placeholder="Email" autocomplete="email">
       </div>
       <div class="input-group" [ngClass]="setClassPassword()">
         <span class="input-group-text">
           <i class="fa fa-key"></i>
         </span>
         <input class="form-control" type="password" name="password"
-               formControlName="password" placeholder="Password">
+               formControlName="password" placeholder="Password" autocomplete="current-password">
       </div>
       <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">
         <i class="fa fa-sign-in"></i> Login

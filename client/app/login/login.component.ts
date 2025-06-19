@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
@@ -11,6 +11,11 @@ import { ToastComponent } from '../shared/toast/toast.component';
   standalone: false
 })
 export class LoginComponent implements OnInit {
+  private auth = inject(AuthService);
+  private formBuilder = inject(UntypedFormBuilder);
+  private router = inject(Router);
+  toast = inject(ToastComponent);
+
 
   loginForm: UntypedFormGroup;
   email = new UntypedFormControl('', [
@@ -24,10 +29,7 @@ export class LoginComponent implements OnInit {
     Validators.minLength(6)
   ]);
 
-  constructor(private auth: AuthService,
-              private formBuilder: UntypedFormBuilder,
-              private router: Router,
-              public toast: ToastComponent) {
+  constructor() {
     this.loginForm = this.formBuilder.group({
       email: this.email,
       password: this.password

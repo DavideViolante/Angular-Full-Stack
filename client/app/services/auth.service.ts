@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -9,15 +9,17 @@ import { User } from '../shared/models/user.model';
 
 @Injectable()
 export class AuthService {
+  private userService = inject(UserService);
+  private router = inject(Router);
+  private jwtHelper = inject(JwtHelperService);
+  toast = inject(ToastComponent);
+
   loggedIn = false;
   isAdmin = false;
 
   currentUser: User = new User();
 
-  constructor(private userService: UserService,
-              private router: Router,
-              private jwtHelper: JwtHelperService,
-              public toast: ToastComponent) {
+  constructor() {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedUser = this.decodeUserFromToken(token);

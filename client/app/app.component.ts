@@ -1,4 +1,4 @@
-import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -7,9 +7,9 @@ import { AuthService } from './services/auth.service';
   standalone: false
 })
 export class AppComponent implements AfterViewChecked {
+  auth = inject(AuthService);
+  private changeDetector = inject(ChangeDetectorRef);
 
-  constructor(public auth: AuthService,
-              private changeDetector: ChangeDetectorRef) { }
 
   // This fixes: https://github.com/DavideViolante/Angular-Full-Stack/issues/105
   ngAfterViewChecked(): void {

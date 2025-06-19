@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuardLogin  {
+  auth = inject(AuthService);
 
-  constructor(public auth: AuthService) {}
 
   canActivate(): boolean {
     return this.auth.loggedIn;

@@ -2,8 +2,8 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbar-supported-content"
-            aria-controls="navbar-supported-content" aria-expanded="false" aria-label="Toggle navigation">
+      data-bs-toggle="collapse" data-bs-target="#navbar-supported-content"
+      aria-controls="navbar-supported-content" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbar-supported-content">
@@ -19,29 +19,39 @@
           </a>
         </li>
         <li class="nav-item">
-          <a routerLink="/login" class="nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-            <i class="fa fa-sign-in"></i> Login
-          </a>
+          @if (!auth.loggedIn) {
+            <a routerLink="/login" class="nav-link" routerLinkActive="active">
+              <i class="fa fa-sign-in"></i> Login
+            </a>
+          }
         </li>
         <li class="nav-item">
-          <a routerLink="/register" class="nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
-            <i class="fa fa-user-plus"></i> Register
-          </a>
+          @if (!auth.loggedIn) {
+            <a routerLink="/register" class="nav-link" routerLinkActive="active">
+              <i class="fa fa-user-plus"></i> Register
+            </a>
+          }
         </li>
         <li class="nav-item">
-          <a routerLink="/account" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-            <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
-          </a>
+          @if (auth.loggedIn) {
+            <a routerLink="/account" class="nav-link" routerLinkActive="active">
+              <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
+            </a>
+          }
         </li>
         <li class="nav-item">
-          <a routerLink="/admin" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin">
-            <i class="fa fa-lock"></i> Admin
-          </a>
+          @if (auth.loggedIn && auth.isAdmin) {
+            <a routerLink="/admin" class="nav-link" routerLinkActive="active">
+              <i class="fa fa-lock"></i> Admin
+            </a>
+          }
         </li>
         <li class="nav-item">
-          <a routerLink="/logout" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
-            <i class="fa fa-sign-out"></i> Logout
-          </a>
+          @if (auth.loggedIn) {
+            <a routerLink="/logout" class="nav-link" routerLinkActive="active">
+              <i class="fa fa-sign-out"></i> Logout
+            </a>
+          }
         </li>
       </ul>
     </div>
