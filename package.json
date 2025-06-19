@@ -1,6 +1,6 @@
 {
   "name": "angular2-full-stack",
-  "version": "19.1.2",
+  "version": "20.0.4",
   "license": "MIT",
   "author": "Davide Violante",
   "description": "Angular Full Stack project built using Angular 2+, Express, Mongoose and Node.",
