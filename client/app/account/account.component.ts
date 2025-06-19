@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
@@ -10,13 +10,13 @@ import { User } from '../shared/models/user.model';
   standalone: false
 })
 export class AccountComponent implements OnInit {
+  private auth = inject(AuthService);
+  toast = inject(ToastComponent);
+  private userService = inject(UserService);
+
 
   user: User = new User();
   isLoading = true;
-
-  constructor(private auth: AuthService,
-              public toast: ToastComponent,
-              private userService: UserService) { }
 
   ngOnInit(): void {
     this.getUser();

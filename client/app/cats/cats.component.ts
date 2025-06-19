@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -11,14 +11,14 @@ import { Cat } from '../shared/models/cat.model';
   standalone: false
 })
 export class CatsComponent implements OnInit {
+  private catService = inject(CatService);
+  toast = inject(ToastComponent);
+
 
   cat = new Cat();
   cats: Cat[] = [];
   isLoading = true;
   isEditing = false;
-
-  constructor(private catService: CatService,
-              public toast: ToastComponent) { }
 
   ngOnInit(): void {
     this.getCats();

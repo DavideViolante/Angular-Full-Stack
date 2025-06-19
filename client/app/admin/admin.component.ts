@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
@@ -11,13 +11,13 @@ import { User } from '../shared/models/user.model';
   standalone: false
 })
 export class AdminComponent implements OnInit {
+  auth = inject(AuthService);
+  toast = inject(ToastComponent);
+  private userService = inject(UserService);
+
 
   users: User[] = [];
   isLoading = true;
-
-  constructor(public auth: AuthService,
-              public toast: ToastComponent,
-              private userService: UserService) { }
 
   ngOnInit(): void {
     this.getUsers();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
@@ -11,6 +11,11 @@ import { ToastComponent } from '../shared/toast/toast.component';
   standalone: false
 })
 export class RegisterComponent {
+  private formBuilder = inject(UntypedFormBuilder);
+  private router = inject(Router);
+  toast = inject(ToastComponent);
+  private userService = inject(UserService);
+
 
   registerForm: UntypedFormGroup;
   username = new UntypedFormControl('', [
@@ -33,10 +38,7 @@ export class RegisterComponent {
     Validators.required
   ]);
 
-  constructor(private formBuilder: UntypedFormBuilder,
-              private router: Router,
-              public toast: ToastComponent,
-              private userService: UserService) {
+  constructor() {
     this.registerForm = this.formBuilder.group({
       username: this.username,
       email: this.email,
