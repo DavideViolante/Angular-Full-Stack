@@ -23,9 +23,20 @@
     "lint:fix": "ng lint --fix",
     "prepare": "husky || true"
   },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^21.1.2",
     "@angular/common": "^21.1.2",
     "@angular/compiler": "^21.1.2",
     "@angular/core": "^21.1.2",
@@ -50,14 +61,13 @@
     "@angular/build": "^21.1.2",
     "@angular/cli": "^21.1.2",
     "@angular/compiler-cli": "^21.1.2",
-    "@angular/language-service": "^21.1.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.23",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
-    "@types/node": "^22.15.29",
+    "@types/node": "^24",
     "@types/supertest": "^6.0.3",
     "angular-eslint": "21.2.0",
     "concurrently": "^9.2.1",
