@@ -3,7 +3,7 @@
 // Add Bootstrap style overrides here
 $primary: #026fbd;
 
-@import '../node_modules/bootstrap/scss/bootstrap';
+@use '../node_modules/bootstrap/scss/bootstrap';
 
 // Add global app styles here
 body {
