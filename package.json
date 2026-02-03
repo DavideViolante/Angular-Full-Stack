@@ -11,6 +11,7 @@
   "scripts": {
     "ng": "ng",
     "build:dev": "ng build -c development && tsc -p server",
+    "build:dev:w": "ng build -c development --watch",
     "build": "ng build && tsc -p server",
     "start": "node dist/server/app.js",
     "predev": "tsc -p server",
@@ -42,7 +43,6 @@
     "@angular/core": "^21.1.2",
     "@angular/forms": "^21.1.2",
     "@angular/platform-browser": "^21.1.2",
-    "@angular/platform-browser-dynamic": "^21.1.2",
     "@angular/router": "^21.1.2",
     "@auth0/angular-jwt": "^5.2.0",
     "bcryptjs": "^2.4.3",

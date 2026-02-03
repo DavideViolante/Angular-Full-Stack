@@ -1,19 +1,21 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
+import { LoadingComponent } from '../shared/loading/loading.component';
 import { ToastComponent } from '../shared/toast/toast.component';
+import { AddCatFormComponent } from '../add-cat-form/add-cat-form.component';
 import { Cat } from '../shared/models/cat.model';
 
 @Component({
   selector: 'app-cats',
   templateUrl: './cats.component.html',
   styleUrls: ['./cats.component.scss'],
-  standalone: false
+  imports: [FormsModule, AddCatFormComponent, ToastComponent, LoadingComponent],
 })
 export class CatsComponent implements OnInit {
   private catService = inject(CatService);
   toast = inject(ToastComponent);
-
 
   cat = new Cat();
   cats: Cat[] = [];

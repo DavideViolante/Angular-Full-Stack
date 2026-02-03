@@ -1,5 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
+
 import { CatService } from '../services/cat.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { Cat } from '../shared/models/cat.model';
@@ -8,7 +9,7 @@ import { Cat } from '../shared/models/cat.model';
   selector: 'app-add-cat-form',
   templateUrl: './add-cat-form.component.html',
   styleUrls: ['./add-cat-form.component.scss'],
-  standalone: false
+  imports: [ReactiveFormsModule]
 })
 
 export class AddCatFormComponent {

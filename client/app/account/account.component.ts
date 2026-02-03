@@ -1,5 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import { ToastComponent } from '../shared/toast/toast.component';
+import { LoadingComponent } from '../shared/loading/loading.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../shared/models/user.model';
@@ -7,7 +10,7 @@ import { User } from '../shared/models/user.model';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  standalone: false
+  imports: [FormsModule, ToastComponent, LoadingComponent],
 })
 export class AccountComponent implements OnInit {
   private auth = inject(AuthService);

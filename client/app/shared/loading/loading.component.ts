@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
-  standalone: false
 })
 export class LoadingComponent {
-  @Input() condition = false;
+  condition = input<boolean>(false);
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -8,7 +9,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  standalone: false
+  imports: [CommonModule, ReactiveFormsModule, ToastComponent],
 })
 export class LoginComponent implements OnInit {
   private auth = inject(AuthService);

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { UserService } from '../services/user.service';
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -8,7 +9,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  standalone: false
+  imports: [CommonModule, ReactiveFormsModule, ToastComponent]
 })
 export class RegisterComponent {
   private formBuilder = inject(UntypedFormBuilder);
