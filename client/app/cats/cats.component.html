@@ -75,6 +75,6 @@
   </div>
 }
 
-@if (!isEditing) {
+@if (!isEditing()) {
   <app-add-cat-form [cats]="cats()"></app-add-cat-form>
 }
