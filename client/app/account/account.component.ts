@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
@@ -11,36 +11,38 @@ import { User } from '../shared/models/user.model';
   selector: 'app-account',
   templateUrl: './account.component.html',
   imports: [FormsModule, ToastComponent, LoadingComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountComponent implements OnInit {
   private auth = inject(AuthService);
   toast = inject(ToastComponent);
   private userService = inject(UserService);
 
-
-  user: User = new User();
-  isLoading = true;
+  user = signal<User>(new User());
+  isLoading = signal<boolean>(true);
 
   ngOnInit(): void {
     this.getUser();
   }
 
   getUser(): void {
+    this.isLoading.set(true);
     this.userService.getUser(this.auth.currentUser).subscribe({
-      next: data => this.user = data,
-      error: error => console.log(error),
-      complete: () => this.isLoading = false
+      next: data => this.user.set(data),
+      error: error => console.error(error),
+      complete: () => this.isLoading.set(false)
     });
   }
 
-  save(user: User): void {
+  save(): void {
+    const user = this.user();
     this.userService.editUser(user).subscribe({
       next: () => {
         this.toast.setMessage('Account settings saved!', 'success');
         this.auth.currentUser = user;
         this.auth.isAdmin = user.role === 'admin';
       },
-      error: error => console.log(error)
+      error: error => console.error(error)
     });
   }
 
