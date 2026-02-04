@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular2-full-stack": {
+    "angular-full-stack": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -70,11 +70,11 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular2-full-stack:build:production"
+              "buildTarget": "angular-full-stack:build:production"
             },
             "development": {
               "proxyConfig": "proxy.conf.json",
-              "buildTarget": "angular2-full-stack:build:development"
+              "buildTarget": "angular-full-stack:build:development"
             }
           },
           "defaultConfiguration": "development"

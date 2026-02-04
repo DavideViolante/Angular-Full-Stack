@@ -15,7 +15,7 @@ Other tools and technologies used:
 * [Bootstrap](http://www.getbootstrap.com): layout and styles
 * [Font Awesome](http://fontawesome.com): icons
 * [JSON Web Token](https://jwt.io): user authentication
-* [Angular 2 JWT](https://github.com/auth0/angular2-jwt): JWT helper for Angular 2+
+* [Angular 2 JWT](https://github.com/auth0/angular2-jwt): JWT helper for Angular
 * [Bcrypt.js](https://github.com/dcodeIO/bcrypt.js): password encryption
 
 ## Prerequisites
@@ -55,7 +55,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 10. Tip: use [pm2](https://pm2.keymetrics.io/) to run the app instead of `npm start`, eg: `pm2 start dist/server/app.js`
 
 ## Preview
-![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
+![Preview](https://raw.githubusercontent.com/DavideViolante/Angular-Full-Stack/master/demo.gif "Preview")
 
 ## Please open an issue if
 * you have any suggestion to improve this project
