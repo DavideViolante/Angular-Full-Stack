@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { LoadingComponent } from '../shared/loading/loading.component';
@@ -10,33 +10,36 @@ import { User } from '../shared/models/user.model';
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   imports: [ToastComponent, LoadingComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminComponent implements OnInit {
   auth = inject(AuthService);
   toast = inject(ToastComponent);
   private userService = inject(UserService);
 
+  users = signal<User[]>([]);
+  isLoading = signal<boolean>(true);
 
-  users: User[] = [];
-  isLoading = true;
+  usersCount = computed(() => this.users().length);
 
   ngOnInit(): void {
     this.getUsers();
   }
 
   getUsers(): void {
+    this.isLoading.set(true);
     this.userService.getUsers().subscribe({
-      next: data => this.users = data,
-      error: error => console.log(error),
-      complete: () => this.isLoading = false
+      next: data => this.users.set(data),
+      error: error => console.error(error),
+      complete: () => this.isLoading.set(false)
     });
   }
 
   deleteUser(user: User): void {
-    if (window.confirm('Are you sure you want to delete ' + user.username + '?')) {
+    if (window.confirm(`Are you sure you want to delete ${user.username}?`)) {
       this.userService.deleteUser(user).subscribe({
-        next: () => this.toast.setMessage('User deleted successfully.', 'success'),
-        error: error => console.log(error),
+        next: () => this.toast.setMessage(`User ${user.username} deleted successfully.`, 'success'),
+        error: error => console.error(error),
         complete: () => this.getUsers()
       });
     }
