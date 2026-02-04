@@ -43,7 +43,8 @@ export class CatsComponent implements OnInit {
     this.cat.set(cat);
   }
 
-  cancelEditing(): void {
+  cancelEditing(event: Event): void {
+    event.preventDefault(); // Prevent triggering submit
     this.isEditing.set(false);
     this.cat.set(new Cat());
     this.toast.setMessage('Item editing cancelled.', 'warning');
