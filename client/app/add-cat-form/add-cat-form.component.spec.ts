@@ -1,28 +1,21 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { CatService } from '../services/cat.service';
 import { AddCatFormComponent } from './add-cat-form.component';
 
-class CatServiceMock { }
-
 describe('Component: AddCatForm', () => {
   let component: AddCatFormComponent;
   let fixture: ComponentFixture<AddCatFormComponent>;
   let compiled: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule],
-      declarations: [ AddCatFormComponent ],
-      providers: [
-        ToastComponent, UntypedFormBuilder,
-        { provide: CatService, useClass: CatServiceMock }
-      ]
-    })
-      .compileComponents();
-  }));
+      imports: [AddCatFormComponent, FormsModule, ReactiveFormsModule],
+      providers: [ToastComponent, UntypedFormBuilder, CatService]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AddCatFormComponent);
