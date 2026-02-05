@@ -25,8 +25,8 @@ const main = async (): Promise<void> => {
       res.sendFile(pathJoin(__dirname, `../${feDir}/index.html`));
     });
     app.listen(app.get('port'), () => console.log(`Angular Full Stack listening on port ${app.get('port')}`));
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
   }
 };
 

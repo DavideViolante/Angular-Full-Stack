@@ -34,7 +34,8 @@ export class AuthService {
         this.setCurrentUser(decodedUser);
         this.router.navigate(['/']);
       },
-      error: () => console.error() // this.toast.setMessage('Invalid email or password!', 'danger')
+      // @todo show toast instead this.toast.setMessage('Invalid email or password!', 'danger')
+      error: error => console.error(error) 
     });
   }
 
