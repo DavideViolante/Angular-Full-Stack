@@ -1,4 +1,4 @@
-import { Component, inject, input, InputSignal } from '@angular/core';
+import { Component, inject, WritableSignal, input, InputSignal } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
@@ -17,7 +17,7 @@ export class AddCatFormComponent {
   private formBuilder = inject(UntypedFormBuilder);
   private toast = inject(ToastService);
 
-  cats: InputSignal<Cat[]> = input.required<Cat[]>();
+  cats: InputSignal<WritableSignal<Cat[]> | undefined> = input<WritableSignal<Cat[]> | undefined>();
 
   addCatForm: UntypedFormGroup;
   name = new UntypedFormControl('', Validators.required);
@@ -35,7 +35,7 @@ export class AddCatFormComponent {
   addCat(): void {
     this.catService.addCat(this.addCatForm.value).subscribe({
       next: res => {
-        this.cats().push(res);
+        this.cats()?.update(list => [...list, res]);
         this.addCatForm.reset();
         this.toast.setMessage('Item added successfully.', 'success');
       },
