@@ -15,12 +15,10 @@ describe('Component: AddCatForm', () => {
       imports: [AddCatFormComponent, FormsModule, ReactiveFormsModule],
       providers: [ToastComponent, UntypedFormBuilder, CatService]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(AddCatFormComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
     compiled = fixture.nativeElement as HTMLElement;
   });
 

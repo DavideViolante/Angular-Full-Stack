@@ -30,12 +30,10 @@ describe('Component: Cats', () => {
         { provide: CatService, useClass: CatServiceMock }
       ],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(CatsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
     compiled = fixture.nativeElement as HTMLElement;
   });
 
@@ -48,7 +46,7 @@ describe('Component: Cats', () => {
     expect(header?.textContent).toContain('Current cats (2)');
   });
 
-  it('should display the text for no cats', () => {
+  it('should display the text for no cats', async () => {
     component.cats.set([]);
     fixture.detectChanges();
     const header = compiled.querySelector('.card-header');
@@ -79,7 +77,6 @@ describe('Component: Cats', () => {
   it('should display the edit form', async () => {
     component.isEditing.set(true);
     component.cat.set({ name: 'Cat 1', age: 1, weight: 2 });
-    fixture.detectChanges();
     await fixture.whenStable();
     const tds = compiled.querySelectorAll('td');
     expect(tds.length).toBe(1);

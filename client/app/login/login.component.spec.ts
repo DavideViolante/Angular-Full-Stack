@@ -23,12 +23,10 @@ describe('Component: Login', () => {
         JwtHelperService, { provide: JWT_OPTIONS, useValue: {} }
       ],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
     compiled = fixture.nativeElement as HTMLElement;
   });
 
