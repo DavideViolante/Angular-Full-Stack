@@ -82,5 +82,5 @@
 }
 
 @if (!isEditing()) {
-  <app-add-cat-form [cats]="cats"></app-add-cat-form>
+  <app-add-cat-form (catAdded)="onCatAdded($event)"></app-add-cat-form>
 }
