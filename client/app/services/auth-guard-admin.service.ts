@@ -7,7 +7,7 @@ export class AuthGuardAdmin  {
   auth = inject(AuthService);
 
   canActivate(): boolean {
-    return this.auth.isAdmin().valueOf();
+    return this.auth.isAdmin();
   }
 
 }

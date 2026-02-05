@@ -7,7 +7,7 @@ export class AuthGuardLogin  {
   auth = inject(AuthService);
 
   canActivate(): boolean {
-    return this.auth.loggedIn().valueOf();
+    return this.auth.loggedIn();
   }
 
 }
