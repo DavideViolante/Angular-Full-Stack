@@ -1,5 +1,4 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
@@ -26,18 +25,16 @@ describe('Component: Admin', () => {
   let fixture: ComponentFixture<AdminComponent>;
   let compiled: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminComponent ],
+      imports: [AdminComponent],
       providers: [
         ToastComponent,
         { provide: AuthService, useClass: AuthServiceMock },
         { provide: UserService, useClass: UserServiceMock },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
-  }));
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AdminComponent);
@@ -56,7 +53,7 @@ describe('Component: Admin', () => {
   });
 
   it('should display the text for no users', () => {
-    component.users = [];
+    component.users.set([]);
     fixture.detectChanges();
     const header = compiled.querySelector('h4');
     expect(header?.textContent).toContain('Registered users (0)');
