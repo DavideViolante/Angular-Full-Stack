@@ -1,13 +1,10 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { UserService } from '../services/user.service';
 import { RegisterComponent } from './register.component';
 
-class RouterMock { }
 class UserServiceMock { }
 
 describe('Component: Register', () => {
@@ -15,19 +12,15 @@ describe('Component: Register', () => {
   let fixture: ComponentFixture<RegisterComponent>;
   let compiled: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule ],
-      declarations: [ RegisterComponent ],
+      imports: [RegisterComponent, FormsModule, ReactiveFormsModule],
       providers: [
         ToastComponent,
-        { provide: Router, useClass: RouterMock },
         { provide: UserService, useClass: UserServiceMock }
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
-  }));
+      ]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
