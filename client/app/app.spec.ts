@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { App } from './app';
+import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ToastService } from './shared/toast/toast.service';
 
@@ -14,6 +15,7 @@ describe('App', () => {
     await TestBed.configureTestingModule({
       imports: [App, RouterTestingModule], // @todo replace deprecated
       providers: [
+        AuthService,
         ToastService,
         UserService,
         { provide: JWT_OPTIONS, useValue: {} },
