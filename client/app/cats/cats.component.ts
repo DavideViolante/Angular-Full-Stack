@@ -57,8 +57,7 @@ export class CatsComponent implements OnInit {
         this.isEditing.set(false);
         this.cat.set(cat);
         this.toast.setMessage('Item edited successfully.', 'success');
-        // Reload the cats to see the changes
-        this.getCats();
+        this.cats.update(items => items.map(item => item._id === cat._id ? cat : item));
       },
       error: error => console.error(error)
     });
