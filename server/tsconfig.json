@@ -4,6 +4,6 @@
     "outDir": "../dist/server",
     "baseUrl": "",
     "module": "nodenext",
-    "types": ["node", "jest"],
+    "types": ["node", "jest"]
   }
 }
