@@ -30,7 +30,7 @@
               <td>{{user.role}}</td>
               <td>
                 <button class="btn btn-sm btn-danger" (click)="deleteUser(user)"
-                  [disabled]="auth.currentUser._id === user._id">
+                  [disabled]="auth.currentUser()._id === user._id">
                   <i class="fa fa-trash"></i> Delete
                 </button>
               </td>

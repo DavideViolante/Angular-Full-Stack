@@ -8,7 +8,7 @@ export class AuthGuardAdmin  {
 
 
   canActivate(): boolean {
-    return this.auth.isAdmin;
+    return this.auth.isAdmin().valueOf();
   }
 
 }

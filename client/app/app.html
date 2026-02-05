@@ -19,35 +19,35 @@
           </a>
         </li>
         <li class="nav-item">
-          @if (!auth.loggedIn) {
+          @if (!auth.loggedIn()) {
             <a routerLink="/login" class="nav-link" routerLinkActive="active">
               <i class="fa fa-sign-in"></i> Login
             </a>
           }
         </li>
         <li class="nav-item">
-          @if (!auth.loggedIn) {
+          @if (!auth.loggedIn()) {
             <a routerLink="/register" class="nav-link" routerLinkActive="active">
               <i class="fa fa-user-plus"></i> Register
             </a>
           }
         </li>
         <li class="nav-item">
-          @if (auth.loggedIn) {
+          @if (auth.loggedIn()) {
             <a routerLink="/account" class="nav-link" routerLinkActive="active">
-              <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
+              <i class="fa fa-user"></i> Account ({{auth.currentUser().username}})
             </a>
           }
         </li>
         <li class="nav-item">
-          @if (auth.loggedIn && auth.isAdmin) {
+          @if (auth.loggedIn() && auth.isAdmin()) {
             <a routerLink="/admin" class="nav-link" routerLinkActive="active">
               <i class="fa fa-lock"></i> Admin
             </a>
           }
         </li>
         <li class="nav-item">
-          @if (auth.loggedIn) {
+          @if (auth.loggedIn()) {
             <a routerLink="/logout" class="nav-link" routerLinkActive="active">
               <i class="fa fa-sign-out"></i> Logout
             </a>

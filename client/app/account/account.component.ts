@@ -27,7 +27,7 @@ export class AccountComponent implements OnInit {
 
   getUser(): void {
     this.isLoading.set(true);
-    this.userService.getUser(this.auth.currentUser).subscribe({
+    this.userService.getUser(this.auth.currentUser()).subscribe({
       next: data => this.user.set(data),
       error: error => console.error(error),
       complete: () => this.isLoading.set(false)
@@ -39,8 +39,7 @@ export class AccountComponent implements OnInit {
     this.userService.editUser(user).subscribe({
       next: () => {
         this.toast.setMessage('Account settings saved!', 'success');
-        this.auth.currentUser = user;
-        this.auth.isAdmin = user.role === 'admin';
+        this.auth.setCurrentUser(user);
       },
       error: error => console.error(error)
     });

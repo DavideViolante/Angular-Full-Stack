@@ -8,7 +8,7 @@ export class AuthGuardLogin  {
 
 
   canActivate(): boolean {
-    return this.auth.loggedIn;
+    return this.auth.loggedIn().valueOf();
   }
 
 }
