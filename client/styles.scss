@@ -1,9 +1,9 @@
 // You can add global styles to this file, and also import other style files
 
 // Add Bootstrap style overrides here
-$primary: #026fbd;
-
-@use '../node_modules/bootstrap/scss/bootstrap';
+@use '../node_modules/bootstrap/scss/bootstrap' with (
+  $primary: #026fbd
+);
 
 // Add global app styles here
 body {
