@@ -7,7 +7,7 @@ import { AdminComponent } from './admin.component';
 import { of, Observable } from 'rxjs';
 
 class AuthServiceMock {
-  currentUser = { _id: '1', username: 'test1@example.com', role: 'admin' };
+  currentUser = () => ({ _id: '1', username: 'test1@example.com', role: 'admin' });
 }
 
 class UserServiceMock {

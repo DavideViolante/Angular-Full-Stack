@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { signal } from '@angular/core';
 
 import { AuthService } from '../services/auth.service';
 import { LogoutComponent } from './logout.component';
 
 class AuthServiceMock {
-  loggedIn = true;
+  loggedIn = signal<boolean>(true);
   logout(): void {
-    this.loggedIn = false;
+    this.loggedIn.set(false);
   }
 }
 
@@ -32,10 +33,10 @@ describe('Component: Logout', () => {
   });
 
   it('should logout the user', () => {
-    authService.loggedIn = true;
-    expect(authService.loggedIn).toBeTruthy();
+    authService.loggedIn.set(true);
+    expect(authService.loggedIn()).toBeTruthy();
     authService.logout();
-    expect(authService.loggedIn).toBeFalsy();
+    expect(authService.loggedIn()).toBeFalsy();
   });
 
 });
