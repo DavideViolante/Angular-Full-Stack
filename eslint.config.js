@@ -30,9 +30,6 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
-      "@angular-eslint/prefer-standalone": [
-        "off"
-      ],
       "arrow-spacing": "error",
       "comma-spacing": "error",
       "indent": ["error", 2],
