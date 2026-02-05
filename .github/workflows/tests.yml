@@ -22,5 +22,5 @@ jobs:
         node-version: '24'
         cache: 'npm'
     - run: npm ci
-    - run: npm run test -- --watch=false --progress=false --browsers=ChromeHeadless
+    - run: npm run test -- --watch=false
     - run: npm run test:be
