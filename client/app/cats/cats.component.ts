@@ -41,7 +41,7 @@ export class CatsComponent implements OnInit {
 
   enableEditing(cat: Cat): void {
     this.isEditing.set(true);
-    this.cat.set(cat);
+    this.cat.set({ ...cat });
   }
 
   cancelEditing(event: Event): void {
@@ -49,8 +49,6 @@ export class CatsComponent implements OnInit {
     this.isEditing.set(false);
     this.cat.set(new Cat());
     this.toast.setMessage('Item editing cancelled.', 'warning');
-    // Reload the cats to reset the editing
-    this.getCats();
   }
 
   editCat(cat: Cat): void {
