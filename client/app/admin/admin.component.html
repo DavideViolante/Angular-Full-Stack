@@ -1,6 +1,6 @@
 <app-loading [condition]="isLoading()"></app-loading>
 
-<app-toast [message]="toast.message()"></app-toast>
+<app-toast [message]="toast.displayedMessage()"></app-toast>
 
 @if (!isLoading()) {
   <div class="card">

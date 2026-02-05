@@ -1,5 +1,4 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToastComponent } from './toast.component';
 
@@ -8,18 +7,15 @@ describe('Component: Toast', () => {
   let fixture: ComponentFixture<ToastComponent>;
   let compiled: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ToastComponent ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ToastComponent],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ToastComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    await fixture.whenStable();
     compiled = fixture.nativeElement as HTMLElement;
   });
 
@@ -28,20 +24,20 @@ describe('Component: Toast', () => {
   });
 
   it('should not have message set nor DOM element', () => {
-    expect(component.message.body).toBeFalsy();
-    expect(component.message.type).toBeFalsy();
+    expect(component.displayedMessage().body).toBeFalsy();
+    expect(component.displayedMessage().type).toBeFalsy();
     const div = compiled.querySelector('div');
     expect(div).toBeNull();
   });
 
-  it('should set the message and create the DOM element', () => {
+  it('should set the message and create the DOM element', async () => {
     const mockMessage = {
       body: 'test message',
       type: 'warning'
     };
     component.setMessage(mockMessage.body, mockMessage.type);
-    expect(component.message.body).toBe(mockMessage.body);
-    expect(component.message.type).toBe(mockMessage.type);
+    expect(component.displayedMessage().body).toBe(mockMessage.body);
+    expect(component.displayedMessage().type).toBe(mockMessage.type);
     fixture.detectChanges();
     const div = compiled.querySelector('div');
     expect(div).toBeDefined();
