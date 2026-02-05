@@ -1,5 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { waitForAsync, TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 
@@ -23,18 +22,15 @@ describe('Component: Cats', () => {
   let fixture: ComponentFixture<CatsComponent>;
   let compiled: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      imports: [ RouterTestingModule, FormsModule, ReactiveFormsModule ],
-      declarations: [ CatsComponent ],
+      imports: [CatsComponent, RouterTestingModule, FormsModule, ReactiveFormsModule],
       providers: [
         ToastComponent, UntypedFormBuilder,
         { provide: CatService, useClass: CatServiceMock }
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-      .compileComponents();
-  }));
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CatsComponent);
@@ -53,7 +49,7 @@ describe('Component: Cats', () => {
   });
 
   it('should display the text for no cats', () => {
-    component.cats = [];
+    component.cats.set([]);
     fixture.detectChanges();
     const header = compiled.querySelector('.card-header');
     expect(header?.textContent).toContain('Current cats (0)');
@@ -81,8 +77,8 @@ describe('Component: Cats', () => {
   });
 
   it('should display the edit form', async () => {
-    component.isEditing = true;
-    component.cat = { name: 'Cat 1', age: 1, weight: 2 };
+    component.isEditing.set(true);
+    component.cat.set({ name: 'Cat 1', age: 1, weight: 2 });
     fixture.detectChanges();
     await fixture.whenStable();
     const tds = compiled.querySelectorAll('td');
