@@ -3,13 +3,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/app",
     "types": ["node"]
   },
-  "files": [
-    "client/main.ts"
-  ],
   "include": [
-    "client/**/*.d.ts"
+    "client/**/*.ts"
+  ],
+  "exclude": [
+    "client/**/*.spec.ts"
   ]
 }
