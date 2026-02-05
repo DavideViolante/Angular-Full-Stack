@@ -38,9 +38,11 @@ export class AccountComponent implements OnInit {
   save(): void {
     const user = this.user();
     this.userService.editUser(user).subscribe({
-      next: () => {
+      next: res => {
         this.toast.setMessage('Account settings saved!', 'success');
-        this.auth.setCurrentUser(user);
+        const decodedUser = this.auth.decodeUserFromToken(res.token);
+        this.auth.setCurrentUser(decodedUser);
+        localStorage.setItem('token', res.token);
       },
       error: error => console.error(error)
     });

@@ -33,8 +33,8 @@ export class UserService {
     return this.http.get<User>(`/api/user/${user._id}`);
   }
 
-  editUser(user: User): Observable<string> {
-    return this.http.put(`/api/user/${user._id}`, user, { responseType: 'text' });
+  editUser(user: User): Observable<{ token: string }> {
+    return this.http.put<{ token: string }>(`/api/user/${user._id}`, user);
   }
 
   deleteUser(user: User): Observable<string> {

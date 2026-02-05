@@ -27,6 +27,19 @@ class UserCtrl extends BaseCtrl<IUser> {
     }
   };
 
+  update = async (req: Request, res: Response) => {
+    try {
+      const user = await this.model.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true });
+      if (!user) {
+        return res.sendStatus(404);
+      }
+      const token = sign({ user }, secret, { expiresIn: '24h' });
+      return res.status(200).json({ token });
+    } catch (err) {
+      return res.status(400).json({ error: (err as Error).message });
+    }
+  };
+
 }
 
 export default UserCtrl;
