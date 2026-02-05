@@ -11,7 +11,7 @@ describe('Component: AddCatForm', () => {
   let compiled: HTMLElement;
 
   beforeEach(async() => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [AddCatFormComponent, FormsModule, ReactiveFormsModule],
       providers: [ToastComponent, UntypedFormBuilder, CatService]
     }).compileComponents();

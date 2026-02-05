@@ -13,16 +13,14 @@ describe('Component: Register', () => {
   let compiled: HTMLElement;
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [RegisterComponent, FormsModule, ReactiveFormsModule],
       providers: [
         ToastComponent,
         { provide: UserService, useClass: UserServiceMock }
       ]
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -8,7 +8,7 @@ describe('Component: NotFound', () => {
   let compiled: HTMLElement;
 
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [NotFoundComponent]
     }).compileComponents();
 

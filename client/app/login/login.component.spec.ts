@@ -13,7 +13,7 @@ describe('Component: Login', () => {
   let compiled: HTMLElement;
 
   beforeEach(async() => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [LoginComponent, FormsModule, ReactiveFormsModule],
       providers: [
         UntypedFormBuilder,

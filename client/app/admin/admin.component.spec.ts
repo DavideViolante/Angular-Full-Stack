@@ -26,7 +26,7 @@ describe('Component: Admin', () => {
   let compiled: HTMLElement;
 
   beforeEach(async() => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [AdminComponent],
       providers: [
         ToastComponent,

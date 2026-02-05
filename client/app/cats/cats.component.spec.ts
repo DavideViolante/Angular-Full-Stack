@@ -23,7 +23,7 @@ describe('Component: Cats', () => {
   let compiled: HTMLElement;
 
   beforeEach(async() => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [CatsComponent, RouterTestingModule, FormsModule, ReactiveFormsModule],
       providers: [
         ToastComponent, UntypedFormBuilder,
