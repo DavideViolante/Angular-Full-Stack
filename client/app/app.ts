@@ -3,12 +3,11 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 
 import { AuthService } from './services/auth.service';
 import { ToastService } from './shared/toast/toast.service';
-import { LoadingComponent } from './shared/loading/loading.component';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, RouterModule],
-  providers: [AuthService, ToastService, LoadingComponent],
+  providers: [ToastService],
   templateUrl: './app.html',
 })
 export class App implements AfterViewChecked {
