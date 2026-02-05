@@ -1,33 +1,29 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { LoginComponent } from './login.component';
-
-class AuthServiceMock { }
-class RouterMock { }
+import { UserService } from '../services/user.service';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 describe('Component: Login', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let compiled: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule ],
-      declarations: [ LoginComponent ],
+      imports: [LoginComponent, FormsModule, ReactiveFormsModule],
       providers: [
-        UntypedFormBuilder, ToastComponent,
-        { provide: Router, useClass: RouterMock },
-        { provide: AuthService, useClass: AuthServiceMock }
+        UntypedFormBuilder,
+        ToastComponent,
+        AuthService,
+        UserService,
+        JwtHelperService, { provide: JWT_OPTIONS, useValue: {} }
       ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
-  }));
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
