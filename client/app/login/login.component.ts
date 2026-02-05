@@ -15,8 +15,6 @@ export class LoginComponent implements OnInit {
   private auth = inject(AuthService);
   private formBuilder = inject(UntypedFormBuilder);
   private router = inject(Router);
-  toast = inject(ToastComponent);
-
 
   loginForm: UntypedFormGroup;
   email = new UntypedFormControl('', [

@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { AccountComponent } from './account.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastService } from '../shared/toast/toast.service';
 import { User } from '../shared/models/user.model';
 
 class UserServiceMock {
@@ -28,7 +28,7 @@ describe('Component: Account', () => {
       imports: [AccountComponent],
       providers: [
         AuthService,
-        ToastComponent,
+        ToastService,
         { provide: UserService, useClass: UserServiceMock },
         { provide: JWT_OPTIONS, useValue: {} }, JwtHelperService
       ]

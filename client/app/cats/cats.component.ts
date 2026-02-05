@@ -2,6 +2,7 @@ import { Component, OnInit, inject, signal, computed, ChangeDetectionStrategy } 
 import { FormsModule } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
+import { ToastService } from '../shared/toast/toast.service';
 import { LoadingComponent } from '../shared/loading/loading.component';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { AddCatFormComponent } from '../add-cat-form/add-cat-form.component';
@@ -16,7 +17,7 @@ import { Cat } from '../shared/models/cat.model';
 })
 export class CatsComponent implements OnInit {
   private catService = inject(CatService);
-  toast = inject(ToastComponent);
+  private toast = inject(ToastService);
 
   cat = signal<Cat>(new Cat());
   cats = signal<Cat[]>([]);

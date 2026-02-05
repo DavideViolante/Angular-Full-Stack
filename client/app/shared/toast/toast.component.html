@@ -1,9 +1,9 @@
-@if (displayedMessage().body) {
-  <div class="alert" [ngClass]="'alert-' + displayedMessage().type" role="alert">
+@if (message()?.body) {
+  <div class="alert" [ngClass]="'alert-' + (message()?.type)" role="alert">
   <i class="fa me-2" [ngClass]="{
-    'fa-check-circle': displayedMessage().type === 'success',
-    'fa-exclamation-circle': displayedMessage().type === 'warning' || displayedMessage().type === 'danger'
+    'fa-check-circle': (message()?.type) === 'success',
+    'fa-exclamation-circle': (message()?.type) === 'warning' || (message()?.type) === 'danger'
   }"></i>
-    <span [innerHTML]="displayedMessage().body"></span>
+    <span [innerHTML]="message()?.body"></span>
   </div>
 }

@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of, Observable } from 'rxjs';
 
-import { ToastComponent } from '../shared/toast/toast.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { ToastService } from '../shared/toast/toast.service';
 import { AdminComponent } from './admin.component';
-import { of, Observable } from 'rxjs';
 
 class AuthServiceMock {
   currentUser = () => ({ _id: '1', username: 'test1@example.com', role: 'admin' });
@@ -29,7 +29,7 @@ describe('Component: Admin', () => {
     await TestBed.configureTestingModule({
       imports: [AdminComponent],
       providers: [
-        ToastComponent,
+        ToastService,
         { provide: AuthService, useClass: AuthServiceMock },
         { provide: UserService, useClass: UserServiceMock },
       ],

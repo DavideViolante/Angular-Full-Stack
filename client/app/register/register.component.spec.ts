@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastService } from '../shared/toast/toast.service';
 import { UserService } from '../services/user.service';
 import { RegisterComponent } from './register.component';
 
@@ -16,7 +16,7 @@ describe('Component: Register', () => {
     await TestBed.configureTestingModule({
       imports: [RegisterComponent, FormsModule, ReactiveFormsModule],
       providers: [
-        ToastComponent,
+        ToastService,
         { provide: UserService, useClass: UserServiceMock }
       ]
     }).compileComponents();

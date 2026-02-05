@@ -1,11 +1,11 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
-
-import { ToastComponent } from '../shared/toast/toast.component';
-import { CatService } from '../services/cat.service';
-import { CatsComponent } from './cats.component';
 import { of, Observable } from 'rxjs';
+
+import { CatService } from '../services/cat.service';
+import { ToastService } from '../shared/toast/toast.service';
+import { CatsComponent } from './cats.component';
 
 class CatServiceMock {
   mockCats = [
@@ -26,7 +26,8 @@ describe('Component: Cats', () => {
     await TestBed.configureTestingModule({
       imports: [CatsComponent, RouterTestingModule, FormsModule, ReactiveFormsModule],
       providers: [
-        ToastComponent, UntypedFormBuilder,
+        ToastService,
+        UntypedFormBuilder,
         { provide: CatService, useClass: CatServiceMock }
       ],
     }).compileComponents();

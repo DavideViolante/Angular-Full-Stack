@@ -2,7 +2,7 @@ import { Component, inject, input, InputSignal } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl, Validators, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { CatService } from '../services/cat.service';
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastService } from '../shared/toast/toast.service';
 import { Cat } from '../shared/models/cat.model';
 
 @Component({
@@ -15,7 +15,7 @@ import { Cat } from '../shared/models/cat.model';
 export class AddCatFormComponent {
   private catService = inject(CatService);
   private formBuilder = inject(UntypedFormBuilder);
-  toast = inject(ToastComponent);
+  private toast = inject(ToastService);
 
   cats: InputSignal<Cat[]> = input.required<Cat[]>();
 

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserService } from './user.service';
-// import { ToastComponent } from '../shared/toast/toast.component';
 import { User } from '../shared/models/user.model';
 
 @Injectable()
@@ -12,7 +11,6 @@ export class AuthService {
   private userService = inject(UserService);
   private router = inject(Router);
   private jwtHelper = inject(JwtHelperService);
-  // toast = inject(ToastComponent);
 
   loggedIn = signal<boolean>(false);
   isAdmin = signal<boolean>(false);
@@ -34,8 +32,7 @@ export class AuthService {
         this.setCurrentUser(decodedUser);
         this.router.navigate(['/']);
       },
-      // @todo show toast instead this.toast.setMessage('Invalid email or password!', 'danger')
-      error: error => console.error(error) 
+      // error: () => this.toast.setMessage('Invalid email or password!', 'danger')
     });
   }
 

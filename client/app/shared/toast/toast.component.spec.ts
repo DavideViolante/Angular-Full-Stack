@@ -1,19 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToastComponent } from './toast.component';
+import { ToastService } from './toast.service';
 
 describe('Component: Toast', () => {
   let component: ToastComponent;
   let fixture: ComponentFixture<ToastComponent>;
   let compiled: HTMLElement;
+  let toastService: ToastService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ToastComponent],
+      providers: [ToastService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ToastComponent);
     component = fixture.componentInstance;
+    toastService = TestBed.inject(ToastService);
     fixture.detectChanges();
     await fixture.whenStable();
     compiled = fixture.nativeElement as HTMLElement;
@@ -24,8 +28,7 @@ describe('Component: Toast', () => {
   });
 
   it('should not have message set nor DOM element', () => {
-    expect(component.displayedMessage().body).toBeFalsy();
-    expect(component.displayedMessage().type).toBeFalsy();
+    expect(toastService.message()).toBeNull();
     const div = compiled.querySelector('div');
     expect(div).toBeNull();
   });
@@ -35,10 +38,10 @@ describe('Component: Toast', () => {
       body: 'test message',
       type: 'warning'
     };
-    component.setMessage(mockMessage.body, mockMessage.type);
-    expect(component.displayedMessage().body).toBe(mockMessage.body);
-    expect(component.displayedMessage().type).toBe(mockMessage.type);
+    toastService.setMessage(mockMessage.body, mockMessage.type);
     fixture.detectChanges();
+    expect(toastService.message()?.body).toBe(mockMessage.body);
+    expect(toastService.message()?.type).toBe(mockMessage.type);
     const div = compiled.querySelector('div');
     expect(div).toBeDefined();
     expect(div?.textContent).toContain(mockMessage.body);

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule, UntypedFormBuilder } from '@angular/forms';
 
-import { ToastComponent } from '../shared/toast/toast.component';
+import { ToastService } from '../shared/toast/toast.service';
 import { CatService } from '../services/cat.service';
 import { AddCatFormComponent } from './add-cat-form.component';
 
@@ -13,7 +13,10 @@ describe('Component: AddCatForm', () => {
   beforeEach(async() => {
     await TestBed.configureTestingModule({
       imports: [AddCatFormComponent, FormsModule, ReactiveFormsModule],
-      providers: [ToastComponent, UntypedFormBuilder, CatService]
+      providers: [
+        UntypedFormBuilder,
+        ToastService,
+        CatService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddCatFormComponent);

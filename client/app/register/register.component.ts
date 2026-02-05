@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { UserService } from '../services/user.service';
+import { ToastService } from '../shared/toast/toast.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
@@ -14,7 +15,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 export class RegisterComponent {
   private formBuilder = inject(UntypedFormBuilder);
   private router = inject(Router);
-  toast = inject(ToastComponent);
+  private toast = inject(ToastService);
   private userService = inject(UserService);
 
 

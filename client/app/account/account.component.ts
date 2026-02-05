@@ -5,6 +5,7 @@ import { ToastComponent } from '../shared/toast/toast.component';
 import { LoadingComponent } from '../shared/loading/loading.component';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { ToastService } from '../shared/toast/toast.service';
 import { User } from '../shared/models/user.model';
 
 @Component({
@@ -15,7 +16,7 @@ import { User } from '../shared/models/user.model';
 })
 export class AccountComponent implements OnInit {
   private auth = inject(AuthService);
-  toast = inject(ToastComponent);
+  private toast = inject(ToastService);
   private userService = inject(UserService);
 
   user = signal<User>(new User());

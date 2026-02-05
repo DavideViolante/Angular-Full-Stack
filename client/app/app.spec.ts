@@ -4,6 +4,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 import { App } from './app';
 import { UserService } from './services/user.service';
+import { ToastService } from './shared/toast/toast.service';
 
 describe('App', () => {
   let fixture: ComponentFixture<App>;
@@ -12,7 +13,12 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App, RouterTestingModule], // @todo replace deprecated
-      providers: [UserService, { provide: JWT_OPTIONS, useValue: {} }, JwtHelperService]
+      providers: [
+        ToastService,
+        UserService,
+        { provide: JWT_OPTIONS, useValue: {} },
+        JwtHelperService
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(App);
