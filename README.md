@@ -62,7 +62,7 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 * you noticed any problem or error
 
 ## Running tests
-Run `ng test` to execute the frontend unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the frontend unit tests via [Vitest](https://vitest.dev/).
 
 Run `npm run test:be` to execute the backend tests via [Jest](https://jestjs.io/) (it requires `mongod` already running).
 
