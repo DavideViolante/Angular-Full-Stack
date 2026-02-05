@@ -28,12 +28,11 @@ describe('Component: Loading', () => {
   });
 
   it('should show the DOM element', () => {
-    component.localCondition.set(true);
+    fixture.componentRef.setInput('condition', true);
     fixture.detectChanges();
     expect(component).toBeTruthy();
-    const div = compiled.querySelector('div');
-    expect(div).toBeDefined();
-    expect(div?.textContent).toContain('Loading...');
+    const header = compiled.querySelector('h4');
+    expect(header?.textContent).toContain('Loading...');
   });
 
 });
