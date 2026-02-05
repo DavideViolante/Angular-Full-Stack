@@ -4,6 +4,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    "skipLibCheck": true,
     "types": [
       "vitest/globals"
     ]
