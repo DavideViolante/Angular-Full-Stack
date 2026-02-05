@@ -76,4 +76,8 @@ export class CatsComponent implements OnInit {
     }
   }
 
+  updateCatField(field: string, value: string) {
+    this.cat.update(c => ({ ...c, [field]: value }));
+  }
+
 }

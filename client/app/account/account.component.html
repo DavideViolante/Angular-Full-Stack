@@ -11,19 +11,24 @@
           <span class="input-group-text">
             <i class="fa fa-user"></i>
           </span>
-          <input class="form-control" type="text" name="username" [(ngModel)]="user().username" placeholder="Username" required>
+          <input class="form-control" type="text" name="username"
+            [ngModel]="user().username" (ngModelChange)="updateUserField('username', $event)"
+            placeholder="Username" required>
         </div>
         <div class="input-group">
           <span class="input-group-text">
             <i class="fa fa-envelope"></i>
           </span>
-          <input class="form-control" type="email" name="email" [(ngModel)]="user().email" placeholder="Email" required>
+          <input class="form-control" type="email" name="email"
+            [ngModel]="user().email" (ngModelChange)="updateUserField('email', $event)"
+            placeholder="Email" required>
         </div>
         <div class="input-group">
           <span class="input-group-text">
             <i class="fa fa-black-tie"></i>
           </span>
-          <select class="form-control" name="role" [(ngModel)]="user().role">
+          <select class="form-control" name="role"
+            [ngModel]="user().role" (ngModelChange)="updateUserField('role', $event)">
             <option value="" disabled>Role</option>
             <option value="user">User</option>
             <option value="admin">Admin</option>

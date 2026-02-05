@@ -46,4 +46,8 @@ export class AccountComponent implements OnInit {
     });
   }
 
+  updateUserField(field: string, value: string) {
+    this.user.update(u => ({ ...u, [field]: value }));
+  }
+
 }
