@@ -18,14 +18,14 @@
           "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/public",
-            "index": "client/index.html",
             "browser": "client/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
               "client/assets/favicon.ico",
               "client/assets"
             ],
@@ -83,26 +83,7 @@
           "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "client/assets/favicon.ico",
-              "client/assets"
-            ],
-            "styles": [
-              "node_modules/font-awesome/css/font-awesome.min.css",
-              "client/styles.scss"
-            ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
-          }
+          "builder": "@angular/build:unit-test"
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
@@ -118,6 +99,7 @@
     }
   },
   "cli": {
+    "packageManager": "npm",
     "schematicCollections": [
       "angular-eslint"
     ]

@@ -7,7 +7,7 @@ Angular Full Stack is a project to easly get started with the latest Angular usi
 This project uses the [MEAN stack](https://en.wikipedia.org/wiki/MEAN_(software_bundle)):
 * [**M**ongoose.js](http://www.mongoosejs.com) ([MongoDB](https://www.mongodb.com)): database
 * [**E**xpress.js](http://expressjs.com): backend framework
-* [**A**ngular 2+](https://angular.io): frontend framework
+* [**A**ngular](https://angular.io): frontend framework
 * [**N**ode.js](https://nodejs.org): runtime environment
 
 Other tools and technologies used:
