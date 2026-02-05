@@ -8,9 +8,8 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class ToastComponent {
-  // input value when the component is used in a template: <app-toast [message]="...">
+  // input value when the component is used in a template
   message = input<{ body: string; type: string }>({ body: '', type: '' });
-
   // local writable signal representing the currently displayed message.
   private _localMessage = signal<{ body: string; type: string }>({ body: '', type: '' });
   // public accessor used by templates to read the displayed message
@@ -19,7 +18,7 @@ export class ToastComponent {
   existingTimeout = 0;
 
   constructor() {
-    // Keep local message in sync with any parent-provided input value.
+    // Keep local message in sync with any parent-provided input value
     effect(() => {
       this._localMessage.set(this.message());
     });

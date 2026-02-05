@@ -1,5 +1,4 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoadingComponent } from './loading.component';
 
@@ -8,18 +7,14 @@ describe('Component: Loading', () => {
   let fixture: ComponentFixture<LoadingComponent>;
   let compiled: HTMLElement;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LoadingComponent ],
-      schemas: [NO_ERRORS_SCHEMA]
-    })
-      .compileComponents();
-  }));
+  beforeEach(async() => {
+    await TestBed.configureTestingModule({
+      imports: [LoadingComponent],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LoadingComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    await fixture.whenStable();
     compiled = fixture.nativeElement as HTMLElement;
   });
 
@@ -33,7 +28,7 @@ describe('Component: Loading', () => {
   });
 
   it('should show the DOM element', () => {
-    component.condition = true;
+    component.localCondition.set(true);
     fixture.detectChanges();
     expect(component).toBeTruthy();
     const div = compiled.querySelector('div');
