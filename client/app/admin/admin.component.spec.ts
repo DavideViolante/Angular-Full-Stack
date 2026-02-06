@@ -1,13 +1,15 @@
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, Observable } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { ToastService } from '../shared/toast/toast.service';
+import { User } from '../shared/models/user.model';
 import { AdminComponent } from './admin.component';
 
 class AuthServiceMock {
-  currentUser = () => ({ _id: '1', username: 'test1@example.com', role: 'admin' });
+  currentUser = signal<User>({ _id: '1', username: 'test1@example.com', role: 'admin' });
 }
 
 class UserServiceMock {

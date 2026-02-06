@@ -6,10 +6,10 @@ import { App } from './app';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { ToastService } from './shared/toast/toast.service';
+import { User } from './shared/models/user.model';
 
 class AuthServiceMock {
-  currentUser = () => ({ _id: '1', username: 'test1@example.com', role: 'user' });
-
+  currentUser = signal<User>({ _id: '1', username: 'test1@example.com', role: 'user' });
   loggedIn = signal<boolean>(true);
   isAdmin = signal<boolean>(false);
   
@@ -63,7 +63,6 @@ describe('App', () => {
     fixture.detectChanges();
     expect(authService.loggedIn()).toBeTruthy();
     const navLinks = compiled.querySelectorAll('.nav-link');
-    console.log(Array.from(navLinks).map(link => link.textContent));
     expect(navLinks[0]?.textContent).toContain('Home');
     expect(navLinks[1]?.textContent).toContain('Cats');
     expect(navLinks[2]?.textContent).toContain('Account');
@@ -77,7 +76,6 @@ describe('App', () => {
     expect(authService.loggedIn()).toBeTruthy();
     expect(authService.isAdmin()).toBeTruthy();
     const navLinks = compiled.querySelectorAll('.nav-link');
-    console.log(Array.from(navLinks).map(link => link.textContent));
     expect(navLinks[0]?.textContent).toContain('Home');
     expect(navLinks[1]?.textContent).toContain('Cats');
     expect(navLinks[2]?.textContent).toContain('Account');

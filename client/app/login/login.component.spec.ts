@@ -1,11 +1,17 @@
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, UntypedFormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 import { ToastService } from '../shared/toast/toast.service';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
+import { User } from '../shared/models/user.model';
 import { LoginComponent } from './login.component';
+
+class AuthServiceMock {
+  currentUser = signal<User>(new User());
+  loggedIn = signal<boolean>(true);
+}
 
 describe('Component: Login', () => {
   let component: LoginComponent;
@@ -18,9 +24,8 @@ describe('Component: Login', () => {
       providers: [
         UntypedFormBuilder,
         ToastService,
-        AuthService,
         UserService,
-        JwtHelperService, { provide: JWT_OPTIONS, useValue: {} }
+        { provide: AuthService, useClass: AuthServiceMock },
       ],
     }).compileComponents();
 

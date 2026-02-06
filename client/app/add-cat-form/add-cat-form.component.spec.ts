@@ -13,10 +13,7 @@ describe('Component: AddCatForm', () => {
   beforeEach(async() => {
     await TestBed.configureTestingModule({
       imports: [AddCatFormComponent, FormsModule, ReactiveFormsModule],
-      providers: [
-        UntypedFormBuilder,
-        ToastService,
-        CatService]
+      providers: [UntypedFormBuilder, ToastService, CatService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AddCatFormComponent);

@@ -1,3 +1,4 @@
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Observable, of } from 'rxjs';
 
@@ -8,7 +9,7 @@ import { ToastService } from '../shared/toast/toast.service';
 import { User } from '../shared/models/user.model';
 
 class AuthServiceMock {
-  currentUser = () => ({});
+  currentUser = signal<User>(new User());
 }
 class UserServiceMock {
   mockUser = {
