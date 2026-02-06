@@ -33,7 +33,7 @@ describe('Component: Toast', () => {
     expect(div).toBeNull();
   });
 
-  it('should set the message and create the DOM element', async () => {
+  it('should set the message and create the DOM element', () => {
     const mockMessage = {
       body: 'test message',
       type: 'warning'

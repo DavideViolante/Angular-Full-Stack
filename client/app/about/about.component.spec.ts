@@ -21,7 +21,7 @@ describe('Component: About', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render the header', async () => {
+  it('should render the header', () => {
     expect(compiled.querySelector('.card-header')?.textContent).toContain('About');
   });
 });

@@ -47,7 +47,7 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render nav links', async () => {
+  it('should render nav links', () => {
     authService.loggedIn.set(false);
     fixture.detectChanges();
     expect(authService.loggedIn()).toBeFalsy();
@@ -58,7 +58,7 @@ describe('App', () => {
     expect(navLinks[3]?.textContent).toContain('Register');
   });
 
-  it('should render nav links as logged in', async () => {
+  it('should render nav links as logged in', () => {
     authService.loggedIn.set(true);
     fixture.detectChanges();
     expect(authService.loggedIn()).toBeTruthy();
@@ -69,7 +69,7 @@ describe('App', () => {
     expect(navLinks[3]?.textContent).toContain('Logout');
   });
   
-  it('should render nav links as logged in as admin', async () => {
+  it('should render nav links as logged in as admin', () => {
     authService.loggedIn.set(true);
     authService.isAdmin.set(true);
     fixture.detectChanges();

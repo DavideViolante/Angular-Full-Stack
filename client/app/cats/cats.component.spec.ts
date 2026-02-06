@@ -47,7 +47,7 @@ describe('Component: Cats', () => {
     expect(header?.textContent).toContain('Current cats (2)');
   });
 
-  it('should display the text for no cats', async () => {
+  it('should display the text for no cats', () => {
     component.cats.set([]);
     fixture.detectChanges();
     const header = compiled.querySelector('.card-header');

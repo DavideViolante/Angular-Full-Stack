@@ -46,17 +46,17 @@ describe('Component: Account', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render the header', async () => {
+  it('should render the header', () => {
     expect(compiled.querySelector('.card-header')?.textContent).toContain('Account settings');
   });
 
-  it('should display the username and email inputs filled', async () => {
+  it('should display the username and email inputs filled', () => {
     const inputs = compiled.querySelectorAll('input');
     expect(inputs[0].value).toContain('Test user');
     expect(inputs[1].value).toContain('test@example.com');
   });
 
-  it('should display the save button enabled', async () => {
+  it('should display the save button enabled', () => {
     const button = compiled.querySelector('button');
     expect(button).toBeTruthy();
     expect(button?.disabled).toBeFalsy();
