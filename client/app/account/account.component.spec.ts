@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, of } from 'rxjs';
 
 import { AccountComponent } from './account.component';
@@ -8,6 +7,9 @@ import { UserService } from '../services/user.service';
 import { ToastService } from '../shared/toast/toast.service';
 import { User } from '../shared/models/user.model';
 
+class AuthServiceMock {
+  currentUser = () => ({});
+}
 class UserServiceMock {
   mockUser = {
     username: 'Test user',
@@ -27,10 +29,9 @@ describe('Component: Account', () => {
     await TestBed.configureTestingModule({
       imports: [AccountComponent],
       providers: [
-        AuthService,
         ToastService,
+        { provide: AuthService, useClass: AuthServiceMock },
         { provide: UserService, useClass: UserServiceMock },
-        { provide: JWT_OPTIONS, useValue: {} }, JwtHelperService
       ]
     }).compileComponents();
     
